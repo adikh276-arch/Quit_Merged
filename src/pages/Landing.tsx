@@ -2,52 +2,64 @@ import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { substances } from '@/data/substances';
 import { getStreak } from '@/data/storage';
-import { Shield, Sparkles, ArrowRight } from 'lucide-react';
+import { Shield, Sparkles, ArrowRight, Flame, Heart } from 'lucide-react';
+
+const substanceColors: Record<string, string> = {
+  alcohol: 'from-red-500/90 to-rose-600/90',
+  tobacco: 'from-amber-600/90 to-orange-700/90',
+  opioids: 'from-purple-500/90 to-violet-600/90',
+  cannabis: 'from-emerald-500/90 to-green-600/90',
+  stimulants: 'from-yellow-500/90 to-amber-500/90',
+  benzodiazepines: 'from-blue-500/90 to-indigo-600/90',
+  kratom: 'from-teal-500/90 to-cyan-600/90',
+  mdma: 'from-pink-500/90 to-fuchsia-600/90',
+};
+
+const substanceBgs: Record<string, string> = {
+  alcohol: 'bg-red-50 dark:bg-red-950/30',
+  tobacco: 'bg-amber-50 dark:bg-amber-950/30',
+  opioids: 'bg-purple-50 dark:bg-purple-950/30',
+  cannabis: 'bg-emerald-50 dark:bg-emerald-950/30',
+  stimulants: 'bg-yellow-50 dark:bg-yellow-950/30',
+  benzodiazepines: 'bg-blue-50 dark:bg-blue-950/30',
+  kratom: 'bg-teal-50 dark:bg-teal-950/30',
+  mdma: 'bg-pink-50 dark:bg-pink-950/30',
+};
 
 const SubstanceCard = ({ substance, index }: { substance: typeof substances[0]; index: number }) => {
   const navigate = useNavigate();
   const streak = getStreak(substance.slug);
-  const accentColor = `hsl(var(${substance.accentVar}))`;
 
   return (
     <motion.button
-      initial={{ opacity: 0, y: 20 }}
+      initial={{ opacity: 0, y: 24 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ delay: 0.15 + index * 0.05, duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
+      transition={{ delay: 0.2 + index * 0.06, duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
       onClick={() => navigate(`/${substance.slug}`)}
-      className="group relative flex items-center gap-4 rounded-2xl border border-border/60 bg-card p-4 text-left transition-all duration-300 hover:shadow-lg hover:border-border hover:-translate-y-0.5 active:scale-[0.98] overflow-hidden"
+      className={`group relative flex items-center gap-4 rounded-2xl p-4 text-left transition-all duration-300 hover:shadow-xl hover:-translate-y-1 active:scale-[0.98] ${substanceBgs[substance.slug] || 'bg-card'}`}
     >
-      {/* Subtle accent gradient overlay */}
-      <div
-        className="absolute inset-0 opacity-[0.04] group-hover:opacity-[0.08] transition-opacity duration-300 rounded-2xl"
-        style={{ background: `linear-gradient(135deg, ${accentColor}, transparent 70%)` }}
-      />
-
-      {/* Icon */}
-      <div
-        className="relative flex h-12 w-12 shrink-0 items-center justify-center rounded-xl text-2xl"
-        style={{ backgroundColor: `${accentColor}15` }}
-      >
-        {substance.icon}
+      {/* Icon container */}
+      <div className={`flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br ${substanceColors[substance.slug] || 'from-primary to-primary/80'} text-2xl shadow-lg`}>
+        <span className="drop-shadow-sm">{substance.icon}</span>
       </div>
 
       {/* Text */}
-      <div className="relative flex-1 min-w-0">
-        <h3 className="font-display text-base text-foreground leading-tight">{substance.name}</h3>
-        <p className="text-xs text-muted-foreground mt-0.5 truncate">{substance.descriptor}</p>
+      <div className="flex-1 min-w-0">
+        <h3 className="font-display text-[17px] text-foreground leading-tight">{substance.name}</h3>
+        <p className="text-xs text-muted-foreground mt-1">{substance.descriptor}</p>
       </div>
 
       {/* Streak badge or arrow */}
-      <div className="relative shrink-0">
+      <div className="shrink-0">
         {streak.days > 0 ? (
-          <div
-            className="flex items-center gap-1 rounded-full px-3 py-1.5 text-xs font-bold text-white"
-            style={{ backgroundColor: accentColor }}
-          >
-            🔥 {streak.days}d
+          <div className={`flex items-center gap-1.5 rounded-xl bg-gradient-to-r ${substanceColors[substance.slug]} px-3.5 py-2 text-xs font-bold text-white shadow-md`}>
+            <Flame className="h-3.5 w-3.5" />
+            {streak.days}d
           </div>
         ) : (
-          <ArrowRight className="h-4 w-4 text-muted-foreground/40 group-hover:text-muted-foreground transition-colors" />
+          <div className="flex items-center gap-1 rounded-xl bg-muted px-3 py-2 text-xs font-medium text-muted-foreground group-hover:text-foreground transition-colors">
+            Start <ArrowRight className="h-3 w-3" />
+          </div>
         )}
       </div>
     </motion.button>
@@ -59,51 +71,65 @@ const Landing = () => {
   const activeCount = substances.filter(s => getStreak(s.slug).days > 0).length;
 
   return (
-    <div className="min-h-screen bg-background">
-      <div className="mx-auto max-w-lg px-4 pb-12 pt-8">
+    <div className="min-h-screen bg-gradient-to-b from-background via-background to-muted/30">
+      <div className="mx-auto max-w-lg px-5 pb-16 pt-10">
         {/* Header */}
         <motion.div
-          initial={{ opacity: 0, y: -15 }}
+          initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.7 }}
           className="mb-8 text-center"
         >
-          <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-4 py-2">
+          <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-4 py-2 shadow-sm">
             <Shield className="h-3.5 w-3.5 text-primary" />
-            <span className="text-xs font-medium text-primary">100% Private · On-Device</span>
+            <span className="text-xs font-semibold text-primary tracking-wide">100% Private · On-Device</span>
           </div>
-          <h1 className="font-display text-4xl tracking-tight text-foreground">
+          <h1 className="font-display text-5xl tracking-tight text-foreground leading-[1.1]">
             Quit<span className="text-primary">Mantra</span>
           </h1>
-          <p className="mt-2 text-sm text-muted-foreground max-w-xs mx-auto">
+          <p className="mt-3 text-sm text-muted-foreground max-w-[280px] mx-auto leading-relaxed">
             Track your recovery journey with clarity and compassion.
           </p>
         </motion.div>
 
-        {/* Stats row */}
+        {/* Stats Card */}
         {activeCount > 0 && (
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.1, duration: 0.5 }}
-            className="mb-6 flex items-center justify-center gap-6 rounded-2xl border border-primary/15 bg-gradient-to-r from-primary/5 via-primary/8 to-primary/5 px-6 py-4"
+            transition={{ delay: 0.12, duration: 0.5 }}
+            className="mb-8 rounded-3xl bg-gradient-to-br from-primary via-primary to-primary/80 p-6 text-white shadow-xl shadow-primary/20"
           >
-            <div className="text-center">
-              <p className="text-2xl font-bold text-primary">{activeCount}</p>
-              <p className="text-[11px] text-muted-foreground font-medium">Active</p>
-            </div>
-            <div className="h-8 w-px bg-border" />
-            <div className="text-center">
-              <p className="text-2xl font-bold text-primary">{totalDays}</p>
-              <p className="text-[11px] text-muted-foreground font-medium">Total Days</p>
-            </div>
-            <div className="h-8 w-px bg-border" />
-            <div className="text-center flex flex-col items-center">
-              <Sparkles className="h-5 w-5 text-accent mb-0.5" />
-              <p className="text-[11px] text-muted-foreground font-medium">Going Strong</p>
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-5">
+                <div className="text-center">
+                  <p className="text-3xl font-bold tracking-tight">{activeCount}</p>
+                  <p className="text-[11px] text-white/70 font-medium mt-0.5">Active</p>
+                </div>
+                <div className="h-10 w-px bg-white/20 rounded-full" />
+                <div className="text-center">
+                  <p className="text-3xl font-bold tracking-tight">{totalDays}</p>
+                  <p className="text-[11px] text-white/70 font-medium mt-0.5">Total Days</p>
+                </div>
+              </div>
+              <div className="flex flex-col items-center gap-1 rounded-2xl bg-white/15 backdrop-blur-sm px-4 py-3">
+                <Sparkles className="h-5 w-5 text-white/90" />
+                <p className="text-[10px] text-white/70 font-semibold">Strong</p>
+              </div>
             </div>
           </motion.div>
         )}
+
+        {/* Section title */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.18 }}
+          className="flex items-center gap-2 mb-4 px-1"
+        >
+          <Heart className="h-4 w-4 text-primary" />
+          <h2 className="font-display text-lg text-foreground">Your Journey</h2>
+        </motion.div>
 
         {/* Substance List */}
         <div className="flex flex-col gap-3">
@@ -116,11 +142,12 @@ const Landing = () => {
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 0.8 }}
-          className="mt-10 text-center"
+          transition={{ delay: 1 }}
+          className="mt-12 text-center"
         >
-          <p className="text-xs text-muted-foreground/70">
-            🔒 All data stays on your device. Nothing is ever shared.
+          <p className="text-xs text-muted-foreground/60 flex items-center justify-center gap-1.5">
+            <Shield className="h-3 w-3" />
+            All data stays on your device. Nothing is ever shared.
           </p>
         </motion.div>
       </div>

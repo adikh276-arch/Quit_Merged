@@ -1,12 +1,39 @@
 import { useParams, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { ArrowLeft, ClipboardList, Calculator, Dumbbell, BookOpen, Users, Trophy, TrendingUp, Calendar, Flame } from 'lucide-react';
+import { ArrowLeft, ClipboardList, Calculator, Dumbbell, BookOpen, Users, Trophy, TrendingUp, Calendar, Flame, ChevronRight, Zap } from 'lucide-react';
 import { getSubstance } from '@/data/substances';
 import { getStreak, getEntries } from '@/data/storage';
 import { useState } from 'react';
 import TrackerDetail from '@/components/TrackerDetail';
 import ToolModal from '@/components/ToolModal';
 import { LineChart, Line, ResponsiveContainer } from 'recharts';
+
+const heroGradients: Record<string, string> = {
+  alcohol: 'from-red-600 via-rose-500 to-red-700',
+  tobacco: 'from-amber-600 via-orange-500 to-amber-700',
+  opioids: 'from-purple-600 via-violet-500 to-purple-700',
+  cannabis: 'from-emerald-600 via-green-500 to-emerald-700',
+  stimulants: 'from-yellow-500 via-amber-500 to-yellow-600',
+  benzodiazepines: 'from-blue-600 via-indigo-500 to-blue-700',
+  kratom: 'from-teal-600 via-cyan-500 to-teal-700',
+  mdma: 'from-pink-600 via-fuchsia-500 to-pink-700',
+};
+
+const cardAccents: Record<string, string> = {
+  alcohol: 'border-red-200 dark:border-red-900/40 hover:border-red-300',
+  tobacco: 'border-amber-200 dark:border-amber-900/40 hover:border-amber-300',
+  opioids: 'border-purple-200 dark:border-purple-900/40 hover:border-purple-300',
+  cannabis: 'border-emerald-200 dark:border-emerald-900/40 hover:border-emerald-300',
+  stimulants: 'border-yellow-200 dark:border-yellow-900/40 hover:border-yellow-300',
+  benzodiazepines: 'border-blue-200 dark:border-blue-900/40 hover:border-blue-300',
+  kratom: 'border-teal-200 dark:border-teal-900/40 hover:border-teal-300',
+  mdma: 'border-pink-200 dark:border-pink-900/40 hover:border-pink-300',
+};
+
+const sparkColors: Record<string, string> = {
+  alcohol: '#ef4444', tobacco: '#d97706', opioids: '#8b5cf6', cannabis: '#10b981',
+  stimulants: '#eab308', benzodiazepines: '#3b82f6', kratom: '#14b8a6', mdma: '#ec4899',
+};
 
 const SubstancePage = () => {
   const { slug } = useParams<{ slug: string }>();
@@ -21,25 +48,27 @@ const SubstancePage = () => {
   }
 
   const streak = getStreak(substance.slug);
-  const accentColor = `hsl(var(${substance.accentVar}))`;
   const recoveryScore = Math.min(100, Math.round(50 + streak.days * 2.3));
+  const gradientClass = heroGradients[substance.slug] || 'from-primary to-primary/80';
+  const sparkColor = sparkColors[substance.slug] || '#10b981';
+  const cardAccent = cardAccents[substance.slug] || 'border-border';
 
   const activeTrackerConfig = substance.trackers.find(t => t.id === activeTracker);
 
   const tools = [
-    { id: 'assessment', name: 'DSM-5 Assessment', icon: ClipboardList, desc: 'Self-evaluate' },
-    { id: 'calculator', name: 'Calculator', icon: Calculator, desc: 'Health metrics' },
-    { id: 'activities', name: 'Activities', icon: Dumbbell, desc: 'Healthy habits' },
-    { id: 'learn', name: 'Learn', icon: BookOpen, desc: 'Education' },
-    { id: 'community', name: 'Community', icon: Users, desc: 'Support' },
-    { id: 'achievements', name: 'Milestones', icon: Trophy, desc: 'Your wins' },
+    { id: 'assessment', name: 'DSM-5 Assessment', icon: ClipboardList, desc: 'Self-evaluate your patterns' },
+    { id: 'calculator', name: 'Health Calculator', icon: Calculator, desc: 'Track health metrics' },
+    { id: 'activities', name: 'Healthy Activities', icon: Dumbbell, desc: 'Alternative habits' },
+    { id: 'learn', name: 'Learn & Educate', icon: BookOpen, desc: 'Understanding recovery' },
+    { id: 'community', name: 'Community', icon: Users, desc: 'Support network' },
+    { id: 'achievements', name: 'Milestones', icon: Trophy, desc: 'Celebrate your wins' },
   ];
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-gradient-to-b from-background via-background to-muted/30">
       {/* Banner */}
       {substance.banner && (
-        <div className={`px-4 py-2.5 text-center text-xs font-medium ${
+        <div className={`px-4 py-2.5 text-center text-xs font-semibold ${
           substance.banner.type === 'warning' ? 'bg-accent/10 text-accent' :
           substance.banner.type === 'danger' ? 'bg-destructive/10 text-destructive' :
           'bg-primary/8 text-primary'
@@ -48,74 +77,82 @@ const SubstancePage = () => {
         </div>
       )}
 
-      <div className="mx-auto max-w-lg px-4 pb-10">
+      <div className="mx-auto max-w-lg px-5 pb-12">
         {/* Back button */}
-        <button onClick={() => navigate('/')} className="flex items-center gap-1.5 py-4 text-sm text-muted-foreground hover:text-foreground transition-colors">
+        <button onClick={() => navigate('/')} className="flex items-center gap-1.5 py-5 text-sm text-muted-foreground hover:text-foreground transition-colors font-medium">
           <ArrowLeft className="h-4 w-4" /> Back
         </button>
 
         {/* Hero Card */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="relative overflow-hidden rounded-3xl p-6 text-white"
-          style={{ background: `linear-gradient(145deg, ${accentColor}, ${accentColor}cc)` }}
+          transition={{ duration: 0.6 }}
+          className={`relative overflow-hidden rounded-3xl bg-gradient-to-br ${gradientClass} p-7 shadow-2xl`}
         >
-          {/* Background pattern */}
-          <div className="absolute inset-0 opacity-10">
-            <div className="absolute -right-8 -top-8 h-32 w-32 rounded-full bg-white/20" />
-            <div className="absolute -bottom-4 -left-4 h-24 w-24 rounded-full bg-white/10" />
-          </div>
+          {/* Decorative circles */}
+          <div className="absolute -right-6 -top-6 h-28 w-28 rounded-full bg-white/10 blur-sm" />
+          <div className="absolute -bottom-8 -left-8 h-36 w-36 rounded-full bg-white/5 blur-sm" />
+          <div className="absolute right-12 bottom-4 h-16 w-16 rounded-full bg-white/5" />
 
-          <div className="relative">
-            <div className="flex items-start justify-between">
-              <div>
-                <span className="text-4xl drop-shadow-sm">{substance.icon}</span>
-                <h1 className="mt-2 font-display text-2xl text-white">{substance.name}</h1>
+          <div className="relative z-10">
+            {/* Top row: icon + name | days */}
+            <div className="flex items-start justify-between mb-6">
+              <div className="flex items-center gap-3">
+                <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-white/15 backdrop-blur-sm text-3xl shadow-inner">
+                  {substance.icon}
+                </div>
+                <div>
+                  <h1 className="font-display text-2xl text-white drop-shadow-sm">{substance.name}</h1>
+                  <p className="text-xs text-white/60 font-medium mt-0.5">{substance.descriptor}</p>
+                </div>
               </div>
               <div className="text-right">
-                <div className="flex items-baseline gap-1">
-                  <motion.span
-                    initial={{ scale: 0.5, opacity: 0 }}
-                    animate={{ scale: 1, opacity: 1 }}
-                    transition={{ type: 'spring', stiffness: 200, delay: 0.2 }}
-                    className="text-5xl font-bold tracking-tight"
-                  >
-                    {streak.days}
-                  </motion.span>
-                </div>
-                <p className="text-xs text-white/70 font-medium">days clean</p>
+                <motion.span
+                  initial={{ scale: 0.5, opacity: 0 }}
+                  animate={{ scale: 1, opacity: 1 }}
+                  transition={{ type: 'spring', stiffness: 180, delay: 0.25 }}
+                  className="block text-5xl font-bold tracking-tighter text-white drop-shadow-lg"
+                >
+                  {streak.days}
+                </motion.span>
+                <p className="text-[11px] text-white/60 font-semibold tracking-wide uppercase">Days Clean</p>
               </div>
             </div>
 
             {/* Stats row */}
-            <div className="mt-5 grid grid-cols-3 gap-3">
-              <div className="rounded-xl bg-white/10 backdrop-blur-sm px-3 py-2.5 text-center">
-                <Flame className="h-4 w-4 mx-auto mb-1 text-white/80" />
-                <p className="text-sm font-bold">{streak.days}</p>
-                <p className="text-[10px] text-white/60">Streak</p>
-              </div>
-              <div className="rounded-xl bg-white/10 backdrop-blur-sm px-3 py-2.5 text-center">
-                <TrendingUp className="h-4 w-4 mx-auto mb-1 text-white/80" />
-                <p className="text-sm font-bold">{recoveryScore}%</p>
-                <p className="text-[10px] text-white/60">Recovery</p>
-              </div>
-              <div className="rounded-xl bg-white/10 backdrop-blur-sm px-3 py-2.5 text-center">
-                <Calendar className="h-4 w-4 mx-auto mb-1 text-white/80" />
-                <p className="text-sm font-bold">{streak.startDate ? new Date(streak.startDate).toLocaleDateString('en-IN', { day: 'numeric', month: 'short' }) : '—'}</p>
-                <p className="text-[10px] text-white/60">Started</p>
-              </div>
+            <div className="grid grid-cols-3 gap-3">
+              {[
+                { icon: Flame, value: `${streak.days}`, label: 'Streak', suffix: 'd' },
+                { icon: TrendingUp, value: `${recoveryScore}`, label: 'Recovery', suffix: '%' },
+                { icon: Calendar, value: streak.startDate ? new Date(streak.startDate).toLocaleDateString('en-IN', { day: 'numeric', month: 'short' }) : '—', label: 'Started', suffix: '' },
+              ].map((stat, i) => (
+                <motion.div
+                  key={stat.label}
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.35 + i * 0.08 }}
+                  className="rounded-2xl bg-white/10 backdrop-blur-sm px-3 py-3 text-center border border-white/10"
+                >
+                  <stat.icon className="h-4 w-4 mx-auto mb-1.5 text-white/70" />
+                  <p className="text-base font-bold text-white">{stat.value}{stat.suffix}</p>
+                  <p className="text-[10px] text-white/50 font-semibold uppercase tracking-wider mt-0.5">{stat.label}</p>
+                </motion.div>
+              ))}
             </div>
 
             {/* Progress bar */}
-            <div className="mt-4">
-              <div className="h-1.5 rounded-full bg-white/15">
+            <div className="mt-5">
+              <div className="flex justify-between text-[10px] text-white/50 font-medium mb-1.5">
+                <span>Recovery Progress</span>
+                <span>{recoveryScore}%</span>
+              </div>
+              <div className="h-2 rounded-full bg-white/15 overflow-hidden">
                 <motion.div
                   initial={{ width: 0 }}
                   animate={{ width: `${recoveryScore}%` }}
-                  transition={{ duration: 1.2, delay: 0.4, ease: [0.25, 0.46, 0.45, 0.94] }}
-                  className="h-1.5 rounded-full bg-white/70"
+                  transition={{ duration: 1.4, delay: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
+                  className="h-full rounded-full bg-white/80 shadow-sm"
                 />
               </div>
             </div>
@@ -123,10 +160,13 @@ const SubstancePage = () => {
         </motion.div>
 
         {/* Tracker Section */}
-        <div className="mt-8">
-          <div className="flex items-center justify-between mb-4">
-            <h2 className="font-display text-lg text-foreground">Daily Trackers</h2>
-            <span className="text-xs text-muted-foreground">{substance.trackers.length} trackers</span>
+        <div className="mt-10">
+          <div className="flex items-center justify-between mb-5 px-1">
+            <div className="flex items-center gap-2">
+              <Zap className="h-4 w-4 text-primary" />
+              <h2 className="font-display text-xl text-foreground">Daily Trackers</h2>
+            </div>
+            <span className="text-xs text-muted-foreground font-medium bg-muted rounded-full px-3 py-1">{substance.trackers.length} trackers</span>
           </div>
           <div className="grid grid-cols-2 gap-3">
             {substance.trackers.map((tracker, i) => {
@@ -140,37 +180,34 @@ const SubstancePage = () => {
               return (
                 <motion.button
                   key={tracker.id}
-                  initial={{ opacity: 0, y: 15 }}
+                  initial={{ opacity: 0, y: 18 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.3 + i * 0.05 }}
+                  transition={{ delay: 0.35 + i * 0.06 }}
                   onClick={() => setActiveTracker(tracker.id)}
-                  className="group relative flex flex-col rounded-2xl border border-border/60 bg-card p-4 text-left transition-all duration-200 hover:shadow-md hover:border-border hover:-translate-y-0.5 active:scale-[0.98] overflow-hidden"
+                  className={`group relative flex flex-col rounded-2xl border-2 bg-card p-4 text-left transition-all duration-300 hover:shadow-lg hover:-translate-y-1 active:scale-[0.97] ${cardAccent}`}
                 >
-                  <div
-                    className="absolute bottom-0 left-0 right-0 h-1 rounded-b-2xl transition-opacity"
-                    style={{ backgroundColor: accentColor, opacity: todayEntry ? 1 : 0.2 }}
-                  />
-                  <div className="flex items-start justify-between w-full mb-2">
-                    <p className="text-sm font-semibold text-foreground leading-tight pr-2">{tracker.name}</p>
+                  <div className="flex items-start justify-between w-full mb-3">
+                    <p className="text-sm font-bold text-foreground leading-tight pr-2">{tracker.name}</p>
                     {todayEntry ? (
-                      <span className="shrink-0 flex items-center gap-1 rounded-full bg-primary/10 px-2 py-0.5 text-[10px] font-semibold text-primary">
-                        ✓ Done
+                      <span className="shrink-0 flex items-center gap-1 rounded-lg bg-primary/10 px-2.5 py-1 text-[10px] font-bold text-primary">
+                        ✓
                       </span>
                     ) : (
-                      <span className="shrink-0 rounded-full bg-accent/10 px-2 py-0.5 text-[10px] font-semibold text-accent">
+                      <span className="shrink-0 rounded-lg bg-accent/10 px-2.5 py-1 text-[10px] font-bold text-accent">
                         Log
                       </span>
                     )}
                   </div>
-                  <div className="h-8 w-full mt-auto">
+                  <div className="h-9 w-full mt-auto opacity-60 group-hover:opacity-100 transition-opacity">
                     {sparkData.length > 1 && (
                       <ResponsiveContainer width="100%" height="100%">
                         <LineChart data={sparkData}>
-                          <Line type="monotone" dataKey="v" stroke={accentColor} strokeWidth={1.5} dot={false} />
+                          <Line type="monotone" dataKey="v" stroke={sparkColor} strokeWidth={2} dot={false} />
                         </LineChart>
                       </ResponsiveContainer>
                     )}
                   </div>
+                  <ChevronRight className="absolute bottom-3 right-3 h-3.5 w-3.5 text-muted-foreground/30 group-hover:text-muted-foreground transition-colors" />
                 </motion.button>
               );
             })}
@@ -178,24 +215,27 @@ const SubstancePage = () => {
         </div>
 
         {/* Tools Section */}
-        <div className="mt-8">
-          <h2 className="font-display text-lg text-foreground mb-4">Tools & Resources</h2>
-          <div className="grid grid-cols-3 gap-3">
+        <div className="mt-10">
+          <div className="flex items-center gap-2 mb-5 px-1">
+            <BookOpen className="h-4 w-4 text-primary" />
+            <h2 className="font-display text-xl text-foreground">Tools & Resources</h2>
+          </div>
+          <div className="grid grid-cols-2 gap-3">
             {tools.map((tool, i) => (
               <motion.button
                 key={tool.id}
-                initial={{ opacity: 0, y: 15 }}
+                initial={{ opacity: 0, y: 18 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.5 + i * 0.04 }}
+                transition={{ delay: 0.55 + i * 0.05 }}
                 onClick={() => setActiveTool(tool.id)}
-                className="group flex flex-col items-center gap-2 rounded-2xl border border-border/60 bg-card p-4 text-center transition-all duration-200 hover:shadow-md hover:border-border hover:-translate-y-0.5 active:scale-[0.98]"
+                className="group flex items-start gap-3 rounded-2xl border border-border/60 bg-card p-4 text-left transition-all duration-300 hover:shadow-lg hover:border-primary/30 hover:-translate-y-0.5 active:scale-[0.97]"
               >
-                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-muted group-hover:bg-primary/10 transition-colors">
-                  <tool.icon className="h-5 w-5 text-muted-foreground group-hover:text-primary transition-colors" />
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-primary/8 group-hover:bg-primary/15 transition-colors">
+                  <tool.icon className="h-5 w-5 text-primary/70 group-hover:text-primary transition-colors" />
                 </div>
-                <div>
-                  <span className="text-xs font-semibold text-foreground block leading-tight">{tool.name}</span>
-                  <span className="text-[10px] text-muted-foreground">{tool.desc}</span>
+                <div className="min-w-0">
+                  <span className="text-sm font-bold text-foreground block leading-tight">{tool.name}</span>
+                  <span className="text-[11px] text-muted-foreground leading-snug mt-0.5 block">{tool.desc}</span>
                 </div>
               </motion.button>
             ))}
