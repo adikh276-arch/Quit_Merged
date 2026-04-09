@@ -1,6 +1,6 @@
 import { useParams, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { ArrowLeft, ClipboardList, Calculator, Dumbbell, BookOpen, Users, Trophy, TrendingUp, Calendar, Flame, ChevronRight, Zap } from 'lucide-react';
+import { ArrowLeft, ClipboardList, Calculator, Dumbbell, BookOpen, TrendingUp, Calendar, Flame, ChevronRight, Zap } from 'lucide-react';
 import { getSubstance } from '@/data/substances';
 import { getStreak, getEntries } from '@/data/storage';
 import { useState } from 'react';
