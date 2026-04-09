@@ -65,8 +65,8 @@ const TrackerDetail = ({ tracker, substance, onClose }: Props) => {
         {/* Header */}
         <div className="flex items-center justify-between py-5 sticky top-0 bg-background/90 backdrop-blur-md z-10 border-b border-border/40">
           <div>
-            <h2 className="font-display text-xl text-foreground">{t(`substances.${substance.slug}.trackers.${tracker.id}.name`)}</h2>
-            <p className="text-xs text-muted-foreground mt-0.5">{t(`substances.${substance.slug}.name`)}</p>
+            <h2 className="font-display text-xl text-foreground">{t(`quit.substances.${substance.slug}.trackers.${tracker.id}.name`)}</h2>
+            <p className="text-xs text-muted-foreground mt-0.5">{t(`quit.substances.${substance.slug}.name`)}</p>
           </div>
           <button onClick={onClose} className="rounded-xl p-2.5 hover:bg-muted transition-colors border border-border/60">
             <X className="h-4 w-4 text-muted-foreground" />
@@ -84,7 +84,7 @@ const TrackerDetail = ({ tracker, substance, onClose }: Props) => {
             <div className="flex items-center gap-2">
               <div className="h-2.5 w-2.5 rounded-full animate-pulse" style={{ backgroundColor: accentColor }} />
               <h3 className="font-display text-lg text-foreground">
-                {todayEntry ? t('app.edit_today') : t('app.log_today')}
+                {todayEntry ? t('quit.app.edit_today') : t('quit.app.log_today')}
               </h3>
             </div>
             <span className="text-[11px] font-semibold text-muted-foreground bg-muted rounded-lg px-3 py-1.5">
@@ -95,7 +95,7 @@ const TrackerDetail = ({ tracker, substance, onClose }: Props) => {
           <div className="space-y-5">
             {tracker.fields.map(field => (
               <div key={field.key}>
-                <label className="mb-2.5 block text-xs font-bold text-foreground uppercase tracking-wider">{t(`substances.${substance.slug}.trackers.${tracker.id}.fields.${field.key}.label`)}</label>
+                <label className="mb-2.5 block text-xs font-bold text-foreground uppercase tracking-wider">{t(`quit.substances.${substance.slug}.trackers.${tracker.id}.fields.${field.key}.label`)}</label>
                 {field.type === 'slider' && (
                   <div className="space-y-2">
                     <input type="range" min={field.min || 0} max={field.max || 10} step={field.step || 1} value={values[field.key] ?? field.min ?? 0} onChange={e => updateField(field.key, Number(e.target.value))} className="w-full h-2 rounded-full appearance-none cursor-pointer" style={{ accentColor }} />
@@ -129,14 +129,14 @@ const TrackerDetail = ({ tracker, substance, onClose }: Props) => {
                             ? 'border-primary bg-primary text-primary-foreground shadow-md shadow-primary/20'
                             : 'border-border/60 bg-card text-foreground hover:border-primary/30 hover:bg-primary/5'
                         }`}>
-                          {t(`substances.${substance.slug}.trackers.${tracker.id}.fields.${field.key}.options.${field.options.indexOf(opt)}`)}
+                          {t(`quit.substances.${substance.slug}.trackers.${tracker.id}.fields.${field.key}.options.${field.options.indexOf(opt)}`)}
                         </button>
                       );
                     })}
                   </div>
                 )}
                 {field.type === 'textarea' && (
-                  <textarea value={values[field.key] ?? ''} onChange={e => updateField(field.key, e.target.value)} placeholder={t('app.placeholder_notes')} className="w-full rounded-xl border-2 border-border/60 bg-background px-4 py-3 text-sm focus:outline-none focus:border-primary/50 focus:ring-4 focus:ring-primary/10 transition-all resize-none" rows={3} />
+                  <textarea value={values[field.key] ?? ''} onChange={e => updateField(field.key, e.target.value)} placeholder={t('quit.app.placeholder_notes')} className="w-full rounded-xl border-2 border-border/60 bg-background px-4 py-3 text-sm focus:outline-none focus:border-primary/50 focus:ring-4 focus:ring-primary/10 transition-all resize-none" rows={3} />
                 )}
               </div>
             ))}
@@ -154,12 +154,12 @@ const TrackerDetail = ({ tracker, substance, onClose }: Props) => {
             {saved ? (
               <>
                 <CheckCircle2 className="h-5 w-5" />
-                {t('app.saved')}
+                {t('quit.app.saved')}
               </>
             ) : (
               <>
                 <Save className="h-4 w-4" />
-                {todayEntry ? t('app.update_entry') : t('app.save_entry')}
+                {todayEntry ? t('quit.app.update_entry') : t('quit.app.save_entry')}
               </>
             )}
           </motion.button>
@@ -174,7 +174,7 @@ const TrackerDetail = ({ tracker, substance, onClose }: Props) => {
         >
           <div className="flex items-start gap-2.5">
             <Lightbulb className="h-4 w-4 text-primary mt-0.5 shrink-0" />
-            <p className="text-sm text-foreground leading-relaxed">{t(`substances.${substance.slug}.trackers.${tracker.id}.insight`)}</p>
+            <p className="text-sm text-foreground leading-relaxed">{t(`quit.substances.${substance.slug}.trackers.${tracker.id}.insight`)}</p>
           </div>
         </motion.div>
 
@@ -191,7 +191,7 @@ const TrackerDetail = ({ tracker, substance, onClose }: Props) => {
           >
             <div className="flex items-center gap-2.5">
               <History className="h-4 w-4 text-muted-foreground" />
-              <span className="text-sm font-bold text-foreground">{t('app.history_trends')}</span>
+              <span className="text-sm font-bold text-foreground">{t('quit.app.history_trends')}</span>
             </div>
             {showHistory ? <ChevronUp className="h-4 w-4 text-muted-foreground" /> : <ChevronDown className="h-4 w-4 text-muted-foreground" />}
           </button>
@@ -218,7 +218,7 @@ const TrackerDetail = ({ tracker, substance, onClose }: Props) => {
                     {renderChart()}
                   </div>
 
-                    <h4 className="mt-5 mb-3 text-xs font-bold text-muted-foreground uppercase tracking-widest">{t('app.recent_entries')}</h4>
+                    <h4 className="mt-5 mb-3 text-xs font-bold text-muted-foreground uppercase tracking-widest">{t('quit.app.recent_entries')}</h4>
                   <div className="space-y-2.5">
                     {entries.slice(-5).reverse().map(e => (
                       <div key={e.date} className="rounded-xl bg-muted/30 p-3.5 border border-border/30">

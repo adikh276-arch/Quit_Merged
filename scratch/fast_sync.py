@@ -18,10 +18,14 @@ def main():
         else:
             content = {}
             
-        # Forces all keys from EN to exist
+        # Forces all keys from EN to exist, namespaced
         final = {}
         for k in en_content.keys():
-            final[k] = content.get(k, en_content[k])
+            # If the current file already has namespaced keys, use them
+            # If it has old keys, convert them
+            old_k = k.replace('quit.', '', 1) if k.startswith('quit.') else k
+            val = content.get(k) or content.get(old_k) or en_content[k]
+            final[k] = val
             
         with open(path, 'w', encoding='utf-8') as f:
             json.dump(final, f, ensure_ascii=False, indent=2)

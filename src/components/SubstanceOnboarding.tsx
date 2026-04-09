@@ -62,7 +62,7 @@ const SubstanceOnboarding = ({ substance, onComplete }: Props) => {
     const daysAgo = getQuitDaysAgo();
     const startDate = new Date();
     startDate.setDate(startDate.getDate() - daysAgo);
-    const startStr = startDate.toISOString().split('T')[0];
+    const startStr = startDate.toISOString().split('quit.T')[0];
     setStreak(substance.slug, daysAgo, startStr);
     localStorage.setItem(`quitmantra_onboarded_${substance.slug}`, 'true');
     localStorage.setItem(`quitmantra_motivation_${substance.slug}`, motivation || '');
@@ -78,9 +78,9 @@ const SubstanceOnboarding = ({ substance, onComplete }: Props) => {
   };
 
   const steps = [
-    { icon: Calendar, title: t('app.onboarding.quit_date'), subtitle: t('app.onboarding.quit_subtitle', { substance: t(`substances.${substance.slug}.name`).toLowerCase() }) },
-    { icon: Target, title: t('app.onboarding.your_why'), subtitle: t('app.onboarding.motivation_subtitle') },
-    { icon: AlertTriangle, title: t('app.onboarding.triggers_title'), subtitle: t('app.onboarding.triggers_subtitle') },
+    { icon: Calendar, title: t('quit.app.onboarding.quit_date'), subtitle: t('quit.app.onboarding.quit_subtitle', { substance: t(`quit.substances.${substance.slug}.name`).toLowerCase() }) },
+    { icon: Target, title: t('quit.app.onboarding.your_why'), subtitle: t('quit.app.onboarding.motivation_subtitle') },
+    { icon: AlertTriangle, title: t('quit.app.onboarding.triggers_title'), subtitle: t('quit.app.onboarding.triggers_subtitle') },
   ];
 
   return (
@@ -95,8 +95,8 @@ const SubstanceOnboarding = ({ substance, onComplete }: Props) => {
           <div className={`mx-auto mb-5 flex h-20 w-20 items-center justify-center rounded-3xl bg-gradient-to-br ${gradient} shadow-xl`}>
             <SubstanceIcon slug={substance.slug} className="h-10 w-10 text-white" />
           </div>
-          <h1 className="font-display text-3xl text-foreground">{t(`substances.${substance.slug}.name`)}</h1>
-          <p className="text-sm text-muted-foreground mt-1.5">{t(`substances.${substance.slug}.descriptor`)}</p>
+          <h1 className="font-display text-3xl text-foreground">{t(`quit.substances.${substance.slug}.name`)}</h1>
+          <p className="text-sm text-muted-foreground mt-1.5">{t(`quit.substances.${substance.slug}.descriptor`)}</p>
         </motion.div>
 
         {/* Progress dots */}
@@ -129,11 +129,11 @@ const SubstanceOnboarding = ({ substance, onComplete }: Props) => {
               {step === 0 && (
                 <div className="space-y-3">
                   {[
-                    { id: 'today', label: t('app.onboarding.today'), desc: t('app.onboarding.today_desc') },
-                    { id: 'yesterday', label: t('app.onboarding.yesterday'), desc: t('app.onboarding.yesterday_desc') },
-                    { id: '3days', label: t('app.onboarding.3days'), desc: t('app.onboarding.3days_desc') },
-                    { id: 'week', label: t('app.onboarding.week'), desc: t('app.onboarding.week_desc') },
-                    { id: 'custom', label: t('app.onboarding.custom'), desc: t('app.onboarding.custom_desc') },
+                    { id: 'today', label: t('quit.app.onboarding.today'), desc: t('quit.app.onboarding.today_desc') },
+                    { id: 'yesterday', label: t('quit.app.onboarding.yesterday'), desc: t('quit.app.onboarding.yesterday_desc') },
+                    { id: '3days', label: t('quit.app.onboarding.3days'), desc: t('quit.app.onboarding.3days_desc') },
+                    { id: 'week', label: t('quit.app.onboarding.week'), desc: t('quit.app.onboarding.week_desc') },
+                    { id: 'custom', label: t('quit.app.onboarding.custom'), desc: t('quit.app.onboarding.custom_desc') },
                   ].map(opt => (
                     <button
                       key={opt.id}
@@ -160,7 +160,7 @@ const SubstanceOnboarding = ({ substance, onComplete }: Props) => {
                       <input
                         type="date"
                         value={customDate}
-                        max={new Date().toISOString().split('T')[0]}
+                        max={new Date().toISOString().split('quit.T')[0]}
                         onChange={e => setCustomDate(e.target.value)}
                         className="w-full rounded-2xl border-2 border-border/60 bg-background px-4 py-3.5 text-sm font-medium focus:outline-none focus:border-primary/50 focus:ring-4 focus:ring-primary/10"
                       />
@@ -174,14 +174,14 @@ const SubstanceOnboarding = ({ substance, onComplete }: Props) => {
                   {[0, 1, 2, 3, 4, 5].map(i => (
                     <button
                       key={i}
-                      onClick={() => setMotivation(t(`app.onboarding.motivations.${i}`))}
+                      onClick={() => setMotivation(t(`quit.app.onboarding.motivations.${i}`))}
                       className={`rounded-2xl border-2 p-4 text-left transition-all ${
-                        motivation === t(`app.onboarding.motivations.${i}`)
+                        motivation === t(`quit.app.onboarding.motivations.${i}`)
                           ? 'border-primary bg-primary/5 shadow-md'
                           : 'border-border/60 bg-card hover:border-primary/30'
                       }`}
                     >
-                      <p className="text-sm font-bold text-foreground">{t(`app.onboarding.motivations.${i}`)}</p>
+                      <p className="text-sm font-bold text-foreground">{t(`quit.app.onboarding.motivations.${i}`)}</p>
                     </button>
                   ))}
                 </div>
@@ -220,7 +220,7 @@ const SubstanceOnboarding = ({ substance, onComplete }: Props) => {
               onClick={() => setStep(s => s - 1)}
               className="flex items-center gap-1.5 rounded-2xl border-2 border-border/60 px-5 py-3.5 text-sm font-bold text-muted-foreground hover:text-foreground hover:border-border transition-colors"
             >
-              <ArrowLeft className="h-4 w-4" /> {t('app.back')}
+              <ArrowLeft className="h-4 w-4" /> {t('quit.app.back')}
             </button>
           )}
           <button
@@ -233,9 +233,9 @@ const SubstanceOnboarding = ({ substance, onComplete }: Props) => {
             }`}
           >
             {step < 2 ? (
-              <>{t('app.onboarding.continue')} <ArrowRight className="h-4 w-4" /></>
+              <>{t('quit.app.onboarding.continue')} <ArrowRight className="h-4 w-4" /></>
             ) : (
-              <>{t('app.onboarding.start_tracking')} <CheckCircle2 className="h-4 w-4" /></>
+              <>{t('quit.app.onboarding.start_tracking')} <CheckCircle2 className="h-4 w-4" /></>
             )}
           </button>
         </div>

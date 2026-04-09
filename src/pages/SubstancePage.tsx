@@ -73,10 +73,10 @@ const SubstancePage = () => {
   const activeTrackerConfig = substance.trackers.find(t => t.id === activeTracker);
 
   const tools = [
-    { id: 'assessment', name: t('app.assessment'), icon: ClipboardList, desc: t('app.assessment_desc') },
-    { id: 'calculator', name: t('app.calculator'), icon: Calculator, desc: t('app.calculator_desc') },
-    { id: 'activities', name: t('app.activities'), icon: Dumbbell, desc: t('app.activities_desc') },
-    { id: 'learn', name: t('app.learn'), icon: BookOpen, desc: t('app.learn_desc') },
+    { id: 'assessment', name: t('quit.app.assessment'), icon: ClipboardList, desc: t('quit.app.assessment_desc') },
+    { id: 'calculator', name: t('quit.app.calculator'), icon: Calculator, desc: t('quit.app.calculator_desc') },
+    { id: 'activities', name: t('quit.app.activities'), icon: Dumbbell, desc: t('quit.app.activities_desc') },
+    { id: 'learn', name: t('quit.app.learn'), icon: BookOpen, desc: t('quit.app.learn_desc') },
   ];
 
   const severityScore = (val: unknown): number => {
@@ -142,7 +142,7 @@ const SubstancePage = () => {
       <div className="mx-auto max-w-lg px-5 pb-12">
         {/* Back button */}
         <button onClick={() => navigate('/')} className="flex items-center gap-1.5 py-5 text-sm text-muted-foreground hover:text-foreground transition-colors font-medium">
-          <ArrowLeft className="h-4 w-4" /> {t('app.back')}
+          <ArrowLeft className="h-4 w-4" /> {t('quit.app.back')}
         </button>
 
         {/* Hero Card */}
@@ -173,8 +173,8 @@ const SubstancePage = () => {
                     <SubstanceIcon slug={substance.slug} className="h-7 w-7 text-white drop-shadow-sm" />
                   </motion.div>
                   <div>
-                    <h1 className="font-display text-2xl text-white drop-shadow-sm tracking-tight">{t(`substances.${substance.slug}.name`)}</h1>
-                    <p className="text-[11px] text-white/50 font-medium mt-0.5 italic">{t(`substances.${substance.slug}.descriptor`)}</p>
+                    <h1 className="font-display text-2xl text-white drop-shadow-sm tracking-tight">{t(`quit.substances.${substance.slug}.name`)}</h1>
+                    <p className="text-[11px] text-white/50 font-medium mt-0.5 italic">{t(`quit.substances.${substance.slug}.descriptor`)}</p>
                   </div>
                 </div>
                 <div className="text-right">
@@ -187,7 +187,7 @@ const SubstancePage = () => {
                   >
                     {streak.days}
                   </motion.span>
-                  <p className="text-[10px] text-white/50 font-bold tracking-[0.15em] uppercase mt-1">{t('app.days_clean')}</p>
+                  <p className="text-[10px] text-white/50 font-bold tracking-[0.15em] uppercase mt-1">{t('quit.app.days_clean')}</p>
                 </div>
               </div>
 
@@ -207,7 +207,7 @@ const SubstancePage = () => {
                   >
                     <stat.icon className="h-4 w-4 mx-auto mb-2 text-white/60 group-hover:text-white/80 transition-colors" />
                     <p className="text-[15px] font-bold text-white leading-none">{stat.value}{stat.suffix}</p>
-                    <p className="text-[9px] text-white/40 font-bold uppercase tracking-[0.12em] mt-1.5">{t(`app.${stat.label.toLowerCase()}`)}</p>
+                    <p className="text-[9px] text-white/40 font-bold uppercase tracking-[0.12em] mt-1.5">{t(`quit.app.${stat.label.toLowerCase()}`)}</p>
                   </motion.div>
                 ))}
               </div>
@@ -215,7 +215,7 @@ const SubstancePage = () => {
               {/* Progress bar */}
               <div className="mt-6">
                 <div className="flex justify-between text-[10px] font-semibold mb-2">
-                  <span className="text-white/45 tracking-wide">{t('app.recovery_progress')}</span>
+                  <span className="text-white/45 tracking-wide">{t('quit.app.recovery_progress')}</span>
                   <span className="text-white/70">{recoveryScore}%</span>
                 </div>
                 <div className="h-2.5 rounded-full bg-white/[0.1] overflow-hidden shadow-[inset_0_1px_2px_rgba(0,0,0,0.15)]">
@@ -236,15 +236,15 @@ const SubstancePage = () => {
           <div className="flex items-center justify-between mb-5 px-1">
             <div className="flex items-center gap-2">
               <Zap className="h-4 w-4 text-primary" />
-              <h2 className="font-display text-xl text-foreground">{t('app.daily_trackers')}</h2>
+              <h2 className="font-display text-xl text-foreground">{t('quit.app.daily_trackers')}</h2>
             </div>
-            <span className="text-xs text-muted-foreground font-medium bg-muted rounded-full px-3 py-1">{substance.trackers.length} {t('app.trackers')}</span>
+            <span className="text-xs text-muted-foreground font-medium bg-muted rounded-full px-3 py-1">{substance.trackers.length} {t('quit.app.trackers')}</span>
           </div>
           <div className="grid grid-cols-2 gap-3">
             {substance.trackers.map((tracker, i) => {
               const sparkData = getSparkData(tracker.id);
               const todayEntry = getEntries(substance.slug, tracker.id, 1);
-              const hasToday = todayEntry.length > 0 && todayEntry[0].date === new Date().toISOString().split('T')[0];
+              const hasToday = todayEntry.length > 0 && todayEntry[0].date === new Date().toISOString().split('quit.T')[0];
 
               return (
                 <motion.button
@@ -256,14 +256,14 @@ const SubstancePage = () => {
                   className={`group relative flex flex-col rounded-2xl border-2 bg-card p-4 text-left transition-all duration-300 hover:shadow-lg hover:-translate-y-1 active:scale-[0.97] ${cardAccent}`}
                 >
                   <div className="flex items-start justify-between w-full mb-3">
-                    <p className="text-sm font-bold text-foreground leading-tight pr-2">{t(`substances.${substance.slug}.trackers.${tracker.id}.name`)}</p>
+                    <p className="text-sm font-bold text-foreground leading-tight pr-2">{t(`quit.substances.${substance.slug}.trackers.${tracker.id}.name`)}</p>
                     {hasToday ? (
                       <span className="shrink-0 flex items-center gap-1 rounded-lg bg-primary/10 px-2.5 py-1 text-[10px] font-bold text-primary">
-                        {t('app.done')}
+                        {t('quit.app.done')}
                       </span>
                     ) : (
                       <span className="shrink-0 rounded-lg bg-accent/10 px-2.5 py-1 text-[10px] font-bold text-accent">
-                        {t('app.log')}
+                        {t('quit.app.log')}
                       </span>
                     )}
                   </div>
@@ -276,7 +276,7 @@ const SubstancePage = () => {
                       </ResponsiveContainer>
                     ) : (
                       <div className="h-full w-full flex items-center justify-center">
-                        <p className="text-[10px] text-muted-foreground">{t('app.no_data')}</p>
+                        <p className="text-[10px] text-muted-foreground">{t('quit.app.no_data')}</p>
                       </div>
                     )}
                   </div>
@@ -291,7 +291,7 @@ const SubstancePage = () => {
         <div className="mt-10">
           <div className="flex items-center gap-2 mb-5 px-1">
             <Lightbulb className="h-4 w-4 text-primary" />
-            <h2 className="font-display text-xl text-foreground">{t('app.tools_resources')}</h2>
+            <h2 className="font-display text-xl text-foreground">{t('quit.app.tools_resources')}</h2>
           </div>
           <div className="grid grid-cols-2 gap-3">
             {tools.map((tool, i) => (

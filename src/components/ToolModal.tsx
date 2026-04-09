@@ -80,23 +80,23 @@ const Assessment = ({ substance }: { substance: SubstanceConfig }) => {
     const normalizedScore = Math.round((rawTotal / maxTotal) * 11);
     
     const { label: severity, color } = normalizedScore <= 1 
-      ? { label: t('app.severity_none'), color: 'text-primary' }
+      ? { label: t('quit.app.severity_none'), color: 'text-primary' }
       : normalizedScore <= 3 
-        ? { label: t('app.severity_mild'), color: 'text-accent' }
+        ? { label: t('quit.app.severity_mild'), color: 'text-accent' }
         : normalizedScore <= 5 
-          ? { label: t('app.severity_moderate'), color: 'text-accent' }
-          : { label: t('app.severity_severe'), color: 'text-destructive' };
+          ? { label: t('quit.app.severity_moderate'), color: 'text-accent' }
+          : { label: t('quit.app.severity_severe'), color: 'text-destructive' };
 
     return (
       <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-center">
-        <h2 className="font-display text-2xl text-foreground">{t('app.results')}</h2>
+        <h2 className="font-display text-2xl text-foreground">{t('quit.app.results')}</h2>
         <p className={`mt-4 font-display text-4xl font-bold ${color}`}>{normalizedScore}/11</p>
-        <p className={`mt-2 text-lg font-semibold ${color}`}>{severity} {t('app.substance_use_disorder')}</p>
-        {prev && <p className="mt-3 text-xs text-muted-foreground">{t('app.previous')}: {prev.score}/11</p>}
+        <p className={`mt-2 text-lg font-semibold ${color}`}>{severity} {t('quit.app.substance_use_disorder')}</p>
+        {prev && <p className="mt-3 text-xs text-muted-foreground">{t('quit.app.previous')}: {prev.score}/11</p>}
         <div className="mt-4 h-3 rounded-full bg-muted">
           <div className={`h-3 rounded-full ${normalizedScore <= 1 ? 'bg-primary' : normalizedScore <= 3 ? 'bg-accent' : normalizedScore <= 5 ? 'bg-accent' : 'bg-destructive'}`} style={{ width: `${(normalizedScore / 11) * 100}%` }} />
         </div>
-        <button onClick={() => { setStep(0); setAnswers([]); setSelected(null); setDone(false); }} className="mt-6 rounded-xl bg-muted px-6 py-2 text-sm font-medium">{t('app.retake')}</button>
+        <button onClick={() => { setStep(0); setAnswers([]); setSelected(null); setDone(false); }} className="mt-6 rounded-xl bg-muted px-6 py-2 text-sm font-medium">{t('quit.app.retake')}</button>
       </motion.div>
     );
   }
@@ -104,9 +104,9 @@ const Assessment = ({ substance }: { substance: SubstanceConfig }) => {
   return (
     <div>
       <div className="mb-4 h-2 rounded-full bg-muted"><div className="h-2 rounded-full bg-primary transition-all" style={{ width: `${((step + 1) / 11) * 100}%` }} /></div>
-      <p className="mb-2 text-xs text-muted-foreground">{t('app.question_x_of_y', { current: step + 1, total: 11 })}</p>
+      <p className="mb-2 text-xs text-muted-foreground">{t('quit.app.question_x_of_y', { current: step + 1, total: 11 })}</p>
       <motion.p key={step} initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} className="mb-5 text-base font-medium text-foreground">
-        {t(`app.dsm.q${step}`, { substance: t(`substances.${substance.slug}.name`) })}
+        {t(`quit.app.dsm.q${step}`, { substance: t(`quit.substances.${substance.slug}.name`) })}
       </motion.p>
       <div className="flex flex-col gap-2">
         {[0, 1, 2, 3, 4].map((i) => (
@@ -120,18 +120,18 @@ const Assessment = ({ substance }: { substance: SubstanceConfig }) => {
                 : 'border-border bg-muted/50 text-foreground hover:bg-muted'
             }`}
           >
-            {t(`app.dsm.opt${i}`)}
+            {t(`quit.app.dsm.opt${i}`)}
           </motion.button>
         ))}
       </div>
       <div className="mt-4 flex items-center justify-between">
-        {step > 0 ? <button onClick={() => { setStep(step - 1); setAnswers(answers.slice(0, -1)); setSelected(answers[answers.length - 1] ?? null); }} className="text-xs text-muted-foreground">← {t('app.back')}</button> : <span />}
+        {step > 0 ? <button onClick={() => { setStep(step - 1); setAnswers(answers.slice(0, -1)); setSelected(answers[answers.length - 1] ?? null); }} className="text-xs text-muted-foreground">← {t('quit.app.back')}</button> : <span />}
         <button
           onClick={confirmAnswer}
           disabled={selected === null}
           className="rounded-xl bg-primary px-6 py-2.5 text-sm font-semibold text-primary-foreground transition-opacity disabled:opacity-40"
         >
-          {step < 10 ? t('app.next') : t('app.see_results')}
+          {step < 10 ? t('quit.app.next') : t('quit.app.see_results')}
         </button>
       </div>
     </div>
@@ -148,11 +148,11 @@ const CalculatorView = ({ substance }: { substance: SubstanceConfig }) => {
 
   return (
     <div>
-      <h2 className="mb-4 font-display text-xl text-foreground">{t(`substances.${substance.slug}.calculator.title`)}</h2>
+      <h2 className="mb-4 font-display text-xl text-foreground">{t(`quit.substances.${substance.slug}.calculator.title`)}</h2>
       <div className="space-y-4">
         {calc.inputs.map(input => (
           <div key={input.key}>
-            <div className="flex justify-between text-xs"><span className="text-foreground font-medium">{t(`substances.${substance.slug}.calculator.inputs.${input.key}.label`)}</span><span className="text-primary font-bold">{inputs[input.key]}{input.unit || ''}</span></div>
+            <div className="flex justify-between text-xs"><span className="text-foreground font-medium">{t(`quit.substances.${substance.slug}.calculator.inputs.${input.key}.label`)}</span><span className="text-primary font-bold">{inputs[input.key]}{input.unit || ''}</span></div>
             <input type="range" min={input.min} max={input.max} step={input.step} value={inputs[input.key]} onChange={e => setInputs(prev => ({ ...prev, [input.key]: Number(e.target.value) }))} className="mt-1 w-full accent-primary" />
           </div>
         ))}
@@ -160,7 +160,7 @@ const CalculatorView = ({ substance }: { substance: SubstanceConfig }) => {
       <div className="mt-6 space-y-2">
         {results.map((r, i) => (
           <div key={i} className="flex justify-between rounded-lg border border-border bg-card p-3">
-            <span className="text-xs text-muted-foreground">{t(`substances.${substance.slug}.calculator.results.${i}.label`)}</span>
+            <span className="text-xs text-muted-foreground">{t(`quit.substances.${substance.slug}.calculator.results.${i}.label`)}</span>
             <span className={`text-sm font-semibold ${r.color === 'destructive' ? 'text-destructive' : r.color === 'accent' ? 'text-accent' : 'text-foreground'}`}>{r.value}</span>
           </div>
         ))}
@@ -182,12 +182,12 @@ const ActivitiesView = ({ substance }: { substance: SubstanceConfig }) => {
 
   return (
     <div>
-      <h2 className="mb-4 font-display text-xl text-foreground">{t('app.activities_title')}</h2>
+      <h2 className="mb-4 font-display text-xl text-foreground">{t('quit.app.activities_title')}</h2>
       <div className="space-y-3">
         {substance.activities.map(act => (
           <button key={act.id} onClick={() => setActive(act.id)} className="flex w-full items-center justify-between rounded-xl border border-border bg-card p-4 text-left hover:shadow-md transition-shadow">
             <div>
-              <p className="text-sm font-semibold text-foreground">{t(`substances.${substance.slug}.activities.${act.id}.name`)}</p>
+              <p className="text-sm font-semibold text-foreground">{t(`quit.substances.${substance.slug}.activities.${act.id}.name`)}</p>
               <p className="text-xs text-muted-foreground">{act.duration} · {act.type}</p>
             </div>
             <ChevronRight className="h-4 w-4 text-muted-foreground" />
@@ -605,23 +605,23 @@ const LearnView = ({ substance }: { substance: SubstanceConfig }) => {
   if (article) {
     return (
       <div>
-        <button onClick={() => setActive(null)} className="mb-4 text-xs text-muted-foreground">← {t('app.back')}</button>
+        <button onClick={() => setActive(null)} className="mb-4 text-xs text-muted-foreground">← {t('quit.app.back')}</button>
         <span className="mb-2 inline-block rounded-full bg-primary/10 px-3 py-1 text-xs font-medium text-primary">{article.tag}</span>
-        <h2 className="mb-4 font-display text-xl text-foreground">{t(`substances.${substance.slug}.articles.${article.id}.title`)}</h2>
-        <div className="text-sm text-foreground leading-relaxed whitespace-pre-line">{t(`substances.${substance.slug}.articles.${article.id}.content`)}</div>
+        <h2 className="mb-4 font-display text-xl text-foreground">{t(`quit.substances.${substance.slug}.articles.${article.id}.title`)}</h2>
+        <div className="text-sm text-foreground leading-relaxed whitespace-pre-line">{t(`quit.substances.${substance.slug}.articles.${article.id}.content`)}</div>
       </div>
     );
   }
 
   return (
     <div>
-      <h2 className="mb-4 font-display text-xl text-foreground">{t('app.learn')}</h2>
+      <h2 className="mb-4 font-display text-xl text-foreground">{t('quit.app.learn')}</h2>
       <div className="space-y-3">
         {substance.articles.map(art => (
           <button key={art.id} onClick={() => setActive(art.id)} className="flex w-full items-center justify-between rounded-xl border border-border bg-card p-4 text-left hover:shadow-md">
             <div className="flex-1">
               <span className="mb-1 inline-block rounded-full bg-muted px-2 py-0.5 text-[10px] font-medium text-muted-foreground">{art.tag}</span>
-              <p className="text-sm font-semibold text-foreground">{t(`substances.${substance.slug}.articles.${art.id}.title`)}</p>
+              <p className="text-sm font-semibold text-foreground">{t(`quit.substances.${substance.slug}.articles.${art.id}.title`)}</p>
             </div>
             <ChevronRight className="h-4 w-4 text-muted-foreground flex-shrink-0" />
           </button>
@@ -666,8 +666,8 @@ const CommunityView = ({ substance }: { substance: SubstanceConfig }) => {
   return (
     <div>
       <div className="flex items-center justify-between mb-4">
-        <h2 className="font-display text-xl text-foreground">{t('app.community')}</h2>
-        <button onClick={() => setShowComposer(true)} className="rounded-full bg-primary px-4 py-1.5 text-xs font-semibold text-primary-foreground">+ {t('app.post')}</button>
+        <h2 className="font-display text-xl text-foreground">{t('quit.app.community')}</h2>
+        <button onClick={() => setShowComposer(true)} className="rounded-full bg-primary px-4 py-1.5 text-xs font-semibold text-primary-foreground">+ {t('quit.app.post')}</button>
       </div>
 
       <div className="mb-4 flex gap-2 overflow-x-auto pb-1">
@@ -721,15 +721,15 @@ const PostComposer = ({ substance, onClose }: { substance: SubstanceConfig; onCl
     <motion.div initial={{ y: '100%' }} animate={{ y: 0 }} exit={{ y: '100%' }} className="fixed inset-0 z-[60] flex flex-col">
       <div className="flex-1 bg-black/40" onClick={onClose} />
       <div className="rounded-t-2xl bg-card px-4 pb-8 pt-4">
-        <div className="mb-4 flex justify-between"><h3 className="font-display text-lg">{t('app.new_post')}</h3><button onClick={onClose}><X className="h-5 w-5" /></button></div>
+        <div className="mb-4 flex justify-between"><h3 className="font-display text-lg">{t('quit.app.new_post')}</h3><button onClick={onClose}><X className="h-5 w-5" /></button></div>
         <div className="mb-3 flex gap-2">
           {['Story', 'Question', 'Tip', 'Milestone', 'Support'].map(t => (
             <button key={t} onClick={() => setType(t)} className={`rounded-full px-3 py-1 text-xs font-medium ${type === t ? 'bg-primary text-primary-foreground' : 'bg-muted text-muted-foreground'}`}>{t}</button>
           ))}
         </div>
         <input value={title} onChange={e => setTitle(e.target.value)} placeholder="Title" className="mb-3 w-full rounded-lg border border-input bg-background px-3 py-2 text-sm" />
-        <textarea value={body} onChange={e => setBody(e.target.value)} placeholder={t('app.share_thoughts')} className="w-full rounded-lg border border-input bg-background px-3 py-2 text-sm" rows={4} />
-        <button onClick={handlePost} className="mt-4 w-full rounded-xl bg-primary py-3 text-sm font-semibold text-primary-foreground">{t('app.post')}</button>
+        <textarea value={body} onChange={e => setBody(e.target.value)} placeholder={t('quit.app.share_thoughts')} className="w-full rounded-lg border border-input bg-background px-3 py-2 text-sm" rows={4} />
+        <button onClick={handlePost} className="mt-4 w-full rounded-xl bg-primary py-3 text-sm font-semibold text-primary-foreground">{t('quit.app.post')}</button>
       </div>
     </motion.div>
   );
@@ -740,7 +740,7 @@ const AchievementsView = ({ substance }: { substance: SubstanceConfig }) => {
   const { t } = useTranslation();
   return (
     <div>
-      <h2 className="mb-4 font-display text-xl text-foreground">{t('app.achievements')}</h2>
+      <h2 className="mb-4 font-display text-xl text-foreground">{t('quit.app.achievements')}</h2>
     <div className="grid grid-cols-2 gap-3">
       {substance.achievements.map(ach => {
         const result = ach.condition({});
@@ -749,7 +749,7 @@ const AchievementsView = ({ substance }: { substance: SubstanceConfig }) => {
             <span className="text-3xl">{result.unlocked ? ach.icon : '🔒'}</span>
             <p className="mt-2 text-xs font-semibold text-foreground">{ach.name}</p>
             <p className="text-[10px] text-muted-foreground">{ach.description}</p>
-            {result.unlocked && <p className="mt-1 text-[10px] text-primary font-medium">✓ {t('app.unlocked')}</p>}
+            {result.unlocked && <p className="mt-1 text-[10px] text-primary font-medium">✓ {t('quit.app.unlocked')}</p>}
             {!result.unlocked && result.progress && <p className="mt-1 text-[10px] text-muted-foreground">{result.progress}</p>}
           </div>
         );

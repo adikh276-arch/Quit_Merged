@@ -8,6 +8,8 @@ import SubstancePage from "./pages/SubstancePage.tsx";
 import NotFound from "./pages/NotFound.tsx";
 import LanguageSelector from "./components/LanguageSelector";
 
+import { AuthGuard } from "./components/AuthGuard";
+
 const queryClient = new QueryClient();
 
 const App = () => (
@@ -15,14 +17,18 @@ const App = () => (
     <TooltipProvider>
       <Toaster />
       <Sonner />
-      <BrowserRouter basename="/quit">
-        <LanguageSelector />
-        <Routes>
-          <Route path="/" element={<Index />} />
-          <Route path="/:slug" element={<SubstancePage />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </BrowserRouter>
+      <div className="theme-quit min-h-screen bg-background text-foreground">
+        <BrowserRouter basename="/quit">
+          <AuthGuard>
+            <LanguageSelector />
+            <Routes>
+              <Route path="/" element={<Index />} />
+              <Route path="/:slug" element={<SubstancePage />} />
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </AuthGuard>
+        </BrowserRouter>
+      </div>
     </TooltipProvider>
   </QueryClientProvider>
 );
