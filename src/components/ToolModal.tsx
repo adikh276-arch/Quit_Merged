@@ -604,6 +604,7 @@ const LearnView = ({ substance }: { substance: SubstanceConfig }) => {
 
   if (article) {
     return (
+      <div>
         <button onClick={() => setActive(null)} className="mb-4 text-xs text-muted-foreground">← {t('app.back')}</button>
         <span className="mb-2 inline-block rounded-full bg-primary/10 px-3 py-1 text-xs font-medium text-primary">{article.tag}</span>
         <h2 className="mb-4 font-display text-xl text-foreground">{t(`substances.${substance.slug}.articles.${article.id}.title`)}</h2>
@@ -754,7 +755,8 @@ const AchievementsView = ({ substance }: { substance: SubstanceConfig }) => {
         );
       })}
     </div>
-  </div>
-);
+    </div>
+  );
+};
 
 export default ToolModal;
