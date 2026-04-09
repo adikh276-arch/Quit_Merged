@@ -781,9 +781,36 @@ export const substances: SubstanceConfig[] = [
       },
     },
     activities: [
-      { id: 'cold-exposure', name: 'Cold Exposure Therapy', duration: '3 min', type: 'timer', phases: [{ time: 0, text: 'Turn on cold water. Start with your hands and feet.' }, { time: 30, text: 'Let the cold reach your arms and legs.' }, { time: 60, text: 'If you can, let it hit your chest and back.' }, { time: 120, text: 'The gasp reflex is normal. Breathe through it.' }, { time: 150, text: 'You just activated your endorphin system naturally.' }] },
-      { id: 'trigger-audit', name: 'Trigger Environment Audit', duration: '3 min', type: 'checklist', items: [{ title: 'Leave kratom subreddits and forums', content: 'These communities normalize use and maintain craving triggers.' }, { title: 'Delete saved vendor websites', content: 'Remove the friction. Make ordering harder.' }, { title: 'Eat a banana and drink water', content: 'Potassium helps with muscle cramps. Hydration reduces symptoms.' }, { title: 'Move to a different room', content: 'Location-based triggers are strongest in kratom addiction.' }] },
-      { id: 'use-journal', name: 'Original Use Journal', duration: '5 min', type: 'journal', fields: [{ key: 'originalReason', label: 'What were you originally treating with kratom?', type: 'textarea', placeholder: 'Pain? Anxiety? Low energy?' }, { key: 'stillPresent', label: 'Is that issue still present?', type: 'textarea', placeholder: 'Better, worse, or the same?' }, { key: 'alternative', label: 'One non-kratom thing to address that need today?', type: 'textarea', placeholder: 'Exercise, therapy, doctor visit...' }] },
+      {
+        id: 'cold-shower', name: 'Cold Shower Endorphin Rush', duration: '3 min', type: 'timer',
+        description: 'Kratom hijacked your endorphin system. Cold water restarts it naturally.',
+        phases: [
+          { time: 0, text: 'Turn on cold water. Start with just your hands and feet. The initial shock is normal.' },
+          { time: 30, text: 'Let the cold reach your arms and legs. Breathe through the discomfort — in through nose, out through mouth.' },
+          { time: 60, text: 'If you can, let it hit your chest and back. Your body is releasing norepinephrine and endorphins right now.' },
+          { time: 120, text: 'The gasp reflex is your body activating its stress response — the same system kratom suppressed.' },
+          { time: 150, text: 'Step out. Notice the rush of warmth and alertness. That\'s your natural opioid system waking up.' },
+        ],
+      },
+      {
+        id: 'digital-detox', name: 'Digital Trigger Purge', duration: '3 min', type: 'checklist',
+        description: 'Kratom addiction lives online. Clean your digital environment.',
+        items: [
+          { title: 'Unsubscribe from kratom subreddits', content: 'r/kratom normalizes heavy use. r/quittingkratom is okay to keep — but only if it motivates, not triggers.' },
+          { title: 'Delete vendor bookmarks and apps', content: 'Remove every saved website, auto-fill address, and payment method. Make ordering require effort.' },
+          { title: 'Block vendor email addresses', content: 'Those "sale" emails are designed to trigger relapse. Block them or create a filter to auto-delete.' },
+          { title: 'Tell your browser to forget', content: 'Clear auto-complete for vendor names. Every friction point you add is a moment to choose differently.' },
+        ],
+      },
+      {
+        id: 'root-cause', name: 'Root Cause Explorer', duration: '5 min', type: 'journal',
+        description: 'Most people started kratom for a reason. Address that reason directly.',
+        fields: [
+          { key: 'originalReason', label: 'What were you originally treating with kratom?', type: 'textarea', placeholder: 'Chronic pain? Social anxiety? Low energy? Depression?' },
+          { key: 'currentState', label: 'Is that original issue better, worse, or the same without kratom?', type: 'textarea', placeholder: 'Be specific about what\'s changed...' },
+          { key: 'alternative', label: 'One thing you can do TODAY to address that root cause', type: 'textarea', placeholder: 'Schedule a doctor visit, try a stretch routine, call a therapist...' },
+        ],
+      },
     ],
     articles: [
       { id: 'a1', title: 'Kratom withdrawal: harder than expected', tag: 'Recovery', content: 'Mitragynine binds to opioid receptors. Withdrawal mirrors opioid symptoms. Physical symptoms resolve in 7–10 days.' },
