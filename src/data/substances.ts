@@ -868,9 +868,38 @@ export const substances: SubstanceConfig[] = [
       },
     },
     activities: [
-      { id: 'mood-checkin', name: 'Mood Tracking Check-in', duration: '2 min', type: 'journal', fields: [{ key: 'mood', label: 'Mood right now (1-10)', type: 'slider', min: 1, max: 10, step: 1 }, { key: 'emotionalTone', label: 'Today\'s emotional tone', type: 'chips', options: ['Flat', 'Sad', 'Anxious', 'Normal', 'Good', 'Great'] }, { key: 'genuineEmotion', label: 'One thing you felt genuine emotion about today', type: 'textarea', placeholder: 'A song, a conversation, something funny...' }] },
-      { id: 'serotonin-menu', name: 'Serotonin Restoration Menu', duration: '3 min', type: 'checklist', items: [{ title: 'Exercise for 30 minutes', content: 'Aerobic exercise increases serotonin synthesis. Most evidence-based intervention for MDMA recovery.' }, { title: 'Eat a protein-rich meal', content: 'Tryptophan in eggs, turkey, cheese, legumes is the precursor to serotonin.' }, { title: 'Get 15 minutes of sunlight', content: 'Sunlight directly stimulates serotonin production.' }, { title: 'Have a genuine conversation', content: 'Serotonin mediates social belonging. Don\'t isolate.' }] },
-      { id: 'music-listening', name: 'Music Without MDMA', duration: '5 min', type: 'timer', phases: [{ time: 0, text: 'Put on music that has genuinely moved you. Sit with it.' }, { time: 60, text: 'Notice whatever you feel — even if it\'s flat. Notice that too.' }, { time: 150, text: 'The goal isn\'t to feel what you felt on MDMA. Notice what\'s here now.' }, { time: 240, text: 'Music-induced emotion is mediated by serotonin and dopamine. Both recovering.' }, { time: 285, text: 'Stay with whatever is here. This is authentic. This is yours.' }] },
+      {
+        id: 'emotion-archaeology', name: 'Emotion Archaeology', duration: '3 min', type: 'journal',
+        description: 'MDMA made emotions feel superhuman. Rediscover what authentic emotion feels like.',
+        fields: [
+          { key: 'mood', label: 'Mood right now (1-10)', type: 'slider', min: 1, max: 10, step: 1 },
+          { key: 'emotionalTone', label: 'What\'s the dominant feeling?', type: 'chips', options: ['Flat', 'Sad', 'Anxious', 'Content', 'Warm', 'Excited'] },
+          { key: 'genuineEmotion', label: 'One thing you felt genuine emotion about today', type: 'textarea', placeholder: 'A kind word, a sunset, a pet, a memory...' },
+          { key: 'comparison', label: 'Is your emotional range expanding compared to last week?', type: 'chips', options: ['Yes', 'Same', 'No', 'Not sure'] },
+        ],
+      },
+      {
+        id: 'sober-rave', name: 'Sober Music Experience', duration: '5 min', type: 'timer',
+        description: 'MDMA hijacked your relationship with music. This rebuilds it — sober, real, and yours.',
+        phases: [
+          { time: 0, text: 'Put on a track that used to move you — before MDMA, or even during. Close your eyes.' },
+          { time: 45, text: 'Don\'t chase the high. Just listen. What do you actually hear? Layers, lyrics, rhythm.' },
+          { time: 90, text: 'If it feels flat, that\'s okay. Emotional blunting is serotonin recovering. Notice the flatness without judging it.' },
+          { time: 150, text: 'Try moving your body — even slightly. Tap your foot. Nod your head. Let your body respond before your mind.' },
+          { time: 210, text: 'If something stirs — even faintly — stay with it. That tiny spark is your serotonin system rebuilding. It gets louder.' },
+          { time: 270, text: 'This feeling is real. It\'s not as intense as MDMA. But it\'s yours. And it doesn\'t cost anything.' },
+        ],
+      },
+      {
+        id: 'social-rewire', name: 'Connection Without Chemicals', duration: '3 min', type: 'checklist',
+        description: 'MDMA created artificial intimacy. Learn to build real connection sober.',
+        items: [
+          { title: 'Text someone something vulnerable', content: 'Not a meme. Something real. "I\'ve been having a rough time." MDMA made vulnerability easy. Practice it sober.' },
+          { title: 'Make eye contact in your next conversation', content: 'MDMA amplified eye contact and connection. Your oxytocin system works without it — just more subtly.' },
+          { title: 'Hug someone for 20 seconds', content: 'Extended physical contact releases oxytocin. 20 seconds is the threshold. It feels long. Do it anyway.' },
+          { title: 'Write down one relationship that matters', content: 'MDMA made everyone feel like your soulmate. Who actually matters when you\'re sober? That\'s the real list.' },
+        ],
+      },
     ],
     articles: [
       { id: 'a1', title: 'What MDMA does to serotonin', tag: 'Science', content: 'MDMA causes 3–5x normal serotonin release. With heavy use, cumulative depletion damages serotonin neuron terminals. Recovery documented over 18 months of abstinence.' },
