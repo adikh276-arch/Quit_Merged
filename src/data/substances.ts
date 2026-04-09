@@ -299,9 +299,39 @@ export const substances: SubstanceConfig[] = [
       },
     },
     activities: [
-      { id: 'craving-countdown', name: '5-Min Craving Countdown', duration: '5 min', type: 'timer', phases: [{ time: 0, text: 'The craving is starting. It feels urgent. It isn\'t. Start the clock.' }, { time: 60, text: '1 minute in. Normal. Keep going.' }, { time: 150, text: 'Halfway. Is the edge slightly coming off?' }, { time: 240, text: '4 minutes. Most cravings peak and begin falling now.' }, { time: 280, text: 'You made it. The craving has passed. Every. Single. Time.' }] },
-      { id: 'lung-breathing', name: 'Lung Recovery Breathing', duration: '4 min', type: 'breathing', phases: [{ time: 0, text: 'Inhale slowly for 5 counts...' }, { time: 5, text: 'Hold for 2 counts...' }, { time: 7, text: 'Exhale fully for 7 counts...' }, { time: 14, text: 'Rest for 2 counts...' }] },
-      { id: 'cost-snap', name: 'Cost Reality Snap', duration: '2 min', type: 'calculator' },
+      {
+        id: 'craving-countdown', name: '5-Min Craving Countdown', duration: '5 min', type: 'timer',
+        description: 'Nicotine cravings last 3-5 minutes. Outlast this one.',
+        phases: [
+          { time: 0, text: 'The craving hit. It feels like it\'ll last forever. It won\'t. Start the clock.' },
+          { time: 60, text: '1 minute down. Your brain is screaming for nicotine. That scream has a timer.' },
+          { time: 150, text: 'Halfway. Chew ice, squeeze your fists, splash cold water on your face. Anything physical.' },
+          { time: 240, text: '4 minutes. The nicotine receptor storm is already calming.' },
+          { time: 280, text: 'Done. You just weakened a neural pathway. Every craving you beat makes the next one weaker.' },
+        ],
+      },
+      {
+        id: 'lung-test', name: 'Lung Capacity Challenge', duration: '3 min', type: 'breathing',
+        description: 'Test and train your recovering lungs with progressive breath holds.',
+        phases: [
+          { time: 0, text: 'Exhale completely. Now inhale as deeply as you possibly can. Fill every corner.' },
+          { time: 8, text: 'Hold it. Count silently. How far can you go? Your cilia are regrowing right now.' },
+          { time: 20, text: 'Exhale slowly through pursed lips — 10 full seconds. Control the release.' },
+          { time: 35, text: 'Again. Deep inhale. Your lung capacity is measurably increasing every smoke-free day.' },
+          { time: 50, text: 'Hold. Push past where you stopped last time. Your lungs are adapting.' },
+          { time: 65, text: 'Slow exhale. Carbon monoxide left your blood within 48 hours of quitting. Oxygen is winning.' },
+        ],
+      },
+      {
+        id: 'hand-replacement', name: 'Hand & Mouth Ritual Swap', duration: '2 min', type: 'checklist',
+        description: 'Replace the physical habit of smoking with healthier hand-to-mouth rituals.',
+        items: [
+          { title: 'Grab a cinnamon stick or toothpick', content: 'The oral fixation is real. Give your mouth something to do. Cinnamon sticks are surprisingly satisfying.' },
+          { title: 'Squeeze a stress ball 20 times', content: 'Your hands are used to holding a cigarette. Give them a new job. Squeeze hard on each craving.' },
+          { title: 'Drink ice water through a straw', content: 'The inhale-exhale pattern of sipping mimics smoking mechanics. Cold water also triggers a mild endorphin response.' },
+          { title: 'Do 10 deep breaths with hand on chest', content: 'Replace the "smoke break" with a "breath break." Same duration, zero carcinogens. Your body won\'t know the difference.' },
+        ],
+      },
     ],
     articles: [
       { id: 'a1', title: 'What actually happens to your lungs when you quit', tag: 'Health', content: 'Hours 20–48: Carbon monoxide leaves your bloodstream. Blood oxygen normalizes.\n\nDay 14–30: Lung function measurably increases. Cilia start regrowing.\n\n1–9 months: Cilia fully regenerate. Breathlessness decreases.\n\nYour lungs have been trying to heal. You were interrupting the process.' },
