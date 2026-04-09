@@ -255,6 +255,8 @@ const SubstancePage = () => {
                   onClick={() => setActiveTracker(tracker.id)}
                   className={`group relative flex flex-col rounded-2xl border-2 bg-card p-4 text-left transition-all duration-300 hover:shadow-lg hover:-translate-y-1 active:scale-[0.97] ${cardAccent}`}
                 >
+                  <div className="flex items-start justify-between w-full mb-3">
+                    <p className="text-sm font-bold text-foreground leading-tight pr-2">{t(`substances.${substance.slug}.trackers.${tracker.id}.name`)}</p>
                     {hasToday ? (
                       <span className="shrink-0 flex items-center gap-1 rounded-lg bg-primary/10 px-2.5 py-1 text-[10px] font-bold text-primary">
                         {t('app.done')}
@@ -265,8 +267,6 @@ const SubstancePage = () => {
                       </span>
                     )}
                   </div>
-                  <div className="flex items-start justify-between w-full mb-3">
-                    <p className="text-sm font-bold text-foreground leading-tight pr-2">{t(`substances.${substance.slug}.trackers.${tracker.id}.name`)}</p>
                   <div className="h-10 w-full mt-auto opacity-60 group-hover:opacity-100 transition-opacity">
                     {sparkData.length > 1 ? (
                       <ResponsiveContainer width="100%" height="100%">

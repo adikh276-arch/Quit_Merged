@@ -93,6 +93,7 @@ const TrackerDetail = ({ tracker, substance, onClose }: Props) => {
           </div>
 
           <div className="space-y-5">
+            {tracker.fields.map(field => (
               <div key={field.key}>
                 <label className="mb-2.5 block text-xs font-bold text-foreground uppercase tracking-wider">{t(`substances.${substance.slug}.trackers.${tracker.id}.fields.${field.key}.label`)}</label>
                 {field.type === 'slider' && (
