@@ -77,12 +77,50 @@ const SubstancePage = () => {
     { id: 'learn', name: 'Learn & Educate', icon: BookOpen, desc: 'Understanding recovery' },
   ];
 
+  const severityScore = (val: unknown): number => {
+    if (typeof val === 'number') return val;
+    if (val === 'Severe') return 4;
+    if (val === 'Moderate') return 3;
+    if (val === 'Mild') return 2;
+    if (val === 'None') return 0;
+    if (val === 'Yes') return 1;
+    if (val === 'No') return 0;
+    if (val === 'Hard') return 3;
+    if (val === 'Easy') return 1;
+    if (val === 'Resisted all') return 0;
+    if (val === 'Partial') return 1;
+    if (val === 'Gave in') return 2;
+    if (val === 'Perfect') return 1;
+    if (val === 'Normal') return 3;
+    if (val === 'Difficult') return 2;
+    if (val === 'Minimal') return 1;
+    if (val === "Can't") return 0;
+    if (val === 'Isolated') return 0;
+    if (val === 'Brief') return 1;
+    if (Array.isArray(val)) return val.filter(v => v !== 'None').length;
+    if (typeof val === 'boolean') return val ? 1 : 0;
+    return 0;
+  };
+
   const getSparkData = (trackerId: string) => {
     const entries = getEntries(substance.slug, trackerId, 21);
     return entries.map(e => {
-      const numKeys = Object.keys(e.values).filter(k => typeof e.values[k] === 'number');
-      const key = numKeys[0];
-      return { v: key ? Number(e.values[key]) : 0 };
+      const keys = Object.keys(e.values).filter(k => k !== 'notes' && k !== 'date');
+      if (keys.length === 0) return { v: 0 };
+      // Prefer first numeric key
+      const numKey = keys.find(k => typeof e.values[k] === 'number');
+      if (numKey) return { v: Number(e.values[numKey]) };
+      // Fall back to aggregate score from all categorical fields
+      let total = 0;
+      let count = 0;
+      for (const k of keys) {
+        const s = severityScore(e.values[k]);
+        if (s !== 0 || e.values[k] === 'None' || e.values[k] === 'No' || e.values[k] === 0) {
+          total += s;
+          count++;
+        }
+      }
+      return { v: count > 0 ? Math.round((total / count) * 10) / 10 : 0 };
     });
   };
 
