@@ -317,7 +317,7 @@ export const substances: SubstanceConfig[] = [
   // ===== OPIOIDS =====
   {
     slug: 'opioids', name: 'Opioids', descriptor: 'Prescription & heroin', icon: '💊', accentVar: '--substance-opioids',
-    banner: { text: '💊 On Buprenorphine — Day 21 · Well managed', type: 'info', dismissable: true },
+    banner: { text: 'On Buprenorphine — Day 21 · Well managed', type: 'info', dismissable: true },
     trackers: [
       { id: 'use-mat', name: 'Use & MAT', chartType: 'bar', yAxisLabel: 'Use instances', insight: '19 consecutive days without illicit use. Buprenorphine has stabilized your baseline.',
         fields: [
@@ -537,7 +537,7 @@ export const substances: SubstanceConfig[] = [
   // ===== BENZODIAZEPINES =====
   {
     slug: 'benzodiazepines', name: 'Benzodiazepines', descriptor: 'Xanax, Valium & Klonopin', icon: '💊', accentVar: '--substance-benzodiazepines',
-    banner: { text: '✓ Medically supervised taper — Dr. Sharma checked in 3 days ago', type: 'info', dismissable: false },
+    banner: { text: 'Medically supervised taper — Dr. Sharma checked in 3 days ago', type: 'info', dismissable: false },
     trackers: [
       { id: 'taper', name: 'Taper Progress', chartType: 'line', yAxisLabel: 'mg/day', insight: 'Perfectly tracking prescribed schedule.',
         fields: [{ key: 'doseTaken', label: 'Dose taken (mg)', type: 'number', min: 0, max: 20 }, { key: 'asPerscribed', label: 'As prescribed', type: 'single-select', options: ['Yes', 'No'] }, { key: 'notes', label: 'Notes', type: 'textarea' }],

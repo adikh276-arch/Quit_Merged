@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, ChevronDown, ChevronUp, History, Save, CheckCircle2 } from 'lucide-react';
+import { X, ChevronDown, ChevronUp, History, Save, CheckCircle2, Lightbulb } from 'lucide-react';
 import { BarChart, Bar, LineChart, Line, AreaChart, Area, XAxis, YAxis, ResponsiveContainer, Tooltip } from 'recharts';
 import { TrackerConfig, SubstanceConfig } from '@/data/types';
 import { getEntries, saveEntry, todayStr, getEntry } from '@/data/storage';
@@ -86,7 +86,7 @@ const TrackerDetail = ({ tracker, substance, onClose }: Props) => {
               </h3>
             </div>
             <span className="text-[11px] font-semibold text-muted-foreground bg-muted rounded-lg px-3 py-1.5">
-              {new Date().toLocaleDateString('en-IN', { weekday: 'short', day: 'numeric', month: 'short' })}
+              {new Date().toLocaleDateString(undefined, { weekday: 'short', day: 'numeric', month: 'short' })}
             </span>
           </div>
 
@@ -96,9 +96,7 @@ const TrackerDetail = ({ tracker, substance, onClose }: Props) => {
                 <label className="mb-2.5 block text-xs font-bold text-foreground uppercase tracking-wider">{field.label}</label>
                 {field.type === 'slider' && (
                   <div className="space-y-2">
-                    <div className="relative">
-                      <input type="range" min={field.min || 0} max={field.max || 10} step={field.step || 1} value={values[field.key] ?? field.min ?? 0} onChange={e => updateField(field.key, Number(e.target.value))} className="w-full h-2 rounded-full appearance-none cursor-pointer" style={{ accentColor }} />
-                    </div>
+                    <input type="range" min={field.min || 0} max={field.max || 10} step={field.step || 1} value={values[field.key] ?? field.min ?? 0} onChange={e => updateField(field.key, Number(e.target.value))} className="w-full h-2 rounded-full appearance-none cursor-pointer" style={{ accentColor }} />
                     <div className="flex justify-between text-[10px] text-muted-foreground font-medium">
                       <span>{field.min || 0}</span>
                       <span className="text-lg font-bold text-foreground -mt-1">{values[field.key] ?? field.min ?? 0}</span>
@@ -172,7 +170,10 @@ const TrackerDetail = ({ tracker, substance, onClose }: Props) => {
           transition={{ delay: 0.2 }}
           className="mt-5 rounded-2xl bg-primary/5 border border-primary/15 p-4"
         >
-          <p className="text-sm text-foreground leading-relaxed">💡 {tracker.insight}</p>
+          <div className="flex items-start gap-2.5">
+            <Lightbulb className="h-4 w-4 text-primary mt-0.5 shrink-0" />
+            <p className="text-sm text-foreground leading-relaxed">{tracker.insight}</p>
+          </div>
         </motion.div>
 
         {/* History */}

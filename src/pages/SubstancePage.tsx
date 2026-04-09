@@ -1,11 +1,13 @@
 import { useParams, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { ArrowLeft, ClipboardList, Calculator, Dumbbell, BookOpen, TrendingUp, Calendar, Flame, ChevronRight, Zap } from 'lucide-react';
+import { ArrowLeft, ClipboardList, Calculator, Dumbbell, BookOpen, TrendingUp, Calendar, Flame, ChevronRight, Zap, Lightbulb } from 'lucide-react';
 import { getSubstance } from '@/data/substances';
 import { getStreak, getEntries } from '@/data/storage';
 import { useState } from 'react';
 import TrackerDetail from '@/components/TrackerDetail';
 import ToolModal from '@/components/ToolModal';
+import SubstanceIcon from '@/components/SubstanceIcon';
+import SubstanceOnboarding from '@/components/SubstanceOnboarding';
 import { LineChart, Line, ResponsiveContainer } from 'recharts';
 
 const heroGradients: Record<string, string> = {
@@ -41,10 +43,23 @@ const SubstancePage = () => {
   const substance = getSubstance(slug || '');
   const [activeTracker, setActiveTracker] = useState<string | null>(null);
   const [activeTool, setActiveTool] = useState<string | null>(null);
+  const [onboarded, setOnboarded] = useState(() => {
+    if (!slug) return false;
+    return localStorage.getItem(`quitmantra_onboarded_${slug}`) === 'true';
+  });
 
   if (!substance) {
     navigate('/');
     return null;
+  }
+
+  if (!onboarded) {
+    return (
+      <SubstanceOnboarding
+        substance={substance}
+        onComplete={() => setOnboarded(true)}
+      />
+    );
   }
 
   const streak = getStreak(substance.slug);
@@ -61,6 +76,15 @@ const SubstancePage = () => {
     { id: 'activities', name: 'Healthy Activities', icon: Dumbbell, desc: 'Alternative habits' },
     { id: 'learn', name: 'Learn & Educate', icon: BookOpen, desc: 'Understanding recovery' },
   ];
+
+  const getSparkData = (trackerId: string) => {
+    const entries = getEntries(substance.slug, trackerId, 21);
+    return entries.map(e => {
+      const numKeys = Object.keys(e.values).filter(k => typeof e.values[k] === 'number');
+      const key = numKeys[0];
+      return { v: key ? Number(e.values[key]) : 0 };
+    });
+  };
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-background via-background to-muted/30">
@@ -88,17 +112,15 @@ const SubstancePage = () => {
           transition={{ duration: 0.6 }}
           className={`relative overflow-hidden rounded-3xl bg-gradient-to-br ${gradientClass} p-7 shadow-2xl`}
         >
-          {/* Decorative circles */}
           <div className="absolute -right-6 -top-6 h-28 w-28 rounded-full bg-white/10 blur-sm" />
           <div className="absolute -bottom-8 -left-8 h-36 w-36 rounded-full bg-white/5 blur-sm" />
           <div className="absolute right-12 bottom-4 h-16 w-16 rounded-full bg-white/5" />
 
           <div className="relative z-10">
-            {/* Top row: icon + name | days */}
             <div className="flex items-start justify-between mb-6">
               <div className="flex items-center gap-3">
-                <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-white/15 backdrop-blur-sm text-3xl shadow-inner">
-                  {substance.icon}
+                <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-white/15 backdrop-blur-sm shadow-inner">
+                  <SubstanceIcon slug={substance.slug} className="h-7 w-7 text-white" />
                 </div>
                 <div>
                   <h1 className="font-display text-2xl text-white drop-shadow-sm">{substance.name}</h1>
@@ -118,12 +140,11 @@ const SubstancePage = () => {
               </div>
             </div>
 
-            {/* Stats row */}
             <div className="grid grid-cols-3 gap-3">
               {[
                 { icon: Flame, value: `${streak.days}`, label: 'Streak', suffix: 'd' },
                 { icon: TrendingUp, value: `${recoveryScore}`, label: 'Recovery', suffix: '%' },
-                { icon: Calendar, value: streak.startDate ? new Date(streak.startDate).toLocaleDateString('en-IN', { day: 'numeric', month: 'short' }) : '—', label: 'Started', suffix: '' },
+                { icon: Calendar, value: streak.startDate ? new Date(streak.startDate).toLocaleDateString(undefined, { day: 'numeric', month: 'short' }) : '—', label: 'Started', suffix: '' },
               ].map((stat, i) => (
                 <motion.div
                   key={stat.label}
@@ -139,7 +160,6 @@ const SubstancePage = () => {
               ))}
             </div>
 
-            {/* Progress bar */}
             <div className="mt-5">
               <div className="flex justify-between text-[10px] text-white/50 font-medium mb-1.5">
                 <span>Recovery Progress</span>
@@ -168,12 +188,9 @@ const SubstancePage = () => {
           </div>
           <div className="grid grid-cols-2 gap-3">
             {substance.trackers.map((tracker, i) => {
-              const entries = getEntries(substance.slug, tracker.id, 7);
-              const sparkData = entries.map(e => {
-                const firstKey = Object.keys(e.values).find(k => typeof e.values[k] === 'number');
-                return { v: firstKey ? Number(e.values[firstKey]) : 0 };
-              });
-              const todayEntry = entries.find(e => e.date === new Date().toISOString().split('T')[0]);
+              const sparkData = getSparkData(tracker.id);
+              const todayEntry = getEntries(substance.slug, tracker.id, 1);
+              const hasToday = todayEntry.length > 0 && todayEntry[0].date === new Date().toISOString().split('T')[0];
 
               return (
                 <motion.button
@@ -186,9 +203,9 @@ const SubstancePage = () => {
                 >
                   <div className="flex items-start justify-between w-full mb-3">
                     <p className="text-sm font-bold text-foreground leading-tight pr-2">{tracker.name}</p>
-                    {todayEntry ? (
+                    {hasToday ? (
                       <span className="shrink-0 flex items-center gap-1 rounded-lg bg-primary/10 px-2.5 py-1 text-[10px] font-bold text-primary">
-                        ✓
+                        Done
                       </span>
                     ) : (
                       <span className="shrink-0 rounded-lg bg-accent/10 px-2.5 py-1 text-[10px] font-bold text-accent">
@@ -196,13 +213,17 @@ const SubstancePage = () => {
                       </span>
                     )}
                   </div>
-                  <div className="h-9 w-full mt-auto opacity-60 group-hover:opacity-100 transition-opacity">
-                    {sparkData.length > 1 && (
+                  <div className="h-10 w-full mt-auto opacity-60 group-hover:opacity-100 transition-opacity">
+                    {sparkData.length > 1 ? (
                       <ResponsiveContainer width="100%" height="100%">
                         <LineChart data={sparkData}>
                           <Line type="monotone" dataKey="v" stroke={sparkColor} strokeWidth={2} dot={false} />
                         </LineChart>
                       </ResponsiveContainer>
+                    ) : (
+                      <div className="h-full w-full flex items-center justify-center">
+                        <p className="text-[10px] text-muted-foreground">No data yet</p>
+                      </div>
                     )}
                   </div>
                   <ChevronRight className="absolute bottom-3 right-3 h-3.5 w-3.5 text-muted-foreground/30 group-hover:text-muted-foreground transition-colors" />
@@ -215,7 +236,7 @@ const SubstancePage = () => {
         {/* Tools Section */}
         <div className="mt-10">
           <div className="flex items-center gap-2 mb-5 px-1">
-            <BookOpen className="h-4 w-4 text-primary" />
+            <Lightbulb className="h-4 w-4 text-primary" />
             <h2 className="font-display text-xl text-foreground">Tools & Resources</h2>
           </div>
           <div className="grid grid-cols-2 gap-3">

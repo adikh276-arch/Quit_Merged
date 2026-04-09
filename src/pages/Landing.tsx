@@ -3,8 +3,9 @@ import { motion } from 'framer-motion';
 import { substances } from '@/data/substances';
 import { getStreak } from '@/data/storage';
 import { Shield, Sparkles, ArrowRight, Flame, Heart } from 'lucide-react';
+import SubstanceIcon from '@/components/SubstanceIcon';
 
-const substanceColors: Record<string, string> = {
+const substanceGradients: Record<string, string> = {
   alcohol: 'from-red-500/90 to-rose-600/90',
   tobacco: 'from-amber-600/90 to-orange-700/90',
   opioids: 'from-purple-500/90 to-violet-600/90',
@@ -38,21 +39,18 @@ const SubstanceCard = ({ substance, index }: { substance: typeof substances[0]; 
       onClick={() => navigate(`/${substance.slug}`)}
       className={`group relative flex items-center gap-4 rounded-2xl p-4 text-left transition-all duration-300 hover:shadow-xl hover:-translate-y-1 active:scale-[0.98] ${substanceBgs[substance.slug] || 'bg-card'}`}
     >
-      {/* Icon container */}
-      <div className={`flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br ${substanceColors[substance.slug] || 'from-primary to-primary/80'} text-2xl shadow-lg`}>
-        <span className="drop-shadow-sm">{substance.icon}</span>
+      <div className={`flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br ${substanceGradients[substance.slug] || 'from-primary to-primary/80'} shadow-lg`}>
+        <SubstanceIcon slug={substance.slug} className="h-7 w-7 text-white drop-shadow-sm" />
       </div>
 
-      {/* Text */}
       <div className="flex-1 min-w-0">
         <h3 className="font-display text-[17px] text-foreground leading-tight">{substance.name}</h3>
         <p className="text-xs text-muted-foreground mt-1">{substance.descriptor}</p>
       </div>
 
-      {/* Streak badge or arrow */}
       <div className="shrink-0">
         {streak.days > 0 ? (
-          <div className={`flex items-center gap-1.5 rounded-xl bg-gradient-to-r ${substanceColors[substance.slug]} px-3.5 py-2 text-xs font-bold text-white shadow-md`}>
+          <div className={`flex items-center gap-1.5 rounded-xl bg-gradient-to-r ${substanceGradients[substance.slug]} px-3.5 py-2 text-xs font-bold text-white shadow-md`}>
             <Flame className="h-3.5 w-3.5" />
             {streak.days}d
           </div>

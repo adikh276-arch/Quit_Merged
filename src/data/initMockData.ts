@@ -6,9 +6,9 @@ export function initializeMockData() {
   if (localStorage.getItem(key)) return;
 
   substances.forEach(substance => {
-    // Set streak
+    // Set streak and mark as onboarded
     setStreak(substance.slug, 21, dateStr(21));
-
+    localStorage.setItem(`quitmantra_onboarded_${substance.slug}`, 'true');
     // Generate 21 days of mock data for each tracker
     substance.trackers.forEach(tracker => {
       for (let day = 0; day < 21; day++) {
