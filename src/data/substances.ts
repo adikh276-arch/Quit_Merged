@@ -9,8 +9,8 @@ const notes = [
   "", "", "", "", "", "", "", ""
 ];
 
-const rn = (min: number, max: number) => Math.round((min + Math.random * (max - min)) * 10) / 10;
-const ri = (min: number, max: number) => Math.floor(min + Math.random * (max - min + 1));
+const rn = (min: number, max: number) => Math.round((min + Math.random() * (max - min)) * 10) / 10;
+const ri = (min: number, max: number) => Math.floor(min + Math.random() * (max - min + 1));
 const pick = <T>(arr: T[]): T => arr[ri(0, arr.length - 1)];
 const noteFor = (day: number) => notes[day % notes.length];
 
@@ -126,7 +126,7 @@ export const substances: SubstanceConfig[] = [
           { key: 'notes', label: 'Notes', type: 'textarea' },
         ],
         mockGenerator: (day) => ({
-          situations: day < 7 ? [pick(['Party', 'Work stress', 'Social dinner'])] : day < 14 ? (Math.random > 0.5 ? [pick(['Work stress', 'Boredom'])] : ['None']) : ['None'],
+          situations: day < 7 ? [pick(['Party', 'Work stress', 'Social dinner'])] : day < 14 ? (Math.random() > 0.5 ? [pick(['Work stress', 'Boredom'])] : ['None']) : ['None'],
           difficulty: day < 7 ? pick(['Moderate', 'Hard']) : 'Easy',
           outcome: day > 7 ? 'Resisted all' : pick(['Resisted all', 'Partial']),
           strategy: pick(['Left situation', 'AF drink', 'Delayed']),
@@ -370,7 +370,7 @@ export const substances: SubstanceConfig[] = [
           { key: 'medication', label: 'Medication as prescribed', type: 'single-select', options: ['Yes', 'No', 'Not prescribed'] },
           { key: 'notes', label: 'Notes', type: 'textarea' },
         ],
-        mockGenerator: (day) => ({ naMeeting: day > 11 ? 'Yes' : pick(['Yes', 'No']), therapy: day % 3 === 0 ? 'Yes' : 'No', sponsor: day > 7 ? 'Yes' : pick(['Yes', 'No']), medication: 'Yes', attended: day > 11 || Math.random > 0.3, notes: noteFor(day) }),
+        mockGenerator: (day) => ({ naMeeting: day > 11 ? 'Yes' : pick(['Yes', 'No']), therapy: day % 3 === 0 ? 'Yes' : 'No', sponsor: day > 7 ? 'Yes' : pick(['Yes', 'No']), medication: 'Yes', attended: day > 11 || Math.random() > 0.3, notes: noteFor(day) }),
       },
       { id: 'functional', name: 'Functional Recovery', chartType: 'area', yAxisLabel: 'Score', insight: 'All 5 functional areas showing measurable improvement.',
         fields: [
