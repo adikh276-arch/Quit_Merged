@@ -603,9 +603,36 @@ export const substances: SubstanceConfig[] = [
       },
     },
     activities: [
-      { id: 'body-scan', name: 'Body Scan Meditation', duration: '5 min', type: 'timer', phases: [{ time: 0, text: 'Begin at the top of your head. Notice any sensation.' }, { time: 60, text: 'Face, jaw, neck. Is there tension? Just observe.' }, { time: 120, text: 'Chest and shoulders. Let your breath be whatever it is.' }, { time: 180, text: 'Hands and arms. Can you feel your heartbeat?' }, { time: 240, text: 'Belly, lower back, legs, feet.' }, { time: 280, text: 'You exist. You\'re here. Your body is recovering.' }] },
-      { id: 'dopamine-rebuild', name: 'Dopamine Rebuild Menu', duration: '3 min', type: 'checklist', items: [{ title: 'Eat something', content: 'Blood sugar stabilization is critical during the crash.' }, { title: 'Walk outside in daylight', content: 'Natural light triggers dopamine and resets circadian rhythm.' }, { title: 'Watch something funny', content: 'Laughter triggers dopamine release — gently.' }, { title: 'Text someone', content: 'Social reconnection releases oxytocin and dopamine.' }] },
-      { id: 'heart-rate-log', name: 'Heart Rate Log', duration: '2 min', type: 'journal', fields: [{ key: 'bpm', label: 'Resting heart rate (BPM)', type: 'number', min: 40, max: 200 }, { key: 'chest', label: 'How does your chest feel today?', type: 'textarea', placeholder: 'Tight? Normal? Palpitations?' }] },
+      {
+        id: 'ice-dive', name: 'Ice Water Reset', duration: '2 min', type: 'timer',
+        description: 'A cold shock technique that triggers natural dopamine release — the neurotransmitter stimulants depleted.',
+        phases: [
+          { time: 0, text: 'Fill a bowl with ice water. Submerge your hands up to the wrists. Breathe.' },
+          { time: 20, text: 'The cold is uncomfortable. That discomfort is releasing norepinephrine — naturally stimulating your brain.' },
+          { time: 45, text: 'Hold for 10 more seconds. Your vagus nerve is activating. Heart rate is slowing.' },
+          { time: 60, text: 'Remove your hands. Notice the rush of warmth and alertness. That\'s a 200-300% dopamine increase — no substance required.' },
+          { time: 90, text: 'Dry your hands. You just proved your brain can generate intensity without drugs.' },
+        ],
+      },
+      {
+        id: 'crash-survival', name: 'Crash Phase Survival Kit', duration: '3 min', type: 'checklist',
+        description: 'The stimulant crash is brutal but temporary. This gets you through it.',
+        items: [
+          { title: 'Eat something high-protein now', content: 'Tyrosine in eggs, chicken, and nuts is the direct precursor to dopamine. Your brain is running on empty — feed it building blocks.' },
+          { title: 'Set a 90-minute sleep timer', content: 'Hypersomnia in the crash phase is your brain repairing. Sleep is medicine right now, not laziness.' },
+          { title: 'Put your phone across the room', content: 'The urge to scroll or contact dealers peaks during the crash. Physical distance creates decision friction.' },
+          { title: 'Drink a full glass of water with electrolytes', content: 'Stimulants cause severe dehydration. Your headache and fatigue are partly fluid loss. Replenish now.' },
+        ],
+      },
+      {
+        id: 'pleasure-relearn', name: 'Pleasure Relearning Log', duration: '3 min', type: 'journal',
+        description: 'Anhedonia makes everything feel grey. Track the moments when color returns.',
+        fields: [
+          { key: 'pleasureMoment', label: 'Did anything feel even slightly good today?', type: 'textarea', placeholder: 'A warm shower, a funny text, sunshine on your face...' },
+          { key: 'intensity', label: 'How much pleasure? (even 1 counts)', type: 'slider', min: 0, max: 10, step: 1 },
+          { key: 'compare', label: 'Compared to last week, is pleasure...', type: 'chips', options: ['Same', 'Slightly more', 'Noticeably more', 'Way more'] },
+        ],
+      },
     ],
     articles: [
       { id: 'a1', title: 'The dopamine crash', tag: 'Science', content: 'Stimulants flood the brain with 3–5x normal dopamine. The crash is the brain recalibrating. Anhedonia peaks then resolves over 2–4 weeks.' },
