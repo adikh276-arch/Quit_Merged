@@ -163,19 +163,27 @@ const CalculatorView = ({ substance }: { substance: SubstanceConfig }) => {
           <div key={i} className="flex justify-between rounded-lg border border-border bg-card p-3">
             <span className="text-xs text-muted-foreground">{t(`quit.substances.${substance.slug}.calculator.results.${i}.label`, r.label)}</span>
             <span className={`text-sm font-semibold ${r.color === 'destructive' ? 'text-destructive' : r.color === 'accent' ? 'text-accent' : 'text-foreground'}`}>
-              {/* Check if value matches common translatable patterns */}
-              {r.value.includes('units/week') ? t('quit.app.units_per_week', { count: r.value.split(' ')[0] }) :
-               r.value.includes('units') ? t('quit.app.units_count', { count: r.value.split(' ')[0] }) :
-               r.value.includes('mg/week') ? t('quit.app.mg_per_week', { count: r.value.split(' ')[0] }) :
-               r.value.includes('mg') ? t('quit.app.mg_count', { count: r.value.split(' ')[0] }) :
-               t(`quit.app.status.${r.value.toLowerCase().replace(/ /g, '_')}`, r.value)}
+              {(() => {
+                // 1. Try exact match for status (Moderate, High, etc.)
+                const exactMatch = t(r.value);
+                if (exactMatch !== r.value) return exactMatch;
+
+                // 2. Handle unit-based interpolation
+                if (r.value.includes('units/week')) return t('quit.app.units_per_week', { count: r.value.split(' ')[0] });
+                if (r.value.includes('units')) return t('quit.app.units_count', { count: r.value.split(' ')[0] });
+                if (r.value.includes('mg/week')) return t('quit.app.mg_per_week', { count: r.value.split(' ')[0] });
+                if (r.value.includes('mg')) return t('quit.app.mg_count', { count: r.value.split(' ')[0] });
+                if (r.value.includes('MME')) return t('quit.app.mme_count', { count: r.value.split(' ')[0] });
+
+                return r.value;
+              })()}
             </span>
           </div>
         ))}
       </div>
       {calc.note && (
         <p className="mt-4 rounded-lg bg-primary/5 p-3 text-xs text-foreground leading-relaxed">
-          {t(`quit.substances.${substance.slug}.calculator.note`, calc.note)}
+          {t(calc.note, calc.note)}
         </p>
       )}
     </div>
