@@ -27,7 +27,8 @@ export const executeQuery = async (query: string, params: any[] = []) => {
   // Neon's 'neon' client handles standard postgres interpolation: sql(query, params)
   
   try {
-    const result = await sql(rewrittenQuery, params);
+    // For conventional function calls with placeholders, use sql.query()
+    const result = await (sql as any).query(rewrittenQuery, params);
     // Neon returns the rows directly as an array. We wrap it for backward compatibility with pg's { rows }
     return { rows: result };
   } catch (err) {
