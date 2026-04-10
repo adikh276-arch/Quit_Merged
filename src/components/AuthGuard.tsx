@@ -14,25 +14,38 @@ export const AuthGuard = ({ children }: { children: React.ReactNode }) => {
       const token = urlParams.get("token");
 
       if (token) {
-        // 2. Save the token as the user ID immediately as requested
-        localStorage.setItem("therapy_user_id", token);
-        setIsAuthenticated(true);
-        initializeUser(token); // Sync to Neon
-        
-        // 3. Remove token from URL
-        urlParams.delete("token");
-        const newSearch = urlParams.toString();
-        
-        // 4. Restore the deep-link path
-        const savedPath = sessionStorage.getItem("redirect_path");
-        const targetPath = savedPath || location.pathname;
-        if (savedPath) {
-          sessionStorage.removeItem("redirect_path");
-        }
+        try {
+          // 2. Exchange token for real User ID from API
+          const response = await fetch(`https://web.mantracare.com/api/auth/get-user-id?token=${token}`);
+          if (!response.ok) throw new Error('Failed to validate token');
+          
+          const data = await response.json();
+          const userId = data.userId || data.id || token; // Fallback to token if API is weird
+          
+          localStorage.setItem("therapy_user_id", userId);
+          setIsAuthenticated(true);
+          initializeUser(userId); // Sync to Neon
+          
+          // 3. Remove token from URL
+          urlParams.delete("token");
+          const newSearch = urlParams.toString();
+          
+          // 4. Restore the deep-link path
+          const savedPath = sessionStorage.getItem("redirect_path");
+          const targetPath = savedPath || location.pathname;
+          if (savedPath) {
+            sessionStorage.removeItem("redirect_path");
+          }
 
-        const newPath = targetPath + (newSearch ? `?${newSearch}` : "");
-        navigate(newPath, { replace: true });
-        return;
+          const newPath = targetPath + (newSearch ? `?${newSearch}` : "");
+          navigate(newPath, { replace: true });
+          return;
+        } catch (err) {
+          console.error("Token validation failed:", err);
+          localStorage.setItem("therapy_user_id", token);
+          setIsAuthenticated(true);
+          initializeUser(token);
+        }
       }
 
       if (therapyUserId) {
