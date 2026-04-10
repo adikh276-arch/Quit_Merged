@@ -109,18 +109,18 @@ const Assessment = ({ substance }: { substance: SubstanceConfig }) => {
         {t(`quit.app.dsm.q${step}`, { substance: t(`quit.substances.${substance.slug}.name`) })}
       </motion.p>
       <div className="flex flex-col gap-2">
-        {[0, 1, 2, 3, 4].map((i) => (
+        {likertOptions.map((opt) => (
           <motion.button
             key={opt.value}
             whileTap={{ scale: 0.97 }}
             onClick={() => setSelected(opt.value)}
             className={`w-full rounded-xl border px-4 py-3 text-left text-sm font-medium transition-all ${
-              selected === i
+              selected === opt.value
                 ? 'border-primary bg-primary/15 text-primary ring-1 ring-primary/30'
                 : 'border-border bg-muted/50 text-foreground hover:bg-muted'
             }`}
           >
-            {t(`quit.app.dsm.opt${i}`)}
+            {t(`quit.app.dsm.opt${opt.value}`)}
           </motion.button>
         ))}
       </div>
