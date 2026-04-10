@@ -25,10 +25,11 @@ export default defineConfig(({ mode }) => {
       'import.meta.env.VITE_NEON_API_KEY': JSON.stringify(env.VITE_NEON_API_KEY || env.NEON_API_KEY),
       'import.meta.env.VITE_NEON_PROJECT_ID': JSON.stringify(env.VITE_NEON_PROJECT_ID || env.NEON_PROJECT_ID),
     },
-  resolve: {
-    alias: {
-      "@": path.resolve(__dirname, "./src"),
+    resolve: {
+      alias: {
+        "@": path.resolve(__dirname, "./src"),
+      },
+      dedupe: ["react", "react-dom", "react/jsx-runtime", "react/jsx-dev-runtime", "@tanstack/react-query", "@tanstack/query-core"],
     },
-    dedupe: ["react", "react-dom", "react/jsx-runtime", "react/jsx-dev-runtime", "@tanstack/react-query", "@tanstack/query-core"],
-  },
-}));
+  };
+});
