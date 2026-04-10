@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, ChevronRight, ArrowUp, Lock, Check, Play, Pause } from 'lucide-react';
+import { X, ChevronRight, ArrowUp, Lock, Check, Play, Pause, Trophy, Sparkles, Heart, BookmarkCheck, Bookmark, Target, Zap } from 'lucide-react';
+import { DynamicIcon } from './DynamicIcon';
 import { SubstanceConfig } from '@/data/types';
 import { getAssessment, saveAssessment, toggleCommunityUpvote, getCommunityUpvotes, addUserPost, getUserPosts } from '@/data/storage';
 import { useEffect, useRef } from 'react';
@@ -258,7 +259,7 @@ const ActivityRunner = ({ activity, substance, onBack }: { activity: any; substa
       return (
         <div className="text-center">
           {backBtn}
-          <h2 className="mb-2 font-display text-xl text-foreground">{activity.name}</h2>
+          <h2 className="mb-2 font-display text-xl text-foreground">{t(`quit.substances.${substance.slug}.activities.${activity.id}.name`, { defaultValue: activity.name })}</h2>
           <motion.div initial={{ scale: 0.8, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} className="my-8">
             <div className="mx-auto flex h-28 w-28 items-center justify-center rounded-full bg-primary/15">
               <span className="text-4xl font-bold text-primary">{totalCorrect}/{activity.questions.length}</span>
@@ -312,12 +313,12 @@ const ActivityRunner = ({ activity, substance, onBack }: { activity: any; substa
     return (
       <div className="text-center">
         {backBtn}
-        <h2 className="mb-2 font-display text-xl text-foreground">{activity.name}</h2>
-        {activity.description && <p className="mb-6 text-xs text-muted-foreground">{activity.description}</p>}
+        <h2 className="mb-2 font-display text-xl text-foreground">{t(`quit.substances.${substance.slug}.activities.${activity.id}.name`, { defaultValue: activity.name })}</h2>
+        {activity.description && <p className="mb-6 text-xs text-muted-foreground">{t(`quit.substances.${substance.slug}.activities.${activity.id}.description`, { defaultValue: activity.description })}</p>}
         <motion.div key={vizIndex} initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} className="mx-auto my-8">
           <motion.div animate={{ y: [0, -8, 0] }} transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
             className="mx-auto flex h-36 w-36 items-center justify-center rounded-full bg-gradient-to-br from-primary/20 to-accent/10 shadow-lg">
-            <span className="text-6xl">{scene?.emoji || '🌟'}</span>
+            <DynamicIcon name={scene?.emoji || "sparkle"} className="h-16 w-16 text-primary" />
           </motion.div>
           <motion.p key={scene?.text} initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.3 }}
             className="mt-8 text-sm text-foreground leading-relaxed max-w-xs mx-auto">
@@ -346,7 +347,7 @@ const ActivityRunner = ({ activity, substance, onBack }: { activity: any; substa
         <div className="text-center">
           {backBtn}
           <motion.div initial={{ scale: 0.5, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} transition={{ type: 'spring' }}>
-            <div className="text-6xl mb-4">🏆</div>
+            <div className="flex justify-center mb-4"><Trophy className="h-16 w-16 text-yellow-500" /></div>
             <h2 className="font-display text-2xl text-foreground mb-2">{t('quit.app.activities.tap.success', 'Craving Crushed!')}</h2>
             <p className="text-sm text-muted-foreground">{t('quit.app.activities.tap.success_desc', { count: taps })}</p>
             <button onClick={() => { setTaps(0); setTapDone(false); }} className="mt-6 rounded-xl bg-muted px-6 py-2 text-sm font-medium">{t('quit.app.activities.tap.again', 'Go Again')}</button>
@@ -357,8 +358,8 @@ const ActivityRunner = ({ activity, substance, onBack }: { activity: any; substa
     return (
       <div className="text-center">
         {backBtn}
-        <h2 className="mb-2 font-display text-xl text-foreground">{activity.name}</h2>
-        <p className="mb-6 text-xs text-muted-foreground">{activity.tapPrompt || activity.description}</p>
+        <h2 className="mb-2 font-display text-xl text-foreground">{t(`quit.substances.${substance.slug}.activities.${activity.id}.name`, { defaultValue: activity.name })}</h2>
+        <p className="mb-6 text-xs text-muted-foreground">{t(`quit.substances.${substance.slug}.activities.${activity.id}.tapPrompt`, { defaultValue: activity.tapPrompt }) || t(`quit.substances.${substance.slug}.activities.${activity.id}.description`, { defaultValue: activity.description })}</p>
         <div className="relative mx-auto mb-6">
           <svg viewBox="0 0 120 120" className="w-40 h-40 mx-auto">
             <circle cx="60" cy="60" r="54" fill="none" stroke="hsl(var(--muted))" strokeWidth="8" />
@@ -372,7 +373,7 @@ const ActivityRunner = ({ activity, substance, onBack }: { activity: any; substa
         </div>
         <motion.button whileTap={{ scale: 0.9 }} onClick={() => { const next = taps + 1; setTaps(next); if (next >= goal) setTapDone(true); }}
           className="mx-auto flex h-24 w-24 items-center justify-center rounded-full bg-primary shadow-lg active:shadow-sm transition-shadow">
-          <span className="text-3xl text-primary-foreground">👊</span>
+          <Zap className="h-10 w-10 text-primary-foreground fill-primary-foreground" />
         </motion.button>
         <p className="mt-3 text-xs text-muted-foreground">{t('quit.app.activities.tap.remaining', { count: goal - taps })}</p>
       </div>
@@ -385,13 +386,13 @@ const ActivityRunner = ({ activity, substance, onBack }: { activity: any; substa
     return (
       <div className="text-center">
         {backBtn}
-        <h2 className="mb-2 font-display text-xl text-foreground">{activity.name}</h2>
-        <p className="mb-8 text-xs text-muted-foreground">{activity.description}</p>
+        <h2 className="mb-2 font-display text-xl text-foreground">{t(`quit.substances.${substance.slug}.activities.${activity.id}.name`, { defaultValue: activity.name })}</h2>
+        <p className="mb-8 text-xs text-muted-foreground">{t(`quit.substances.${substance.slug}.activities.${activity.id}.description`, { defaultValue: activity.description })}</p>
         <AnimatePresence mode="wait">
           <motion.div key={affIndex} initial={{ opacity: 0, rotateY: 90 }} animate={{ opacity: 1, rotateY: 0 }} exit={{ opacity: 0, rotateY: -90 }}
             transition={{ duration: 0.4 }}
             className="mx-auto max-w-sm rounded-2xl border-2 border-primary/20 bg-gradient-to-br from-primary/5 to-accent/5 p-8 shadow-lg min-h-[180px] flex flex-col items-center justify-center">
-            <span className="text-4xl mb-4">{affSaved.has(affIndex) ? '💛' : '✨'}</span>
+            <div className="flex justify-center mb-4">{affSaved.has(affIndex) ? <Heart className="h-10 w-10 text-primary fill-primary" /> : <Sparkles className="h-10 w-10 text-primary/40" />}</div>
             <p className="text-lg font-semibold text-foreground leading-relaxed italic">
               "{t(`quit.substances.${substance.slug}.activities.${activity.id}.affirmations.${affIndex}`, aff)}"
             </p>
@@ -402,7 +403,7 @@ const ActivityRunner = ({ activity, substance, onBack }: { activity: any; substa
             className="rounded-full bg-muted px-4 py-2 text-sm font-medium disabled:opacity-30">← {t('quit.app.prev', 'Prev')}</button>
           <button onClick={() => setAffSaved(prev => { const n = new Set(prev); if (n.has(affIndex)) n.delete(affIndex); else n.add(affIndex); return n; })}
             className={`rounded-full px-4 py-2 text-sm font-medium ${affSaved.has(affIndex) ? 'bg-primary text-primary-foreground' : 'bg-muted'}`}>
-            {affSaved.has(affIndex) ? `💛 ${t('quit.app.activities.affirmation.saved', 'Saved')}` : `🤍 ${t('quit.app.activities.affirmation.save', 'Save')}`}
+            {affSaved.has(affIndex) ? <span className="flex items-center gap-2"><BookmarkCheck className="h-4 w-4" /> {t('quit.app.activities.affirmation.saved')}</span> : <span className="flex items-center gap-2"><Bookmark className="h-4 w-4" /> {t('quit.app.activities.affirmation.save')}</span>}
           </button>
           <button disabled={affIndex >= activity.affirmations.length - 1} onClick={() => setAffIndex(affIndex + 1)}
             className="rounded-full bg-muted px-4 py-2 text-sm font-medium disabled:opacity-30">{t('quit.app.next', 'Next')} →</button>
@@ -419,7 +420,7 @@ const ActivityRunner = ({ activity, substance, onBack }: { activity: any; substa
         <div className="text-center">
           {backBtn}
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
-            <div className="text-5xl mb-4">🧘</div>
+            <div className="flex justify-center mb-4"><Target className="h-16 w-16 text-primary" /></div>
             <h2 className="font-display text-xl text-foreground mb-2">{t('quit.app.activities.bodyscan.complete', 'Scan Complete')}</h2>
             <p className="text-sm text-muted-foreground mb-6">{t('quit.app.activities.bodyscan.complete_desc', { count: activity.bodyZones.length })}</p>
             <button onClick={() => { setBodyIndex(-1); setBodyDone(false); }} className="rounded-xl bg-muted px-6 py-2 text-sm font-medium">{t('quit.app.activities.repeat', 'Repeat')}</button>
@@ -431,12 +432,12 @@ const ActivityRunner = ({ activity, substance, onBack }: { activity: any; substa
       return (
         <div className="text-center">
           {backBtn}
-          <h2 className="mb-2 font-display text-xl text-foreground">{activity.name}</h2>
-          <p className="mb-6 text-xs text-muted-foreground">{activity.description}</p>
+          <h2 className="mb-2 font-display text-xl text-foreground">{t(`quit.substances.${substance.slug}.activities.${activity.id}.name`, { defaultValue: activity.name })}</h2>
+          <p className="mb-6 text-xs text-muted-foreground">{t(`quit.substances.${substance.slug}.activities.${activity.id}.description`, { defaultValue: activity.description })}</p>
           <div className="grid grid-cols-2 gap-3 mb-6">
             {activity.bodyZones.map((zone: any, i: number) => (
               <div key={i} className="rounded-xl border border-border bg-card p-4 text-center">
-                <span className="text-2xl">{zone.emoji}</span>
+                <div className="flex justify-center mb-1"><DynamicIcon name={zone.emoji} className="h-6 w-6 text-primary" /></div>
                 <p className="text-xs font-medium text-foreground mt-1">
                   {t(`quit.substances.${substance.slug}.activities.${activity.id}.bodyZones.${i}.name`, zone.name)}
                 </p>
@@ -458,7 +459,7 @@ const ActivityRunner = ({ activity, substance, onBack }: { activity: any; substa
         <motion.div key={bodyIndex} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
           <motion.div animate={{ scale: [1, 1.08, 1] }} transition={{ duration: 3, repeat: Infinity }}
             className="mx-auto flex h-28 w-28 items-center justify-center rounded-full bg-primary/10 mb-6">
-            <span className="text-5xl">{zone.emoji}</span>
+            <div className="flex justify-center mb-1"><DynamicIcon name={zone.emoji} className="h-12 w-12 text-primary" /></div>
           </motion.div>
           <h3 className="font-display text-lg text-foreground mb-3">
             {t(`quit.substances.${substance.slug}.activities.${activity.id}.bodyZones.${bodyIndex}.name`, zone.name)}
@@ -482,8 +483,8 @@ const ActivityRunner = ({ activity, substance, onBack }: { activity: any; substa
     return (
       <div>
         {backBtn}
-        <h2 className="mb-2 font-display text-xl text-foreground">{activity.name}</h2>
-        <p className="mb-6 text-xs text-muted-foreground">{activity.description}</p>
+        <h2 className="mb-2 font-display text-xl text-foreground">{t(`quit.substances.${substance.slug}.activities.${activity.id}.name`, { defaultValue: activity.name })}</h2>
+        <p className="mb-6 text-xs text-muted-foreground">{t(`quit.substances.${substance.slug}.activities.${activity.id}.description`, { defaultValue: activity.description })}</p>
         <div className="space-y-3">
           {activity.sortItems.map((item: any, i: number) => (
             <motion.div key={i} initial={{ opacity: 0, x: -12 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: i * 0.05 }}
@@ -511,7 +512,10 @@ const ActivityRunner = ({ activity, substance, onBack }: { activity: any; substa
         )}
         {sortRevealed && (
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="mt-4 rounded-xl bg-primary/10 p-4 text-center">
-            <p className="text-sm font-semibold text-primary">{correctCount}/{activity.sortItems.length} correct {correctCount === activity.sortItems.length ? '🎉' : '— keep learning!'}</p>
+            <p className="text-sm font-semibold text-primary flex items-center justify-center gap-2">
+              {correctCount}/{activity.sortItems.length} correct 
+              {correctCount === activity.sortItems.length ? <Trophy className="h-4 w-4" /> : '— keep learning!'}
+            </p>
           </motion.div>
         )}
       </div>
@@ -523,8 +527,8 @@ const ActivityRunner = ({ activity, substance, onBack }: { activity: any; substa
     return (
       <div>
         {backBtn}
-        <h2 className="mb-2 font-display text-xl text-foreground">{activity.name}</h2>
-        {activity.description && <p className="mb-6 text-xs text-muted-foreground">{activity.description}</p>}
+        <h2 className="mb-2 font-display text-xl text-foreground">{t(`quit.substances.${substance.slug}.activities.${activity.id}.name`, { defaultValue: activity.name })}</h2>
+        {activity.description && <p className="mb-6 text-xs text-muted-foreground">{t(`quit.substances.${substance.slug}.activities.${activity.id}.description`, { defaultValue: activity.description })}</p>}
         <div className="space-y-4">
           {activity.fields?.map((field: any) => (
             <div key={field.key}>
@@ -554,7 +558,7 @@ const ActivityRunner = ({ activity, substance, onBack }: { activity: any; substa
         </div>
         {Object.keys(journalValues).length > 0 && (
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="mt-6 rounded-xl bg-primary/10 p-4 text-center">
-            <p className="text-sm font-semibold text-primary">📝 {t('quit.app.activities.journal.captured', 'Reflection captured. Awareness is progress.')}</p>
+            <p className="text-sm font-semibold text-primary">{t('quit.app.activities.journal.captured', 'Reflection captured. Awareness is progress.')}</p>
           </motion.div>
         )}
       </div>
@@ -567,8 +571,8 @@ const ActivityRunner = ({ activity, substance, onBack }: { activity: any; substa
     return (
       <div>
         {backBtn}
-        <h2 className="mb-4 font-display text-xl text-foreground">{activity.name}</h2>
-        {activity.description && <p className="mb-4 text-sm text-muted-foreground">{activity.description}</p>}
+        <h2 className="mb-4 font-display text-xl text-foreground">{t(`quit.substances.${substance.slug}.activities.${activity.id}.name`, { defaultValue: activity.name })}</h2>
+        {activity.description && <p className="mb-4 text-sm text-muted-foreground">{t(`quit.substances.${substance.slug}.activities.${activity.id}.description`, { defaultValue: activity.description })}</p>}
         <div className="space-y-3">
           {activity.items?.map((item: any, i: number) => (
             <div key={i} className="rounded-xl border border-border bg-card overflow-hidden">
@@ -588,7 +592,13 @@ const ActivityRunner = ({ activity, substance, onBack }: { activity: any; substa
             </div>
           ))}
         </div>
-        {allDone && <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} className="mt-6 rounded-xl bg-primary/10 p-4 text-center"><p className="text-sm font-semibold text-primary">✨ {t('quit.app.activities.complete_well_done', 'Complete! Well done.')}</p></motion.div>}
+        {allDone && (
+          <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} className="mt-6 rounded-xl bg-primary/10 p-4 text-center">
+            <p className="text-sm font-semibold text-primary flex items-center justify-center gap-2">
+              <Sparkles className="h-4 w-4" /> {t('quit.app.activities.complete_well_done', 'Complete! Well done.')}
+            </p>
+          </motion.div>
+        )}
       </div>
     );
   }
@@ -598,8 +608,8 @@ const ActivityRunner = ({ activity, substance, onBack }: { activity: any; substa
   return (
     <div className="text-center">
       {backBtn}
-      <h2 className="mb-2 font-display text-xl text-foreground">{activity.name}</h2>
-      {activity.description && <p className="mb-6 text-xs text-muted-foreground">{activity.description}</p>}
+      <h2 className="mb-2 font-display text-xl text-foreground">{t(`quit.substances.${substance.slug}.activities.${activity.id}.name`, { defaultValue: activity.name })}</h2>
+      {activity.description && <p className="mb-6 text-xs text-muted-foreground">{t(`quit.substances.${substance.slug}.activities.${activity.id}.description`, { defaultValue: activity.description })}</p>}
       {activity.type === 'breathing' && (
         <motion.div animate={{ scale: running ? [1, 1.4, 1.4, 1, 1] : 1 }} transition={{ duration: 16, repeat: Infinity, ease: 'easeInOut' }}
           className="mx-auto mb-6 flex h-32 w-32 items-center justify-center rounded-full bg-primary/20">
@@ -767,7 +777,9 @@ const AchievementsView = ({ substance }: { substance: SubstanceConfig }) => {
         const result = ach.condition({});
         return (
           <div key={ach.id} className={`rounded-xl border p-4 text-center ${result.unlocked ? 'border-primary/30 bg-primary/5' : 'border-border bg-muted/50 opacity-60'}`}>
-            <span className="text-3xl">{result.unlocked ? ach.icon : '🔒'}</span>
+            <div className="flex justify-center mb-2">
+              <DynamicIcon name={result.unlocked ? ach.icon : 'Lock'} className={`h-10 w-10 ${result.unlocked ? 'text-primary' : 'text-muted-foreground'}`} />
+            </div>
             <p className="mt-2 text-xs font-semibold text-foreground">{ach.name}</p>
             <p className="text-[10px] text-muted-foreground">{ach.description}</p>
             {result.unlocked && <p className="mt-1 text-[10px] text-primary font-medium">✓ {t('quit.app.unlocked')}</p>}

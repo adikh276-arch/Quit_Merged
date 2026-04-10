@@ -1,0 +1,23 @@
+{
+  "quit.substances.alcohol.activities.social-script.affirmations.8": ",\n          ",
+  "quit.substances.alcohol.activities.social-script.affirmations.9": ",\n          ",
+  "quit.substances.alcohol.activities.social-script.affirmations.10": "t need a drink.",
+  "quit.substances.cannabis.activities.vivid-dream-journal.fields.dream.label": "What did you dream about?",
+  "quit.substances.cannabis.activities.vivid-dream-journal.fields.dream.placeholder": "Describe every detail you remember — colors, people, emotions...",
+  "quit.substances.cannabis.activities.vivid-dream-journal.fields.intensity.label": "Dream intensity",
+  "quit.substances.cannabis.activities.vivid-dream-journal.fields.emotion.label": "Dominant emotion in the dream",
+  "quit.substances.stimulants.activities.pleasure-relearn.fields.pleasureMoment.label": "Did anything feel even slightly good today?",
+  "quit.substances.stimulants.activities.pleasure-relearn.fields.pleasureMoment.placeholder": "A warm shower, a funny text, sunshine on your face...",
+  "quit.substances.stimulants.activities.pleasure-relearn.fields.intensity.label": "How much pleasure? (even 1 counts)",
+  "quit.substances.stimulants.activities.pleasure-relearn.fields.compare.label": "Compared to last week, is pleasure...",
+  "quit.substances.benzodiazepines.activities.gaba-breathing.phases.1.text": "Hold gently for 2 counts. No strain.",
+  "quit.substances.benzodiazepines.activities.gaba-breathing.phases.2.text": "Exhale through pursed lips for 8 counts. The long exhale is the key — it stimulates your vagus nerve.",
+  "quit.substances.benzodiazepines.activities.gaba-breathing.phases.3.text": "Pause for 2 counts. Let your body settle before the next breath.",
+  "quit.substances.kratom.activities.root-cause.fields.originalReason.label": "What were you originally treating with kratom?",
+  "quit.substances.kratom.activities.root-cause.fields.originalReason.placeholder": "Chronic pain? Social anxiety? Low energy? Depression?",
+  "quit.substances.kratom.activities.root-cause.fields.currentState.label": "Is that original issue better, worse, or the same without kratom?",
+  "quit.substances.kratom.activities.root-cause.fields.currentState.placeholder": "Be specific about what\\",
+  "quit.substances.kratom.activities.root-cause.fields.alternative.label": "One thing you can do TODAY to address that root cause",
+  "quit.substances.kratom.activities.root-cause.fields.alternative.placeholder": "Schedule a doctor visit, try a stretch routine, call a therapist...",
+  "quit.substances.mdma.activities.mdma-affirmations.affirmations.7": ",\n          "
+}

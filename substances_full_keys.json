@@ -1,0 +1,1918 @@
+{
+  "quit": {
+    "substances": {
+      "alcohol": {
+        "name": "Alcohol",
+        "descriptor": "Beer, wine & spirits",
+        "trackers": {
+          "consumption": {
+            "name": "Consumption Log",
+            "insight": "You haven",
+            "yAxisLabel": "Units",
+            "fields": {
+              "units": {
+                "label": "Units consumed today"
+              },
+              "drinkType": {
+                "label": "Drink type"
+              }
+            }
+          },
+          "cravings": {
+            "name": "Craving Intensity",
+            "insight": "Friday evenings remain your hardest time. Plan something active after 6pm.",
+            "yAxisLabel": "Cravings",
+            "fields": {
+              "count": {
+                "label": "Number of cravings today"
+              },
+              "peakIntensity": {
+                "label": "Peak intensity"
+              },
+              "trigger": {
+                "label": "Primary trigger"
+              }
+            }
+          },
+          "mood-sleep": {
+            "name": "Mood & Sleep",
+            "insight": "On nights you sleep 7+ hours, your next-day mood is 2.4 points higher.",
+            "yAxisLabel": "Score",
+            "fields": {
+              "mood": {
+                "label": "Mood today"
+              }
+            }
+          },
+          "withdrawal": {
+            "name": "Withdrawal Symptoms",
+            "insight": "Your symptoms are tracking ahead of the expected resolution timeline.",
+            "yAxisLabel": "Burden",
+            "fields": {
+              "tremors": {
+                "label": "Tremors"
+              }
+            }
+          },
+          "savings": {
+            "name": "Financial Savings",
+            "insight": "On track to save a lot this year. That",
+            "yAxisLabel": "Saved",
+            "fields": {
+              "bought": {
+                "label": "Did you buy alcohol today?"
+              }
+            }
+          },
+          "risk-situations": {
+            "name": "High-Risk Situations",
+            "insight": "Social dinners are your strongest area. Work stress situations are hardest.",
+            "yAxisLabel": "Situations",
+            "fields": {
+              "situations": {
+                "label": "Situations encountered"
+              }
+            }
+          }
+        },
+        "calculator": {
+          "inputs": {
+            "drinksPerDay": {
+              "label": "Drinks per day"
+            },
+            "drinkingDays": {
+              "label": "Drinking days per week"
+            },
+            "costPerDrink": {
+              "label": "Cost per drink "
+            }
+          },
+          "results": {
+            "0": {
+              "label": "Weekly units"
+            },
+            "1": {
+              "label": "Safe limit"
+            },
+            "2": {
+              "label": "Monthly spend"
+            },
+            "3": {
+              "label": "Yearly spend"
+            },
+            "4": {
+              "label": "Liver risk"
+            },
+            "5": {
+              "label": "1-year savings if quit"
+            }
+          },
+          "title": "Units & Health Impact",
+          "note": "Your liver begins regenerating within 72 hours of stopping."
+        },
+        "activities": {
+          "alcohol-quiz": {
+            "name": "Alcohol Myth Buster",
+            "description": "Test your knowledge about alcohol and recovery.",
+            "questions": {
+              "0": {
+                "question": "How quickly does your liver start regenerating after you stop drinking?"
+              }
+            }
+          },
+          "liver-bodyscan": {
+            "name": "Recovery Body Scan",
+            "description": "Check in with the parts of your body that are actively healing right now.",
+            "bodyZones": {
+              "0": {
+                "name": "Liver",
+                "prompt": "Place your hand on your right ribs. Your liver is here — regenerating right now. Fat deposits are mobilizing. Enzyme levels are dropping daily."
+              },
+              "1": {
+                "name": "Brain",
+                "prompt": "Your brain\\"
+              },
+              "2": {
+                "name": "Heart",
+                "prompt": "Your blood pressure is normalizing. Resting heart rate is dropping. Your cardiovascular risk decreases with every sober day."
+              },
+              "3": {
+                "name": "Stomach",
+                "prompt": "Gastric lining is healing. The inflammation is subsiding. Your gut microbiome is diversifying again."
+              },
+              "4": {
+                "name": "Skin",
+                "prompt": "Your skin is rehydrating. Redness is fading. People will start saying you look healthier — and they\\"
+              }
+            }
+          },
+          "social-script": {
+            "name": "Social Situation Rehearsal",
+            "description": "Swipe through confident responses for when someone offers you a drink.",
+            "affirmations": {
+              "0": "I\\",
+              "1": ",\n          ",
+              "2": "m on a health kick. Feeling great actually.",
+              "3": "Not tonight, but I appreciate it.",
+              "4": "I\\",
+              "5": ",\n          ",
+              "6": "t need alcohol to enjoy this moment.",
+              "7": "My body is healing and I\\",
+              "8": ",\n          ",
+              "9": ",\n          ",
+              "10": "t need a drink."
+            }
+          }
+        },
+        "articles": {
+          "a1": {
+            "title": "Why Quit Alcohol?",
+            "tag": "Awareness & Readiness",
+            "content": "TO_BE_EXTRACTED"
+          },
+          "a2": {
+            "title": "The Signs of a Alcohol Problem",
+            "tag": "Awareness & Readiness",
+            "content": "TO_BE_EXTRACTED"
+          },
+          "a3": {
+            "title": "How to Map Your Alcohol Triggers",
+            "tag": "Awareness & Readiness",
+            "content": "TO_BE_EXTRACTED"
+          },
+          "a4": {
+            "title": "The Lies We Tell to Keep Using Alcohol",
+            "tag": "Awareness & Readiness",
+            "content": "TO_BE_EXTRACTED"
+          },
+          "a5": {
+            "title": "How to Urge Surf",
+            "tag": "Detox & Early Healing",
+            "content": "TO_BE_EXTRACTED"
+          },
+          "a6": {
+            "title": "How to Defuse Thoughts About Alcohol",
+            "tag": "Detox & Early Healing",
+            "content": "TO_BE_EXTRACTED"
+          },
+          "a7": {
+            "title": "How to Tame Your Emotions",
+            "tag": "Detox & Early Healing",
+            "content": "TO_BE_EXTRACTED"
+          },
+          "a8": {
+            "title": "What Alcohol Withdrawal Feels Like",
+            "tag": "Detox & Early Healing",
+            "content": "TO_BE_EXTRACTED"
+          },
+          "a9": {
+            "title": "How to Get Better Sleep in Recovery",
+            "tag": "Detox & Early Healing",
+            "content": "TO_BE_EXTRACTED"
+          },
+          "a10": {
+            "title": "How to Ditch Perfectionism in Recovery",
+            "tag": "Recovery and Growth",
+            "content": "TO_BE_EXTRACTED"
+          },
+          "a11": {
+            "title": "How to Build a Life You Don\\",
+            "tag": "Recovery and Growth",
+            "content": "TO_BE_EXTRACTED"
+          },
+          "a12": {
+            "title": "How to Heal and Rebuild Relationships",
+            "tag": "Recovery and Growth",
+            "content": "TO_BE_EXTRACTED"
+          },
+          "a13": {
+            "title": "How to Keep Going with Sobriety",
+            "tag": "Recovery and Growth",
+            "content": "TO_BE_EXTRACTED"
+          },
+          "a14": {
+            "title": "How to Get Help for Alcohol Addiction",
+            "tag": "Recovery and Growth",
+            "content": "TO_BE_EXTRACTED"
+          }
+        }
+      },
+      "tobacco": {
+        "name": "Tobacco / Nicotine",
+        "descriptor": "Cigarettes, vaping & pouches",
+        "trackers": {
+          "cigarettes": {
+            "name": "Daily Cigarettes",
+            "insight": "Morning cigarettes are the last habit standing. Try a 15-minute walk immediately after waking.",
+            "yAxisLabel": "Cigarettes",
+            "fields": {
+              "count": {
+                "label": "Cigarettes smoked today"
+              },
+              "type": {
+                "label": "Type"
+              }
+            }
+          },
+          "cravings": {
+            "name": "Craving Patterns",
+            "insight": "After-meal cravings are nearly gone. Morning accounts for 73% of your remaining pattern.",
+            "yAxisLabel": "Cravings",
+            "fields": {
+              "count": {
+                "label": "Number of cravings"
+              },
+              "peakIntensity": {
+                "label": "Peak intensity"
+              },
+              "peakTime": {
+                "label": "Peak time"
+              }
+            }
+          },
+          "respiratory": {
+            "name": "Respiratory Health",
+            "insight": "From winded at 2 minutes to 12 minutes of exercise. Real lung recovery happening.",
+            "yAxisLabel": "Breathing Ease",
+            "fields": {
+              "breathingEase": {
+                "label": "Breathing ease"
+              },
+              "coughSeverity": {
+                "label": "Cough severity"
+              }
+            }
+          },
+          "mood-irritability": {
+            "name": "Mood & Irritability",
+            "insight": "Irritability down 62% since Day 3. Mood consistently above 7 now.",
+            "yAxisLabel": "Score",
+            "fields": {
+              "irritability": {
+                "label": "Irritability"
+              },
+              "mood": {
+                "label": "Mood"
+              }
+            }
+          },
+          "nrt": {
+            "name": "NRT Tracking",
+            "insight": "Getting 14mg from NRT vs 40mg when fully smoking. 65% nicotine reduction.",
+            "yAxisLabel": "mg Nicotine",
+            "fields": {
+              "nrtType": {
+                "label": "NRT used"
+              }
+            }
+          },
+          "financial-health": {
+            "name": "Financial & Health",
+            "insight": "Taste and smell returned on Day 7. Lung cancer risk drops 72% at 10 years.",
+            "yAxisLabel": "Saved",
+            "fields": {
+              "bought": {
+                "label": "Bought cigarettes?"
+              }
+            }
+          }
+        },
+        "calculator": {
+          "inputs": {
+            "cigarettesPerDay": {
+              "label": "Cigarettes per day"
+            },
+            "costPerPack": {
+              "label": "Cost per pack "
+            },
+            "yearsSmoked": {
+              "label": "Years smoked"
+            }
+          },
+          "results": {
+            "0": {
+              "label": "Daily spend"
+            },
+            "1": {
+              "label": "Yearly spend"
+            },
+            "2": {
+              "label": "Total spent"
+            },
+            "3": {
+              "label": "Carcinogens per cigarette"
+            },
+            "4": {
+              "label": "10-year benefit"
+            }
+          },
+          "title": "Cigarette Cost & Health Impact"
+        },
+        "activities": {
+          "craving-tap": {
+            "name": "Craving Crusher",
+            "description": "Nicotine cravings last 3-5 minutes. Smash this one into dust."
+          },
+          "lung-visualization": {
+            "name": "Lung Healing Journey",
+            "description": "Watch your lungs heal in real time — from the first hour to one year smoke-free.",
+            "scenes": {
+              "0": {
+                "text": "Hour 1: Carbon monoxide is leaving your bloodstream. Oxygen levels are already rising."
+              },
+              "1": {
+                "text": "Day 3: Your bronchial tubes are relaxing. Breathing becomes easier. Energy increases."
+              },
+              "2": {
+                "text": "Week 2: Cilia — the tiny hairs in your lungs — are regrowing. They sweep out mucus and debris."
+              },
+              "3": {
+                "text": "Month 1: Lung function has increased measurably. Coughing and shortness of breath decrease."
+              },
+              "4": {
+                "text": "Month 9: Your lungs are dramatically cleaner. Infection risk has dropped. You can feel the difference."
+              },
+              "5": {
+                "text": "Year 1: Your risk of heart disease is now HALF that of a smoker. Your body chose healing. You let it."
+              }
+            }
+          },
+          "tobacco-sort": {
+            "name": "Trigger vs. Choice",
+            "description": "Sort these situations — is it a genuine trigger or a choice in disguise?",
+            "sortCategories": {
+              "0": "Real Trigger",
+              "1": "Choice in Disguise"
+            },
+            "sortItems": {
+              "0": {
+                "text": "Having coffee in the morning"
+              },
+              "1": {
+                "text": "Extreme unexpected stress at work"
+              },
+              "2": {
+                "text": "Seeing someone else smoke outside"
+              },
+              "3": {
+                "text": "Severe anxiety attack"
+              },
+              "4": {
+                "text": "Finishing a meal"
+              },
+              "5": {
+                "text": "Grief or loss of a loved one"
+              },
+              "6": {
+                "text": "Waiting for a bus"
+              }
+            }
+          }
+        },
+        "articles": {
+          "a1": {
+            "title": "Why Quit Nicotine?",
+            "tag": "Awareness & Readiness",
+            "content": "TO_BE_EXTRACTED"
+          },
+          "a2": {
+            "title": "The Signs of a Nicotine Problem",
+            "tag": "Awareness & Readiness",
+            "content": "TO_BE_EXTRACTED"
+          },
+          "a3": {
+            "title": "How to Map Your Nicotine Triggers",
+            "tag": "Awareness & Readiness",
+            "content": "TO_BE_EXTRACTED"
+          },
+          "a4": {
+            "title": "The Lies We Tell to Keep Using Nicotine",
+            "tag": "Awareness & Readiness",
+            "content": "TO_BE_EXTRACTED"
+          },
+          "a5": {
+            "title": "How to Urge Surf",
+            "tag": "Detox & Early Healing",
+            "content": "TO_BE_EXTRACTED"
+          },
+          "a6": {
+            "title": "How to Defuse Thoughts About Nicotine",
+            "tag": "Detox & Early Healing",
+            "content": "TO_BE_EXTRACTED"
+          },
+          "a7": {
+            "title": "How to Tame Your Emotions",
+            "tag": "Detox & Early Healing",
+            "content": "TO_BE_EXTRACTED"
+          },
+          "a8": {
+            "title": "What Nicotine Withdrawal Feels Like",
+            "tag": "Detox & Early Healing",
+            "content": "TO_BE_EXTRACTED"
+          },
+          "a9": {
+            "title": "How to Get Better Sleep in Recovery",
+            "tag": "Detox & Early Healing",
+            "content": "TO_BE_EXTRACTED"
+          },
+          "a10": {
+            "title": "How to Ditch Perfectionism in Recovery",
+            "tag": "Recovery and Growth",
+            "content": "TO_BE_EXTRACTED"
+          },
+          "a11": {
+            "title": "How to Build a Life You Don\\",
+            "tag": "Recovery and Growth",
+            "content": "TO_BE_EXTRACTED"
+          },
+          "a12": {
+            "title": "How to Heal and Rebuild Relationships",
+            "tag": "Recovery and Growth",
+            "content": "TO_BE_EXTRACTED"
+          },
+          "a13": {
+            "title": "How to Keep Going with Sobriety",
+            "tag": "Recovery and Growth",
+            "content": "TO_BE_EXTRACTED"
+          },
+          "a14": {
+            "title": "How to Get Help for Nicotine Addiction",
+            "tag": "Recovery and Growth",
+            "content": "TO_BE_EXTRACTED"
+          }
+        }
+      },
+      "opioids": {
+        "name": "Opioids",
+        "descriptor": "Prescription & heroin",
+        "trackers": {
+          "use-mat": {
+            "name": "Use & MAT",
+            "insight": "19 consecutive days without illicit use. Buprenorphine has stabilized your baseline.",
+            "yAxisLabel": "Use instances",
+            "fields": {
+              "usedToday": {
+                "label": "Used illicitly today"
+              }
+            }
+          },
+          "craving-pain": {
+            "name": "Craving & Pain",
+            "insight": "Craving down from 9.4 on Day 1. Pain resolves more slowly but is also declining.",
+            "yAxisLabel": "Intensity",
+            "fields": {
+              "cravingIntensity": {
+                "label": "Craving intensity"
+              },
+              "physicalPain": {
+                "label": "Physical pain"
+              },
+              "emotionalPain": {
+                "label": "Emotional pain"
+              },
+              "trigger": {
+                "label": "Primary trigger"
+              }
+            }
+          },
+          "withdrawal": {
+            "name": "Withdrawal Symptoms",
+            "insight": "With MAT, your symptom burden was 4× lower than expected.",
+            "yAxisLabel": "Burden",
+            "fields": {
+              "bodyAches": {
+                "label": "Body aches"
+              }
+            }
+          },
+          "sleep-energy": {
+            "name": "Sleep & Energy",
+            "insight": "Sleep improved from 2.4 hrs to 6.8 hrs. Energy recovering steadily.",
+            "yAxisLabel": "Hours",
+            "fields": {
+              "sleepHours": {
+                "label": "Sleep hours"
+              },
+              "sleepQuality": {
+                "label": "Sleep quality"
+              },
+              "energy": {
+                "label": "Energy"
+              },
+              "meals": {
+                "label": "Meals today"
+              }
+            }
+          },
+          "treatment": {
+            "name": "Treatment Engagement",
+            "insight": "14 of 21 days with formal support contact.",
+            "yAxisLabel": "Attended",
+            "fields": {
+              "naMeeting": {
+                "label": "NA meeting"
+              }
+            }
+          },
+          "functional": {
+            "name": "Functional Recovery",
+            "insight": "All 5 functional areas showing measurable improvement.",
+            "yAxisLabel": "Score",
+            "fields": {
+              "work": {
+                "label": "Work/school"
+              }
+            }
+          }
+        },
+        "calculator": {
+          "inputs": {
+            "mgPerDay": {
+              "label": "mg per day"
+            },
+            "bupDose": {
+              "label": "Buprenorphine dose (mg/day)"
+            }
+          },
+          "results": {},
+          "title": "MME & Overdose Risk"
+        },
+        "activities": {
+          "naloxone-quiz": {
+            "name": "Naloxone Emergency Quiz",
+            "description": "Could you save a life? Test your overdose response knowledge.",
+            "questions": {
+              "0": {
+                "question": "What is the first thing you should do if you suspect an opioid overdose?"
+              }
+            }
+          },
+          "pain-bodyscan": {
+            "name": "Pain Body Map",
+            "description": "Separate real pain from craving. Your body knows the difference — learn to listen.",
+            "bodyZones": {
+              "0": {
+                "name": "Head & Mind",
+                "prompt": "Is there a headache, or is it mental fog from craving? Notice without judging. Cravings feel like urgency. Pain feels specific."
+              },
+              "1": {
+                "name": "Gut & Core",
+                "prompt": "Opioid withdrawal hits the gut hard — cramping, nausea. Breathe into this area. This sensation is temporary and means your body is recalibrating."
+              },
+              "2": {
+                "name": "Muscles & Joints",
+                "prompt": "Aching, restless legs — your body\\"
+              },
+              "3": {
+                "name": "Skin & Nerves",
+                "prompt": "Goosebumps, sweating, sensitivity — your nervous system is resetting. Touch something textured. Ground into sensation."
+              },
+              "4": {
+                "name": "Chest & Heart",
+                "prompt": "Anxiety or physical tightness? Place both hands here. Slow your breathing. Your heart rate is normalizing with each sober day."
+              }
+            }
+          },
+          "safe-affirmations": {
+            "name": "Recovery Affirmations",
+            "description": "Internalize these truths. They become stronger with repetition.",
+            "affirmations": {
+              "0": "I am more than my addiction.",
+              "1": "My pain is real, but opioids made it worse long-term.",
+              "2": "I deserve to feel — even when it\\",
+              "3": ",\n          ",
+              "4": ",\n          ",
+              "5": ",\n          ",
+              "6": ",\n          "
+            }
+          }
+        },
+        "articles": {
+          "a1": {
+            "title": "Why Quit Opioids?",
+            "tag": "Awareness & Readiness",
+            "content": "TO_BE_EXTRACTED"
+          },
+          "a2": {
+            "title": "The Signs of a Opioids Problem",
+            "tag": "Awareness & Readiness",
+            "content": "TO_BE_EXTRACTED"
+          },
+          "a3": {
+            "title": "How to Map Your Opioids Triggers",
+            "tag": "Awareness & Readiness",
+            "content": "TO_BE_EXTRACTED"
+          },
+          "a4": {
+            "title": "The Lies We Tell to Keep Using Opioids",
+            "tag": "Awareness & Readiness",
+            "content": "TO_BE_EXTRACTED"
+          },
+          "a5": {
+            "title": "How to Urge Surf",
+            "tag": "Detox & Early Healing",
+            "content": "TO_BE_EXTRACTED"
+          },
+          "a6": {
+            "title": "How to Defuse Thoughts About Opioids",
+            "tag": "Detox & Early Healing",
+            "content": "TO_BE_EXTRACTED"
+          },
+          "a7": {
+            "title": "How to Tame Your Emotions",
+            "tag": "Detox & Early Healing",
+            "content": "TO_BE_EXTRACTED"
+          },
+          "a8": {
+            "title": "What Opioids Withdrawal Feels Like",
+            "tag": "Detox & Early Healing",
+            "content": "TO_BE_EXTRACTED"
+          },
+          "a9": {
+            "title": "How to Get Better Sleep in Recovery",
+            "tag": "Detox & Early Healing",
+            "content": "TO_BE_EXTRACTED"
+          },
+          "a10": {
+            "title": "How to Ditch Perfectionism in Recovery",
+            "tag": "Recovery and Growth",
+            "content": "TO_BE_EXTRACTED"
+          },
+          "a11": {
+            "title": "How to Build a Life You Don\\",
+            "tag": "Recovery and Growth",
+            "content": "TO_BE_EXTRACTED"
+          },
+          "a12": {
+            "title": "How to Heal and Rebuild Relationships",
+            "tag": "Recovery and Growth",
+            "content": "TO_BE_EXTRACTED"
+          },
+          "a13": {
+            "title": "How to Keep Going with Sobriety",
+            "tag": "Recovery and Growth",
+            "content": "TO_BE_EXTRACTED"
+          },
+          "a14": {
+            "title": "How to Get Help for Opioids Addiction",
+            "tag": "Recovery and Growth",
+            "content": "TO_BE_EXTRACTED"
+          }
+        }
+      },
+      "cannabis": {
+        "name": "Cannabis",
+        "descriptor": "Flower, edibles & concentrates",
+        "trackers": {
+          "use-log": {
+            "name": "Use Log",
+            "insight": "16 consecutive days without use. Appetite and sleep are normalizing independently.",
+            "yAxisLabel": "Sessions",
+            "fields": {
+              "sessions": {
+                "label": "Sessions today"
+              },
+              "method": {
+                "label": "Method"
+              }
+            }
+          },
+          "cravings": {
+            "name": "Craving & Triggers",
+            "insight": "Evening cravings are your last remaining pattern. Daytime cravings have resolved.",
+            "yAxisLabel": "Intensity",
+            "fields": {
+              "intensity": {
+                "label": "Craving intensity"
+              },
+              "trigger": {
+                "label": "Trigger"
+              }
+            }
+          },
+          "sleep": {
+            "name": "Sleep Recovery",
+            "insight": "Night sweats resolved by Day 10. Sleep duration back to 7+ hours.",
+            "yAxisLabel": "Hours",
+            "fields": {
+              "hours": {
+                "label": "Sleep hours"
+              },
+              "quality": {
+                "label": "Quality"
+              },
+              "nightSweats": {
+                "label": "Night sweats"
+              }
+            }
+          },
+          "appetite": {
+            "name": "Appetite & Weight",
+            "insight": "Appetite returned naturally by Day 12. You\\",
+            "yAxisLabel": "Score",
+            "fields": {
+              "appetite": {
+                "label": "Appetite"
+              },
+              "mealsEaten": {
+                "label": "Meals eaten"
+              }
+            }
+          },
+          "cognitive": {
+            "name": "Mental Clarity",
+            "insight": "Focus improved 3.2 points. Motivation returning steadily.",
+            "yAxisLabel": "Score",
+            "fields": {
+              "focus": {
+                "label": "Focus"
+              },
+              "motivation": {
+                "label": "Motivation"
+              },
+              "memory": {
+                "label": "Memory"
+              },
+              "brainFog": {
+                "label": "Brain fog"
+              },
+              "notes": {
+                "label": "Notes"
+              }
+            }
+          },
+          "mood": {
+            "name": "Mood & Anxiety",
+            "insight": "Anxiety peaked at Day 5 and has been declining since. Mood stabilizing.",
+            "yAxisLabel": "Score",
+            "fields": {
+              "mood": {
+                "label": "Mood"
+              },
+              "anxiety": {
+                "label": "Anxiety"
+              },
+              "irritability": {
+                "label": "Irritability"
+              },
+              "notes": {
+                "label": "Notes"
+              }
+            }
+          }
+        },
+        "calculator": {
+          "inputs": {
+            "gramsPerWeek": {
+              "label": "Grams per week"
+            },
+            "costPerGram": {
+              "label": "Cost per gram "
+            }
+          },
+          "results": {
+            "0": {
+              "label": "Weekly spend"
+            },
+            "1": {
+              "label": "Monthly spend"
+            },
+            "2": {
+              "label": "Yearly spend"
+            },
+            "3": {
+              "label": "THC clearance"
+            },
+            "4": {
+              "label": "Cognitive recovery"
+            }
+          },
+          "title": "Usage Cost & Recovery"
+        },
+        "activities": {
+          "vivid-dream-journal": {
+            "name": "REM Rebound Dream Log",
+            "description": "Cannabis suppressed your dreams. Now they\\",
+            "fields": {
+              "dream": {
+                "label": "What did you dream about?",
+                "placeholder": "Describe every detail you remember — colors, people, emotions..."
+              },
+              "intensity": {
+                "label": "Dream intensity"
+              },
+              "emotion": {
+                "label": "Dominant emotion in the dream"
+              }
+            }
+          },
+          "cannabis-tap": {
+            "name": "Craving Buster",
+            "description": "Channel the restless energy into something productive. Smash the craving."
+          },
+          "cannabis-sort": {
+            "name": "Need vs. Want",
+            "description": "Sort these reasons for using — is it a genuine need or a want you can manage differently?",
+            "sortCategories": {
+              "0": "Genuine Need",
+              "1": "Manageable Want"
+            },
+            "sortItems": {
+              "0": {
+                "text": "I can\\"
+              },
+              "1": {
+                "text": "Severe chronic pain with no alternatives"
+              },
+              "2": {
+                "text": "I\\"
+              },
+              "3": {
+                "text": "Chemotherapy-induced nausea"
+              },
+              "4": {
+                "text": "Everyone at the party is smoking"
+              },
+              "5": {
+                "text": "I feel anxious before social events"
+              }
+            }
+          }
+        },
+        "articles": {
+          "a1": {
+            "title": "Why Quit Cannabis?",
+            "tag": "Awareness & Readiness",
+            "content": "TO_BE_EXTRACTED"
+          },
+          "a2": {
+            "title": "The Signs of a Cannabis Problem",
+            "tag": "Awareness & Readiness",
+            "content": "TO_BE_EXTRACTED"
+          },
+          "a3": {
+            "title": "How to Map Your Cannabis Triggers",
+            "tag": "Awareness & Readiness",
+            "content": "TO_BE_EXTRACTED"
+          },
+          "a4": {
+            "title": "The Lies We Tell to Keep Using Cannabis",
+            "tag": "Awareness & Readiness",
+            "content": "TO_BE_EXTRACTED"
+          },
+          "a5": {
+            "title": "How to Urge Surf",
+            "tag": "Detox & Early Healing",
+            "content": "TO_BE_EXTRACTED"
+          },
+          "a6": {
+            "title": "How to Defuse Thoughts About Cannabis",
+            "tag": "Detox & Early Healing",
+            "content": "TO_BE_EXTRACTED"
+          },
+          "a7": {
+            "title": "How to Tame Your Emotions",
+            "tag": "Detox & Early Healing",
+            "content": "TO_BE_EXTRACTED"
+          },
+          "a8": {
+            "title": "What Cannabis Withdrawal Feels Like",
+            "tag": "Detox & Early Healing",
+            "content": "TO_BE_EXTRACTED"
+          },
+          "a9": {
+            "title": "How to Get Better Sleep in Recovery",
+            "tag": "Detox & Early Healing",
+            "content": "TO_BE_EXTRACTED"
+          },
+          "a10": {
+            "title": "How to Ditch Perfectionism in Recovery",
+            "tag": "Recovery and Growth",
+            "content": "TO_BE_EXTRACTED"
+          },
+          "a11": {
+            "title": "How to Build a Life You Don\\",
+            "tag": "Recovery and Growth",
+            "content": "TO_BE_EXTRACTED"
+          },
+          "a12": {
+            "title": "How to Heal and Rebuild Relationships",
+            "tag": "Recovery and Growth",
+            "content": "TO_BE_EXTRACTED"
+          },
+          "a13": {
+            "title": "How to Keep Going with Sobriety",
+            "tag": "Recovery and Growth",
+            "content": "TO_BE_EXTRACTED"
+          },
+          "a14": {
+            "title": "How to Get Help for Cannabis Addiction",
+            "tag": "Recovery and Growth",
+            "content": "TO_BE_EXTRACTED"
+          }
+        }
+      },
+      "stimulants": {
+        "name": "Stimulants",
+        "descriptor": "Cocaine, meth & amphetamines",
+        "trackers": {
+          "use-frequency": {
+            "name": "Use Frequency",
+            "insight": "14 consecutive days clean. The physical crash phase is behind you.",
+            "yAxisLabel": "Grams",
+            "fields": {
+              "used": {
+                "label": "Used today"
+              }
+            }
+          },
+          "mood-anhedonia": {
+            "name": "Mood & Anhedonia",
+            "insight": "Anhedonia resolves over weeks. Dopamine pathways are actively rebuilding.",
+            "yAxisLabel": "Score",
+            "fields": {
+              "depression": {
+                "label": "Depression"
+              },
+              "anhedonia": {
+                "label": "Can you feel pleasure?"
+              }
+            }
+          },
+          "sleep": {
+            "name": "Sleep Recovery",
+            "insight": "Sleep pattern normalizing after crash hypersomnia phase.",
+            "yAxisLabel": "Hours",
+            "fields": {
+              "hours": {
+                "label": "Sleep hours"
+              },
+              "quality": {
+                "label": "Quality"
+              },
+              "nightmares": {
+                "label": "Night terrors"
+              }
+            }
+          },
+          "physical": {
+            "name": "Physical Health",
+            "insight": "Heart rate normalized from 118 BPM to 72 BPM.",
+            "yAxisLabel": "BPM",
+            "fields": {
+              "heartRate": {
+                "label": "Resting heart rate (BPM)"
+              },
+              "appetite": {
+                "label": "Appetite"
+              }
+            }
+          },
+          "cravings": {
+            "name": "Cravings & Triggers",
+            "insight": "Week 3 cravings are largely psychological.",
+            "yAxisLabel": "Cravings",
+            "fields": {
+              "count": {
+                "label": "Craving count"
+              },
+              "peakIntensity": {
+                "label": "Peak intensity"
+              },
+              "trigger": {
+                "label": "Primary trigger"
+              }
+            }
+          },
+          "risk-behaviors": {
+            "name": "Risk Behaviors",
+            "insight": "Zero risk behaviors in 13 days.",
+            "yAxisLabel": "Incidents",
+            "fields": {
+              "behaviors": {
+                "label": "Today"
+              }
+            }
+          }
+        },
+        "calculator": {
+          "inputs": {
+            "gramsPerUse": {
+              "label": "Grams per use"
+            },
+            "timesPerWeek": {
+              "label": "Times per week"
+            },
+            "costPerGram": {
+              "label": "Cost per gram "
+            }
+          },
+          "results": {
+            "0": {
+              "label": "Weekly spend"
+            },
+            "1": {
+              "label": "Yearly spend"
+            },
+            "2": {
+              "label": "Cardiovascular risk"
+            },
+            "3": {
+              "label": "Heart rate recovery"
+            }
+          },
+          "title": "Cardiovascular Risk & Cost"
+        },
+        "activities": {
+          "dopamine-visualization": {
+            "name": "Dopamine Recovery Journey",
+            "description": "Visualize your brain\\",
+            "scenes": {
+              "0": {
+                "text": "Day 1: Your dopamine receptors are nearly empty. Everything feels grey. This is the crash — not your new reality."
+              },
+              "1": {
+                "text": "Week 1: Your brain begins upregulating receptors. Small pleasures start registering — food, warmth, a funny moment."
+              },
+              "2": {
+                "text": "Week 2: Anhedonia is fading. Music sounds better. Sunsets have color again. Your reward system is rebuilding."
+              },
+              "3": {
+                "text": "Month 1: Natural dopamine spikes from exercise, achievement, and connection feel real again."
+              },
+              "4": {
+                "text": "Month 3: Your baseline has shifted. Normal life has texture and reward. The grey phase is behind you."
+              }
+            }
+          },
+          "stim-quiz": {
+            "name": "Stimulant Science Quiz",
+            "description": "How much do you know about what stimulants do — and how you recover?",
+            "questions": {
+              "0": {
+                "question": "How much dopamine does cocaine release compared to normal?"
+              }
+            }
+          },
+          "pleasure-relearn": {
+            "name": "Pleasure Relearning Log",
+            "description": "Anhedonia makes everything feel grey. Track the moments when color returns.",
+            "fields": {
+              "pleasureMoment": {
+                "label": "Did anything feel even slightly good today?",
+                "placeholder": "A warm shower, a funny text, sunshine on your face..."
+              },
+              "intensity": {
+                "label": "How much pleasure? (even 1 counts)"
+              },
+              "compare": {
+                "label": "Compared to last week, is pleasure..."
+              }
+            }
+          }
+        },
+        "articles": {
+          "a1": {
+            "title": "Why Quit Stimulants?",
+            "tag": "Awareness & Readiness",
+            "content": "TO_BE_EXTRACTED"
+          },
+          "a2": {
+            "title": "The Signs of a Stimulants Problem",
+            "tag": "Awareness & Readiness",
+            "content": "TO_BE_EXTRACTED"
+          },
+          "a3": {
+            "title": "How to Map Your Stimulants Triggers",
+            "tag": "Awareness & Readiness",
+            "content": "TO_BE_EXTRACTED"
+          },
+          "a4": {
+            "title": "The Lies We Tell to Keep Using Stimulants",
+            "tag": "Awareness & Readiness",
+            "content": "TO_BE_EXTRACTED"
+          },
+          "a5": {
+            "title": "How to Urge Surf",
+            "tag": "Detox & Early Healing",
+            "content": "TO_BE_EXTRACTED"
+          },
+          "a6": {
+            "title": "How to Defuse Thoughts About Stimulants",
+            "tag": "Detox & Early Healing",
+            "content": "TO_BE_EXTRACTED"
+          },
+          "a7": {
+            "title": "How to Tame Your Emotions",
+            "tag": "Detox & Early Healing",
+            "content": "TO_BE_EXTRACTED"
+          },
+          "a8": {
+            "title": "What Stimulants Withdrawal Feels Like",
+            "tag": "Detox & Early Healing",
+            "content": "TO_BE_EXTRACTED"
+          },
+          "a9": {
+            "title": "How to Get Better Sleep in Recovery",
+            "tag": "Detox & Early Healing",
+            "content": "TO_BE_EXTRACTED"
+          },
+          "a10": {
+            "title": "How to Ditch Perfectionism in Recovery",
+            "tag": "Recovery and Growth",
+            "content": "TO_BE_EXTRACTED"
+          },
+          "a11": {
+            "title": "How to Build a Life You Don\\",
+            "tag": "Recovery and Growth",
+            "content": "TO_BE_EXTRACTED"
+          },
+          "a12": {
+            "title": "How to Heal and Rebuild Relationships",
+            "tag": "Recovery and Growth",
+            "content": "TO_BE_EXTRACTED"
+          },
+          "a13": {
+            "title": "How to Keep Going with Sobriety",
+            "tag": "Recovery and Growth",
+            "content": "TO_BE_EXTRACTED"
+          },
+          "a14": {
+            "title": "How to Get Help for Stimulants Addiction",
+            "tag": "Recovery and Growth",
+            "content": "TO_BE_EXTRACTED"
+          }
+        }
+      },
+      "benzodiazepines": {
+        "name": "Benzodiazepines",
+        "descriptor": "Xanax, Valium & Klonopin",
+        "trackers": {
+          "taper": {
+            "name": "Taper Progress",
+            "insight": "Perfectly tracking prescribed schedule.",
+            "yAxisLabel": "mg/day",
+            "fields": {
+              "doseTaken": {
+                "label": "Dose taken (mg)"
+              },
+              "asPerscribed": {
+                "label": "As prescribed"
+              }
+            }
+          },
+          "anxiety-panic": {
+            "name": "Anxiety & Panic",
+            "insight": "2 weeks without a panic attack.",
+            "yAxisLabel": "Level",
+            "fields": {
+              "anxiety": {
+                "label": "Anxiety"
+              },
+              "panicAttacks": {
+                "label": "Panic attacks"
+              },
+              "trigger": {
+                "label": "Trigger"
+              }
+            }
+          },
+          "cognitive": {
+            "name": "Cognitive Function",
+            "insight": "Brain fog decreased 45% since starting the taper.",
+            "yAxisLabel": "Score",
+            "fields": {
+              "memory": {
+                "label": "Memory"
+              },
+              "focus": {
+                "label": "Focus"
+              },
+              "clarity": {
+                "label": "Mental clarity"
+              },
+              "brainFog": {
+                "label": "Brain fog"
+              },
+              "notes": {
+                "label": "Notes"
+              }
+            }
+          },
+          "withdrawal": {
+            "name": "Withdrawal Symptoms",
+            "insight": "Symptom burden decreasing with each taper step.",
+            "yAxisLabel": "Severity",
+            "fields": {
+              "tremors": {
+                "label": "Tremors"
+              }
+            }
+          },
+          "sleep": {
+            "name": "Sleep Quality",
+            "insight": "Sleep improving with taper compliance.",
+            "yAxisLabel": "Hours",
+            "fields": {
+              "hours": {
+                "label": "Hours slept"
+              },
+              "quality": {
+                "label": "Quality"
+              },
+              "nightAnxiety": {
+                "label": "Night anxiety"
+              }
+            }
+          },
+          "medical": {
+            "name": "Medical Supervision",
+            "insight": "87.5% of appointments attended.",
+            "yAxisLabel": "Attended",
+            "fields": {
+              "doctorCheckIn": {
+                "label": "Doctor check-in"
+              }
+            }
+          }
+        },
+        "calculator": {
+          "inputs": {
+            "currentDose": {
+              "label": "Current daily dose (mg)"
+            },
+            "taperWeeks": {
+              "label": "Target weeks to complete"
+            }
+          },
+          "results": {
+            "0": {
+              "label": "Weekly reduction"
+            },
+            "1": {
+              "label": "Taper rate"
+            },
+            "2": {
+              "label": "Safety"
+            },
+            "3": {
+              "label": "Disclaimer"
+            }
+          },
+          "title": "Taper Schedule & Equivalents"
+        },
+        "activities": {
+          "gaba-breathing": {
+            "name": "GABA Activation Breathing",
+            "description": "This specific breathing ratio activates your GABA system — the same pathway benzos target.",
+            "phases": {
+              "0": {
+                "text": "Inhale through your nose for 4 counts. Fill your belly, not your chest."
+              },
+              "1": {
+                "text": "Hold gently for 2 counts. No strain."
+              },
+              "2": {
+                "text": "Exhale through pursed lips for 8 counts. The long exhale is the key — it stimulates your vagus nerve."
+              },
+              "3": {
+                "text": "Pause for 2 counts. Let your body settle before the next breath."
+              }
+            }
+          },
+          "benzo-bodyscan": {
+            "name": "Withdrawal Body Scan",
+            "description": "Map where withdrawal is showing up today. Awareness reduces the fear.",
+            "bodyZones": {
+              "0": {
+                "name": "Head",
+                "prompt": "Depersonalization, brain zaps, dizziness? These are GABA receptors recalibrating. It feels terrifying but it\\"
+              },
+              "1": {
+                "name": "Eyes & Vision",
+                "prompt": "Visual disturbances, light sensitivity? Your visual cortex is hyperexcitable without benzos dampening it. This normalizes."
+              },
+              "2": {
+                "name": "Muscles",
+                "prompt": "Tension, twitching, jaw clenching? Your muscles forgot how to relax naturally. Gentle stretching helps them remember."
+              },
+              "3": {
+                "name": "Stomach",
+                "prompt": "Nausea, loss of appetite? Your gut has GABA receptors too. They\\"
+              },
+              "4": {
+                "name": "Nervous System",
+                "prompt": "Tingling, burning skin, internal vibrations? Your nervous system is unmuting itself. Each day the volume turns down slightly."
+              }
+            }
+          },
+          "benzo-sort": {
+            "name": "Window or Wave?",
+            "description": "Learn to identify whether you\\",
+            "sortCategories": {
+              "0": "Window Sign",
+              "1": "Wave Sign"
+            },
+            "sortItems": {
+              "0": {
+                "text": "Feeling genuinely calm without effort"
+              },
+              "1": {
+                "text": "Sudden return of anxiety that was gone yesterday"
+              },
+              "2": {
+                "text": "Enjoying a meal and tasting it fully"
+              },
+              "3": {
+                "text": "Insomnia after a week of good sleep"
+              },
+              "4": {
+                "text": "Laughing at something spontaneously"
+              },
+              "5": {
+                "text": "Muscle tension appearing from nowhere"
+              },
+              "6": {
+                "text": "Forgetting you\\"
+              }
+            }
+          }
+        },
+        "articles": {
+          "a1": {
+            "title": "Why Quit Benzodiazepines [Xanax · Valium · Klonopin]?",
+            "tag": "Awareness & Readiness",
+            "content": "TO_BE_EXTRACTED"
+          },
+          "a2": {
+            "title": "The Signs of a Benzodiazepines [Xanax · Valium · Klonopin] Problem",
+            "tag": "Awareness & Readiness",
+            "content": "TO_BE_EXTRACTED"
+          },
+          "a3": {
+            "title": "How to Map Your Benzodiazepines [Xanax · Valium · Klonopin] Triggers",
+            "tag": "Awareness & Readiness",
+            "content": "TO_BE_EXTRACTED"
+          },
+          "a4": {
+            "title": "The Lies We Tell to Keep Using Benzodiazepines [Xanax · Valium · Klonopin]",
+            "tag": "Awareness & Readiness",
+            "content": "TO_BE_EXTRACTED"
+          },
+          "a5": {
+            "title": "How to Urge Surf",
+            "tag": "Detox & Early Healing",
+            "content": "TO_BE_EXTRACTED"
+          },
+          "a6": {
+            "title": "How to Defuse Thoughts About Benzodiazepines [Xanax · Valium · Klonopin]",
+            "tag": "Detox & Early Healing",
+            "content": "TO_BE_EXTRACTED"
+          },
+          "a7": {
+            "title": "How to Tame Your Emotions",
+            "tag": "Detox & Early Healing",
+            "content": "TO_BE_EXTRACTED"
+          },
+          "a8": {
+            "title": "What Benzodiazepines [Xanax · Valium · Klonopin] Withdrawal Feels Like",
+            "tag": "Detox & Early Healing",
+            "content": "TO_BE_EXTRACTED"
+          },
+          "a9": {
+            "title": "How to Get Better Sleep in Recovery",
+            "tag": "Detox & Early Healing",
+            "content": "TO_BE_EXTRACTED"
+          },
+          "a10": {
+            "title": "How to Ditch Perfectionism in Recovery",
+            "tag": "Recovery and Growth",
+            "content": "TO_BE_EXTRACTED"
+          },
+          "a11": {
+            "title": "How to Build a Life You Don\\",
+            "tag": "Recovery and Growth",
+            "content": "TO_BE_EXTRACTED"
+          },
+          "a12": {
+            "title": "How to Heal and Rebuild Relationships",
+            "tag": "Recovery and Growth",
+            "content": "TO_BE_EXTRACTED"
+          },
+          "a13": {
+            "title": "How to Keep Going with Sobriety",
+            "tag": "Recovery and Growth",
+            "content": "TO_BE_EXTRACTED"
+          },
+          "a14": {
+            "title": "How to Get Help for Benzodiazepines [Xanax · Valium · Klonopin] Addiction",
+            "tag": "Recovery and Growth",
+            "content": "TO_BE_EXTRACTED"
+          }
+        }
+      },
+      "kratom": {
+        "name": "Kratom",
+        "descriptor": "Mitragyna speciosa",
+        "trackers": {
+          "dose-log": {
+            "name": "Dose Log",
+            "insight": "14 days without kratom. Opioid receptors recalibrating.",
+            "yAxisLabel": "Grams",
+            "fields": {
+              "grams": {
+                "label": "Grams consumed"
+              },
+              "doses": {
+                "label": "Number of doses"
+              },
+              "notes": {
+                "label": "Notes"
+              }
+            }
+          },
+          "withdrawal": {
+            "name": "Withdrawal Symptoms",
+            "insight": "Physical symptoms tracking typical opioid withdrawal timeline.",
+            "yAxisLabel": "Burden",
+            "fields": {
+              "muscleAches": {
+                "label": "Muscle aches"
+              }
+            }
+          },
+          "mood-energy": {
+            "name": "Mood & Energy",
+            "insight": "Energy returning to baseline. Natural energy systems recalibrating.",
+            "yAxisLabel": "Score",
+            "fields": {
+              "mood": {
+                "label": "Mood"
+              },
+              "energy": {
+                "label": "Energy"
+              },
+              "motivation": {
+                "label": "Motivation"
+              },
+              "notes": {
+                "label": "Notes"
+              }
+            }
+          },
+          "cravings": {
+            "name": "Cravings",
+            "insight": "Cravings declining. Environmental triggers remain strongest.",
+            "yAxisLabel": "Intensity",
+            "fields": {
+              "intensity": {
+                "label": "Intensity"
+              },
+              "trigger": {
+                "label": "Trigger"
+              }
+            }
+          },
+          "sleep": {
+            "name": "Sleep Quality",
+            "insight": "Sleep normalizing after acute withdrawal.",
+            "yAxisLabel": "Hours",
+            "fields": {
+              "hours": {
+                "label": "Sleep hours"
+              },
+              "quality": {
+                "label": "Quality"
+              },
+              "restlessLegs": {
+                "label": "Restless legs"
+              }
+            }
+          },
+          "financial": {
+            "name": "Financial Tracking",
+            "insight": "Savings accumulating. Redirect to something meaningful.",
+            "yAxisLabel": "Saved",
+            "fields": {
+              "bought": {
+                "label": "Bought kratom?"
+              }
+            }
+          }
+        },
+        "calculator": {
+          "inputs": {
+            "gramsPerDay": {
+              "label": "Grams per day"
+            },
+            "costPerKg": {
+              "label": "Cost per kg "
+            }
+          },
+          "results": {
+            "0": {
+              "label": "Daily cost"
+            },
+            "1": {
+              "label": "Monthly cost"
+            },
+            "2": {
+              "label": "Yearly cost"
+            },
+            "3": {
+              "label": "Opioid receptor binding"
+            }
+          },
+          "title": "Usage Cost & Dependence"
+        },
+        "activities": {
+          "kratom-quiz": {
+            "name": "Kratom Truth Quiz",
+            "description": "Separate kratom facts from community myths.",
+            "questions": {
+              "0": {
+                "question": "What type of receptors does kratom primarily bind to?"
+              }
+            }
+          },
+          "kratom-tap": {
+            "name": "Endorphin Surge",
+            "description": "Kratom hijacked your endorphin system. Generate your own rush."
+          },
+          "root-cause": {
+            "name": "Root Cause Explorer",
+            "description": "Most people started kratom for a reason. Address that reason directly.",
+            "fields": {
+              "originalReason": {
+                "label": "What were you originally treating with kratom?",
+                "placeholder": "Chronic pain? Social anxiety? Low energy? Depression?"
+              },
+              "currentState": {
+                "label": "Is that original issue better, worse, or the same without kratom?",
+                "placeholder": "Be specific about what\\"
+              },
+              "alternative": {
+                "label": "One thing you can do TODAY to address that root cause",
+                "placeholder": "Schedule a doctor visit, try a stretch routine, call a therapist..."
+              }
+            }
+          }
+        },
+        "articles": {
+          "a1": {
+            "title": "Why Quit Kratom?",
+            "tag": "Awareness & Readiness",
+            "content": "TO_BE_EXTRACTED"
+          },
+          "a2": {
+            "title": "The Signs of a Kratom Problem",
+            "tag": "Awareness & Readiness",
+            "content": "TO_BE_EXTRACTED"
+          },
+          "a3": {
+            "title": "How to Map Your Kratom Triggers",
+            "tag": "Awareness & Readiness",
+            "content": "TO_BE_EXTRACTED"
+          },
+          "a4": {
+            "title": "The Lies We Tell to Keep Using Kratom",
+            "tag": "Awareness & Readiness",
+            "content": "TO_BE_EXTRACTED"
+          },
+          "a5": {
+            "title": "How to Urge Surf",
+            "tag": "Detox & Early Healing",
+            "content": "TO_BE_EXTRACTED"
+          },
+          "a6": {
+            "title": "How to Defuse Thoughts About Kratom",
+            "tag": "Detox & Early Healing",
+            "content": "TO_BE_EXTRACTED"
+          },
+          "a7": {
+            "title": "How to Tame Your Emotions",
+            "tag": "Detox & Early Healing",
+            "content": "TO_BE_EXTRACTED"
+          },
+          "a8": {
+            "title": "What Kratom Withdrawal Feels Like",
+            "tag": "Detox & Early Healing",
+            "content": "TO_BE_EXTRACTED"
+          },
+          "a9": {
+            "title": "How to Get Better Sleep in Recovery",
+            "tag": "Detox & Early Healing",
+            "content": "TO_BE_EXTRACTED"
+          },
+          "a10": {
+            "title": "How to Ditch Perfectionism in Recovery",
+            "tag": "Recovery and Growth",
+            "content": "TO_BE_EXTRACTED"
+          },
+          "a11": {
+            "title": "How to Build a Life You Don\\",
+            "tag": "Recovery and Growth",
+            "content": "TO_BE_EXTRACTED"
+          },
+          "a12": {
+            "title": "How to Heal and Rebuild Relationships",
+            "tag": "Recovery and Growth",
+            "content": "TO_BE_EXTRACTED"
+          },
+          "a13": {
+            "title": "How to Keep Going with Sobriety",
+            "tag": "Recovery and Growth",
+            "content": "TO_BE_EXTRACTED"
+          },
+          "a14": {
+            "title": "How to Get Help for Kratom Addiction",
+            "tag": "Recovery and Growth",
+            "content": "TO_BE_EXTRACTED"
+          }
+        }
+      },
+      "mdma": {
+        "name": "MDMA",
+        "descriptor": "Ecstasy, molly, party drug",
+        "trackers": {
+          "use-frequency": {
+            "name": "Use Frequency",
+            "insight": "32 days since last use. Neurological recovery within reach.",
+            "yAxisLabel": "Uses/month",
+            "fields": {
+              "used": {
+                "label": "Used today"
+              }
+            }
+          },
+          "mood": {
+            "name": "Mood & Emotional Recovery",
+            "insight": "Emotional blunting decreased 40%. Authentic emotion returning.",
+            "yAxisLabel": "Score",
+            "fields": {
+              "mood": {
+                "label": "Overall mood"
+              },
+              "blunting": {
+                "label": "Emotional blunting"
+              },
+              "empathy": {
+                "label": "Social warmth"
+              },
+              "depression": {
+                "label": "Depression"
+              },
+              "notes": {
+                "label": "Notes"
+              }
+            }
+          },
+          "cognitive": {
+            "name": "Cognitive Function",
+            "insight": "Cognitive function improves consistently with abstinence.",
+            "yAxisLabel": "Score",
+            "fields": {
+              "memory": {
+                "label": "Memory"
+              },
+              "processing": {
+                "label": "Processing speed"
+              },
+              "focus": {
+                "label": "Focus"
+              },
+              "brainFog": {
+                "label": "Brain fog"
+              },
+              "notes": {
+                "label": "Notes"
+              }
+            }
+          },
+          "sleep": {
+            "name": "Sleep Quality",
+            "insight": "Sleep quality improves significantly by Week 4.",
+            "yAxisLabel": "Hours",
+            "fields": {
+              "hours": {
+                "label": "Hours"
+              },
+              "quality": {
+                "label": "Quality"
+              },
+              "vividDreams": {
+                "label": "Vivid dreams"
+              }
+            }
+          },
+          "social": {
+            "name": "Social Patterns",
+            "insight": "Music festivals and club settings remain highest-risk.",
+            "yAxisLabel": "Risk situations",
+            "fields": {
+              "situations": {
+                "label": "MDMA exposure situations"
+              }
+            }
+          },
+          "physical": {
+            "name": "Physical Health",
+            "insight": "Physical health improving. Heat regulation normalizing.",
+            "yAxisLabel": "Score",
+            "fields": {
+              "energy": {
+                "label": "Energy"
+              },
+              "appetite": {
+                "label": "Appetite"
+              }
+            }
+          }
+        },
+        "calculator": {
+          "inputs": {
+            "dosePerSession": {
+              "label": "Average dose (mg)"
+            },
+            "sessionsPerMonth": {
+              "label": "Sessions per month"
+            },
+            "yearsOfUse": {
+              "label": "Years of use"
+            }
+          },
+          "results": {
+            "0": {
+              "label": "Neurotoxicity risk"
+            },
+            "1": {
+              "label": "Recovery timeline"
+            },
+            "2": {
+              "label": "Key note"
+            }
+          },
+          "title": "Neurotoxicity Risk & Recovery"
+        },
+        "activities": {
+          "serotonin-visualization": {
+            "name": "Serotonin Recovery Journey",
+            "description": "Watch your brain\\",
+            "scenes": {
+              "0": {
+                "text": "Day 1 after use: Serotonin reserves are critically low. The "
+              },
+              "1": {
+                "text": "Week 1: Your body is synthesizing new serotonin from tryptophan. Sleep and sunlight accelerate this."
+              },
+              "2": {
+                "text": "Week 4: Serotonin transporters are normalizing. Emotional range is returning — subtle but real."
+              },
+              "3": {
+                "text": "Month 3: The emotional blunting is lifting. Music moves you. Conversations warm you. This is natural serotonin."
+              },
+              "4": {
+                "text": "Month 6+: Serotonin neuron terminals are regenerating. You feel more deeply than you did even before MDMA."
+              }
+            }
+          },
+          "mdma-affirmations": {
+            "name": "Authentic Connection Cards",
+            "description": "MDMA made intimacy feel effortless. These truths remind you it\\",
+            "affirmations": {
+              "0": "Real connection is quieter than MDMA connection — and it lasts longer.",
+              "1": "I can be vulnerable without a chemical safety net.",
+              "2": "The love I felt on MDMA was MY love. It lives in me, not in a pill.",
+              "3": "Emotional depth returns. I\\",
+              "4": ",\n          ",
+              "5": "t need to feel everything at maximum intensity to feel alive.",
+              "6": "My friendships are real. They don\\",
+              "7": ",\n          "
+            }
+          },
+          "mdma-quiz": {
+            "name": "Serotonin Science Quiz",
+            "description": "How much do you know about MDMA and your brain?",
+            "questions": {
+              "0": {
+                "question": "How much serotonin does MDMA release compared to normal?"
+              }
+            }
+          }
+        },
+        "articles": {
+          "a1": {
+            "title": "Why Quit MDMA?",
+            "tag": "Awareness & Readiness",
+            "content": "TO_BE_EXTRACTED"
+          },
+          "a2": {
+            "title": "The Signs of a MDMA Problem",
+            "tag": "Awareness & Readiness",
+            "content": "TO_BE_EXTRACTED"
+          },
+          "a3": {
+            "title": "How to Map Your MDMA Triggers",
+            "tag": "Awareness & Readiness",
+            "content": "TO_BE_EXTRACTED"
+          },
+          "a4": {
+            "title": "The Lies We Tell to Keep Using MDMA",
+            "tag": "Awareness & Readiness",
+            "content": "TO_BE_EXTRACTED"
+          },
+          "a5": {
+            "title": "How to Urge Surf",
+            "tag": "Detox & Early Healing",
+            "content": "TO_BE_EXTRACTED"
+          },
+          "a6": {
+            "title": "How to Defuse Thoughts About MDMA",
+            "tag": "Detox & Early Healing",
+            "content": "TO_BE_EXTRACTED"
+          },
+          "a7": {
+            "title": "How to Tame Your Emotions",
+            "tag": "Detox & Early Healing",
+            "content": "TO_BE_EXTRACTED"
+          },
+          "a8": {
+            "title": "What MDMA Withdrawal Feels Like",
+            "tag": "Detox & Early Healing",
+            "content": "TO_BE_EXTRACTED"
+          },
+          "a9": {
+            "title": "How to Get Better Sleep in Recovery",
+            "tag": "Detox & Early Healing",
+            "content": "TO_BE_EXTRACTED"
+          },
+          "a10": {
+            "title": "How to Ditch Perfectionism in Recovery",
+            "tag": "Recovery and Growth",
+            "content": "TO_BE_EXTRACTED"
+          },
+          "a11": {
+            "title": "How to Build a Life You Don\\",
+            "tag": "Recovery and Growth",
+            "content": "TO_BE_EXTRACTED"
+          },
+          "a12": {
+            "title": "How to Heal and Rebuild Relationships",
+            "tag": "Recovery and Growth",
+            "content": "TO_BE_EXTRACTED"
+          },
+          "a13": {
+            "title": "How to Keep Going with Sobriety",
+            "tag": "Recovery and Growth",
+            "content": "TO_BE_EXTRACTED"
+          },
+          "a14": {
+            "title": "How to Get Help for MDMA Addiction",
+            "tag": "Recovery and Growth",
+            "content": "TO_BE_EXTRACTED"
+          }
+        }
+      }
+    }
+  }
+}

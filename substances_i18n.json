@@ -1,0 +1,2005 @@
+{
+  "quit": {
+    "substances": {
+      "alcohol": {
+        "trackers": {
+          "consumption": {
+            "name": "Consumption Log",
+            "fields": {
+              "units": {
+                "label": "Units consumed today"
+              },
+              "drinkType": {
+                "label": "Drink type"
+              }
+            }
+          },
+          "cravings": {
+            "name": "Craving Intensity",
+            "fields": {
+              "count": {
+                "label": "Number of cravings today"
+              },
+              "peakIntensity": {
+                "label": "Peak intensity"
+              },
+              "trigger": {
+                "label": "Primary trigger"
+              }
+            }
+          },
+          "mood-sleep": {
+            "name": "Mood & Sleep",
+            "fields": {
+              "mood": {
+                "label": "Mood today"
+              }
+            }
+          },
+          "withdrawal": {
+            "name": "Withdrawal Symptoms",
+            "fields": {
+              "tremors": {
+                "label": "Tremors"
+              }
+            }
+          },
+          "savings": {
+            "name": "Financial Savings",
+            "fields": {
+              "bought": {
+                "label": "Did you buy alcohol today?"
+              }
+            }
+          },
+          "risk-situations": {
+            "name": "High-Risk Situations",
+            "fields": {
+              "situations": {
+                "label": "Situations encountered"
+              }
+            }
+          }
+        },
+        "calculator": {
+          "inputs": {
+            "drinksPerDay": {
+              "label": "Drinks per day"
+            },
+            "drinkingDays": {
+              "label": "Drinking days per week"
+            },
+            "costPerDrink": {
+              "label": "Cost per drink "
+            }
+          },
+          "results": {
+            "0": {
+              "label": "Weekly units"
+            },
+            "1": {
+              "label": "Safe limit"
+            },
+            "2": {
+              "label": "Monthly spend"
+            },
+            "3": {
+              "label": "Yearly spend"
+            },
+            "4": {
+              "label": "Liver risk"
+            },
+            "5": {
+              "label": "1-year savings if quit"
+            }
+          },
+          "title": "Units & Health Impact"
+        },
+        "activities": {
+          "alcohol-quiz": {
+            "name": "Alcohol Myth Buster",
+            "description": "Test your knowledge about alcohol and recovery.",
+            "questions": {
+              "0": {
+                "question": "How quickly does your liver start regenerating after you stop drinking?",
+                "explanation": "Your liver begins regenerating within 72 hours. It\\",
+                "options": {
+                  "0": "24 hours",
+                  "1": "72 hours",
+                  "2": "2 weeks",
+                  "3": "1 month"
+                }
+              },
+              "1": {
+                "question": "What does alcohol do to REM sleep?",
+                "explanation": "Alcohol suppresses REM sleep — the deep restorative stage. That\\",
+                "options": {
+                  "0": "Enhances it",
+                  "1": "Suppresses it",
+                  "2": "No effect",
+                  "3": "Doubles it"
+                }
+              },
+              "2": {
+                "question": "How long do most alcohol cravings last?",
+                "explanation": "Most cravings peak and pass within 3-5 minutes. If you can ride the wave, it breaks.",
+                "options": {
+                  "0": "30 seconds",
+                  "1": "3-5 minutes",
+                  "2": "1 hour",
+                  "3": "All day"
+                }
+              },
+              "3": {
+                "question": "Which organ is most damaged by chronic alcohol use?",
+                "explanation": "The liver processes alcohol and takes the most direct damage — but it also recovers remarkably fast with abstinence.",
+                "options": {
+                  "0": "Heart",
+                  "1": "Kidneys",
+                  "2": "Liver",
+                  "3": "Lungs"
+                }
+              },
+              "4": {
+                "question": "What is ",
+                "explanation": "Kindling means each withdrawal episode is more severe. This is why medical supervision matters for heavy drinkers.",
+                "options": {
+                  "0": "A warming sensation",
+                  "1": "Each withdrawal gets worse than the last",
+                  "2": "A treatment method",
+                  "3": "Morning shakes"
+                }
+              }
+            }
+          },
+          "liver-bodyscan": {
+            "name": "Recovery Body Scan",
+            "description": "Check in with the parts of your body that are actively healing right now.",
+            "bodyZones": {
+              "0": {
+                "name": "Liver",
+                "prompt": "Place your hand on your right ribs. Your liver is here — regenerating right now. Fat deposits are mobilizing. Enzyme levels are dropping daily."
+              },
+              "1": {
+                "name": "Brain",
+                "prompt": "Your brain\\"
+              },
+              "2": {
+                "name": "Heart",
+                "prompt": "Your blood pressure is normalizing. Resting heart rate is dropping. Your cardiovascular risk decreases with every sober day."
+              },
+              "3": {
+                "name": "Stomach",
+                "prompt": "Gastric lining is healing. The inflammation is subsiding. Your gut microbiome is diversifying again."
+              },
+              "4": {
+                "name": "Skin",
+                "prompt": "Your skin is rehydrating. Redness is fading. People will start saying you look healthier — and they\\"
+              }
+            }
+          },
+          "social-script": {
+            "name": "Social Situation Rehearsal",
+            "description": "Swipe through confident responses for when someone offers you a drink.",
+            "affirmations": {
+              "0": "I\\",
+              "1": ",\n          ",
+              "2": "m on a health kick. Feeling great actually.",
+              "3": "Not tonight, but I appreciate it.",
+              "4": "I\\",
+              "5": ",\n          ",
+              "6": "t need alcohol to enjoy this moment.",
+              "7": "My body is healing and I\\",
+              "8": ",\n          ",
+              "9": ",\n          ",
+              "10": "t need a drink."
+            }
+          }
+        },
+        "articles": {
+          "a1": {
+            "title": "Why Quit Alcohol?",
+            "tag": "Awareness & Readiness",
+            "content": "Your Goal: Discover a clear, personal reason for starting this journey - one that comes from within you, not from fear or pressure from others.\\n\\nLet\\"
+          },
+          "a2": {
+            "title": "The Signs of a Alcohol Problem",
+            "tag": "Awareness & Readiness",
+            "content": "Your Goal: Recognise the specific patterns that indicate your Alcohol use has crossed from habit into dependency - so you can respond to it honestly.\\n\\nWhy Signs Are Easy to Dismiss\\n\\nOne of the defining features of addiction is that the brain becomes very good at explaining away its own symptoms. What this means for you: the same mind shaped by Alcohol use is the one you\\"
+          },
+          "a3": {
+            "title": "How to Map Your Alcohol Triggers",
+            "tag": "Awareness & Readiness",
+            "content": "Your Goal: Build a personalised map of the specific people, places, emotions, and situations that reliably activate your desire to use Alcohol - so you can respond rather than react.\\n\\nWhy Triggers Are the Actual Battle\\n\\nMost people who relapse don\\"
+          },
+          "a4": {
+            "title": "The Lies We Tell to Keep Using Alcohol",
+            "tag": "Awareness & Readiness",
+            "content": "Your Goal: Recognise the specific thought patterns your mind uses to justify continued Alcohol use - because you cannot argue your way out of something you can\\"
+          },
+          "a5": {
+            "title": "How to Urge Surf",
+            "tag": "Detox & Early Healing",
+            "content": "Your Goal: Learn to move through a craving for Alcohol without acting on it, using a technique backed by clinical research in addiction medicine.\\n\\nWhat a Craving Actually Is\\n\\nA craving is not a command. Here\\"
+          },
+          "a6": {
+            "title": "How to Defuse Thoughts About Alcohol",
+            "tag": "Detox & Early Healing",
+            "content": "Your Goal: Learn to unhook from intrusive thoughts about Alcohol so they lose their power to pull you toward using, without having to fight or suppress them.\\n\\nWhy Fighting Your Thoughts Doesn\\"
+          },
+          "a7": {
+            "title": "How to Tame Your Emotions",
+            "tag": "Detox & Early Healing",
+            "content": "Your Goal: Build the capacity to feel difficult emotions without immediately reaching for Alcohol - because emotional tolerance is the foundation of sustained recovery.\\n\\nWhy Alcohol and Emotions Became Linked\\n\\nFor many people, Alcohol use started as an emotional solution. It numbed what was painful, amplified what was flat, or created a reliable state that felt better than the default. What the neuroscience shows: over time, the brain outsources emotional regulation to the substance. Natural coping pathways weaken through disuse, while the Alcohol pathway becomes the highway.\\n\\nThis is why early recovery often feels emotionally overwhelming - emotions that were previously managed chemically now have to be handled directly. Emotional volatility in the early weeks is one of the most common reasons people return to Alcohol use.\\n\\nThe STOP Technique\\n\\nWhen a difficult emotion arises and the pull toward Alcohol activates, STOP is a four-step grounding practice:\\n\\nS - Stop: whatever you\\"
+          },
+          "a8": {
+            "title": "What Alcohol Withdrawal Feels Like",
+            "tag": "Detox & Early Healing",
+            "content": "Your Goal: Understand what Alcohol withdrawal actually involves - physically and psychologically - so you can prepare for it, move through it, and recognise when to seek medical support.\\n\\nWhy Withdrawal Happens\\n\\nWhat this means for your body: when you use Alcohol regularly over time, your nervous system adapts to its presence. It recalibrates its baseline around the substance. When Alcohol is removed, the system is suddenly without what it had come to treat as normal - and withdrawal symptoms are the nervous system rebalancing itself.\\n\\nThis is not punishment. It is physiology. Understanding it as physiology, rather than as a sign that something is broken, is one of the most important reframes in early recovery.\\n\\nCommon Withdrawal Experiences\\n\\nPhysical symptoms vary significantly depending on the substance and the duration and intensity of use. Common experiences include sleep disruption, appetite changes, fatigue, muscle aches, sweating, and gastrointestinal discomfort. For some substances - particularly alcohol, benzodiazepines, and opioids - withdrawal can have serious medical components and should be managed with clinical support.\\n\\nPsychological symptoms are frequently the harder and longer-lasting challenge. Anxiety, irritability, low mood, difficulty concentrating, and a pervasive sense of emptiness are common. The clinical term for this is anhedonia - a temporary reduction in the ability to feel pleasure from ordinary things. This happens because Alcohol was artificially stimulating dopamine pathways that now need time to recover their natural function.\\n\\nWhat this actually feels like: many people describe early withdrawal as a period of high discomfort that then gives way to something duller and greyer - not dramatically painful, but flat. This flatness is often what drives people back to Alcohol. It\\"
+          },
+          "a9": {
+            "title": "How to Get Better Sleep in Recovery",
+            "tag": "Detox & Early Healing",
+            "content": "Your Goal: Rebuild healthy sleep without Alcohol - and understand why this is one of the most important things you can do for lasting recovery.\\n\\nWhy Sleep and Recovery Are Inseparable\\n\\nSleep is the brain\\"
+          },
+          "a10": {
+            "title": "How to Ditch Perfectionism in Recovery",
+            "tag": "Recovery and Growth",
+            "content": "Your Goal: Release the belief that recovery has to be perfect - and understand why perfectionism is one of the most reliable pathways back to Alcohol use.\\n\\nHow Perfectionism Fuels Addiction\\n\\nPerfectionism and addiction are closely linked. What the research shows: perfectionism isn\\"
+          },
+          "a11": {
+            "title": "How to Build a Life You Don\\",
+            "tag": "Recovery and Growth",
+            "content": "Your Goal: Begin building a life so genuinely engaging and meaningful that staying sober from Alcohol becomes desirable rather than merely disciplined.\\n\\nThe Problem With Just Quitting\\n\\nMany people approach recovery as subtraction: remove Alcohol, then life continues. But when Alcohol has been a central organising feature of your days - providing structure, reward, social connection, or emotional management - removing it leaves a vacuum. And vacuums get filled with something. What this means for you: the question isn\\"
+          },
+          "a12": {
+            "title": "How to Heal and Rebuild Relationships",
+            "tag": "Recovery and Growth",
+            "content": "Your Goal: Understand how Alcohol use affected your relationships - and begin the deliberate process of repair, rebuilding, and choosing connections that support your recovery.\\n\\nWhat Alcohol Did to Your Relationships\\n\\nAddiction is often described as a relationship with a substance, but it is always also a disruption of relationships with people. The time, energy, emotional availability, and honesty that Alcohol consumed were resources that would otherwise have been invested in people who mattered.\\n\\nThe impacts are wide-ranging. Trust may have been broken through broken promises or unpredictable behaviour. Emotional intimacy may have become shallow, because genuine intimacy requires presence - and Alcohol use consistently interferes with presence.\\n\\nThe Three Phases of Relationship Repair\\n\\nPhase one - Stabilise yourself first: attempting serious relationship repair before you have some stability tends to backfire. You need to be in a place where you can be honest, consistent, and present before asking someone else to trust you again. This phase is typically the first 60-90 days of sobriety.\\n\\nPhase two - Honest acknowledgement: repair requires acknowledgement of specific harm, not general apology. "
+          },
+          "a13": {
+            "title": "How to Keep Going with Sobriety",
+            "tag": "Recovery and Growth",
+            "content": "Your Goal: Build the practices, mindset, and support structures that make long-term sobriety from Alcohol not just achievable but genuinely sustainable.\\n\\nWhy Long-Term Recovery Is Different From Early Recovery\\n\\nEarly recovery is largely about crisis management - getting through cravings, navigating withdrawal, avoiding high-risk situations. But these are not the same skills required for sustained long-term sobriety. What the research shows: relapse risk in Alcohol recovery doesn\\"
+          },
+          "a14": {
+            "title": "How to Get Help for Alcohol Addiction",
+            "tag": "Recovery and Growth",
+            "content": "Your Goal: Know exactly what professional help looks like for Alcohol addiction, how to access it, and why seeking it is one of the strongest things you can do.\\n\\nWhy Getting Help Is a Decision, Not a Defeat\\n\\nThere is a persistent cultural story that recovery from Alcohol addiction should be a private, individual act of will. What the evidence actually shows: professional support significantly improves outcomes across every measurable metric - duration of sobriety, quality of life, mental health, and long-term recovery rates. Seeking help isn\\"
+          }
+        }
+      },
+      "tobacco": {
+        "trackers": {
+          "cigarettes": {
+            "name": "Daily Cigarettes",
+            "fields": {
+              "count": {
+                "label": "Cigarettes smoked today"
+              },
+              "type": {
+                "label": "Type"
+              }
+            }
+          },
+          "cravings": {
+            "name": "Craving Patterns",
+            "fields": {
+              "count": {
+                "label": "Number of cravings"
+              },
+              "peakIntensity": {
+                "label": "Peak intensity"
+              },
+              "peakTime": {
+                "label": "Peak time"
+              }
+            }
+          },
+          "respiratory": {
+            "name": "Respiratory Health",
+            "fields": {
+              "breathingEase": {
+                "label": "Breathing ease"
+              },
+              "coughSeverity": {
+                "label": "Cough severity"
+              }
+            }
+          },
+          "mood-irritability": {
+            "name": "Mood & Irritability",
+            "fields": {
+              "irritability": {
+                "label": "Irritability"
+              },
+              "mood": {
+                "label": "Mood"
+              }
+            }
+          },
+          "nrt": {
+            "name": "NRT Tracking",
+            "fields": {
+              "nrtType": {
+                "label": "NRT used"
+              }
+            }
+          },
+          "financial-health": {
+            "name": "Financial & Health",
+            "fields": {
+              "bought": {
+                "label": "Bought cigarettes?"
+              }
+            }
+          }
+        },
+        "calculator": {
+          "inputs": {
+            "cigarettesPerDay": {
+              "label": "Cigarettes per day"
+            },
+            "costPerPack": {
+              "label": "Cost per pack "
+            },
+            "yearsSmoked": {
+              "label": "Years smoked"
+            }
+          },
+          "results": {
+            "0": {
+              "label": "Daily spend"
+            },
+            "1": {
+              "label": "Yearly spend"
+            },
+            "2": {
+              "label": "Total spent"
+            },
+            "3": {
+              "label": "Carcinogens per cigarette"
+            },
+            "4": {
+              "label": "10-year benefit"
+            }
+          },
+          "title": "Cigarette Cost & Health Impact"
+        },
+        "activities": {
+          "craving-tap": {
+            "name": "Craving Crusher",
+            "description": "Nicotine cravings last 3-5 minutes. Smash this one into dust.",
+            "tapPrompt": "Each tap weakens the craving. Tap until it\\"
+          },
+          "lung-visualization": {
+            "name": "Lung Healing Journey",
+            "description": "Watch your lungs heal in real time — from the first hour to one year smoke-free.",
+            "scenes": {
+              "0": {
+                "text": "Hour 1: Carbon monoxide is leaving your bloodstream. Oxygen levels are already rising."
+              },
+              "1": {
+                "text": "Day 3: Your bronchial tubes are relaxing. Breathing becomes easier. Energy increases."
+              },
+              "2": {
+                "text": "Week 2: Cilia — the tiny hairs in your lungs — are regrowing. They sweep out mucus and debris."
+              },
+              "3": {
+                "text": "Month 1: Lung function has increased measurably. Coughing and shortness of breath decrease."
+              },
+              "4": {
+                "text": "Month 9: Your lungs are dramatically cleaner. Infection risk has dropped. You can feel the difference."
+              },
+              "5": {
+                "text": "Year 1: Your risk of heart disease is now HALF that of a smoker. Your body chose healing. You let it."
+              }
+            }
+          },
+          "tobacco-sort": {
+            "name": "Trigger vs. Choice",
+            "description": "Sort these situations — is it a genuine trigger or a choice in disguise?",
+            "sortCategories": {
+              "0": "Real Trigger",
+              "1": "Choice in Disguise"
+            },
+            "sortItems": {
+              "0": {
+                "text": "Having coffee in the morning"
+              },
+              "1": {
+                "text": "Extreme unexpected stress at work"
+              },
+              "2": {
+                "text": "Seeing someone else smoke outside"
+              },
+              "3": {
+                "text": "Severe anxiety attack"
+              },
+              "4": {
+                "text": "Finishing a meal"
+              },
+              "5": {
+                "text": "Grief or loss of a loved one"
+              },
+              "6": {
+                "text": "Waiting for a bus"
+              }
+            }
+          }
+        },
+        "articles": {
+          "a1": {
+            "title": "Why Quit Nicotine?",
+            "tag": "Awareness & Readiness",
+            "content": "Your Goal: Discover a clear, personal reason for starting this journey - one that comes from within you, not from fear or pressure from others.\\n\\nLet\\"
+          },
+          "a2": {
+            "title": "The Signs of a Nicotine Problem",
+            "tag": "Awareness & Readiness",
+            "content": "Your Goal: Recognise the specific patterns that indicate your Nicotine use has crossed from habit into dependency - so you can respond to it honestly.\\n\\nWhy Signs Are Easy to Dismiss\\n\\nOne of the defining features of addiction is that the brain becomes very good at explaining away its own symptoms. What this means for you: the same mind shaped by Nicotine use is the one you\\"
+          },
+          "a3": {
+            "title": "How to Map Your Nicotine Triggers",
+            "tag": "Awareness & Readiness",
+            "content": "Your Goal: Build a personalised map of the specific people, places, emotions, and situations that reliably activate your desire to use Nicotine - so you can respond rather than react.\\n\\nWhy Triggers Are the Actual Battle\\n\\nMost people who relapse don\\"
+          },
+          "a4": {
+            "title": "The Lies We Tell to Keep Using Nicotine",
+            "tag": "Awareness & Readiness",
+            "content": "Your Goal: Recognise the specific thought patterns your mind uses to justify continued Nicotine use - because you cannot argue your way out of something you can\\"
+          },
+          "a5": {
+            "title": "How to Urge Surf",
+            "tag": "Detox & Early Healing",
+            "content": "Your Goal: Learn to move through a craving for Nicotine without acting on it, using a technique backed by clinical research in addiction medicine.\\n\\nWhat a Craving Actually Is\\n\\nA craving is not a command. Here\\"
+          },
+          "a6": {
+            "title": "How to Defuse Thoughts About Nicotine",
+            "tag": "Detox & Early Healing",
+            "content": "Your Goal: Learn to unhook from intrusive thoughts about Nicotine so they lose their power to pull you toward using, without having to fight or suppress them.\\n\\nWhy Fighting Your Thoughts Doesn\\"
+          },
+          "a7": {
+            "title": "How to Tame Your Emotions",
+            "tag": "Detox & Early Healing",
+            "content": "Your Goal: Build the capacity to feel difficult emotions without immediately reaching for Nicotine - because emotional tolerance is the foundation of sustained recovery.\\n\\nWhy Nicotine and Emotions Became Linked\\n\\nFor many people, Nicotine use started as an emotional solution. It numbed what was painful, amplified what was flat, or created a reliable state that felt better than the default. What the neuroscience shows: over time, the brain outsources emotional regulation to the substance. Natural coping pathways weaken through disuse, while the Nicotine pathway becomes the highway.\\n\\nThis is why early recovery often feels emotionally overwhelming - emotions that were previously managed chemically now have to be handled directly. Emotional volatility in the early weeks is one of the most common reasons people return to Nicotine use.\\n\\nThe STOP Technique\\n\\nWhen a difficult emotion arises and the pull toward Nicotine activates, STOP is a four-step grounding practice:\\n\\nS - Stop: whatever you\\"
+          },
+          "a8": {
+            "title": "What Nicotine Withdrawal Feels Like",
+            "tag": "Detox & Early Healing",
+            "content": "Your Goal: Understand what Nicotine withdrawal actually involves - physically and psychologically - so you can prepare for it, move through it, and recognise when to seek medical support.\\n\\nWhy Withdrawal Happens\\n\\nWhat this means for your body: when you use Nicotine regularly over time, your nervous system adapts to its presence. It recalibrates its baseline around the substance. When Nicotine is removed, the system is suddenly without what it had come to treat as normal - and withdrawal symptoms are the nervous system rebalancing itself.\\n\\nThis is not punishment. It is physiology. Understanding it as physiology, rather than as a sign that something is broken, is one of the most important reframes in early recovery.\\n\\nCommon Withdrawal Experiences\\n\\nPhysical symptoms vary significantly depending on the substance and the duration and intensity of use. Common experiences include sleep disruption, appetite changes, fatigue, muscle aches, sweating, and gastrointestinal discomfort. For some substances - particularly alcohol, benzodiazepines, and opioids - withdrawal can have serious medical components and should be managed with clinical support.\\n\\nPsychological symptoms are frequently the harder and longer-lasting challenge. Anxiety, irritability, low mood, difficulty concentrating, and a pervasive sense of emptiness are common. The clinical term for this is anhedonia - a temporary reduction in the ability to feel pleasure from ordinary things. This happens because Nicotine was artificially stimulating dopamine pathways that now need time to recover their natural function.\\n\\nWhat this actually feels like: many people describe early withdrawal as a period of high discomfort that then gives way to something duller and greyer - not dramatically painful, but flat. This flatness is often what drives people back to Nicotine. It\\"
+          },
+          "a9": {
+            "title": "How to Get Better Sleep in Recovery",
+            "tag": "Detox & Early Healing",
+            "content": "Your Goal: Rebuild healthy sleep without Nicotine - and understand why this is one of the most important things you can do for lasting recovery.\\n\\nWhy Sleep and Recovery Are Inseparable\\n\\nSleep is the brain\\"
+          },
+          "a10": {
+            "title": "How to Ditch Perfectionism in Recovery",
+            "tag": "Recovery and Growth",
+            "content": "Your Goal: Release the belief that recovery has to be perfect - and understand why perfectionism is one of the most reliable pathways back to Nicotine use.\\n\\nHow Perfectionism Fuels Addiction\\n\\nPerfectionism and addiction are closely linked. What the research shows: perfectionism isn\\"
+          },
+          "a11": {
+            "title": "How to Build a Life You Don\\",
+            "tag": "Recovery and Growth",
+            "content": "Your Goal: Begin building a life so genuinely engaging and meaningful that staying sober from Nicotine becomes desirable rather than merely disciplined.\\n\\nThe Problem With Just Quitting\\n\\nMany people approach recovery as subtraction: remove Nicotine, then life continues. But when Nicotine has been a central organising feature of your days - providing structure, reward, social connection, or emotional management - removing it leaves a vacuum. And vacuums get filled with something. What this means for you: the question isn\\"
+          },
+          "a12": {
+            "title": "How to Heal and Rebuild Relationships",
+            "tag": "Recovery and Growth",
+            "content": "Your Goal: Understand how Nicotine use affected your relationships - and begin the deliberate process of repair, rebuilding, and choosing connections that support your recovery.\\n\\nWhat Nicotine Did to Your Relationships\\n\\nAddiction is often described as a relationship with a substance, but it is always also a disruption of relationships with people. The time, energy, emotional availability, and honesty that Nicotine consumed were resources that would otherwise have been invested in people who mattered.\\n\\nThe impacts are wide-ranging. Trust may have been broken through broken promises or unpredictable behaviour. Emotional intimacy may have become shallow, because genuine intimacy requires presence - and Nicotine use consistently interferes with presence.\\n\\nThe Three Phases of Relationship Repair\\n\\nPhase one - Stabilise yourself first: attempting serious relationship repair before you have some stability tends to backfire. You need to be in a place where you can be honest, consistent, and present before asking someone else to trust you again. This phase is typically the first 60-90 days of sobriety.\\n\\nPhase two - Honest acknowledgement: repair requires acknowledgement of specific harm, not general apology. "
+          },
+          "a13": {
+            "title": "How to Keep Going with Sobriety",
+            "tag": "Recovery and Growth",
+            "content": "Your Goal: Build the practices, mindset, and support structures that make long-term sobriety from Nicotine not just achievable but genuinely sustainable.\\n\\nWhy Long-Term Recovery Is Different From Early Recovery\\n\\nEarly recovery is largely about crisis management - getting through cravings, navigating withdrawal, avoiding high-risk situations. But these are not the same skills required for sustained long-term sobriety. What the research shows: relapse risk in Nicotine recovery doesn\\"
+          },
+          "a14": {
+            "title": "How to Get Help for Nicotine Addiction",
+            "tag": "Recovery and Growth",
+            "content": "Your Goal: Know exactly what professional help looks like for Nicotine addiction, how to access it, and why seeking it is one of the strongest things you can do.\\n\\nWhy Getting Help Is a Decision, Not a Defeat\\n\\nThere is a persistent cultural story that recovery from Nicotine addiction should be a private, individual act of will. What the evidence actually shows: professional support significantly improves outcomes across every measurable metric - duration of sobriety, quality of life, mental health, and long-term recovery rates. Seeking help isn\\"
+          }
+        }
+      },
+      "opioids": {
+        "trackers": {
+          "use-mat": {
+            "name": "Use & MAT",
+            "fields": {
+              "usedToday": {
+                "label": "Used illicitly today"
+              }
+            }
+          },
+          "craving-pain": {
+            "name": "Craving & Pain",
+            "fields": {
+              "cravingIntensity": {
+                "label": "Craving intensity"
+              },
+              "physicalPain": {
+                "label": "Physical pain"
+              },
+              "emotionalPain": {
+                "label": "Emotional pain"
+              },
+              "trigger": {
+                "label": "Primary trigger"
+              }
+            }
+          },
+          "withdrawal": {
+            "name": "Withdrawal Symptoms",
+            "fields": {
+              "bodyAches": {
+                "label": "Body aches"
+              }
+            }
+          },
+          "sleep-energy": {
+            "name": "Sleep & Energy",
+            "fields": {
+              "sleepHours": {
+                "label": "Sleep hours"
+              },
+              "sleepQuality": {
+                "label": "Sleep quality"
+              },
+              "energy": {
+                "label": "Energy"
+              },
+              "meals": {
+                "label": "Meals today"
+              }
+            }
+          },
+          "treatment": {
+            "name": "Treatment Engagement",
+            "fields": {
+              "naMeeting": {
+                "label": "NA meeting"
+              }
+            }
+          },
+          "functional": {
+            "name": "Functional Recovery",
+            "fields": {
+              "work": {
+                "label": "Work/school"
+              }
+            }
+          }
+        },
+        "calculator": {
+          "inputs": {
+            "mgPerDay": {
+              "label": "mg per day"
+            },
+            "bupDose": {
+              "label": "Buprenorphine dose (mg/day)"
+            }
+          },
+          "results": {},
+          "title": "MME & Overdose Risk"
+        },
+        "activities": {
+          "naloxone-quiz": {
+            "name": "Naloxone Emergency Quiz",
+            "description": "Could you save a life? Test your overdose response knowledge.",
+            "questions": {
+              "0": {
+                "question": "What is the first thing you should do if you suspect an opioid overdose?",
+                "explanation": "Always call emergency services FIRST. Naloxone is temporary — professional help is essential.",
+                "options": {
+                  "0": "Give naloxone",
+                  "1": "Call 112/911",
+                  "2": "Splash cold water",
+                  "3": "Wait and observe"
+                }
+              },
+              "1": {
+                "question": "How does naloxone work?",
+                "explanation": "Naloxone competitively binds to opioid receptors, temporarily reversing the overdose.",
+                "options": {
+                  "0": "It metabolizes opioids",
+                  "1": "It blocks opioid receptors",
+                  "2": "It stimulates breathing",
+                  "3": "It induces vomiting"
+                }
+              },
+              "2": {
+                "question": "How long does naloxone last?",
+                "explanation": "Naloxone lasts 30-90 minutes. The opioid may outlast it — that\\",
+                "options": {
+                  "0": "5 minutes",
+                  "1": "30-90 minutes",
+                  "2": "6 hours",
+                  "3": "24 hours"
+                }
+              },
+              "3": {
+                "question": "What position should an unconscious person be in?",
+                "explanation": "The recovery position prevents choking if they vomit. Turn them on their side.",
+                "options": {
+                  "0": "On their back",
+                  "1": "Sitting up",
+                  "2": "Recovery position (on side)",
+                  "3": "Standing supported"
+                }
+              }
+            }
+          },
+          "pain-bodyscan": {
+            "name": "Pain Body Map",
+            "description": "Separate real pain from craving. Your body knows the difference — learn to listen.",
+            "bodyZones": {
+              "0": {
+                "name": "Head & Mind",
+                "prompt": "Is there a headache, or is it mental fog from craving? Notice without judging. Cravings feel like urgency. Pain feels specific."
+              },
+              "1": {
+                "name": "Gut & Core",
+                "prompt": "Opioid withdrawal hits the gut hard — cramping, nausea. Breathe into this area. This sensation is temporary and means your body is recalibrating."
+              },
+              "2": {
+                "name": "Muscles & Joints",
+                "prompt": "Aching, restless legs — your body\\"
+              },
+              "3": {
+                "name": "Skin & Nerves",
+                "prompt": "Goosebumps, sweating, sensitivity — your nervous system is resetting. Touch something textured. Ground into sensation."
+              },
+              "4": {
+                "name": "Chest & Heart",
+                "prompt": "Anxiety or physical tightness? Place both hands here. Slow your breathing. Your heart rate is normalizing with each sober day."
+              }
+            }
+          },
+          "safe-affirmations": {
+            "name": "Recovery Affirmations",
+            "description": "Internalize these truths. They become stronger with repetition.",
+            "affirmations": {
+              "0": "I am more than my addiction.",
+              "1": "My pain is real, but opioids made it worse long-term.",
+              "2": "I deserve to feel — even when it\\",
+              "3": ",\n          ",
+              "4": ",\n          ",
+              "5": ",\n          ",
+              "6": ",\n          "
+            }
+          }
+        },
+        "articles": {
+          "a1": {
+            "title": "Why Quit Opioids?",
+            "tag": "Awareness & Readiness",
+            "content": "Your Goal: Discover a clear, personal reason for starting this journey - one that comes from within you, not from fear or pressure from others.\\n\\nLet\\"
+          },
+          "a2": {
+            "title": "The Signs of a Opioids Problem",
+            "tag": "Awareness & Readiness",
+            "content": "Your Goal: Recognise the specific patterns that indicate your Opioids use has crossed from habit into dependency - so you can respond to it honestly.\\n\\nWhy Signs Are Easy to Dismiss\\n\\nOne of the defining features of addiction is that the brain becomes very good at explaining away its own symptoms. What this means for you: the same mind shaped by Opioids use is the one you\\"
+          },
+          "a3": {
+            "title": "How to Map Your Opioids Triggers",
+            "tag": "Awareness & Readiness",
+            "content": "Your Goal: Build a personalised map of the specific people, places, emotions, and situations that reliably activate your desire to use Opioids - so you can respond rather than react.\\n\\nWhy Triggers Are the Actual Battle\\n\\nMost people who relapse don\\"
+          },
+          "a4": {
+            "title": "The Lies We Tell to Keep Using Opioids",
+            "tag": "Awareness & Readiness",
+            "content": "Your Goal: Recognise the specific thought patterns your mind uses to justify continued Opioids use - because you cannot argue your way out of something you can\\"
+          },
+          "a5": {
+            "title": "How to Urge Surf",
+            "tag": "Detox & Early Healing",
+            "content": "Your Goal: Learn to move through a craving for Opioids without acting on it, using a technique backed by clinical research in addiction medicine.\\n\\nWhat a Craving Actually Is\\n\\nA craving is not a command. Here\\"
+          },
+          "a6": {
+            "title": "How to Defuse Thoughts About Opioids",
+            "tag": "Detox & Early Healing",
+            "content": "Your Goal: Learn to unhook from intrusive thoughts about Opioids so they lose their power to pull you toward using, without having to fight or suppress them.\\n\\nWhy Fighting Your Thoughts Doesn\\"
+          },
+          "a7": {
+            "title": "How to Tame Your Emotions",
+            "tag": "Detox & Early Healing",
+            "content": "Your Goal: Build the capacity to feel difficult emotions without immediately reaching for Opioids - because emotional tolerance is the foundation of sustained recovery.\\n\\nWhy Opioids and Emotions Became Linked\\n\\nFor many people, Opioids use started as an emotional solution. It numbed what was painful, amplified what was flat, or created a reliable state that felt better than the default. What the neuroscience shows: over time, the brain outsources emotional regulation to the substance. Natural coping pathways weaken through disuse, while the Opioids pathway becomes the highway.\\n\\nThis is why early recovery often feels emotionally overwhelming - emotions that were previously managed chemically now have to be handled directly. Emotional volatility in the early weeks is one of the most common reasons people return to Opioids use.\\n\\nThe STOP Technique\\n\\nWhen a difficult emotion arises and the pull toward Opioids activates, STOP is a four-step grounding practice:\\n\\nS - Stop: whatever you\\"
+          },
+          "a8": {
+            "title": "What Opioids Withdrawal Feels Like",
+            "tag": "Detox & Early Healing",
+            "content": "Your Goal: Understand what Opioids withdrawal actually involves - physically and psychologically - so you can prepare for it, move through it, and recognise when to seek medical support.\\n\\nWhy Withdrawal Happens\\n\\nWhat this means for your body: when you use Opioids regularly over time, your nervous system adapts to its presence. It recalibrates its baseline around the substance. When Opioids is removed, the system is suddenly without what it had come to treat as normal - and withdrawal symptoms are the nervous system rebalancing itself.\\n\\nThis is not punishment. It is physiology. Understanding it as physiology, rather than as a sign that something is broken, is one of the most important reframes in early recovery.\\n\\nCommon Withdrawal Experiences\\n\\nPhysical symptoms vary significantly depending on the substance and the duration and intensity of use. Common experiences include sleep disruption, appetite changes, fatigue, muscle aches, sweating, and gastrointestinal discomfort. For some substances - particularly alcohol, benzodiazepines, and opioids - withdrawal can have serious medical components and should be managed with clinical support.\\n\\nPsychological symptoms are frequently the harder and longer-lasting challenge. Anxiety, irritability, low mood, difficulty concentrating, and a pervasive sense of emptiness are common. The clinical term for this is anhedonia - a temporary reduction in the ability to feel pleasure from ordinary things. This happens because Opioids was artificially stimulating dopamine pathways that now need time to recover their natural function.\\n\\nWhat this actually feels like: many people describe early withdrawal as a period of high discomfort that then gives way to something duller and greyer - not dramatically painful, but flat. This flatness is often what drives people back to Opioids. It\\"
+          },
+          "a9": {
+            "title": "How to Get Better Sleep in Recovery",
+            "tag": "Detox & Early Healing",
+            "content": "Your Goal: Rebuild healthy sleep without Opioids - and understand why this is one of the most important things you can do for lasting recovery.\\n\\nWhy Sleep and Recovery Are Inseparable\\n\\nSleep is the brain\\"
+          },
+          "a10": {
+            "title": "How to Ditch Perfectionism in Recovery",
+            "tag": "Recovery and Growth",
+            "content": "Your Goal: Release the belief that recovery has to be perfect - and understand why perfectionism is one of the most reliable pathways back to Opioids use.\\n\\nHow Perfectionism Fuels Addiction\\n\\nPerfectionism and addiction are closely linked. What the research shows: perfectionism isn\\"
+          },
+          "a11": {
+            "title": "How to Build a Life You Don\\",
+            "tag": "Recovery and Growth",
+            "content": "Your Goal: Begin building a life so genuinely engaging and meaningful that staying sober from Opioids becomes desirable rather than merely disciplined.\\n\\nThe Problem With Just Quitting\\n\\nMany people approach recovery as subtraction: remove Opioids, then life continues. But when Opioids has been a central organising feature of your days - providing structure, reward, social connection, or emotional management - removing it leaves a vacuum. And vacuums get filled with something. What this means for you: the question isn\\"
+          },
+          "a12": {
+            "title": "How to Heal and Rebuild Relationships",
+            "tag": "Recovery and Growth",
+            "content": "Your Goal: Understand how Opioids use affected your relationships - and begin the deliberate process of repair, rebuilding, and choosing connections that support your recovery.\\n\\nWhat Opioids Did to Your Relationships\\n\\nAddiction is often described as a relationship with a substance, but it is always also a disruption of relationships with people. The time, energy, emotional availability, and honesty that Opioids consumed were resources that would otherwise have been invested in people who mattered.\\n\\nThe impacts are wide-ranging. Trust may have been broken through broken promises or unpredictable behaviour. Emotional intimacy may have become shallow, because genuine intimacy requires presence - and Opioids use consistently interferes with presence.\\n\\nThe Three Phases of Relationship Repair\\n\\nPhase one - Stabilise yourself first: attempting serious relationship repair before you have some stability tends to backfire. You need to be in a place where you can be honest, consistent, and present before asking someone else to trust you again. This phase is typically the first 60-90 days of sobriety.\\n\\nPhase two - Honest acknowledgement: repair requires acknowledgement of specific harm, not general apology. "
+          },
+          "a13": {
+            "title": "How to Keep Going with Sobriety",
+            "tag": "Recovery and Growth",
+            "content": "Your Goal: Build the practices, mindset, and support structures that make long-term sobriety from Opioids not just achievable but genuinely sustainable.\\n\\nWhy Long-Term Recovery Is Different From Early Recovery\\n\\nEarly recovery is largely about crisis management - getting through cravings, navigating withdrawal, avoiding high-risk situations. But these are not the same skills required for sustained long-term sobriety. What the research shows: relapse risk in Opioids recovery doesn\\"
+          },
+          "a14": {
+            "title": "How to Get Help for Opioids Addiction",
+            "tag": "Recovery and Growth",
+            "content": "Your Goal: Know exactly what professional help looks like for Opioids addiction, how to access it, and why seeking it is one of the strongest things you can do.\\n\\nWhy Getting Help Is a Decision, Not a Defeat\\n\\nThere is a persistent cultural story that recovery from Opioids addiction should be a private, individual act of will. What the evidence actually shows: professional support significantly improves outcomes across every measurable metric - duration of sobriety, quality of life, mental health, and long-term recovery rates. Seeking help isn\\"
+          }
+        }
+      },
+      "cannabis": {
+        "trackers": {
+          "use-log": {
+            "name": "Use Log",
+            "fields": {
+              "sessions": {
+                "label": "Sessions today"
+              },
+              "method": {
+                "label": "Method"
+              }
+            }
+          },
+          "cravings": {
+            "name": "Craving & Triggers",
+            "fields": {
+              "intensity": {
+                "label": "Craving intensity"
+              },
+              "trigger": {
+                "label": "Trigger"
+              }
+            }
+          },
+          "sleep": {
+            "name": "Sleep Recovery",
+            "fields": {
+              "hours": {
+                "label": "Sleep hours"
+              },
+              "quality": {
+                "label": "Quality"
+              },
+              "nightSweats": {
+                "label": "Night sweats"
+              }
+            }
+          },
+          "appetite": {
+            "name": "Appetite & Weight",
+            "fields": {
+              "appetite": {
+                "label": "Appetite"
+              },
+              "mealsEaten": {
+                "label": "Meals eaten"
+              }
+            }
+          },
+          "cognitive": {
+            "name": "Mental Clarity",
+            "fields": {
+              "focus": {
+                "label": "Focus"
+              },
+              "motivation": {
+                "label": "Motivation"
+              },
+              "memory": {
+                "label": "Memory"
+              },
+              "brainFog": {
+                "label": "Brain fog"
+              },
+              "notes": {
+                "label": "Notes"
+              }
+            }
+          },
+          "mood": {
+            "name": "Mood & Anxiety",
+            "fields": {
+              "mood": {
+                "label": "Mood"
+              },
+              "anxiety": {
+                "label": "Anxiety"
+              },
+              "irritability": {
+                "label": "Irritability"
+              },
+              "notes": {
+                "label": "Notes"
+              }
+            }
+          }
+        },
+        "calculator": {
+          "inputs": {
+            "gramsPerWeek": {
+              "label": "Grams per week"
+            },
+            "costPerGram": {
+              "label": "Cost per gram "
+            }
+          },
+          "results": {
+            "0": {
+              "label": "Weekly spend"
+            },
+            "1": {
+              "label": "Monthly spend"
+            },
+            "2": {
+              "label": "Yearly spend"
+            },
+            "3": {
+              "label": "THC clearance"
+            },
+            "4": {
+              "label": "Cognitive recovery"
+            }
+          },
+          "title": "Usage Cost & Recovery"
+        },
+        "activities": {
+          "vivid-dream-journal": {
+            "name": "REM Rebound Dream Log",
+            "description": "Cannabis suppressed your dreams. Now they\\",
+            "fields": {
+              "dream": {
+                "label": "What did you dream about?",
+                "placeholder": "Describe every detail you remember — colors, people, emotions..."
+              },
+              "intensity": {
+                "label": "Dream intensity"
+              },
+              "emotion": {
+                "label": "Dominant emotion in the dream"
+              }
+            }
+          },
+          "cannabis-tap": {
+            "name": "Craving Buster",
+            "description": "Channel the restless energy into something productive. Smash the craving.",
+            "tapPrompt": "Every tap is a craving you\\"
+          },
+          "cannabis-sort": {
+            "name": "Need vs. Want",
+            "description": "Sort these reasons for using — is it a genuine need or a want you can manage differently?",
+            "sortCategories": {
+              "0": "Genuine Need",
+              "1": "Manageable Want"
+            },
+            "sortItems": {
+              "0": {
+                "text": "I can\\"
+              },
+              "1": {
+                "text": "Severe chronic pain with no alternatives"
+              },
+              "2": {
+                "text": "I\\"
+              },
+              "3": {
+                "text": "Chemotherapy-induced nausea"
+              },
+              "4": {
+                "text": "Everyone at the party is smoking"
+              },
+              "5": {
+                "text": "I feel anxious before social events"
+              }
+            }
+          }
+        },
+        "articles": {
+          "a1": {
+            "title": "Why Quit Cannabis?",
+            "tag": "Awareness & Readiness",
+            "content": "Your Goal: Discover a clear, personal reason for starting this journey - one that comes from within you, not from fear or pressure from others.\\n\\nLet\\"
+          },
+          "a2": {
+            "title": "The Signs of a Cannabis Problem",
+            "tag": "Awareness & Readiness",
+            "content": "Your Goal: Recognise the specific patterns that indicate your Cannabis use has crossed from habit into dependency - so you can respond to it honestly.\\n\\nWhy Signs Are Easy to Dismiss\\n\\nOne of the defining features of addiction is that the brain becomes very good at explaining away its own symptoms. What this means for you: the same mind shaped by Cannabis use is the one you\\"
+          },
+          "a3": {
+            "title": "How to Map Your Cannabis Triggers",
+            "tag": "Awareness & Readiness",
+            "content": "Your Goal: Build a personalised map of the specific people, places, emotions, and situations that reliably activate your desire to use Cannabis - so you can respond rather than react.\\n\\nWhy Triggers Are the Actual Battle\\n\\nMost people who relapse don\\"
+          },
+          "a4": {
+            "title": "The Lies We Tell to Keep Using Cannabis",
+            "tag": "Awareness & Readiness",
+            "content": "Your Goal: Recognise the specific thought patterns your mind uses to justify continued Cannabis use - because you cannot argue your way out of something you can\\"
+          },
+          "a5": {
+            "title": "How to Urge Surf",
+            "tag": "Detox & Early Healing",
+            "content": "Your Goal: Learn to move through a craving for Cannabis without acting on it, using a technique backed by clinical research in addiction medicine.\\n\\nWhat a Craving Actually Is\\n\\nA craving is not a command. Here\\"
+          },
+          "a6": {
+            "title": "How to Defuse Thoughts About Cannabis",
+            "tag": "Detox & Early Healing",
+            "content": "Your Goal: Learn to unhook from intrusive thoughts about Cannabis so they lose their power to pull you toward using, without having to fight or suppress them.\\n\\nWhy Fighting Your Thoughts Doesn\\"
+          },
+          "a7": {
+            "title": "How to Tame Your Emotions",
+            "tag": "Detox & Early Healing",
+            "content": "Your Goal: Build the capacity to feel difficult emotions without immediately reaching for Cannabis - because emotional tolerance is the foundation of sustained recovery.\\n\\nWhy Cannabis and Emotions Became Linked\\n\\nFor many people, Cannabis use started as an emotional solution. It numbed what was painful, amplified what was flat, or created a reliable state that felt better than the default. What the neuroscience shows: over time, the brain outsources emotional regulation to the substance. Natural coping pathways weaken through disuse, while the Cannabis pathway becomes the highway.\\n\\nThis is why early recovery often feels emotionally overwhelming - emotions that were previously managed chemically now have to be handled directly. Emotional volatility in the early weeks is one of the most common reasons people return to Cannabis use.\\n\\nThe STOP Technique\\n\\nWhen a difficult emotion arises and the pull toward Cannabis activates, STOP is a four-step grounding practice:\\n\\nS - Stop: whatever you\\"
+          },
+          "a8": {
+            "title": "What Cannabis Withdrawal Feels Like",
+            "tag": "Detox & Early Healing",
+            "content": "Your Goal: Understand what Cannabis withdrawal actually involves - physically and psychologically - so you can prepare for it, move through it, and recognise when to seek medical support.\\n\\nWhy Withdrawal Happens\\n\\nWhat this means for your body: when you use Cannabis regularly over time, your nervous system adapts to its presence. It recalibrates its baseline around the substance. When Cannabis is removed, the system is suddenly without what it had come to treat as normal - and withdrawal symptoms are the nervous system rebalancing itself.\\n\\nThis is not punishment. It is physiology. Understanding it as physiology, rather than as a sign that something is broken, is one of the most important reframes in early recovery.\\n\\nCommon Withdrawal Experiences\\n\\nPhysical symptoms vary significantly depending on the substance and the duration and intensity of use. Common experiences include sleep disruption, appetite changes, fatigue, muscle aches, sweating, and gastrointestinal discomfort. For some substances - particularly alcohol, benzodiazepines, and opioids - withdrawal can have serious medical components and should be managed with clinical support.\\n\\nPsychological symptoms are frequently the harder and longer-lasting challenge. Anxiety, irritability, low mood, difficulty concentrating, and a pervasive sense of emptiness are common. The clinical term for this is anhedonia - a temporary reduction in the ability to feel pleasure from ordinary things. This happens because Cannabis was artificially stimulating dopamine pathways that now need time to recover their natural function.\\n\\nWhat this actually feels like: many people describe early withdrawal as a period of high discomfort that then gives way to something duller and greyer - not dramatically painful, but flat. This flatness is often what drives people back to Cannabis. It\\"
+          },
+          "a9": {
+            "title": "How to Get Better Sleep in Recovery",
+            "tag": "Detox & Early Healing",
+            "content": "Your Goal: Rebuild healthy sleep without Cannabis - and understand why this is one of the most important things you can do for lasting recovery.\\n\\nWhy Sleep and Recovery Are Inseparable\\n\\nSleep is the brain\\"
+          },
+          "a10": {
+            "title": "How to Ditch Perfectionism in Recovery",
+            "tag": "Recovery and Growth",
+            "content": "Your Goal: Release the belief that recovery has to be perfect - and understand why perfectionism is one of the most reliable pathways back to Cannabis use.\\n\\nHow Perfectionism Fuels Addiction\\n\\nPerfectionism and addiction are closely linked. What the research shows: perfectionism isn\\"
+          },
+          "a11": {
+            "title": "How to Build a Life You Don\\",
+            "tag": "Recovery and Growth",
+            "content": "Your Goal: Begin building a life so genuinely engaging and meaningful that staying sober from Cannabis becomes desirable rather than merely disciplined.\\n\\nThe Problem With Just Quitting\\n\\nMany people approach recovery as subtraction: remove Cannabis, then life continues. But when Cannabis has been a central organising feature of your days - providing structure, reward, social connection, or emotional management - removing it leaves a vacuum. And vacuums get filled with something. What this means for you: the question isn\\"
+          },
+          "a12": {
+            "title": "How to Heal and Rebuild Relationships",
+            "tag": "Recovery and Growth",
+            "content": "Your Goal: Understand how Cannabis use affected your relationships - and begin the deliberate process of repair, rebuilding, and choosing connections that support your recovery.\\n\\nWhat Cannabis Did to Your Relationships\\n\\nAddiction is often described as a relationship with a substance, but it is always also a disruption of relationships with people. The time, energy, emotional availability, and honesty that Cannabis consumed were resources that would otherwise have been invested in people who mattered.\\n\\nThe impacts are wide-ranging. Trust may have been broken through broken promises or unpredictable behaviour. Emotional intimacy may have become shallow, because genuine intimacy requires presence - and Cannabis use consistently interferes with presence.\\n\\nThe Three Phases of Relationship Repair\\n\\nPhase one - Stabilise yourself first: attempting serious relationship repair before you have some stability tends to backfire. You need to be in a place where you can be honest, consistent, and present before asking someone else to trust you again. This phase is typically the first 60-90 days of sobriety.\\n\\nPhase two - Honest acknowledgement: repair requires acknowledgement of specific harm, not general apology. "
+          },
+          "a13": {
+            "title": "How to Keep Going with Sobriety",
+            "tag": "Recovery and Growth",
+            "content": "Your Goal: Build the practices, mindset, and support structures that make long-term sobriety from Cannabis not just achievable but genuinely sustainable.\\n\\nWhy Long-Term Recovery Is Different From Early Recovery\\n\\nEarly recovery is largely about crisis management - getting through cravings, navigating withdrawal, avoiding high-risk situations. But these are not the same skills required for sustained long-term sobriety. What the research shows: relapse risk in Cannabis recovery doesn\\"
+          },
+          "a14": {
+            "title": "How to Get Help for Cannabis Addiction",
+            "tag": "Recovery and Growth",
+            "content": "Your Goal: Know exactly what professional help looks like for Cannabis addiction, how to access it, and why seeking it is one of the strongest things you can do.\\n\\nWhy Getting Help Is a Decision, Not a Defeat\\n\\nThere is a persistent cultural story that recovery from Cannabis addiction should be a private, individual act of will. What the evidence actually shows: professional support significantly improves outcomes across every measurable metric - duration of sobriety, quality of life, mental health, and long-term recovery rates. Seeking help isn\\"
+          }
+        }
+      },
+      "stimulants": {
+        "trackers": {
+          "use-frequency": {
+            "name": "Use Frequency",
+            "fields": {
+              "used": {
+                "label": "Used today"
+              }
+            }
+          },
+          "mood-anhedonia": {
+            "name": "Mood & Anhedonia",
+            "fields": {
+              "depression": {
+                "label": "Depression"
+              },
+              "anhedonia": {
+                "label": "Can you feel pleasure?"
+              }
+            }
+          },
+          "sleep": {
+            "name": "Sleep Recovery",
+            "fields": {
+              "hours": {
+                "label": "Sleep hours"
+              },
+              "quality": {
+                "label": "Quality"
+              },
+              "nightmares": {
+                "label": "Night terrors"
+              }
+            }
+          },
+          "physical": {
+            "name": "Physical Health",
+            "fields": {
+              "heartRate": {
+                "label": "Resting heart rate (BPM)"
+              },
+              "appetite": {
+                "label": "Appetite"
+              }
+            }
+          },
+          "cravings": {
+            "name": "Cravings & Triggers",
+            "fields": {
+              "count": {
+                "label": "Craving count"
+              },
+              "peakIntensity": {
+                "label": "Peak intensity"
+              },
+              "trigger": {
+                "label": "Primary trigger"
+              }
+            }
+          },
+          "risk-behaviors": {
+            "name": "Risk Behaviors",
+            "fields": {
+              "behaviors": {
+                "label": "Today"
+              }
+            }
+          }
+        },
+        "calculator": {
+          "inputs": {
+            "gramsPerUse": {
+              "label": "Grams per use"
+            },
+            "timesPerWeek": {
+              "label": "Times per week"
+            },
+            "costPerGram": {
+              "label": "Cost per gram "
+            }
+          },
+          "results": {
+            "0": {
+              "label": "Weekly spend"
+            },
+            "1": {
+              "label": "Yearly spend"
+            },
+            "2": {
+              "label": "Cardiovascular risk"
+            },
+            "3": {
+              "label": "Heart rate recovery"
+            }
+          },
+          "title": "Cardiovascular Risk & Cost"
+        },
+        "activities": {
+          "dopamine-visualization": {
+            "name": "Dopamine Recovery Journey",
+            "description": "Visualize your brain\\",
+            "scenes": {
+              "0": {
+                "text": "Day 1: Your dopamine receptors are nearly empty. Everything feels grey. This is the crash — not your new reality."
+              },
+              "1": {
+                "text": "Week 1: Your brain begins upregulating receptors. Small pleasures start registering — food, warmth, a funny moment."
+              },
+              "2": {
+                "text": "Week 2: Anhedonia is fading. Music sounds better. Sunsets have color again. Your reward system is rebuilding."
+              },
+              "3": {
+                "text": "Month 1: Natural dopamine spikes from exercise, achievement, and connection feel real again."
+              },
+              "4": {
+                "text": "Month 3: Your baseline has shifted. Normal life has texture and reward. The grey phase is behind you."
+              }
+            }
+          },
+          "stim-quiz": {
+            "name": "Stimulant Science Quiz",
+            "description": "How much do you know about what stimulants do — and how you recover?",
+            "questions": {
+              "0": {
+                "question": "How much dopamine does cocaine release compared to normal?",
+                "explanation": "Cocaine floods the brain with 3-5x normal dopamine. The crash is your brain trying to recalibrate.",
+                "options": {
+                  "0": "Same amount",
+                  "1": "2x normal",
+                  "2": "3-5x normal",
+                  "3": "10x normal"
+                }
+              },
+              "1": {
+                "question": "What is anhedonia?",
+                "explanation": "Anhedonia — the inability to feel pleasure — is the hallmark of stimulant withdrawal. It resolves as dopamine receptors recover.",
+                "options": {
+                  "0": "Memory loss",
+                  "1": "Inability to feel pleasure",
+                  "2": "Rapid heartbeat",
+                  "3": "Paranoia"
+                }
+              },
+              "2": {
+                "question": "Which food directly provides dopamine precursors?",
+                "explanation": "Eggs are rich in tyrosine — the amino acid your brain converts directly into dopamine.",
+                "options": {
+                  "0": "Sugar",
+                  "1": "Eggs",
+                  "2": "Bread",
+                  "3": "Rice"
+                }
+              },
+              "3": {
+                "question": "How long does full dopamine recovery typically take?",
+                "explanation": "Most dopamine receptor recovery happens within 3-6 months, with continued improvement up to 18 months.",
+                "options": {
+                  "0": "1 week",
+                  "1": "2 weeks",
+                  "2": "3-6 months",
+                  "3": "2+ years"
+                }
+              }
+            }
+          },
+          "pleasure-relearn": {
+            "name": "Pleasure Relearning Log",
+            "description": "Anhedonia makes everything feel grey. Track the moments when color returns.",
+            "fields": {
+              "pleasureMoment": {
+                "label": "Did anything feel even slightly good today?",
+                "placeholder": "A warm shower, a funny text, sunshine on your face..."
+              },
+              "intensity": {
+                "label": "How much pleasure? (even 1 counts)"
+              },
+              "compare": {
+                "label": "Compared to last week, is pleasure..."
+              }
+            }
+          }
+        },
+        "articles": {
+          "a1": {
+            "title": "Why Quit Stimulants?",
+            "tag": "Awareness & Readiness",
+            "content": "Your Goal: Discover a clear, personal reason for starting this journey - one that comes from within you, not from fear or pressure from others.\\n\\nLet\\"
+          },
+          "a2": {
+            "title": "The Signs of a Stimulants Problem",
+            "tag": "Awareness & Readiness",
+            "content": "Your Goal: Recognise the specific patterns that indicate your Stimulants use has crossed from habit into dependency - so you can respond to it honestly.\\n\\nWhy Signs Are Easy to Dismiss\\n\\nOne of the defining features of addiction is that the brain becomes very good at explaining away its own symptoms. What this means for you: the same mind shaped by Stimulants use is the one you\\"
+          },
+          "a3": {
+            "title": "How to Map Your Stimulants Triggers",
+            "tag": "Awareness & Readiness",
+            "content": "Your Goal: Build a personalised map of the specific people, places, emotions, and situations that reliably activate your desire to use Stimulants - so you can respond rather than react.\\n\\nWhy Triggers Are the Actual Battle\\n\\nMost people who relapse don\\"
+          },
+          "a4": {
+            "title": "The Lies We Tell to Keep Using Stimulants",
+            "tag": "Awareness & Readiness",
+            "content": "Your Goal: Recognise the specific thought patterns your mind uses to justify continued Stimulants use - because you cannot argue your way out of something you can\\"
+          },
+          "a5": {
+            "title": "How to Urge Surf",
+            "tag": "Detox & Early Healing",
+            "content": "Your Goal: Learn to move through a craving for Stimulants without acting on it, using a technique backed by clinical research in addiction medicine.\\n\\nWhat a Craving Actually Is\\n\\nA craving is not a command. Here\\"
+          },
+          "a6": {
+            "title": "How to Defuse Thoughts About Stimulants",
+            "tag": "Detox & Early Healing",
+            "content": "Your Goal: Learn to unhook from intrusive thoughts about Stimulants so they lose their power to pull you toward using, without having to fight or suppress them.\\n\\nWhy Fighting Your Thoughts Doesn\\"
+          },
+          "a7": {
+            "title": "How to Tame Your Emotions",
+            "tag": "Detox & Early Healing",
+            "content": "Your Goal: Build the capacity to feel difficult emotions without immediately reaching for Stimulants - because emotional tolerance is the foundation of sustained recovery.\\n\\nWhy Stimulants and Emotions Became Linked\\n\\nFor many people, Stimulants use started as an emotional solution. It numbed what was painful, amplified what was flat, or created a reliable state that felt better than the default. What the neuroscience shows: over time, the brain outsources emotional regulation to the substance. Natural coping pathways weaken through disuse, while the Stimulants pathway becomes the highway.\\n\\nThis is why early recovery often feels emotionally overwhelming - emotions that were previously managed chemically now have to be handled directly. Emotional volatility in the early weeks is one of the most common reasons people return to Stimulants use.\\n\\nThe STOP Technique\\n\\nWhen a difficult emotion arises and the pull toward Stimulants activates, STOP is a four-step grounding practice:\\n\\nS - Stop: whatever you\\"
+          },
+          "a8": {
+            "title": "What Stimulants Withdrawal Feels Like",
+            "tag": "Detox & Early Healing",
+            "content": "Your Goal: Understand what Stimulants withdrawal actually involves - physically and psychologically - so you can prepare for it, move through it, and recognise when to seek medical support.\\n\\nWhy Withdrawal Happens\\n\\nWhat this means for your body: when you use Stimulants regularly over time, your nervous system adapts to its presence. It recalibrates its baseline around the substance. When Stimulants is removed, the system is suddenly without what it had come to treat as normal - and withdrawal symptoms are the nervous system rebalancing itself.\\n\\nThis is not punishment. It is physiology. Understanding it as physiology, rather than as a sign that something is broken, is one of the most important reframes in early recovery.\\n\\nCommon Withdrawal Experiences\\n\\nPhysical symptoms vary significantly depending on the substance and the duration and intensity of use. Common experiences include sleep disruption, appetite changes, fatigue, muscle aches, sweating, and gastrointestinal discomfort. For some substances - particularly alcohol, benzodiazepines, and opioids - withdrawal can have serious medical components and should be managed with clinical support.\\n\\nPsychological symptoms are frequently the harder and longer-lasting challenge. Anxiety, irritability, low mood, difficulty concentrating, and a pervasive sense of emptiness are common. The clinical term for this is anhedonia - a temporary reduction in the ability to feel pleasure from ordinary things. This happens because Stimulants was artificially stimulating dopamine pathways that now need time to recover their natural function.\\n\\nWhat this actually feels like: many people describe early withdrawal as a period of high discomfort that then gives way to something duller and greyer - not dramatically painful, but flat. This flatness is often what drives people back to Stimulants. It\\"
+          },
+          "a9": {
+            "title": "How to Get Better Sleep in Recovery",
+            "tag": "Detox & Early Healing",
+            "content": "Your Goal: Rebuild healthy sleep without Stimulants - and understand why this is one of the most important things you can do for lasting recovery.\\n\\nWhy Sleep and Recovery Are Inseparable\\n\\nSleep is the brain\\"
+          },
+          "a10": {
+            "title": "How to Ditch Perfectionism in Recovery",
+            "tag": "Recovery and Growth",
+            "content": "Your Goal: Release the belief that recovery has to be perfect - and understand why perfectionism is one of the most reliable pathways back to Stimulants use.\\n\\nHow Perfectionism Fuels Addiction\\n\\nPerfectionism and addiction are closely linked. What the research shows: perfectionism isn\\"
+          },
+          "a11": {
+            "title": "How to Build a Life You Don\\",
+            "tag": "Recovery and Growth",
+            "content": "Your Goal: Begin building a life so genuinely engaging and meaningful that staying sober from Stimulants becomes desirable rather than merely disciplined.\\n\\nThe Problem With Just Quitting\\n\\nMany people approach recovery as subtraction: remove Stimulants, then life continues. But when Stimulants has been a central organising feature of your days - providing structure, reward, social connection, or emotional management - removing it leaves a vacuum. And vacuums get filled with something. What this means for you: the question isn\\"
+          },
+          "a12": {
+            "title": "How to Heal and Rebuild Relationships",
+            "tag": "Recovery and Growth",
+            "content": "Your Goal: Understand how Stimulants use affected your relationships - and begin the deliberate process of repair, rebuilding, and choosing connections that support your recovery.\\n\\nWhat Stimulants Did to Your Relationships\\n\\nAddiction is often described as a relationship with a substance, but it is always also a disruption of relationships with people. The time, energy, emotional availability, and honesty that Stimulants consumed were resources that would otherwise have been invested in people who mattered.\\n\\nThe impacts are wide-ranging. Trust may have been broken through broken promises or unpredictable behaviour. Emotional intimacy may have become shallow, because genuine intimacy requires presence - and Stimulants use consistently interferes with presence.\\n\\nThe Three Phases of Relationship Repair\\n\\nPhase one - Stabilise yourself first: attempting serious relationship repair before you have some stability tends to backfire. You need to be in a place where you can be honest, consistent, and present before asking someone else to trust you again. This phase is typically the first 60-90 days of sobriety.\\n\\nPhase two - Honest acknowledgement: repair requires acknowledgement of specific harm, not general apology. "
+          },
+          "a13": {
+            "title": "How to Keep Going with Sobriety",
+            "tag": "Recovery and Growth",
+            "content": "Your Goal: Build the practices, mindset, and support structures that make long-term sobriety from Stimulants not just achievable but genuinely sustainable.\\n\\nWhy Long-Term Recovery Is Different From Early Recovery\\n\\nEarly recovery is largely about crisis management - getting through cravings, navigating withdrawal, avoiding high-risk situations. But these are not the same skills required for sustained long-term sobriety. What the research shows: relapse risk in Stimulants recovery doesn\\"
+          },
+          "a14": {
+            "title": "How to Get Help for Stimulants Addiction",
+            "tag": "Recovery and Growth",
+            "content": "Your Goal: Know exactly what professional help looks like for Stimulants addiction, how to access it, and why seeking it is one of the strongest things you can do.\\n\\nWhy Getting Help Is a Decision, Not a Defeat\\n\\nThere is a persistent cultural story that recovery from Stimulants addiction should be a private, individual act of will. What the evidence actually shows: professional support significantly improves outcomes across every measurable metric - duration of sobriety, quality of life, mental health, and long-term recovery rates. Seeking help isn\\"
+          }
+        }
+      },
+      "benzodiazepines": {
+        "trackers": {
+          "taper": {
+            "name": "Taper Progress",
+            "fields": {
+              "doseTaken": {
+                "label": "Dose taken (mg)"
+              },
+              "asPerscribed": {
+                "label": "As prescribed"
+              }
+            }
+          },
+          "anxiety-panic": {
+            "name": "Anxiety & Panic",
+            "fields": {
+              "anxiety": {
+                "label": "Anxiety"
+              },
+              "panicAttacks": {
+                "label": "Panic attacks"
+              },
+              "trigger": {
+                "label": "Trigger"
+              }
+            }
+          },
+          "cognitive": {
+            "name": "Cognitive Function",
+            "fields": {
+              "memory": {
+                "label": "Memory"
+              },
+              "focus": {
+                "label": "Focus"
+              },
+              "clarity": {
+                "label": "Mental clarity"
+              },
+              "brainFog": {
+                "label": "Brain fog"
+              },
+              "notes": {
+                "label": "Notes"
+              }
+            }
+          },
+          "withdrawal": {
+            "name": "Withdrawal Symptoms",
+            "fields": {
+              "tremors": {
+                "label": "Tremors"
+              }
+            }
+          },
+          "sleep": {
+            "name": "Sleep Quality",
+            "fields": {
+              "hours": {
+                "label": "Hours slept"
+              },
+              "quality": {
+                "label": "Quality"
+              },
+              "nightAnxiety": {
+                "label": "Night anxiety"
+              }
+            }
+          },
+          "medical": {
+            "name": "Medical Supervision",
+            "fields": {
+              "doctorCheckIn": {
+                "label": "Doctor check-in"
+              }
+            }
+          }
+        },
+        "calculator": {
+          "inputs": {
+            "currentDose": {
+              "label": "Current daily dose (mg)"
+            },
+            "taperWeeks": {
+              "label": "Target weeks to complete"
+            }
+          },
+          "results": {
+            "0": {
+              "label": "Weekly reduction"
+            },
+            "1": {
+              "label": "Taper rate"
+            },
+            "2": {
+              "label": "Safety"
+            },
+            "3": {
+              "label": "Disclaimer"
+            }
+          },
+          "title": "Taper Schedule & Equivalents"
+        },
+        "activities": {
+          "gaba-breathing": {
+            "name": "GABA Activation Breathing",
+            "description": "This specific breathing ratio activates your GABA system — the same pathway benzos target.",
+            "phases": {
+              "0": {
+                "text": "Inhale through your nose for 4 counts. Fill your belly, not your chest."
+              },
+              "1": {
+                "text": "Hold gently for 2 counts. No strain."
+              },
+              "2": {
+                "text": "Exhale through pursed lips for 8 counts. The long exhale is the key — it stimulates your vagus nerve."
+              },
+              "3": {
+                "text": "Pause for 2 counts. Let your body settle before the next breath."
+              }
+            }
+          },
+          "benzo-bodyscan": {
+            "name": "Withdrawal Body Scan",
+            "description": "Map where withdrawal is showing up today. Awareness reduces the fear.",
+            "bodyZones": {
+              "0": {
+                "name": "Head",
+                "prompt": "Depersonalization, brain zaps, dizziness? These are GABA receptors recalibrating. It feels terrifying but it\\"
+              },
+              "1": {
+                "name": "Eyes & Vision",
+                "prompt": "Visual disturbances, light sensitivity? Your visual cortex is hyperexcitable without benzos dampening it. This normalizes."
+              },
+              "2": {
+                "name": "Muscles",
+                "prompt": "Tension, twitching, jaw clenching? Your muscles forgot how to relax naturally. Gentle stretching helps them remember."
+              },
+              "3": {
+                "name": "Stomach",
+                "prompt": "Nausea, loss of appetite? Your gut has GABA receptors too. They\\"
+              },
+              "4": {
+                "name": "Nervous System",
+                "prompt": "Tingling, burning skin, internal vibrations? Your nervous system is unmuting itself. Each day the volume turns down slightly."
+              }
+            }
+          },
+          "benzo-sort": {
+            "name": "Window or Wave?",
+            "description": "Learn to identify whether you\\",
+            "sortCategories": {
+              "0": "Window Sign",
+              "1": "Wave Sign"
+            },
+            "sortItems": {
+              "0": {
+                "text": "Feeling genuinely calm without effort"
+              },
+              "1": {
+                "text": "Sudden return of anxiety that was gone yesterday"
+              },
+              "2": {
+                "text": "Enjoying a meal and tasting it fully"
+              },
+              "3": {
+                "text": "Insomnia after a week of good sleep"
+              },
+              "4": {
+                "text": "Laughing at something spontaneously"
+              },
+              "5": {
+                "text": "Muscle tension appearing from nowhere"
+              },
+              "6": {
+                "text": "Forgetting you\\"
+              }
+            }
+          }
+        },
+        "articles": {
+          "a1": {
+            "title": "Why Quit Benzodiazepines [Xanax · Valium · Klonopin]?",
+            "tag": "Awareness & Readiness",
+            "content": "Your Goal: Discover a clear, personal reason for starting this journey - one that comes from within you, not from fear or pressure from others.\\n\\nLet\\"
+          },
+          "a2": {
+            "title": "The Signs of a Benzodiazepines [Xanax · Valium · Klonopin] Problem",
+            "tag": "Awareness & Readiness",
+            "content": "Your Goal: Recognise the specific patterns that indicate your Benzodiazepines [Xanax · Valium · Klonopin] use has crossed from habit into dependency - so you can respond to it honestly.\\n\\nWhy Signs Are Easy to Dismiss\\n\\nOne of the defining features of addiction is that the brain becomes very good at explaining away its own symptoms. What this means for you: the same mind shaped by Benzodiazepines [Xanax · Valium · Klonopin] use is the one you\\"
+          },
+          "a3": {
+            "title": "How to Map Your Benzodiazepines [Xanax · Valium · Klonopin] Triggers",
+            "tag": "Awareness & Readiness",
+            "content": "Your Goal: Build a personalised map of the specific people, places, emotions, and situations that reliably activate your desire to use Benzodiazepines [Xanax · Valium · Klonopin] - so you can respond rather than react.\\n\\nWhy Triggers Are the Actual Battle\\n\\nMost people who relapse don\\"
+          },
+          "a4": {
+            "title": "The Lies We Tell to Keep Using Benzodiazepines [Xanax · Valium · Klonopin]",
+            "tag": "Awareness & Readiness",
+            "content": "Your Goal: Recognise the specific thought patterns your mind uses to justify continued Benzodiazepines [Xanax · Valium · Klonopin] use - because you cannot argue your way out of something you can\\"
+          },
+          "a5": {
+            "title": "How to Urge Surf",
+            "tag": "Detox & Early Healing",
+            "content": "Your Goal: Learn to move through a craving for Benzodiazepines [Xanax · Valium · Klonopin] without acting on it, using a technique backed by clinical research in addiction medicine.\\n\\nWhat a Craving Actually Is\\n\\nA craving is not a command. Here\\"
+          },
+          "a6": {
+            "title": "How to Defuse Thoughts About Benzodiazepines [Xanax · Valium · Klonopin]",
+            "tag": "Detox & Early Healing",
+            "content": "Your Goal: Learn to unhook from intrusive thoughts about Benzodiazepines [Xanax · Valium · Klonopin] so they lose their power to pull you toward using, without having to fight or suppress them.\\n\\nWhy Fighting Your Thoughts Doesn\\"
+          },
+          "a7": {
+            "title": "How to Tame Your Emotions",
+            "tag": "Detox & Early Healing",
+            "content": "Your Goal: Build the capacity to feel difficult emotions without immediately reaching for Benzodiazepines [Xanax · Valium · Klonopin] - because emotional tolerance is the foundation of sustained recovery.\\n\\nWhy Benzodiazepines [Xanax · Valium · Klonopin] and Emotions Became Linked\\n\\nFor many people, Benzodiazepines [Xanax · Valium · Klonopin] use started as an emotional solution. It numbed what was painful, amplified what was flat, or created a reliable state that felt better than the default. What the neuroscience shows: over time, the brain outsources emotional regulation to the substance. Natural coping pathways weaken through disuse, while the Benzodiazepines [Xanax · Valium · Klonopin] pathway becomes the highway.\\n\\nThis is why early recovery often feels emotionally overwhelming - emotions that were previously managed chemically now have to be handled directly. Emotional volatility in the early weeks is one of the most common reasons people return to Benzodiazepines [Xanax · Valium · Klonopin] use.\\n\\nThe STOP Technique\\n\\nWhen a difficult emotion arises and the pull toward Benzodiazepines [Xanax · Valium · Klonopin] activates, STOP is a four-step grounding practice:\\n\\nS - Stop: whatever you\\"
+          },
+          "a8": {
+            "title": "What Benzodiazepines [Xanax · Valium · Klonopin] Withdrawal Feels Like",
+            "tag": "Detox & Early Healing",
+            "content": "Your Goal: Understand what Benzodiazepines [Xanax · Valium · Klonopin] withdrawal actually involves - physically and psychologically - so you can prepare for it, move through it, and recognise when to seek medical support.\\n\\nWhy Withdrawal Happens\\n\\nWhat this means for your body: when you use Benzodiazepines [Xanax · Valium · Klonopin] regularly over time, your nervous system adapts to its presence. It recalibrates its baseline around the substance. When Benzodiazepines [Xanax · Valium · Klonopin] is removed, the system is suddenly without what it had come to treat as normal - and withdrawal symptoms are the nervous system rebalancing itself.\\n\\nThis is not punishment. It is physiology. Understanding it as physiology, rather than as a sign that something is broken, is one of the most important reframes in early recovery.\\n\\nCommon Withdrawal Experiences\\n\\nPhysical symptoms vary significantly depending on the substance and the duration and intensity of use. Common experiences include sleep disruption, appetite changes, fatigue, muscle aches, sweating, and gastrointestinal discomfort. For some substances - particularly alcohol, benzodiazepines, and opioids - withdrawal can have serious medical components and should be managed with clinical support.\\n\\nPsychological symptoms are frequently the harder and longer-lasting challenge. Anxiety, irritability, low mood, difficulty concentrating, and a pervasive sense of emptiness are common. The clinical term for this is anhedonia - a temporary reduction in the ability to feel pleasure from ordinary things. This happens because Benzodiazepines [Xanax · Valium · Klonopin] was artificially stimulating dopamine pathways that now need time to recover their natural function.\\n\\nWhat this actually feels like: many people describe early withdrawal as a period of high discomfort that then gives way to something duller and greyer - not dramatically painful, but flat. This flatness is often what drives people back to Benzodiazepines [Xanax · Valium · Klonopin]. It\\"
+          },
+          "a9": {
+            "title": "How to Get Better Sleep in Recovery",
+            "tag": "Detox & Early Healing",
+            "content": "Your Goal: Rebuild healthy sleep without Benzodiazepines [Xanax · Valium · Klonopin] - and understand why this is one of the most important things you can do for lasting recovery.\\n\\nWhy Sleep and Recovery Are Inseparable\\n\\nSleep is the brain\\"
+          },
+          "a10": {
+            "title": "How to Ditch Perfectionism in Recovery",
+            "tag": "Recovery and Growth",
+            "content": "Your Goal: Release the belief that recovery has to be perfect - and understand why perfectionism is one of the most reliable pathways back to Benzodiazepines [Xanax · Valium · Klonopin] use.\\n\\nHow Perfectionism Fuels Addiction\\n\\nPerfectionism and addiction are closely linked. What the research shows: perfectionism isn\\"
+          },
+          "a11": {
+            "title": "How to Build a Life You Don\\",
+            "tag": "Recovery and Growth",
+            "content": "Your Goal: Begin building a life so genuinely engaging and meaningful that staying sober from Benzodiazepines [Xanax · Valium · Klonopin] becomes desirable rather than merely disciplined.\\n\\nThe Problem With Just Quitting\\n\\nMany people approach recovery as subtraction: remove Benzodiazepines [Xanax · Valium · Klonopin], then life continues. But when Benzodiazepines [Xanax · Valium · Klonopin] has been a central organising feature of your days - providing structure, reward, social connection, or emotional management - removing it leaves a vacuum. And vacuums get filled with something. What this means for you: the question isn\\"
+          },
+          "a12": {
+            "title": "How to Heal and Rebuild Relationships",
+            "tag": "Recovery and Growth",
+            "content": "Your Goal: Understand how Benzodiazepines [Xanax · Valium · Klonopin] use affected your relationships - and begin the deliberate process of repair, rebuilding, and choosing connections that support your recovery.\\n\\nWhat Benzodiazepines [Xanax · Valium · Klonopin] Did to Your Relationships\\n\\nAddiction is often described as a relationship with a substance, but it is always also a disruption of relationships with people. The time, energy, emotional availability, and honesty that Benzodiazepines [Xanax · Valium · Klonopin] consumed were resources that would otherwise have been invested in people who mattered.\\n\\nThe impacts are wide-ranging. Trust may have been broken through broken promises or unpredictable behaviour. Emotional intimacy may have become shallow, because genuine intimacy requires presence - and Benzodiazepines [Xanax · Valium · Klonopin] use consistently interferes with presence.\\n\\nThe Three Phases of Relationship Repair\\n\\nPhase one - Stabilise yourself first: attempting serious relationship repair before you have some stability tends to backfire. You need to be in a place where you can be honest, consistent, and present before asking someone else to trust you again. This phase is typically the first 60-90 days of sobriety.\\n\\nPhase two - Honest acknowledgement: repair requires acknowledgement of specific harm, not general apology. "
+          },
+          "a13": {
+            "title": "How to Keep Going with Sobriety",
+            "tag": "Recovery and Growth",
+            "content": "Your Goal: Build the practices, mindset, and support structures that make long-term sobriety from Benzodiazepines [Xanax · Valium · Klonopin] not just achievable but genuinely sustainable.\\n\\nWhy Long-Term Recovery Is Different From Early Recovery\\n\\nEarly recovery is largely about crisis management - getting through cravings, navigating withdrawal, avoiding high-risk situations. But these are not the same skills required for sustained long-term sobriety. What the research shows: relapse risk in Benzodiazepines [Xanax · Valium · Klonopin] recovery doesn\\"
+          },
+          "a14": {
+            "title": "How to Get Help for Benzodiazepines [Xanax · Valium · Klonopin] Addiction",
+            "tag": "Recovery and Growth",
+            "content": "Your Goal: Know exactly what professional help looks like for Benzodiazepines [Xanax · Valium · Klonopin] addiction, how to access it, and why seeking it is one of the strongest things you can do.\\n\\nWhy Getting Help Is a Decision, Not a Defeat\\n\\nThere is a persistent cultural story that recovery from Benzodiazepines [Xanax · Valium · Klonopin] addiction should be a private, individual act of will. What the evidence actually shows: professional support significantly improves outcomes across every measurable metric - duration of sobriety, quality of life, mental health, and long-term recovery rates. Seeking help isn\\"
+          }
+        }
+      },
+      "kratom": {
+        "trackers": {
+          "dose-log": {
+            "name": "Dose Log",
+            "fields": {
+              "grams": {
+                "label": "Grams consumed"
+              },
+              "doses": {
+                "label": "Number of doses"
+              },
+              "notes": {
+                "label": "Notes"
+              }
+            }
+          },
+          "withdrawal": {
+            "name": "Withdrawal Symptoms",
+            "fields": {
+              "muscleAches": {
+                "label": "Muscle aches"
+              }
+            }
+          },
+          "mood-energy": {
+            "name": "Mood & Energy",
+            "fields": {
+              "mood": {
+                "label": "Mood"
+              },
+              "energy": {
+                "label": "Energy"
+              },
+              "motivation": {
+                "label": "Motivation"
+              },
+              "notes": {
+                "label": "Notes"
+              }
+            }
+          },
+          "cravings": {
+            "name": "Cravings",
+            "fields": {
+              "intensity": {
+                "label": "Intensity"
+              },
+              "trigger": {
+                "label": "Trigger"
+              }
+            }
+          },
+          "sleep": {
+            "name": "Sleep Quality",
+            "fields": {
+              "hours": {
+                "label": "Sleep hours"
+              },
+              "quality": {
+                "label": "Quality"
+              },
+              "restlessLegs": {
+                "label": "Restless legs"
+              }
+            }
+          },
+          "financial": {
+            "name": "Financial Tracking",
+            "fields": {
+              "bought": {
+                "label": "Bought kratom?"
+              }
+            }
+          }
+        },
+        "calculator": {
+          "inputs": {
+            "gramsPerDay": {
+              "label": "Grams per day"
+            },
+            "costPerKg": {
+              "label": "Cost per kg "
+            }
+          },
+          "results": {
+            "0": {
+              "label": "Daily cost"
+            },
+            "1": {
+              "label": "Monthly cost"
+            },
+            "2": {
+              "label": "Yearly cost"
+            },
+            "3": {
+              "label": "Opioid receptor binding"
+            }
+          },
+          "title": "Usage Cost & Dependence"
+        },
+        "activities": {
+          "kratom-quiz": {
+            "name": "Kratom Truth Quiz",
+            "description": "Separate kratom facts from community myths.",
+            "questions": {
+              "0": {
+                "question": "What type of receptors does kratom primarily bind to?",
+                "explanation": "Mitragynine binds to mu-opioid receptors — the same ones as morphine and heroin. Kratom IS an opioid.",
+                "options": {
+                  "0": "Serotonin",
+                  "1": "Dopamine",
+                  "2": "Mu-opioid",
+                  "3": "GABA"
+                }
+              },
+              "1": {
+                "question": "How long do kratom withdrawal symptoms typically last?",
+                "explanation": "Physical withdrawal mirrors opioid withdrawal, typically resolving in 7-10 days. Psychological symptoms can last longer.",
+                "options": {
+                  "0": "1-2 days",
+                  "1": "7-10 days",
+                  "2": "1 month",
+                  "3": "6 months"
+                }
+              },
+              "2": {
+                "question": "Does kratom show up on standard drug tests?",
+                "explanation": "Standard panels don\\",
+                "options": {
+                  "0": "Always",
+                  "1": "Never",
+                  "2": "Only specialized tests",
+                  "3": "Only blood tests"
+                }
+              },
+              "3": {
+                "question": "What makes kratom withdrawal often worse than expected?",
+                "explanation": "The ",
+                "options": {
+                  "0": "People underestimate it because it\\",
+                  "1": "natural",
+                  "2": ", ",
+                  "3": "s actually mild",
+                  "4": "It only affects the stomach",
+                  "5": "It\\"
+                }
+              }
+            }
+          },
+          "kratom-tap": {
+            "name": "Endorphin Surge",
+            "description": "Kratom hijacked your endorphin system. Generate your own rush.",
+            "tapPrompt": "Each tap activates your natural reward system. Feel the energy!"
+          },
+          "root-cause": {
+            "name": "Root Cause Explorer",
+            "description": "Most people started kratom for a reason. Address that reason directly.",
+            "fields": {
+              "originalReason": {
+                "label": "What were you originally treating with kratom?",
+                "placeholder": "Chronic pain? Social anxiety? Low energy? Depression?"
+              },
+              "currentState": {
+                "label": "Is that original issue better, worse, or the same without kratom?",
+                "placeholder": "Be specific about what\\"
+              },
+              "alternative": {
+                "label": "One thing you can do TODAY to address that root cause",
+                "placeholder": "Schedule a doctor visit, try a stretch routine, call a therapist..."
+              }
+            }
+          }
+        },
+        "articles": {
+          "a1": {
+            "title": "Why Quit Kratom?",
+            "tag": "Awareness & Readiness",
+            "content": "Your Goal: Discover a clear, personal reason for starting this journey - one that comes from within you, not from fear or pressure from others.\\n\\nLet\\"
+          },
+          "a2": {
+            "title": "The Signs of a Kratom Problem",
+            "tag": "Awareness & Readiness",
+            "content": "Your Goal: Recognise the specific patterns that indicate your Kratom use has crossed from habit into dependency - so you can respond to it honestly.\\n\\nWhy Signs Are Easy to Dismiss\\n\\nOne of the defining features of addiction is that the brain becomes very good at explaining away its own symptoms. What this means for you: the same mind shaped by Kratom use is the one you\\"
+          },
+          "a3": {
+            "title": "How to Map Your Kratom Triggers",
+            "tag": "Awareness & Readiness",
+            "content": "Your Goal: Build a personalised map of the specific people, places, emotions, and situations that reliably activate your desire to use Kratom - so you can respond rather than react.\\n\\nWhy Triggers Are the Actual Battle\\n\\nMost people who relapse don\\"
+          },
+          "a4": {
+            "title": "The Lies We Tell to Keep Using Kratom",
+            "tag": "Awareness & Readiness",
+            "content": "Your Goal: Recognise the specific thought patterns your mind uses to justify continued Kratom use - because you cannot argue your way out of something you can\\"
+          },
+          "a5": {
+            "title": "How to Urge Surf",
+            "tag": "Detox & Early Healing",
+            "content": "Your Goal: Learn to move through a craving for Kratom without acting on it, using a technique backed by clinical research in addiction medicine.\\n\\nWhat a Craving Actually Is\\n\\nA craving is not a command. Here\\"
+          },
+          "a6": {
+            "title": "How to Defuse Thoughts About Kratom",
+            "tag": "Detox & Early Healing",
+            "content": "Your Goal: Learn to unhook from intrusive thoughts about Kratom so they lose their power to pull you toward using, without having to fight or suppress them.\\n\\nWhy Fighting Your Thoughts Doesn\\"
+          },
+          "a7": {
+            "title": "How to Tame Your Emotions",
+            "tag": "Detox & Early Healing",
+            "content": "Your Goal: Build the capacity to feel difficult emotions without immediately reaching for Kratom - because emotional tolerance is the foundation of sustained recovery.\\n\\nWhy Kratom and Emotions Became Linked\\n\\nFor many people, Kratom use started as an emotional solution. It numbed what was painful, amplified what was flat, or created a reliable state that felt better than the default. What the neuroscience shows: over time, the brain outsources emotional regulation to the substance. Natural coping pathways weaken through disuse, while the Kratom pathway becomes the highway.\\n\\nThis is why early recovery often feels emotionally overwhelming - emotions that were previously managed chemically now have to be handled directly. Emotional volatility in the early weeks is one of the most common reasons people return to Kratom use.\\n\\nThe STOP Technique\\n\\nWhen a difficult emotion arises and the pull toward Kratom activates, STOP is a four-step grounding practice:\\n\\nS - Stop: whatever you\\"
+          },
+          "a8": {
+            "title": "What Kratom Withdrawal Feels Like",
+            "tag": "Detox & Early Healing",
+            "content": "Your Goal: Understand what Kratom withdrawal actually involves - physically and psychologically - so you can prepare for it, move through it, and recognise when to seek medical support.\\n\\nWhy Withdrawal Happens\\n\\nWhat this means for your body: when you use Kratom regularly over time, your nervous system adapts to its presence. It recalibrates its baseline around the substance. When Kratom is removed, the system is suddenly without what it had come to treat as normal - and withdrawal symptoms are the nervous system rebalancing itself.\\n\\nThis is not punishment. It is physiology. Understanding it as physiology, rather than as a sign that something is broken, is one of the most important reframes in early recovery.\\n\\nCommon Withdrawal Experiences\\n\\nPhysical symptoms vary significantly depending on the substance and the duration and intensity of use. Common experiences include sleep disruption, appetite changes, fatigue, muscle aches, sweating, and gastrointestinal discomfort. For some substances - particularly alcohol, benzodiazepines, and opioids - withdrawal can have serious medical components and should be managed with clinical support.\\n\\nPsychological symptoms are frequently the harder and longer-lasting challenge. Anxiety, irritability, low mood, difficulty concentrating, and a pervasive sense of emptiness are common. The clinical term for this is anhedonia - a temporary reduction in the ability to feel pleasure from ordinary things. This happens because Kratom was artificially stimulating dopamine pathways that now need time to recover their natural function.\\n\\nWhat this actually feels like: many people describe early withdrawal as a period of high discomfort that then gives way to something duller and greyer - not dramatically painful, but flat. This flatness is often what drives people back to Kratom. It\\"
+          },
+          "a9": {
+            "title": "How to Get Better Sleep in Recovery",
+            "tag": "Detox & Early Healing",
+            "content": "Your Goal: Rebuild healthy sleep without Kratom - and understand why this is one of the most important things you can do for lasting recovery.\\n\\nWhy Sleep and Recovery Are Inseparable\\n\\nSleep is the brain\\"
+          },
+          "a10": {
+            "title": "How to Ditch Perfectionism in Recovery",
+            "tag": "Recovery and Growth",
+            "content": "Your Goal: Release the belief that recovery has to be perfect - and understand why perfectionism is one of the most reliable pathways back to Kratom use.\\n\\nHow Perfectionism Fuels Addiction\\n\\nPerfectionism and addiction are closely linked. What the research shows: perfectionism isn\\"
+          },
+          "a11": {
+            "title": "How to Build a Life You Don\\",
+            "tag": "Recovery and Growth",
+            "content": "Your Goal: Begin building a life so genuinely engaging and meaningful that staying sober from Kratom becomes desirable rather than merely disciplined.\\n\\nThe Problem With Just Quitting\\n\\nMany people approach recovery as subtraction: remove Kratom, then life continues. But when Kratom has been a central organising feature of your days - providing structure, reward, social connection, or emotional management - removing it leaves a vacuum. And vacuums get filled with something. What this means for you: the question isn\\"
+          },
+          "a12": {
+            "title": "How to Heal and Rebuild Relationships",
+            "tag": "Recovery and Growth",
+            "content": "Your Goal: Understand how Kratom use affected your relationships - and begin the deliberate process of repair, rebuilding, and choosing connections that support your recovery.\\n\\nWhat Kratom Did to Your Relationships\\n\\nAddiction is often described as a relationship with a substance, but it is always also a disruption of relationships with people. The time, energy, emotional availability, and honesty that Kratom consumed were resources that would otherwise have been invested in people who mattered.\\n\\nThe impacts are wide-ranging. Trust may have been broken through broken promises or unpredictable behaviour. Emotional intimacy may have become shallow, because genuine intimacy requires presence - and Kratom use consistently interferes with presence.\\n\\nThe Three Phases of Relationship Repair\\n\\nPhase one - Stabilise yourself first: attempting serious relationship repair before you have some stability tends to backfire. You need to be in a place where you can be honest, consistent, and present before asking someone else to trust you again. This phase is typically the first 60-90 days of sobriety.\\n\\nPhase two - Honest acknowledgement: repair requires acknowledgement of specific harm, not general apology. "
+          },
+          "a13": {
+            "title": "How to Keep Going with Sobriety",
+            "tag": "Recovery and Growth",
+            "content": "Your Goal: Build the practices, mindset, and support structures that make long-term sobriety from Kratom not just achievable but genuinely sustainable.\\n\\nWhy Long-Term Recovery Is Different From Early Recovery\\n\\nEarly recovery is largely about crisis management - getting through cravings, navigating withdrawal, avoiding high-risk situations. But these are not the same skills required for sustained long-term sobriety. What the research shows: relapse risk in Kratom recovery doesn\\"
+          },
+          "a14": {
+            "title": "How to Get Help for Kratom Addiction",
+            "tag": "Recovery and Growth",
+            "content": "Your Goal: Know exactly what professional help looks like for Kratom addiction, how to access it, and why seeking it is one of the strongest things you can do.\\n\\nWhy Getting Help Is a Decision, Not a Defeat\\n\\nThere is a persistent cultural story that recovery from Kratom addiction should be a private, individual act of will. What the evidence actually shows: professional support significantly improves outcomes across every measurable metric - duration of sobriety, quality of life, mental health, and long-term recovery rates. Seeking help isn\\"
+          }
+        }
+      },
+      "mdma": {
+        "trackers": {
+          "use-frequency": {
+            "name": "Use Frequency",
+            "fields": {
+              "used": {
+                "label": "Used today"
+              }
+            }
+          },
+          "mood": {
+            "name": "Mood & Emotional Recovery",
+            "fields": {
+              "mood": {
+                "label": "Overall mood"
+              },
+              "blunting": {
+                "label": "Emotional blunting"
+              },
+              "empathy": {
+                "label": "Social warmth"
+              },
+              "depression": {
+                "label": "Depression"
+              },
+              "notes": {
+                "label": "Notes"
+              }
+            }
+          },
+          "cognitive": {
+            "name": "Cognitive Function",
+            "fields": {
+              "memory": {
+                "label": "Memory"
+              },
+              "processing": {
+                "label": "Processing speed"
+              },
+              "focus": {
+                "label": "Focus"
+              },
+              "brainFog": {
+                "label": "Brain fog"
+              },
+              "notes": {
+                "label": "Notes"
+              }
+            }
+          },
+          "sleep": {
+            "name": "Sleep Quality",
+            "fields": {
+              "hours": {
+                "label": "Hours"
+              },
+              "quality": {
+                "label": "Quality"
+              },
+              "vividDreams": {
+                "label": "Vivid dreams"
+              }
+            }
+          },
+          "social": {
+            "name": "Social Patterns",
+            "fields": {
+              "situations": {
+                "label": "MDMA exposure situations"
+              }
+            }
+          },
+          "physical": {
+            "name": "Physical Health",
+            "fields": {
+              "energy": {
+                "label": "Energy"
+              },
+              "appetite": {
+                "label": "Appetite"
+              }
+            }
+          }
+        },
+        "calculator": {
+          "inputs": {
+            "dosePerSession": {
+              "label": "Average dose (mg)"
+            },
+            "sessionsPerMonth": {
+              "label": "Sessions per month"
+            },
+            "yearsOfUse": {
+              "label": "Years of use"
+            }
+          },
+          "results": {
+            "0": {
+              "label": "Neurotoxicity risk"
+            },
+            "1": {
+              "label": "Recovery timeline"
+            },
+            "2": {
+              "label": "Key note"
+            }
+          },
+          "title": "Neurotoxicity Risk & Recovery"
+        },
+        "activities": {
+          "serotonin-visualization": {
+            "name": "Serotonin Recovery Journey",
+            "description": "Watch your brain\\",
+            "scenes": {
+              "0": {
+                "text": "Day 1 after use: Serotonin reserves are critically low. The "
+              },
+              "1": {
+                "text": "Week 1: Your body is synthesizing new serotonin from tryptophan. Sleep and sunlight accelerate this."
+              },
+              "2": {
+                "text": "Week 4: Serotonin transporters are normalizing. Emotional range is returning — subtle but real."
+              },
+              "3": {
+                "text": "Month 3: The emotional blunting is lifting. Music moves you. Conversations warm you. This is natural serotonin."
+              },
+              "4": {
+                "text": "Month 6+: Serotonin neuron terminals are regenerating. You feel more deeply than you did even before MDMA."
+              }
+            }
+          },
+          "mdma-affirmations": {
+            "name": "Authentic Connection Cards",
+            "description": "MDMA made intimacy feel effortless. These truths remind you it\\",
+            "affirmations": {
+              "0": "Real connection is quieter than MDMA connection — and it lasts longer.",
+              "1": "I can be vulnerable without a chemical safety net.",
+              "2": "The love I felt on MDMA was MY love. It lives in me, not in a pill.",
+              "3": "Emotional depth returns. I\\",
+              "4": ",\n          ",
+              "5": "t need to feel everything at maximum intensity to feel alive.",
+              "6": "My friendships are real. They don\\",
+              "7": ",\n          "
+            }
+          },
+          "mdma-quiz": {
+            "name": "Serotonin Science Quiz",
+            "description": "How much do you know about MDMA and your brain?",
+            "questions": {
+              "0": {
+                "question": "How much serotonin does MDMA release compared to normal?",
+                "explanation": "MDMA causes 3-5x normal serotonin release, creating the intense euphoria and empathy — and the devastating comedown.",
+                "options": {
+                  "0": "Same amount",
+                  "1": "2x",
+                  "2": "3-5x",
+                  "3": "10x+"
+                }
+              },
+              "1": {
+                "question": "What is ",
+                "explanation": "Heavy MDMA use damages serotonin neuron terminals. The good news: recovery is documented over 12-18 months of abstinence.",
+                "options": {
+                  "0": "Temporary confusion",
+                  "1": "Permanent brain damage",
+                  "2": "Damage to serotonin neuron terminals",
+                  "3": "Headaches"
+                }
+              },
+              "2": {
+                "question": "Why is ",
+                "explanation": "Alcohol competes for liver enzymes, prolonging MDMA metabolism and deepening the serotonin crash.",
+                "options": {
+                  "0": "Dehydration",
+                  "1": "Alcohol blocks serotonin recovery",
+                  "2": "Liver competition slows MDMA metabolism",
+                  "3": "It\\"
+                }
+              },
+              "3": {
+                "question": "What\\",
+                "explanation": "The 3-month rule allows serotonin stores to fully replenish. More frequent use causes cumulative damage.",
+                "options": {
+                  "0": "1 week",
+                  "1": "2 weeks",
+                  "2": "1 month",
+                  "3": "3 months"
+                }
+              }
+            }
+          }
+        },
+        "articles": {
+          "a1": {
+            "title": "Why Quit MDMA?",
+            "tag": "Awareness & Readiness",
+            "content": "Your Goal: Discover a clear, personal reason for starting this journey - one that comes from within you, not from fear or pressure from others.\\n\\nLet\\"
+          },
+          "a2": {
+            "title": "The Signs of a MDMA Problem",
+            "tag": "Awareness & Readiness",
+            "content": "Your Goal: Recognise the specific patterns that indicate your MDMA use has crossed from habit into dependency - so you can respond to it honestly.\\n\\nWhy Signs Are Easy to Dismiss\\n\\nOne of the defining features of addiction is that the brain becomes very good at explaining away its own symptoms. What this means for you: the same mind shaped by MDMA use is the one you\\"
+          },
+          "a3": {
+            "title": "How to Map Your MDMA Triggers",
+            "tag": "Awareness & Readiness",
+            "content": "Your Goal: Build a personalised map of the specific people, places, emotions, and situations that reliably activate your desire to use MDMA - so you can respond rather than react.\\n\\nWhy Triggers Are the Actual Battle\\n\\nMost people who relapse don\\"
+          },
+          "a4": {
+            "title": "The Lies We Tell to Keep Using MDMA",
+            "tag": "Awareness & Readiness",
+            "content": "Your Goal: Recognise the specific thought patterns your mind uses to justify continued MDMA use - because you cannot argue your way out of something you can\\"
+          },
+          "a5": {
+            "title": "How to Urge Surf",
+            "tag": "Detox & Early Healing",
+            "content": "Your Goal: Learn to move through a craving for MDMA without acting on it, using a technique backed by clinical research in addiction medicine.\\n\\nWhat a Craving Actually Is\\n\\nA craving is not a command. Here\\"
+          },
+          "a6": {
+            "title": "How to Defuse Thoughts About MDMA",
+            "tag": "Detox & Early Healing",
+            "content": "Your Goal: Learn to unhook from intrusive thoughts about MDMA so they lose their power to pull you toward using, without having to fight or suppress them.\\n\\nWhy Fighting Your Thoughts Doesn\\"
+          },
+          "a7": {
+            "title": "How to Tame Your Emotions",
+            "tag": "Detox & Early Healing",
+            "content": "Your Goal: Build the capacity to feel difficult emotions without immediately reaching for MDMA - because emotional tolerance is the foundation of sustained recovery.\\n\\nWhy MDMA and Emotions Became Linked\\n\\nFor many people, MDMA use started as an emotional solution. It numbed what was painful, amplified what was flat, or created a reliable state that felt better than the default. What the neuroscience shows: over time, the brain outsources emotional regulation to the substance. Natural coping pathways weaken through disuse, while the MDMA pathway becomes the highway.\\n\\nThis is why early recovery often feels emotionally overwhelming - emotions that were previously managed chemically now have to be handled directly. Emotional volatility in the early weeks is one of the most common reasons people return to MDMA use.\\n\\nThe STOP Technique\\n\\nWhen a difficult emotion arises and the pull toward MDMA activates, STOP is a four-step grounding practice:\\n\\nS - Stop: whatever you\\"
+          },
+          "a8": {
+            "title": "What MDMA Withdrawal Feels Like",
+            "tag": "Detox & Early Healing",
+            "content": "Your Goal: Understand what MDMA withdrawal actually involves - physically and psychologically - so you can prepare for it, move through it, and recognise when to seek medical support.\\n\\nWhy Withdrawal Happens\\n\\nWhat this means for your body: when you use MDMA regularly over time, your nervous system adapts to its presence. It recalibrates its baseline around the substance. When MDMA is removed, the system is suddenly without what it had come to treat as normal - and withdrawal symptoms are the nervous system rebalancing itself.\\n\\nThis is not punishment. It is physiology. Understanding it as physiology, rather than as a sign that something is broken, is one of the most important reframes in early recovery.\\n\\nCommon Withdrawal Experiences\\n\\nPhysical symptoms vary significantly depending on the substance and the duration and intensity of use. Common experiences include sleep disruption, appetite changes, fatigue, muscle aches, sweating, and gastrointestinal discomfort. For some substances - particularly alcohol, benzodiazepines, and opioids - withdrawal can have serious medical components and should be managed with clinical support.\\n\\nPsychological symptoms are frequently the harder and longer-lasting challenge. Anxiety, irritability, low mood, difficulty concentrating, and a pervasive sense of emptiness are common. The clinical term for this is anhedonia - a temporary reduction in the ability to feel pleasure from ordinary things. This happens because MDMA was artificially stimulating dopamine pathways that now need time to recover their natural function.\\n\\nWhat this actually feels like: many people describe early withdrawal as a period of high discomfort that then gives way to something duller and greyer - not dramatically painful, but flat. This flatness is often what drives people back to MDMA. It\\"
+          },
+          "a9": {
+            "title": "How to Get Better Sleep in Recovery",
+            "tag": "Detox & Early Healing",
+            "content": "Your Goal: Rebuild healthy sleep without MDMA - and understand why this is one of the most important things you can do for lasting recovery.\\n\\nWhy Sleep and Recovery Are Inseparable\\n\\nSleep is the brain\\"
+          },
+          "a10": {
+            "title": "How to Ditch Perfectionism in Recovery",
+            "tag": "Recovery and Growth",
+            "content": "Your Goal: Release the belief that recovery has to be perfect - and understand why perfectionism is one of the most reliable pathways back to MDMA use.\\n\\nHow Perfectionism Fuels Addiction\\n\\nPerfectionism and addiction are closely linked. What the research shows: perfectionism isn\\"
+          },
+          "a11": {
+            "title": "How to Build a Life You Don\\",
+            "tag": "Recovery and Growth",
+            "content": "Your Goal: Begin building a life so genuinely engaging and meaningful that staying sober from MDMA becomes desirable rather than merely disciplined.\\n\\nThe Problem With Just Quitting\\n\\nMany people approach recovery as subtraction: remove MDMA, then life continues. But when MDMA has been a central organising feature of your days - providing structure, reward, social connection, or emotional management - removing it leaves a vacuum. And vacuums get filled with something. What this means for you: the question isn\\"
+          },
+          "a12": {
+            "title": "How to Heal and Rebuild Relationships",
+            "tag": "Recovery and Growth",
+            "content": "Your Goal: Understand how MDMA use affected your relationships - and begin the deliberate process of repair, rebuilding, and choosing connections that support your recovery.\\n\\nWhat MDMA Did to Your Relationships\\n\\nAddiction is often described as a relationship with a substance, but it is always also a disruption of relationships with people. The time, energy, emotional availability, and honesty that MDMA consumed were resources that would otherwise have been invested in people who mattered.\\n\\nThe impacts are wide-ranging. Trust may have been broken through broken promises or unpredictable behaviour. Emotional intimacy may have become shallow, because genuine intimacy requires presence - and MDMA use consistently interferes with presence.\\n\\nThe Three Phases of Relationship Repair\\n\\nPhase one - Stabilise yourself first: attempting serious relationship repair before you have some stability tends to backfire. You need to be in a place where you can be honest, consistent, and present before asking someone else to trust you again. This phase is typically the first 60-90 days of sobriety.\\n\\nPhase two - Honest acknowledgement: repair requires acknowledgement of specific harm, not general apology. "
+          },
+          "a13": {
+            "title": "How to Keep Going with Sobriety",
+            "tag": "Recovery and Growth",
+            "content": "Your Goal: Build the practices, mindset, and support structures that make long-term sobriety from MDMA not just achievable but genuinely sustainable.\\n\\nWhy Long-Term Recovery Is Different From Early Recovery\\n\\nEarly recovery is largely about crisis management - getting through cravings, navigating withdrawal, avoiding high-risk situations. But these are not the same skills required for sustained long-term sobriety. What the research shows: relapse risk in MDMA recovery doesn\\"
+          },
+          "a14": {
+            "title": "How to Get Help for MDMA Addiction",
+            "tag": "Recovery and Growth",
+            "content": "Your Goal: Know exactly what professional help looks like for MDMA addiction, how to access it, and why seeking it is one of the strongest things you can do.\\n\\nWhy Getting Help Is a Decision, Not a Defeat\\n\\nThere is a persistent cultural story that recovery from MDMA addiction should be a private, individual act of will. What the evidence actually shows: professional support significantly improves outcomes across every measurable metric - duration of sobriety, quality of life, mental health, and long-term recovery rates. Seeking help isn\\"
+          }
+        }
+      }
+    }
+  }
+}

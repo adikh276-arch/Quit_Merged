@@ -20,7 +20,7 @@ export const substances: SubstanceConfig[] = [
     slug: 'alcohol',
     name: 'Alcohol',
     descriptor: 'Beer, wine & spirits',
-    icon: '🍷',
+    icon: 'wine',
     accentVar: '--substance-alcohol',
     trackers: [
       {
@@ -172,11 +172,11 @@ export const substances: SubstanceConfig[] = [
         id: 'liver-bodyscan', name: 'Recovery Body Scan', duration: '4 min', type: 'body-scan',
         description: 'Check in with the parts of your body that are actively healing right now.',
         bodyZones: [
-          { name: 'Liver', emoji: '🫁', prompt: 'Place your hand on your right ribs. Your liver is here — regenerating right now. Fat deposits are mobilizing. Enzyme levels are dropping daily.' },
-          { name: 'Brain', emoji: '🧠', prompt: 'Your brain\'s GABA receptors are recalibrating. The fog is lifting. Neural pathways that alcohol dulled are reactivating.' },
-          { name: 'Heart', emoji: '❤️', prompt: 'Your blood pressure is normalizing. Resting heart rate is dropping. Your cardiovascular risk decreases with every sober day.' },
-          { name: 'Stomach', emoji: '🫃', prompt: 'Gastric lining is healing. The inflammation is subsiding. Your gut microbiome is diversifying again.' },
-          { name: 'Skin', emoji: '✨', prompt: 'Your skin is rehydrating. Redness is fading. People will start saying you look healthier — and they\'re right.' },
+          { name: 'Liver', emoji: 'liver', prompt: 'Place your hand on your right ribs. Your liver is here — regenerating right now. Fat deposits are mobilizing. Enzyme levels are dropping daily.' },
+          { name: 'Brain', emoji: 'brain', prompt: 'Your brain\'s GABA receptors are recalibrating. The fog is lifting. Neural pathways that alcohol dulled are reactivating.' },
+          { name: 'Heart', emoji: 'heart', prompt: 'Your blood pressure is normalizing. Resting heart rate is dropping. Your cardiovascular risk decreases with every sober day.' },
+          { name: 'Stomach', emoji: 'stomach', prompt: 'Gastric lining is healing. The inflammation is subsiding. Your gut microbiome is diversifying again.' },
+          { name: 'Skin', emoji: 'skin', prompt: 'Your skin is rehydrating. Redness is fading. People will start saying you look healthier — and they\'re right.' },
         ],
       },
       {
@@ -218,7 +218,7 @@ export const substances: SubstanceConfig[] = [
     slug: 'tobacco',
     name: 'Tobacco / Nicotine',
     descriptor: 'Cigarettes, vaping & pouches',
-    icon: '🚬',
+    icon: 'cigarette',
     accentVar: '--substance-tobacco',
     trackers: [
       {
@@ -323,12 +323,12 @@ export const substances: SubstanceConfig[] = [
         id: 'lung-visualization', name: 'Lung Healing Journey', duration: '3 min', type: 'visualization',
         description: 'Watch your lungs heal in real time — from the first hour to one year smoke-free.',
         scenes: [
-          { text: 'Hour 1: Carbon monoxide is leaving your bloodstream. Oxygen levels are already rising.', emoji: '💨', duration: 8 },
-          { text: 'Day 3: Your bronchial tubes are relaxing. Breathing becomes easier. Energy increases.', emoji: '🌬️', duration: 8 },
-          { text: 'Week 2: Cilia — the tiny hairs in your lungs — are regrowing. They sweep out mucus and debris.', emoji: '🌱', duration: 8 },
-          { text: 'Month 1: Lung function has increased measurably. Coughing and shortness of breath decrease.', emoji: '🫁', duration: 8 },
-          { text: 'Month 9: Your lungs are dramatically cleaner. Infection risk has dropped. You can feel the difference.', emoji: '🏔️', duration: 8 },
-          { text: 'Year 1: Your risk of heart disease is now HALF that of a smoker. Your body chose healing. You let it.', emoji: '🎉', duration: 10 },
+          { text: 'Hour 1: Carbon monoxide is leaving your bloodstream. Oxygen levels are already rising.', emoji: 'wind', duration: 8 },
+          { text: 'Day 3: Your bronchial tubes are relaxing. Breathing becomes easier. Energy increases.', emoji: 'wind', duration: 8 },
+          { text: 'Week 2: Cilia — the tiny hairs in your lungs — are regrowing. They sweep out mucus and debris.', emoji: 'sprout', duration: 8 },
+          { text: 'Month 1: Lung function has increased measurably. Coughing and shortness of breath decrease.', emoji: 'lung', duration: 8 },
+          { text: 'Month 9: Your lungs are dramatically cleaner. Infection risk has dropped. You can feel the difference.', emoji: 'mountain', duration: 8 },
+          { text: 'Year 1: Your risk of heart disease is now HALF that of a smoker. Your body chose healing. You let it.', emoji: 'party', duration: 10 },
         ],
       },
       {
@@ -367,7 +367,7 @@ export const substances: SubstanceConfig[] = [
   },
   // ===== OPIOIDS =====
   {
-    slug: 'opioids', name: 'Opioids', descriptor: 'Prescription & heroin', icon: '💊', accentVar: '--substance-opioids',
+    slug: 'opioids', name: 'Opioids', descriptor: 'Prescription & heroin', icon: 'pill', accentVar: '--substance-opioids',
     banner: { text: 'On Buprenorphine — Day 21 · Well managed', type: 'info', dismissable: true },
     trackers: [
       { id: 'use-mat', name: 'Use & MAT', chartType: 'bar', yAxisLabel: 'Use instances', insight: '19 consecutive days without illicit use. Buprenorphine has stabilized your baseline.',
@@ -462,11 +462,11 @@ export const substances: SubstanceConfig[] = [
         id: 'pain-bodyscan', name: 'Pain Body Map', duration: '5 min', type: 'body-scan',
         description: 'Separate real pain from craving. Your body knows the difference — learn to listen.',
         bodyZones: [
-          { name: 'Head & Mind', emoji: '🧠', prompt: 'Is there a headache, or is it mental fog from craving? Notice without judging. Cravings feel like urgency. Pain feels specific.' },
-          { name: 'Gut & Core', emoji: '🫃', prompt: 'Opioid withdrawal hits the gut hard — cramping, nausea. Breathe into this area. This sensation is temporary and means your body is recalibrating.' },
-          { name: 'Muscles & Joints', emoji: '💪', prompt: 'Aching, restless legs — your body\'s natural pain system is rebooting. Stretch gently. The discomfort means receptors are waking up.' },
+          { name: 'Head & Mind', emoji: 'head-mind', prompt: 'Is there a headache, or is it mental fog from craving? Notice without judging. Cravings feel like urgency. Pain feels specific.' },
+          { name: 'Gut & Core', emoji: 'stomach', prompt: 'Opioid withdrawal hits the gut hard — cramping, nausea. Breathe into this area. This sensation is temporary and means your body is recalibrating.' },
+          { name: 'Muscles & Joints', emoji: 'muscles-joints', prompt: 'Aching, restless legs — your body\'s natural pain system is rebooting. Stretch gently. The discomfort means receptors are waking up.' },
           { name: 'Skin & Nerves', emoji: '🖐️', prompt: 'Goosebumps, sweating, sensitivity — your nervous system is resetting. Touch something textured. Ground into sensation.' },
-          { name: 'Chest & Heart', emoji: '❤️', prompt: 'Anxiety or physical tightness? Place both hands here. Slow your breathing. Your heart rate is normalizing with each sober day.' },
+          { name: 'Chest & Heart', emoji: 'chest-heart', prompt: 'Anxiety or physical tightness? Place both hands here. Slow your breathing. Your heart rate is normalizing with each sober day.' },
         ],
       },
       {
@@ -504,7 +504,7 @@ export const substances: SubstanceConfig[] = [
   },
   // ===== CANNABIS =====
   {
-    slug: 'cannabis', name: 'Cannabis', descriptor: 'Flower, edibles & concentrates', icon: '🌿', accentVar: '--substance-cannabis',
+    slug: 'cannabis', name: 'Cannabis', descriptor: 'Flower, edibles & concentrates', icon: 'leaf', accentVar: '--substance-cannabis',
     trackers: [
       { id: 'use-log', name: 'Use Log', chartType: 'bar', yAxisLabel: 'Sessions', insight: '16 consecutive days without use. Appetite and sleep are normalizing independently.',
         fields: [{ key: 'sessions', label: 'Sessions today', type: 'number', min: 0, max: 10 }, { key: 'method', label: 'Method', type: 'chips', options: ['Smoked', 'Vaped', 'Edible', 'Dab', 'None'] }, { key: 'amount', label: 'Amount', type: 'chips', options: ['Small', 'Medium', 'Large', 'None'] }, { key: 'notes', label: 'Notes', type: 'textarea' }],
@@ -599,7 +599,7 @@ export const substances: SubstanceConfig[] = [
   },
   // ===== STIMULANTS =====
   {
-    slug: 'stimulants', name: 'Stimulants', descriptor: 'Cocaine, meth & amphetamines', icon: '⚡', accentVar: '--substance-stimulants',
+    slug: 'stimulants', name: 'Stimulants', descriptor: 'Cocaine, meth & amphetamines', icon: 'zap', accentVar: '--substance-stimulants',
     banner: { text: '⚠️ Cardiovascular Alert: Stimulant use significantly elevates heart attack risk. Monitor your resting heart rate.', type: 'warning', dismissable: true },
     trackers: [
       { id: 'use-frequency', name: 'Use Frequency', chartType: 'bar', yAxisLabel: 'Grams', insight: '14 consecutive days clean. The physical crash phase is behind you.',
@@ -649,11 +649,11 @@ export const substances: SubstanceConfig[] = [
         id: 'dopamine-visualization', name: 'Dopamine Recovery Journey', duration: '3 min', type: 'visualization',
         description: 'Visualize your brain\'s dopamine system rebooting — from crash to color.',
         scenes: [
-          { text: 'Day 1: Your dopamine receptors are nearly empty. Everything feels grey. This is the crash — not your new reality.', emoji: '🌑', duration: 8 },
+          { text: 'Day 1: Your dopamine receptors are nearly empty. Everything feels grey. This is the crash — not your new reality.', emoji: 'grey', duration: 8 },
           { text: 'Week 1: Your brain begins upregulating receptors. Small pleasures start registering — food, warmth, a funny moment.', emoji: '🌒', duration: 8 },
           { text: 'Week 2: Anhedonia is fading. Music sounds better. Sunsets have color again. Your reward system is rebuilding.', emoji: '🌓', duration: 8 },
           { text: 'Month 1: Natural dopamine spikes from exercise, achievement, and connection feel real again.', emoji: '🌔', duration: 8 },
-          { text: 'Month 3: Your baseline has shifted. Normal life has texture and reward. The grey phase is behind you.', emoji: '🌕', duration: 10 },
+          { text: 'Month 3: Your baseline has shifted. Normal life has texture and reward. The grey phase is behind you.', emoji: 'natural', duration: 10 },
         ],
       },
       {
@@ -697,7 +697,7 @@ export const substances: SubstanceConfig[] = [
   },
   // ===== BENZODIAZEPINES =====
   {
-    slug: 'benzodiazepines', name: 'Benzodiazepines', descriptor: 'Xanax, Valium & Klonopin', icon: '💊', accentVar: '--substance-benzodiazepines',
+    slug: 'benzodiazepines', name: 'Benzodiazepines', descriptor: 'Xanax, Valium & Klonopin', icon: 'pill', accentVar: '--substance-benzodiazepines',
     banner: { text: 'Medically supervised taper — Dr. Sharma checked in 3 days ago', type: 'info', dismissable: false },
     trackers: [
       { id: 'taper', name: 'Taper Progress', chartType: 'line', yAxisLabel: 'mg/day', insight: 'Perfectly tracking prescribed schedule.',
@@ -757,11 +757,11 @@ export const substances: SubstanceConfig[] = [
         id: 'benzo-bodyscan', name: 'Withdrawal Body Scan', duration: '4 min', type: 'body-scan',
         description: 'Map where withdrawal is showing up today. Awareness reduces the fear.',
         bodyZones: [
-          { name: 'Head', emoji: '🧠', prompt: 'Depersonalization, brain zaps, dizziness? These are GABA receptors recalibrating. It feels terrifying but it\'s not dangerous — just uncomfortable.' },
+          { name: 'Head', emoji: 'head', prompt: 'Depersonalization, brain zaps, dizziness? These are GABA receptors recalibrating. It feels terrifying but it\'s not dangerous — just uncomfortable.' },
           { name: 'Eyes & Vision', emoji: '👁️', prompt: 'Visual disturbances, light sensitivity? Your visual cortex is hyperexcitable without benzos dampening it. This normalizes.' },
-          { name: 'Muscles', emoji: '💪', prompt: 'Tension, twitching, jaw clenching? Your muscles forgot how to relax naturally. Gentle stretching helps them remember.' },
-          { name: 'Stomach', emoji: '🫃', prompt: 'Nausea, loss of appetite? Your gut has GABA receptors too. They\'re adjusting. Small frequent meals help.' },
-          { name: 'Nervous System', emoji: '⚡', prompt: 'Tingling, burning skin, internal vibrations? Your nervous system is unmuting itself. Each day the volume turns down slightly.' },
+          { name: 'Muscles', emoji: 'muscles', prompt: 'Tension, twitching, jaw clenching? Your muscles forgot how to relax naturally. Gentle stretching helps them remember.' },
+          { name: 'Stomach', emoji: 'stomach', prompt: 'Nausea, loss of appetite? Your gut has GABA receptors too. They\'re adjusting. Small frequent meals help.' },
+          { name: 'Nervous System', emoji: 'nervous-system', prompt: 'Tingling, burning skin, internal vibrations? Your nervous system is unmuting itself. Each day the volume turns down slightly.' },
         ],
       },
       {
@@ -941,9 +941,9 @@ export const substances: SubstanceConfig[] = [
         scenes: [
           { text: 'Day 1 after use: Serotonin reserves are critically low. The "Tuesday blues" hit. Everything feels hollow.', emoji: '🌧️', duration: 8 },
           { text: 'Week 1: Your body is synthesizing new serotonin from tryptophan. Sleep and sunlight accelerate this.', emoji: '🌤️', duration: 8 },
-          { text: 'Week 4: Serotonin transporters are normalizing. Emotional range is returning — subtle but real.', emoji: '🌈', duration: 8 },
+          { text: 'Week 4: Serotonin transporters are normalizing. Emotional range is returning — subtle but real.', emoji: 'mood', duration: 8 },
           { text: 'Month 3: The emotional blunting is lifting. Music moves you. Conversations warm you. This is natural serotonin.', emoji: '☀️', duration: 8 },
-          { text: 'Month 6+: Serotonin neuron terminals are regenerating. You feel more deeply than you did even before MDMA.', emoji: '🌟', duration: 10 },
+          { text: 'Month 6+: Serotonin neuron terminals are regenerating. You feel more deeply than you did even before MDMA.', emoji: 'energy', duration: 10 },
         ],
       },
       {
