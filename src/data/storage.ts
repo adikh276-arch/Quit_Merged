@@ -4,6 +4,10 @@ import { executeQuery } from '@/lib/db';
 const getUserId = () => localStorage.getItem('therapy_user_id') || 'anon';
 export const getPrefix = () => `quitmantra_${getUserId()}`;
 
+export function getEntryKey(substance: string, tracker: string, date: string) {
+  return `${getPrefix()}_entries_${substance}_${tracker}_${date}`;
+}
+
 /**
  * Background sync to Neon DB
  */
