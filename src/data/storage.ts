@@ -104,6 +104,32 @@ export async function syncUserDataFromCloud(substance: string) {
 }
 
 /**
+ * Sync ALL user data globally from Neon (landing page bootstrap)
+ */
+export async function syncGlobalDataFromCloud() {
+  const userId = getUserId();
+  if (userId === 'anon') return;
+  
+  try {
+    console.log(`[Sync] Pulling GLOBAL cloud data for ${userId}...`);
+    // Fetch all records for this user prefix
+    const result = await executeQuery(
+      `SELECT id, data FROM quit.activities WHERE user_id = $1 AND id LIKE $2`,
+      [userId, `quitmantra_${userId}_%`]
+    );
+    
+    result.rows.forEach(row => {
+      const { id, data } = row;
+      const dataStr = typeof data === 'string' ? data : JSON.stringify(data);
+      localStorage.setItem(id, dataStr);
+    });
+    console.log(`[Sync] Global pull complete: ${result.rows.length} records.`);
+  } catch (err) {
+    console.error('[Sync] Global pull failed:', err);
+  }
+}
+
+/**
  * Clear onboarding state to allow restart
  */
 export async function resetOnboarded(substance: string) {

@@ -1,10 +1,11 @@
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { substances } from '@/data/substances';
-import { getStreak } from '@/data/storage';
+import { getStreak, syncGlobalDataFromCloud } from '@/data/storage';
 import { Shield, Sparkles, ArrowRight, Flame, Heart } from 'lucide-react';
 import SubstanceIcon from '@/components/SubstanceIcon';
 import { useTranslation } from 'react-i18next';
+import { useEffect, useState } from 'react';
 
 const substanceGradients: Record<string, string> = {
   alcohol: 'from-red-500/90 to-rose-600/90',
@@ -68,6 +69,16 @@ const SubstanceCard = ({ substance, index }: { substance: typeof substances[0]; 
 
 const Landing = () => {
   const { t } = useTranslation();
+  const [lastUpdate, setLastUpdate] = useState(Date.now());
+
+  useEffect(() => {
+    const bootstrap = async () => {
+      await syncGlobalDataFromCloud();
+      setLastUpdate(Date.now());
+    };
+    bootstrap();
+  }, []);
+
   const totalDays = substances.reduce((acc, s) => acc + getStreak(s.slug).days, 0);
   const activeCount = substances.filter(s => getStreak(s.slug).days > 0).length;
 
