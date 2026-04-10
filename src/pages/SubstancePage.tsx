@@ -1,8 +1,8 @@
 import { useParams, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { ArrowLeft, ClipboardList, Calculator, Dumbbell, BookOpen, TrendingUp, Calendar, Flame, ChevronRight, Zap, Lightbulb } from 'lucide-react';
+import { ArrowLeft, ClipboardList, Calculator, Dumbbell, BookOpen, TrendingUp, Calendar, Flame, ChevronRight, Zap, Lightbulb, RefreshCw } from 'lucide-react';
 import { getSubstance } from '@/data/substances';
-import { getStreak, getEntries, getPrefix, fetchOnboarded, saveOnboarded } from '@/data/storage';
+import { getStreak, getEntries, getPrefix, fetchOnboarded, saveOnboarded, resetOnboarded } from '@/data/storage';
 import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import TrackerDetail from '@/components/TrackerDetail';
@@ -53,6 +53,14 @@ const SubstancePage = () => {
     // Quick local check to avoid flicker if already cached
     return localStorage.getItem(`${getPrefix()}_onboarded_${slug}`) === 'true' ? true : null;
   });
+
+  const handleReset = async () => {
+    if (!slug) return;
+    if (confirm(t('quit.app.reset_confirm'))) {
+      await resetOnboarded(slug);
+      window.location.reload();
+    }
+  };
 
   // Cloud check: runs once on mount, resolves onboarding state across devices
   useEffect(() => {
@@ -199,7 +207,16 @@ const SubstancePage = () => {
                     <SubstanceIcon slug={substance.slug} className="h-7 w-7 text-white drop-shadow-sm" />
                   </motion.div>
                   <div>
-                    <h1 className="font-display text-2xl text-white drop-shadow-sm tracking-tight">{t(`quit.substances.${substance.slug}.name`)}</h1>
+                    <h1 className="font-display text-2xl text-white drop-shadow-sm tracking-tight flex items-center gap-2">
+                      {t(`quit.substances.${substance.slug}.name`)}
+                      <button 
+                        onClick={handleReset}
+                        title={t('quit.app.reset_progress')}
+                        className="p-1.5 rounded-full hover:bg-white/10 transition-colors"
+                      >
+                        <RefreshCw className="h-3.5 w-3.5 text-white/40" />
+                      </button>
+                    </h1>
                     <p className="text-[11px] text-white/50 font-medium mt-0.5 italic">{t(`quit.substances.${substance.slug}.descriptor`)}</p>
                   </div>
                 </div>

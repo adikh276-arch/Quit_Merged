@@ -57,17 +57,20 @@ export async function fetchOnboarded(substance: string): Promise<boolean> {
   if (userId === 'anon') return false;
   try {
     console.log(`[Onboarding] Checking cloud for user ${userId}, substance ${substance}...`);
-    // Use LIKE to find any onboarding entry for this substance/user
+    // Check for explicit ID match OR any ID belonging to the user that mentions onboarding for this substance
     const result = await executeQuery(
-      `SELECT data FROM quit.activities WHERE user_id = $1 AND id LIKE $2 LIMIT 1`,
-      [userId, `%_onboarded_${substance}`]
+      `SELECT data FROM quit.activities WHERE user_id = $1 AND (id = $2 OR id LIKE $3) LIMIT 1`,
+      [userId, `${getPrefix()}_onboarded_${substance}`, `%_onboarded_${substance}`]
     );
     if (result.rows.length > 0) {
       const data = result.rows[0].data;
       const parsed = typeof data === 'string' ? JSON.parse(data) : data;
       if (parsed?.onboarded === true) {
+        console.log(`[Onboarding] Cloud record found for ${substance}. Restoring...`);
         // Cache locally so future checks are fast
         localStorage.setItem(localKey, 'true');
+        if (parsed.motivation) localStorage.setItem(`${getPrefix()}_motivation_${substance}`, parsed.motivation);
+        if (parsed.triggers) localStorage.setItem(`${getPrefix()}_triggers_${substance}`, JSON.stringify(parsed.triggers));
         return true;
       }
     }
@@ -75,6 +78,28 @@ export async function fetchOnboarded(substance: string): Promise<boolean> {
     console.error('[Onboarding] Failed to fetch from Neon:', err);
   }
   return false;
+}
+
+/**
+ * Clear onboarding state to allow restart
+ */
+export async function resetOnboarded(substance: string) {
+  const userId = getUserId();
+  const localKey = `${getPrefix()}_onboarded_${substance}`;
+  localStorage.removeItem(localKey);
+  localStorage.removeItem(`${getPrefix()}_motivation_${substance}`);
+  localStorage.removeItem(`${getPrefix()}_triggers_${substance}`);
+  
+  if (userId !== 'anon') {
+    try {
+      await executeQuery(
+        `DELETE FROM quit.activities WHERE user_id = $1 AND id LIKE $2`,
+        [userId, `%_onboarded_${substance}`]
+      );
+    } catch (err) {
+      console.error('[Onboarding] Failed to delete from Neon:', err);
+    }
+  }
 }
 
 export function saveEntry(substance: string, tracker: string, date: string, entry: TrackerEntry) {
