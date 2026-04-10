@@ -16,7 +16,8 @@ export const AuthGuard = ({ children }: { children: React.ReactNode }) => {
       if (token) {
         try {
           // 2. Exchange token for real User ID via legacy handshake API (POST)
-          const response = await fetch(`/quit/api/auth/handshake`, {
+          // We use the absolute path /quit_assessments/api/... as defined in the server router
+          const response = await fetch(`/quit_assessments/api/auth/handshake`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ token })
