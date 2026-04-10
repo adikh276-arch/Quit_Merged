@@ -86,10 +86,11 @@ export async function syncUserDataFromCloud(substance: string) {
   if (userId === 'anon') return;
   
   try {
-    console.log(`[Sync] Pulling all cloud data for ${substance}...`);
+    console.log(`[Sync] Pulling cloud records for substance ${substance}...`);
+    // Fetch all records for this user that relate to the substance
     const result = await executeQuery(
       `SELECT id, data FROM quit.activities WHERE user_id = $1 AND id LIKE $2`,
-      [userId, `quitmantra_${userId}_%_${substance}%`]
+      [userId, `%${substance}%`]
     );
     
     result.rows.forEach(row => {
@@ -97,7 +98,7 @@ export async function syncUserDataFromCloud(substance: string) {
       const dataStr = typeof data === 'string' ? data : JSON.stringify(data);
       localStorage.setItem(id, dataStr);
     });
-    console.log(`[Sync] Pulled ${result.rows.length} records from cloud.`);
+    console.log(`[Sync] Pulled ${result.rows.length} records for ${substance}.`);
   } catch (err) {
     console.error('[Sync] Failed to pull from Neon:', err);
   }
@@ -111,11 +112,11 @@ export async function syncGlobalDataFromCloud() {
   if (userId === 'anon') return;
   
   try {
-    console.log(`[Sync] Pulling GLOBAL cloud data for ${userId}...`);
-    // Fetch all records for this user prefix
+    console.log(`[Sync] Pulling GLOBAL cloud data for user ${userId}...`);
+    // Fetch ALL records for this user_id — most reliable way to bootstrap
     const result = await executeQuery(
-      `SELECT id, data FROM quit.activities WHERE user_id = $1 AND id LIKE $2`,
-      [userId, `quitmantra_${userId}_%`]
+      `SELECT id, data FROM quit.activities WHERE user_id = $1`,
+      [userId]
     );
     
     result.rows.forEach(row => {
@@ -123,7 +124,7 @@ export async function syncGlobalDataFromCloud() {
       const dataStr = typeof data === 'string' ? data : JSON.stringify(data);
       localStorage.setItem(id, dataStr);
     });
-    console.log(`[Sync] Global pull complete: ${result.rows.length} records.`);
+    console.log(`[Sync] Global pull complete: ${result.rows.length} records found in cloud.`);
   } catch (err) {
     console.error('[Sync] Global pull failed:', err);
   }
