@@ -1,6 +1,6 @@
 import { TrackerEntry, AssessmentResult, SubstanceSlug } from './types';
 
-const getPrefix = () => `quitmantra_${localStorage.getItem('therapy_user_id') || 'anon'}`;
+export const getPrefix = () => `quitmantra_${localStorage.getItem('therapy_user_id') || 'anon'}`;
 
 export function getEntryKey(substance: string, tracker: string, date: string) {
   return `${getPrefix()}_entries_${substance}_${tracker}_${date}`;
