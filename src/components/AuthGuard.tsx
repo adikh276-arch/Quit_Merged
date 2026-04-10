@@ -13,53 +13,24 @@ export const AuthGuard = ({ children }: { children: React.ReactNode }) => {
       const token = urlParams.get("token");
 
       if (token) {
-        try {
-          // 2. Call user-info API
-          const response = await fetch("https://api.mantracare.com/user/user-info", {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({ token }),
-          });
-
-          if (response.ok) {
-            const data = await response.json();
-            // 3. Store therapy_user_id
-            if (data && data.user && data.user.id) {
-              sessionStorage.setItem("therapy_user_id", data.user.id);
-              setIsAuthenticated(true);
-              
-              // 4. Remove token from URL
-              urlParams.delete("token");
-              const newSearch = urlParams.toString();
-              
-              const savedPath = sessionStorage.getItem("redirect_path");
-              const targetPath = savedPath || location.pathname;
-              if (savedPath) {
-                sessionStorage.removeItem("redirect_path");
-              }
-
-              const newPath = targetPath + (newSearch ? `?${newSearch}` : "");
-              navigate(newPath, { replace: true });
-              return;
-            }
-          }
-          
-          // If we reach here, the token was invalid or expired
-          console.error("Authentication token invalid or expired.");
-          // Strip the invalid token from URL
-          urlParams.delete("token");
-          const cleanSearch = urlParams.toString();
-          window.history.replaceState({}, document.title, location.pathname + (cleanSearch ? `?${cleanSearch}` : ""));
-          // Now proceed to fallback redirect below without the broken token
-          
-        } catch (error) {
-          console.error("Auth initialization failed:", error);
-          // Network errors or blocked requests also shouldn't loop
-          urlParams.delete("token");
-          window.history.replaceState({}, document.title, location.pathname);
+        // 2. Save the token as the user ID immediately as requested
+        sessionStorage.setItem("therapy_user_id", token);
+        setIsAuthenticated(true);
+        
+        // 3. Remove token from URL
+        urlParams.delete("token");
+        const newSearch = urlParams.toString();
+        
+        // 4. Restore the deep-link path
+        const savedPath = sessionStorage.getItem("redirect_path");
+        const targetPath = savedPath || location.pathname;
+        if (savedPath) {
+          sessionStorage.removeItem("redirect_path");
         }
+
+        const newPath = targetPath + (newSearch ? `?${newSearch}` : "");
+        navigate(newPath, { replace: true });
+        return;
       }
 
       if (therapyUserId) {
