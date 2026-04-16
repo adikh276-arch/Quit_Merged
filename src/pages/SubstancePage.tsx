@@ -9,6 +9,7 @@ import TrackerDetail from '@/components/TrackerDetail';
 import ToolModal from '@/components/ToolModal';
 import SubstanceIcon from '@/components/SubstanceIcon';
 import SubstanceOnboarding from '@/components/SubstanceOnboarding';
+import { ConfirmModal } from '@/components/ConfirmModal';
 import { LineChart, Line, ResponsiveContainer } from 'recharts';
 import { useToast } from '@/hooks/use-toast';
 
@@ -46,6 +47,7 @@ const SubstancePage = () => {
   const substance = getSubstance(slug || '');
   const [activeTracker, setActiveTracker] = useState<string | null>(null);
   const [activeTool, setActiveTool] = useState<string | null>(null);
+  const [showResetConfirm, setShowResetConfirm] = useState(false);
   const [lastUpdate, setLastUpdate] = useState(Date.now());
   // Start as null = loading. True/false = resolved
   const [onboarded, setOnboarded] = useState<boolean | null>(() => {
@@ -56,10 +58,13 @@ const SubstancePage = () => {
 
   const handleReset = async () => {
     if (!slug) return;
-    if (confirm(t('quit.app.reset_confirm'))) {
-      await resetOnboarded(slug);
-      window.location.reload();
-    }
+    setShowResetConfirm(true);
+  };
+
+  const executeReset = async () => {
+    if (!slug) return;
+    await resetOnboarded(slug);
+    window.location.reload();
   };
 
   // Cloud check: runs once on mount, resolves onboarding state across devices
@@ -392,6 +397,14 @@ const SubstancePage = () => {
           }}
         />
       )}
+
+      <ConfirmModal
+        isOpen={showResetConfirm}
+        onClose={() => setShowResetConfirm(false)}
+        onConfirm={executeReset}
+        title={t('quit.app.reset_confirm_title')}
+        message={t('quit.app.reset_confirm_message')}
+      />
     </div>
   );
 };

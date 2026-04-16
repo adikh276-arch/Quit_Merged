@@ -5,8 +5,6 @@ import { BarChart, Bar, LineChart, Line, AreaChart, Area, XAxis, YAxis, Responsi
 import { TrackerConfig, SubstanceConfig } from '@/data/types';
 import { getEntries, saveEntry, todayStr, getEntry } from '@/data/storage';
 import { useTranslation } from 'react-i18next';
-import { ShareModal } from './ShareModal';
-import { Share2 } from 'lucide-react';
 
 interface Props {
   tracker: TrackerConfig;
@@ -23,7 +21,6 @@ const TrackerDetail = ({ tracker, substance, onClose }: Props) => {
   const { t } = useTranslation();
   const [range, setRange] = useState<7 | 30 | 90>(7);
   const [showHistory, setShowHistory] = useState(false);
-  const [showShare, setShowShare] = useState(false);
   const [saved, setSaved] = useState(false);
   const todayEntry = getEntry(substance.slug, tracker.id, todayStr());
   const accentColor = sparkColors[substance.slug] || '#10b981';
@@ -72,10 +69,6 @@ const TrackerDetail = ({ tracker, substance, onClose }: Props) => {
             <p className="text-xs text-muted-foreground mt-0.5">{t(`quit.substances.${substance.slug}.name`)}</p>
           </div>
           <div className="flex items-center gap-3">
-            <button onClick={() => setShowShare(true)} className="flex items-center gap-1.5 rounded-full bg-primary/10 px-3 py-1.5 text-[11px] font-bold text-primary hover:bg-primary/20 transition-colors">
-              <Share2 className="h-3.5 w-3.5" />
-              {t('quit.app.share', 'Share')}
-            </button>
             <button onClick={onClose} className="rounded-xl p-2 hover:bg-muted transition-colors">
               <X className="h-5 w-5 text-muted-foreground" />
             </button>
@@ -101,54 +94,68 @@ const TrackerDetail = ({ tracker, substance, onClose }: Props) => {
             </span>
           </div>
 
-          <div className="space-y-5">
-            {tracker.fields.map(field => (
-              <div key={field.key}>
-                <label className="mb-2.5 block text-xs font-bold text-foreground uppercase tracking-wider">{t(`quit.substances.${substance.slug}.trackers.${tracker.id}.fields.${field.key}.label`)}</label>
-                {field.type === 'slider' && (
-                  <div className="space-y-2">
-                    <input type="range" min={field.min || 0} max={field.max || 10} step={field.step || 1} value={values[field.key] ?? field.min ?? 0} onChange={e => updateField(field.key, Number(e.target.value))} className="w-full h-2 rounded-full appearance-none cursor-pointer" style={{ accentColor }} />
-                    <div className="flex justify-between text-[10px] text-muted-foreground font-medium">
-                      <span>{field.min || 0}</span>
-                      <span className="text-lg font-bold text-foreground -mt-1">{values[field.key] ?? field.min ?? 0}</span>
-                      <span>{field.max || 10}</span>
+            {tracker.fields.map(field => {
+              if (field.showIf) {
+                const depValue = values[field.showIf.field];
+                const targetValue = field.showIf.value;
+                const op = field.showIf.op || '===';
+                
+                let matches = false;
+                if (op === '===') matches = depValue === targetValue;
+                else if (op === '!==') matches = depValue !== targetValue;
+                else if (op === '>') matches = depValue > targetValue;
+                else if (op === '<') matches = depValue < targetValue;
+                
+                if (!matches) return null;
+              }
+              return (
+                <div key={field.key}>
+                  <label className="mb-2.5 block text-xs font-bold text-foreground uppercase tracking-wider">{t(`quit.substances.${substance.slug}.trackers.${tracker.id}.fields.${field.key}.label`)}</label>
+                  {field.type === 'slider' && (
+                    <div className="space-y-2">
+                      <input type="range" min={field.min || 0} max={field.max || 10} step={field.step || 1} value={values[field.key] ?? field.min ?? 0} onChange={e => updateField(field.key, Number(e.target.value))} className="w-full h-2 rounded-full appearance-none cursor-pointer" style={{ accentColor }} />
+                      <div className="flex justify-between text-[10px] text-muted-foreground font-medium">
+                        <span>{field.min || 0}</span>
+                        <span className="text-lg font-bold text-foreground -mt-1">{values[field.key] ?? field.min ?? 0}</span>
+                        <span>{field.max || 10}</span>
+                      </div>
                     </div>
-                  </div>
-                )}
-                {field.type === 'number' && (
-                  <input type="number" min={field.min} max={field.max} value={values[field.key] ?? ''} onChange={e => updateField(field.key, Number(e.target.value))} className="w-full rounded-xl border-2 border-border/60 bg-background px-4 py-3 text-sm font-medium focus:outline-none focus:border-primary/50 focus:ring-4 focus:ring-primary/10 transition-all" />
-                )}
-                {(field.type === 'chips' || field.type === 'single-select' || field.type === 'icon-picker') && field.options && (
-                  <div className="flex flex-wrap gap-2">
-                    {field.options.map(opt => {
-                      const isSelected = field.multiSelect
-                        ? (Array.isArray(values[field.key]) && values[field.key].includes(opt))
-                        : values[field.key] === opt;
-                      return (
-                        <button key={opt} onClick={() => {
-                          if (field.multiSelect) {
-                            const arr = Array.isArray(values[field.key]) ? [...values[field.key]] : [];
-                            if (arr.includes(opt)) arr.splice(arr.indexOf(opt), 1); else arr.push(opt);
-                            updateField(field.key, arr);
-                          } else {
-                            updateField(field.key, opt);
-                          }
-                        }} className={`rounded-xl border-2 px-4 py-2 text-xs font-semibold transition-all duration-200 ${
-                          isSelected
-                            ? 'border-primary bg-primary text-primary-foreground shadow-md shadow-primary/20'
-                            : 'border-border/60 bg-card text-foreground hover:border-primary/30 hover:bg-primary/5'
-                        }`}>
-                          {t(`quit.substances.${substance.slug}.trackers.${tracker.id}.fields.${field.key}.options.${field.options.indexOf(opt)}`)}
-                        </button>
-                      );
-                    })}
-                  </div>
-                )}
-                {field.type === 'textarea' && (
-                  <textarea value={values[field.key] ?? ''} onChange={e => updateField(field.key, e.target.value)} placeholder={t('quit.app.placeholder_notes')} className="w-full rounded-xl border-2 border-border/60 bg-background px-4 py-3 text-sm focus:outline-none focus:border-primary/50 focus:ring-4 focus:ring-primary/10 transition-all resize-none" rows={3} />
-                )}
-              </div>
-            ))}
+                  )}
+                  {field.type === 'number' && (
+                    <input type="number" min={field.min} max={field.max} value={values[field.key] ?? ''} onChange={e => updateField(field.key, Number(e.target.value))} className="w-full rounded-xl border-2 border-border/60 bg-background px-4 py-3 text-sm font-medium focus:outline-none focus:border-primary/50 focus:ring-4 focus:ring-primary/10 transition-all" />
+                  )}
+                  {(field.type === 'chips' || field.type === 'single-select' || field.type === 'icon-picker') && field.options && (
+                    <div className="flex flex-wrap gap-2">
+                      {field.options.map(opt => {
+                        const isSelected = field.multiSelect
+                          ? Array.isArray(values[field.key]) && values[field.key].includes(opt)
+                          : values[field.key] === opt;
+                        return (
+                          <button key={opt} onClick={() => {
+                            if (field.multiSelect) {
+                              const arr = Array.isArray(values[field.key]) ? [...values[field.key]] : [];
+                              if (arr.includes(opt)) arr.splice(arr.indexOf(opt), 1); else arr.push(opt);
+                              updateField(field.key, arr);
+                            } else {
+                              updateField(field.key, opt);
+                            }
+                          }} className={`rounded-xl border-2 px-4 py-2 text-xs font-semibold transition-all duration-200 ${
+                            isSelected
+                              ? 'border-primary bg-primary text-primary-foreground shadow-md shadow-primary/20'
+                              : 'border-border/60 bg-card text-foreground hover:border-primary/30 hover:bg-primary/5'
+                          }`}>
+                            {t(`quit.substances.${substance.slug}.trackers.${tracker.id}.fields.${field.key}.options.${field.options.indexOf(opt)}`)}
+                          </button>
+                        );
+                      })}
+                    </div>
+                  )}
+                  {field.type === 'textarea' && (
+                    <textarea value={values[field.key] ?? ''} onChange={e => updateField(field.key, e.target.value)} placeholder={t('quit.app.placeholder_notes')} className="w-full rounded-xl border-2 border-border/60 bg-background px-4 py-3 text-sm focus:outline-none focus:border-primary/50 focus:ring-4 focus:ring-primary/10 transition-all resize-none" rows={3} />
+                  )}
+                </div>
+              );
+            })}
           </div>
 
           <motion.button
@@ -249,15 +256,6 @@ const TrackerDetail = ({ tracker, substance, onClose }: Props) => {
           </AnimatePresence>
         </motion.div>
       </div>
-
-      <ShareModal
-        isOpen={showShare}
-        onClose={() => setShowShare(false)}
-        activityName={t(`quit.substances.${substance.slug}.trackers.${tracker.id}.name`, { defaultValue: tracker.id })}
-        activityType="tracker"
-        substanceName={t(`quit.substances.${substance.slug}.name`)}
-        icon="Target"
-      />
     </motion.div>
   );
 };

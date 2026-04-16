@@ -35,6 +35,7 @@ export interface FieldConfig {
   step?: number;
   placeholder?: string;
   multiSelect?: boolean;
+  showIf?: { field: string; value: any; op?: '===' | '!==' | '>' | '<' };
 }
 
 export interface CalculatorConfig {
