@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { initializeUser } from "@/lib/user";
 import { migrateAnonData } from "@/data/storage";
@@ -14,6 +14,7 @@ const isRealUserId = (id: string | null): boolean => {
 
 export const AuthGuard = ({ children }: { children: React.ReactNode }) => {
   const [isReady, setIsReady] = useState<boolean>(false);
+  const isAuthenticating = useRef(false);
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -55,6 +56,9 @@ export const AuthGuard = ({ children }: { children: React.ReactNode }) => {
   // -----------------------------------------------------------------------
   useEffect(() => {
     const checkAuth = async () => {
+      if (isAuthenticating.current) return;
+      isAuthenticating.current = true;
+
       // 1. Already authenticated — just render
       const savedUserId = localStorage.getItem(STORAGE_KEY);
       if (isRealUserId(savedUserId)) {
