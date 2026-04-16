@@ -1652,5 +1652,7 @@
   "quit.app.share_inspire": "সঙ্গে আপনার অগ্রগতি ভাগ করে অন্যদের অনুপ্রাণিত করুন",
   "quit.app.share_to_app": "অ্যাপে শেয়ার করুন",
   "quit.app.copied": "অনুলিপি করা হয়েছে!",
-  "quit.app.copy_link": "লিংক কপি করুন"
+  "quit.app.copy_link": "লিংক কপি করুন",
+  "quit.app.reset_confirm": "আপনি কি আপনার অগ্রগতি পুনরায় সেট করতে চান? এটি এই পদার্থের জন্য সমস্ত ডেটা সাফ করবে।",
+  "quit.app.reset_progress": "অগ্রগতি রিসেট করুন"
 }

@@ -1652,5 +1652,7 @@
   "quit.app.share_inspire": "अपनी प्रगति को दूसरों के साथ साझा करके प्रेरित करें",
   "quit.app.share_to_app": "ऐप पर साझा करें",
   "quit.app.copied": "नकल की गई!",
-  "quit.app.copy_link": "लिंक की प्रतिलिपि करें"
+  "quit.app.copy_link": "लिंक की प्रतिलिपि करें",
+  "quit.app.reset_confirm": "क्या आप वाकई अपनी प्रगति रीसेट करना चाहते हैं? इससे इस पदार्थ का सारा डेटा साफ़ हो जाएगा.",
+  "quit.app.reset_progress": "प्रगति रीसेट करें"
 }

@@ -1652,5 +1652,7 @@
   "quit.app.share_inspire": "自分の進捗状況を共有して他の人にインスピレーションを与える",
   "quit.app.share_to_app": "アプリに共有",
   "quit.app.copied": "コピーしました！",
-  "quit.app.copy_link": "リンクをコピー"
+  "quit.app.copy_link": "リンクをコピー",
+  "quit.app.reset_confirm": "進行状況をリセットしてもよろしいですか?これにより、この物質のすべてのデータが消去されます。",
+  "quit.app.reset_progress": "進行状況をリセットする"
 }

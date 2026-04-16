@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { initializeUser } from "@/lib/user";
+import { migrateAnonData } from "@/data/storage";
 
 const STORAGE_KEY = "therapy_user_id";
 
@@ -36,6 +37,7 @@ export const AuthGuard = ({ children }: { children: React.ReactNode }) => {
         if (isRealUserId(urlUserId)) {
           console.log(`[Auth] Real userId received from URL: ${urlUserId}`);
           localStorage.setItem(STORAGE_KEY, urlUserId!);
+          await migrateAnonData(urlUserId!);
           await initializeUser(urlUserId!);
           setIsReady(true);
           restoreAndNavigate(urlParams, navigate);
@@ -58,6 +60,7 @@ export const AuthGuard = ({ children }: { children: React.ReactNode }) => {
               if (userId) {
                 console.log(`[Auth] Real user_id from API: ${userId}`);
                 localStorage.setItem(STORAGE_KEY, userId);
+                await migrateAnonData(userId);
                 await initializeUser(userId);
                 setIsReady(true);
                 restoreAndNavigate(urlParams, navigate);
@@ -75,6 +78,7 @@ export const AuthGuard = ({ children }: { children: React.ReactNode }) => {
         const fallback = urlUserId || token!;
         console.warn(`[Auth] Falling back to token as ID: ${fallback}`);
         localStorage.setItem(STORAGE_KEY, fallback);
+        await migrateAnonData(fallback);
         await initializeUser(fallback);
         setIsReady(true);
         restoreAndNavigate(urlParams, navigate);

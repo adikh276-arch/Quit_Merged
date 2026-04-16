@@ -1652,5 +1652,7 @@
   "quit.app.share_inspire": "Inspire others by sharing your progress with the",
   "quit.app.share_to_app": "Share to App",
   "quit.app.copied": "Copied!",
-  "quit.app.copy_link": "Copy Link"
+  "quit.app.copy_link": "Copy Link",
+  "quit.app.reset_confirm": "Are you sure you want to reset your progress? This will clear all data for this substance.",
+  "quit.app.reset_progress": "Reset Progress"
 }

@@ -1652,5 +1652,7 @@
   "quit.app.share_inspire": "Inspirieren Sie andere, indem Sie Ihre Fortschritte mit ihnen teilen",
   "quit.app.share_to_app": "Mit App teilen",
   "quit.app.copied": "Kopiert!",
-  "quit.app.copy_link": "Link kopieren"
+  "quit.app.copy_link": "Link kopieren",
+  "quit.app.reset_confirm": "Sind Sie sicher, dass Sie Ihren Fortschritt zurücksetzen möchten? Dadurch werden alle Daten für diesen Stoff gelöscht.",
+  "quit.app.reset_progress": "Fortschritt zurücksetzen"
 }

@@ -1652,5 +1652,7 @@
   "quit.app.share_inspire": "Truyền cảm hứng cho người khác bằng cách chia sẻ sự tiến bộ của bạn với",
   "quit.app.share_to_app": "Chia sẻ lên ứng dụng",
   "quit.app.copied": "Đã sao chép!",
-  "quit.app.copy_link": "Sao chép liên kết"
+  "quit.app.copy_link": "Sao chép liên kết",
+  "quit.app.reset_confirm": "Bạn có chắc chắn muốn đặt lại tiến trình của mình không? Điều này sẽ xóa tất cả dữ liệu cho chất này.",
+  "quit.app.reset_progress": "Đặt lại tiến độ"
 }

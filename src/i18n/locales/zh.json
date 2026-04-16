@@ -1652,5 +1652,7 @@
   "quit.app.share_inspire": "通过与他人分享您的进步来激励他人",
   "quit.app.share_to_app": "分享到应用程序",
   "quit.app.copied": "复制了！",
-  "quit.app.copy_link": "复制链接"
+  "quit.app.copy_link": "复制链接",
+  "quit.app.reset_confirm": "您确定要重置进度吗？这将清除该物质的所有数据。",
+  "quit.app.reset_progress": "重置进度"
 }

@@ -1652,5 +1652,7 @@
   "quit.app.share_inspire": "İlerlemenizi kullanıcılarla paylaşarak başkalarına ilham verin",
   "quit.app.share_to_app": "Uygulamada Paylaş",
   "quit.app.copied": "Kopyalandı!",
-  "quit.app.copy_link": "Bağlantıyı Kopyala"
+  "quit.app.copy_link": "Bağlantıyı Kopyala",
+  "quit.app.reset_confirm": "İlerlemenizi sıfırlamak istediğinizden emin misiniz? Bu, bu maddeye ilişkin tüm verileri temizleyecektir.",
+  "quit.app.reset_progress": "İlerlemeyi Sıfırla"
 }

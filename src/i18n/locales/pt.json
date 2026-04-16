@@ -1652,5 +1652,7 @@
   "quit.app.share_inspire": "Inspire outras pessoas compartilhando seu progresso com o",
   "quit.app.share_to_app": "Compartilhar no aplicativo",
   "quit.app.copied": "Copiado!",
-  "quit.app.copy_link": "Copiar link"
+  "quit.app.copy_link": "Copiar link",
+  "quit.app.reset_confirm": "Tem certeza de que deseja redefinir seu progresso? Isso limpará todos os dados desta substância.",
+  "quit.app.reset_progress": "Redefinir progresso"
 }

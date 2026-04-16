@@ -4,6 +4,66 @@ import { executeQuery } from '@/lib/db';
 const getUserId = () => localStorage.getItem('therapy_user_id') || 'anon';
 export const getPrefix = () => `quitmantra_${getUserId()}`;
 
+/**
+ * Migration: Move all data from 'anon' to the current user ID
+ * MUST be called after AuthGuard resolves a real user_id but BEFORE components start reading data.
+ */
+export const migrateAnonData = async (newUserId: string) => {
+  if (!newUserId || newUserId === 'anon') return;
+  const anonPrefix = 'quitmantra_anon';
+  const newPrefix = `quitmantra_${newUserId}`;
+  
+  const keysToMigrate: string[] = [];
+  for (let i = 0; i < localStorage.length; i++) {
+    const key = localStorage.key(i);
+    if (key && key.startsWith(anonPrefix)) {
+      keysToMigrate.push(key);
+    }
+  }
+  
+  if (keysToMigrate.length === 0) {
+    console.log(`[Migration] No 'anon' data found to migrate.`);
+    return;
+  }
+  
+  console.log(`[Migration] Moving ${keysToMigrate.length} records from anon to ${newUserId}...`);
+  
+  for (const oldKey of keysToMigrate) {
+    const dataStr = localStorage.getItem(oldKey);
+    if (!dataStr) continue;
+    
+    const newKey = oldKey.replace(anonPrefix, newPrefix);
+    localStorage.setItem(newKey, dataStr);
+    localStorage.removeItem(oldKey);
+    
+    // Also sync to cloud for the new user profile
+    try {
+      const data = JSON.parse(dataStr);
+      await syncToNeonInternal(newKey, data, newUserId);
+    } catch (e) {
+      console.error(`[Migration] Failed to sync ${oldKey} during migration:`, e);
+    }
+  }
+  console.log(`[Migration] Successfully migrated all local data.`);
+};
+
+/**
+ * Internal sync that takes an explicit userId (used for migration)
+ */
+const syncToNeonInternal = async (id: string, data: any, userId: string) => {
+  if (userId === 'anon') return;
+  try {
+    await executeQuery(`
+      INSERT INTO quit.activities (id, user_id, data)
+      VALUES ($1, $2, $3)
+      ON CONFLICT (id) DO UPDATE SET data = $3
+    `, [id, userId, JSON.stringify(data)]);
+  } catch (err) {
+    console.error(`[Sync] Failed to sync ${id}:`, err);
+  }
+};
+
+
 export function getEntryKey(substance: string, tracker: string, date: string) {
   return `${getPrefix()}_entries_${substance}_${tracker}_${date}`;
 }
@@ -13,21 +73,7 @@ export function getEntryKey(substance: string, tracker: string, date: string) {
  */
 const syncToNeon = async (id: string, data: any) => {
   const userId = getUserId();
-  if (userId === 'anon') {
-    console.warn(`[Sync] Skipping sync for ${id} - user is anon`);
-    return;
-  }
-  
-  try {
-    console.log(`[Sync] Syncing ${id} for user ${userId}...`);
-    await executeQuery(`
-      INSERT INTO quit.activities (id, user_id, data)
-      VALUES ($1, $2, $3)
-      ON CONFLICT (id) DO UPDATE SET data = $3
-    `, [id, userId, JSON.stringify(data)]);
-  } catch (err) {
-    console.error(`[Sync] Failed to sync ${id} to Neon:`, err);
-  }
+  await syncToNeonInternal(id, data, userId);
 };
 
 /**
