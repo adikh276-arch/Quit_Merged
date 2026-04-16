@@ -11,9 +11,10 @@ interface Props {
   activityType: string;
   substanceName: string;
   icon?: string;
+  customText?: string;
 }
 
-export const ShareModal = ({ isOpen, onClose, activityName, activityType, substanceName, icon = 'Sparkles' }: Props) => {
+export const ShareModal = ({ isOpen, onClose, activityName, activityType, substanceName, icon = 'Sparkles', customText }: Props) => {
   const { t } = useTranslation();
   const [copied, setCopied] = useState(false);
 
@@ -29,7 +30,8 @@ export const ShareModal = ({ isOpen, onClose, activityName, activityType, substa
   if (!isOpen) return null;
 
   const url = "https://web.mantracare.com/quit";
-  const shareText = `I have been doing the ${activityName} ${activityType} at QuitMantra. It really helped me with dealing with my ${substanceName} addiction. You should try it too! 🌟`;
+  const defaultText = `I have been doing the ${activityName} ${activityType} at QuitMantra. It really helped me with dealing with my ${substanceName} addiction. You should try it too! 🌟`;
+  const shareText = customText || defaultText;
 
   const handleCopy = async () => {
     try {

@@ -5,6 +5,9 @@ import { migrateAnonData } from "@/data/storage";
 
 const STORAGE_KEY = "therapy_user_id";
 
+// The BrowserRouter basename — must match App.tsx <BrowserRouter basename="/quit">
+const BASENAME = "/quit";
+
 // Returns user id only if it looks like a real numeric ID (4-8 digits), not a UUID
 const isRealUserId = (id: string | null): boolean => {
   if (!id) return false;
@@ -17,12 +20,37 @@ export const AuthGuard = ({ children }: { children: React.ReactNode }) => {
   const location = useLocation();
   const navigate = useNavigate();
 
+  // -----------------------------------------------------------------------
+  // Bug fix #2: strip stale auth params from URL for already-authenticated users.
+  // This runs on every URL change and handles the case where a logged-in user
+  // visits a URL that still carries a token= param.
+  // -----------------------------------------------------------------------
+  useEffect(() => {
+    const savedUserId = localStorage.getItem(STORAGE_KEY);
+    if (!isRealUserId(savedUserId)) return; // Not authenticated yet — main flow handles it
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const hasAuthParams =
+      urlParams.has("token") || urlParams.has("userId") || urlParams.has("user_id");
+    if (!hasAuthParams) return;
+
+    urlParams.delete("token");
+    urlParams.delete("userId");
+    urlParams.delete("user_id");
+    const cleanSearch = urlParams.toString();
+    const newUrl = location.pathname + (cleanSearch ? `?${cleanSearch}` : "");
+    console.log("[Auth] Already logged in — stripping auth params from URL:", newUrl);
+    navigate(newUrl, { replace: true });
+  }, [location.search]); // eslint-disable-line react-hooks/exhaustive-deps
+
+  // -----------------------------------------------------------------------
+  // Main auth flow: runs once on mount.
+  // -----------------------------------------------------------------------
   useEffect(() => {
     const checkAuth = async () => {
-      // 1. Check if we already have a REAL (numeric) user ID saved persistently
+      // 1. Already have a real user ID saved? — just render (fast path)
       const savedUserId = localStorage.getItem(STORAGE_KEY);
       if (isRealUserId(savedUserId)) {
-        // Already authenticated with a real ID — just render
         setIsReady(true);
         return;
       }
@@ -33,7 +61,7 @@ export const AuthGuard = ({ children }: { children: React.ReactNode }) => {
       const urlUserId = urlParams.get("userId") || urlParams.get("user_id");
 
       if (token || urlUserId) {
-        // 3a. If the auth portal sent a real userId directly, use it
+        // 3a. Auth portal sent a real userId directly
         if (isRealUserId(urlUserId)) {
           console.log(`[Auth] Real userId received from URL: ${urlUserId}`);
           localStorage.setItem(STORAGE_KEY, urlUserId!);
@@ -44,10 +72,10 @@ export const AuthGuard = ({ children }: { children: React.ReactNode }) => {
           return;
         }
 
-        // 3b. Try to exchange the token for the real user_id via the Mantra API
+        // 3b. Exchange the token for the real user_id via the Mantra API
         if (token) {
           try {
-            console.log(`[Auth] Exchanging token for real user_id...`);
+            console.log("[Auth] Exchanging token for real user_id...");
             const resp = await fetch("https://api.mantracare.com/user/user-info", {
               method: "POST",
               headers: { "Content-Type": "application/json" },
@@ -68,13 +96,12 @@ export const AuthGuard = ({ children }: { children: React.ReactNode }) => {
               }
             }
           } catch (err) {
-            // CORS or network error — log and fall through
+            // CORS or network error — log and fall through to 3c
             console.warn("[Auth] API exchange failed (likely CORS):", err);
           }
         }
 
-        // 3c. Last resort: save whatever we have (token) so the user isn't stuck
-        // This will create a new user on each session, but at least they can use the app
+        // 3c. Last resort: save whatever we have so the user isn't stuck
         const fallback = urlUserId || token!;
         console.warn(`[Auth] Falling back to token as ID: ${fallback}`);
         localStorage.setItem(STORAGE_KEY, fallback);
@@ -89,23 +116,35 @@ export const AuthGuard = ({ children }: { children: React.ReactNode }) => {
       const lastRedirect = sessionStorage.getItem("auth_last_redirect");
       const now = Date.now();
       if (lastRedirect && now - parseInt(lastRedirect) < 5000) {
-        console.error("[Auth] Loop detected. Stopping.");
-        document.body.innerHTML = "<div style='padding:40px;text-align:center;'><h3>Authentication Error</h3><p>Please close this tab and try again from the app.</p></div>";
+        console.error("[Auth] Redirect loop detected. Stopping.");
+        document.body.innerHTML =
+          "<div style='padding:40px;text-align:center;'><h3>Authentication Error</h3><p>Please close this tab and try again from the app.</p></div>";
         return;
       }
 
       sessionStorage.setItem("auth_last_redirect", now.toString());
-      sessionStorage.setItem("redirect_path", location.pathname + location.search);
 
-      const cleanUrl = new URL(window.location.href);
-      cleanUrl.searchParams.delete("token");
+      // -------------------------------------------------------------------
+      // Bug fix #1: save the current path (as given by React Router, which is
+      // already relative to the /quit basename) so we can return here after auth.
+      // Example: location.pathname on /quit/alcohol = "/alcohol"
+      // -------------------------------------------------------------------
+      const pathToRestore = location.pathname + location.search;
+      sessionStorage.setItem("redirect_path", pathToRestore);
 
-      console.log(`[Auth] No session. Redirecting to auth portal. Saving path: ${location.pathname}`);
-      window.location.href = `https://web.mantracare.com/app/quit?redirect_url=${encodeURIComponent(cleanUrl.toString())}`;
+      // Build the return URL pointing back at the current full page URL
+      // (the auth portal will append ?token=... to this URL after login)
+      const returnUrl = new URL(window.location.href);
+      returnUrl.searchParams.delete("token"); // don't loop tokens
+
+      console.log(`[Auth] No session. Redirecting to auth portal. Will restore: ${pathToRestore}`);
+      window.location.href = `https://web.mantracare.com/app/quit?redirect_url=${encodeURIComponent(
+        returnUrl.toString()
+      )}`;
     };
 
     checkAuth();
-  }, []); // Run ONLY once on mount, not on every location change
+  }, []); // Run ONLY once on mount
 
   if (!isReady) {
     return (
@@ -118,15 +157,45 @@ export const AuthGuard = ({ children }: { children: React.ReactNode }) => {
   return <>{children}</>;
 };
 
-function restoreAndNavigate(urlParams: URLSearchParams, navigate: ReturnType<typeof useNavigate>) {
+// ---------------------------------------------------------------------------
+// restoreAndNavigate
+//
+// After successful authentication, navigate the user back to the page they
+// originally requested.
+//
+// Key insight: sessionStorage["redirect_path"] is stored as React Router's
+// `location.pathname` which is ALREADY relative to the basename (/quit).
+// e.g. the user visited /quit/alcohol → location.pathname = "/alcohol"
+//
+// We must NOT pass "/quit/alcohol" to navigate() or it resolves to
+// /quit/quit/alcohol. We use the router-relative path directly.
+// ---------------------------------------------------------------------------
+function restoreAndNavigate(
+  urlParams: URLSearchParams,
+  navigate: ReturnType<typeof useNavigate>
+) {
   const savedPath = sessionStorage.getItem("redirect_path") || "/";
   sessionStorage.removeItem("redirect_path");
 
+  // Safety fallback: if somehow the full absolute path was saved (e.g. by an
+  // older version of the code), strip the basename prefix before navigating.
+  let routerPath = savedPath;
+  if (routerPath.startsWith(BASENAME + "/")) {
+    routerPath = routerPath.slice(BASENAME.length);
+  } else if (routerPath === BASENAME) {
+    routerPath = "/";
+  }
+
+  // Strip auth params from the remaining query string
   urlParams.delete("token");
   urlParams.delete("userId");
   urlParams.delete("user_id");
-  const newSearch = urlParams.toString();
+  const remainingSearch = urlParams.toString();
 
-  const targetPath = (savedPath.startsWith("/") ? savedPath : "/" + savedPath) + (newSearch ? `?${newSearch}` : "");
+  const targetPath =
+    (routerPath.startsWith("/") ? routerPath : "/" + routerPath) +
+    (remainingSearch ? `?${remainingSearch}` : "");
+
+  console.log(`[Auth] Restoring navigation to: ${targetPath}`);
   navigate(targetPath, { replace: true });
 }
