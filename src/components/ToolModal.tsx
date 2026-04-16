@@ -1,12 +1,11 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, ChevronRight, ArrowUp, Lock, Check, Play, Pause, Trophy, Sparkles, Heart, BookmarkCheck, Bookmark, Target, Zap, Share2 } from 'lucide-react';
+import { X, ChevronRight, ArrowUp, Lock, Check, Play, Pause, Trophy, Sparkles, Heart, BookmarkCheck, Bookmark, Target, Zap } from 'lucide-react';
 import { DynamicIcon } from './DynamicIcon';
 import { SubstanceConfig } from '@/data/types';
 import { getAssessment, saveAssessment, toggleCommunityUpvote, getCommunityUpvotes, addUserPost, getUserPosts } from '@/data/storage';
 import { useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
-import { ShareModal } from './ShareModal';
 
 interface Props {
   toolId: string;
@@ -15,36 +14,19 @@ interface Props {
 }
 
 const ToolModal = ({ toolId, substance, onClose }: Props) => {
-  const { t } = useTranslation();
-  const [showShare, setShowShare] = useState(false);
-  const [shareData, setShareData] = useState<{ name: string; type: string; icon: string; customText?: string }>({ name: '', type: '', icon: 'Sparkles' });
-
-  const onShareProp = (name: string, type: string, icon: string, customText?: string) => {
-    setShareData({ name, type, icon, customText });
-    setShowShare(true);
-  };
   return (
     <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="fixed inset-0 z-50 bg-background overflow-y-auto">
       <div className="mx-auto max-w-lg px-4 pb-8">
         <div className="flex items-center justify-between py-4">
           <button onClick={onClose} className="rounded-full p-2 hover:bg-muted"><X className="h-5 w-5" /></button>
         </div>
-        {toolId === 'assessment' && <Assessment substance={substance} onShare={onShareProp} />}
-        {toolId === 'calculator' && <CalculatorView substance={substance} onShare={onShareProp} />}
-        {toolId === 'activities' && <ActivitiesView substance={substance} onShare={onShareProp} />}
-        {toolId === 'learn' && <LearnView substance={substance} onShare={onShareProp} />}
-        {toolId === 'community' && <CommunityView substance={substance} onShare={onShareProp} />}
-        {toolId === 'achievements' && <AchievementsView substance={substance} onShare={onShareProp} />}
+        {toolId === 'assessment' && <Assessment substance={substance} />}
+        {toolId === 'calculator' && <CalculatorView substance={substance} />}
+        {toolId === 'activities' && <ActivitiesView substance={substance} />}
+        {toolId === 'learn' && <LearnView substance={substance} />}
+        {toolId === 'community' && <CommunityView substance={substance} />}
+        {toolId === 'achievements' && <AchievementsView substance={substance} />}
       </div>
-      <ShareModal
-        isOpen={showShare}
-        onClose={() => setShowShare(false)}
-        activityName={shareData.name}
-        activityType={shareData.type}
-        substanceName={t(`quit.substances.${substance.slug}.name`)}
-        icon={shareData.icon}
-        customText={shareData.customText}
-      />
     </motion.div>
   );
 };
@@ -72,7 +54,7 @@ const likertOptions = [
   { label: 'Not at All', value: 0 },
 ];
 
-const Assessment = ({ substance, onShare }: { substance: SubstanceConfig; onShare: (name: string, type: string, icon: string, customText?: string) => void }) => {
+const Assessment = ({ substance }: { substance: SubstanceConfig }) => {
   const { t } = useTranslation();
   const [step, setStep] = useState(0);
   const [answers, setAnswers] = useState<number[]>([]);
@@ -108,17 +90,6 @@ const Assessment = ({ substance, onShare }: { substance: SubstanceConfig; onShar
 
     return (
       <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-center">
-        <div className="mb-6 flex justify-end">
-          <button 
-            onClick={() => {
-              const text = `I just completed the ${t(`quit.substances.${substance.slug}.name`)} Self-Assessment at QuitMantra. My score: ${normalizedScore}/11 (${severity}). It's a great step towards health! 🌟`;
-              onShare(t('quit.app.assessment'), 'assessment', 'Target', text);
-            }} 
-            className="flex items-center gap-1.5 rounded-full bg-primary/10 px-3 py-1.5 text-[11px] font-bold text-primary hover:bg-primary/20 transition-colors"
-          >
-            <Share2 className="h-3.5 w-3.5" /> {t('quit.app.share', 'Share')}
-          </button>
-        </div>
         <h2 className="font-display text-2xl text-foreground">{t('quit.app.results')}</h2>
         <p className={`mt-4 font-display text-4xl font-bold ${color}`}>{normalizedScore}/11</p>
         <p className={`mt-2 text-lg font-semibold ${color}`}>{severity} {t('quit.app.substance_use_disorder')}</p>
@@ -168,7 +139,7 @@ const Assessment = ({ substance, onShare }: { substance: SubstanceConfig; onShar
   );
 };
 // ===== CALCULATOR =====
-const CalculatorView = ({ substance, onShare }: { substance: SubstanceConfig; onShare: (name: string, type: string, icon: string, customText?: string) => void }) => {
+const CalculatorView = ({ substance }: { substance: SubstanceConfig }) => {
   const { t } = useTranslation();
   const calc = substance.calculator;
   const [inputs, setInputs] = useState<Record<string, number>>(
@@ -178,19 +149,7 @@ const CalculatorView = ({ substance, onShare }: { substance: SubstanceConfig; on
 
   return (
     <div>
-      <div className="mb-4 flex items-center justify-between">
-        <h2 className="font-display text-xl text-foreground">{t(`quit.substances.${substance.slug}.calculator.title`)}</h2>
-        <button 
-          onClick={() => {
-            const title = t(`quit.substances.${substance.slug}.calculator.title`);
-            const text = `I just used the ${title} for my ${t(`quit.substances.${substance.slug}.name`)} recovery. Result: ${results[0].value}. Highlighting the impact! 🌟`;
-            onShare(title, 'calculator', 'Zap', text);
-          }} 
-          className="flex items-center gap-1.5 rounded-full bg-primary/10 px-3 py-1 text-[11px] font-bold text-primary hover:bg-primary/20 transition-colors"
-        >
-          <Share2 className="h-3.5 w-3.5" /> {t('quit.app.share', 'Share')}
-        </button>
-      </div>
+      <h2 className="mb-4 font-display text-xl text-foreground">{t(`quit.substances.${substance.slug}.calculator.title`)}</h2>
       <div className="space-y-4">
         {calc.inputs.map(input => (
           <div key={input.key}>
@@ -204,27 +163,19 @@ const CalculatorView = ({ substance, onShare }: { substance: SubstanceConfig; on
           <div key={i} className="flex justify-between rounded-lg border border-border bg-card p-3">
             <span className="text-xs text-muted-foreground">{t(`quit.substances.${substance.slug}.calculator.results.${i}.label`, r.label)}</span>
             <span className={`text-sm font-semibold ${r.color === 'destructive' ? 'text-destructive' : r.color === 'accent' ? 'text-accent' : 'text-foreground'}`}>
-              {(() => {
-                // 1. Try exact match for status (Moderate, High, etc.)
-                const exactMatch = t(r.value);
-                if (exactMatch !== r.value) return exactMatch;
-
-                // 2. Handle unit-based interpolation
-                if (r.value.includes('units/week')) return t('quit.app.units_per_week', { count: r.value.split(' ')[0] });
-                if (r.value.includes('units')) return t('quit.app.units_count', { count: r.value.split(' ')[0] });
-                if (r.value.includes('mg/week')) return t('quit.app.mg_per_week', { count: r.value.split(' ')[0] });
-                if (r.value.includes('mg')) return t('quit.app.mg_count', { count: r.value.split(' ')[0] });
-                if (r.value.includes('MME')) return t('quit.app.mme_count', { count: r.value.split(' ')[0] });
-
-                return r.value;
-              })()}
+              {/* Check if value matches common translatable patterns */}
+              {r.value.includes('units/week') ? t('quit.app.units_per_week', { count: r.value.split(' ')[0] }) :
+               r.value.includes('units') ? t('quit.app.units_count', { count: r.value.split(' ')[0] }) :
+               r.value.includes('mg/week') ? t('quit.app.mg_per_week', { count: r.value.split(' ')[0] }) :
+               r.value.includes('mg') ? t('quit.app.mg_count', { count: r.value.split(' ')[0] }) :
+               t(`quit.app.status.${r.value.toLowerCase().replace(/ /g, '_')}`, r.value)}
             </span>
           </div>
         ))}
       </div>
       {calc.note && (
         <p className="mt-4 rounded-lg bg-primary/5 p-3 text-xs text-foreground leading-relaxed">
-          {t(calc.note, calc.note)}
+          {t(`quit.substances.${substance.slug}.calculator.note`, calc.note)}
         </p>
       )}
     </div>
@@ -232,20 +183,13 @@ const CalculatorView = ({ substance, onShare }: { substance: SubstanceConfig; on
 };
 
 // ===== ACTIVITIES =====
-const ActivitiesView = ({ substance, onShare }: { substance: SubstanceConfig; onShare: (name: string, type: string, icon: string, customText?: string) => void }) => {
+const ActivitiesView = ({ substance }: { substance: SubstanceConfig }) => {
   const { t } = useTranslation();
   const [active, setActive] = useState<string | null>(null);
   const activeActivity = substance.activities.find(a => a.id === active);
 
   if (activeActivity) {
-    return (
-      <ActivityRunner
-        activity={activeActivity}
-        substance={substance}
-        onBack={() => setActive(null)}
-        onShare={() => onShare(t(`quit.substances.${substance.slug}.activities.${activeActivity.id}.name`), 'activity', 'Zap')}
-      />
-    );
+    return <ActivityRunner activity={activeActivity} substance={substance} onBack={() => setActive(null)} />;
   }
 
   return (
@@ -266,7 +210,7 @@ const ActivitiesView = ({ substance, onShare }: { substance: SubstanceConfig; on
   );
 };
 
-const ActivityRunner = ({ activity, substance, onBack, onShare }: { activity: any; substance: SubstanceConfig; onBack: () => void; onShare: () => void; }) => {
+const ActivityRunner = ({ activity, substance, onBack }: { activity: any; substance: SubstanceConfig; onBack: () => void }) => {
   const { t } = useTranslation();
   const [checkedItems, setCheckedItems] = useState<Set<number>>(new Set());
   const [seconds, setSeconds] = useState(0);
@@ -316,14 +260,7 @@ const ActivityRunner = ({ activity, substance, onBack, onShare }: { activity: an
 
   const currentPhase = activity.phases ? [...activity.phases].reverse().find((p: any) => seconds >= p.time) : null;
 
-  const backBtn = (
-    <div className="mb-4 flex items-center justify-between">
-      <button onClick={onBack} className="text-xs text-muted-foreground hover:text-foreground transition-colors">← {t('quit.app.back', 'Back')}</button>
-      <button onClick={onShare} className="flex items-center gap-1.5 rounded-full bg-primary/10 px-3 py-1 text-[11px] font-bold text-primary hover:bg-primary/20 transition-colors">
-        <Share2 className="h-3.5 w-3.5" /> {t('quit.app.share', 'Share')}
-      </button>
-    </div>
-  );
+  const backBtn = <button onClick={onBack} className="mb-4 text-xs text-muted-foreground hover:text-foreground transition-colors">← {t('quit.app.back', 'Back')}</button>;
 
   // ===== QUIZ =====
   if (activity.type === 'quiz' && activity.questions) {
@@ -702,7 +639,7 @@ const ActivityRunner = ({ activity, substance, onBack, onShare }: { activity: an
 };
 
 // ===== LEARN =====
-const LearnView = ({ substance, onShare }: { substance: SubstanceConfig; onShare: (name: string, type: string, icon: string, customText?: string) => void }) => {
+const LearnView = ({ substance }: { substance: SubstanceConfig }) => {
   const { t } = useTranslation();
   const [active, setActive] = useState<string | null>(null);
   const article = substance.articles.find(a => a.id === active);
@@ -710,15 +647,7 @@ const LearnView = ({ substance, onShare }: { substance: SubstanceConfig; onShare
   if (article) {
     return (
       <div>
-        <div className="mb-4 flex items-center justify-between">
-          <button onClick={() => setActive(null)} className="text-xs text-muted-foreground hover:text-foreground transition-colors">← {t('quit.app.back', 'Back')}</button>
-          <button
-            onClick={() => onShare(t(`quit.substances.${substance.slug}.articles.${article.id}.title`), 'learning resource', 'BookOpen')}
-            className="flex items-center gap-1.5 rounded-full bg-primary/10 px-3 py-1 text-[11px] font-bold text-primary hover:bg-primary/20 transition-colors"
-          >
-            <Share2 className="h-3.5 w-3.5" /> {t('quit.app.share', 'Share')}
-          </button>
-        </div>
+        <button onClick={() => setActive(null)} className="mb-4 text-xs text-muted-foreground">← {t('quit.app.back')}</button>
         <span className="mb-2 inline-block rounded-full bg-primary/10 px-3 py-1 text-xs font-medium text-primary">{t(`quit.substances.${substance.slug}.articles.${article.id}.tag`, article.tag)}</span>
         <h2 className="mb-4 font-display text-xl text-foreground">{t(`quit.substances.${substance.slug}.articles.${article.id}.title`)}</h2>
         <div className="text-sm text-foreground leading-relaxed whitespace-pre-line">{t(`quit.substances.${substance.slug}.articles.${article.id}.content`)}</div>
@@ -745,7 +674,7 @@ const LearnView = ({ substance, onShare }: { substance: SubstanceConfig; onShare
 };
 
 // ===== COMMUNITY =====
-const CommunityView = ({ substance, onShare }: { substance: SubstanceConfig; onShare: (name: string, type: string, icon: string, customText?: string) => void }) => {
+const CommunityView = ({ substance }: { substance: SubstanceConfig }) => {
   const { t } = useTranslation();
   const [filter, setFilter] = useState('All');
   const [activePost, setActivePost] = useState<string | null>(null);
@@ -780,12 +709,7 @@ const CommunityView = ({ substance, onShare }: { substance: SubstanceConfig; onS
     <div>
       <div className="flex items-center justify-between mb-4">
         <h2 className="font-display text-xl text-foreground">{t('quit.app.community')}</h2>
-        <div className="flex items-center gap-2">
-          <button onClick={() => onShare(t('quit.app.community'), 'community feed', 'MessageCircle')} className="flex items-center gap-1.5 rounded-full bg-primary/10 px-3 py-1 text-[11px] font-bold text-primary hover:bg-primary/20 transition-colors">
-            <Share2 className="h-3.5 w-3.5" /> {t('quit.app.share', 'Share')}
-          </button>
-          <button onClick={() => setShowComposer(true)} className="rounded-full bg-primary px-4 py-1.5 text-xs font-semibold text-primary-foreground">+ {t('quit.app.post')}</button>
-        </div>
+        <button onClick={() => setShowComposer(true)} className="rounded-full bg-primary px-4 py-1.5 text-xs font-semibold text-primary-foreground">+ {t('quit.app.post')}</button>
       </div>
 
       <div className="mb-4 flex gap-2 overflow-x-auto pb-1">
@@ -841,8 +765,8 @@ const PostComposer = ({ substance, onClose }: { substance: SubstanceConfig; onCl
       <div className="rounded-t-2xl bg-card px-4 pb-8 pt-4">
         <div className="mb-4 flex justify-between"><h3 className="font-display text-lg">{t('quit.app.new_post')}</h3><button onClick={onClose}><X className="h-5 w-5" /></button></div>
         <div className="mb-3 flex gap-2">
-          {['Story', 'Question', 'Tip', 'Milestone', 'Support'].map(typeOpt => (
-            <button key={typeOpt} onClick={() => setType(typeOpt)} className={`rounded-full px-3 py-1 text-xs font-medium ${type === typeOpt ? 'bg-primary text-primary-foreground' : 'bg-muted text-muted-foreground'}`}>{typeOpt}</button>
+          {['Story', 'Question', 'Tip', 'Milestone', 'Support'].map(t => (
+            <button key={t} onClick={() => setType(t)} className={`rounded-full px-3 py-1 text-xs font-medium ${type === t ? 'bg-primary text-primary-foreground' : 'bg-muted text-muted-foreground'}`}>{t}</button>
           ))}
         </div>
         <input value={title} onChange={e => setTitle(e.target.value)} placeholder={t('quit.app.community.title', 'Title')} className="mb-3 w-full rounded-lg border border-input bg-background px-3 py-2 text-sm" />
@@ -854,16 +778,11 @@ const PostComposer = ({ substance, onClose }: { substance: SubstanceConfig; onCl
 };
 
 // ===== ACHIEVEMENTS =====
-const AchievementsView = ({ substance, onShare }: { substance: SubstanceConfig; onShare: (name: string, type: string, icon: string, customText?: string) => void }) => {
+const AchievementsView = ({ substance }: { substance: SubstanceConfig }) => {
   const { t } = useTranslation();
   return (
     <div>
-      <div className="mb-4 flex items-center justify-between">
-        <h2 className="font-display text-xl text-foreground">{t('quit.app.achievements')}</h2>
-        <button onClick={() => onShare(t('quit.app.achievements'), 'milestone collection', 'Trophy')} className="flex items-center gap-1.5 rounded-full bg-primary/10 px-3 py-1 text-[11px] font-bold text-primary hover:bg-primary/20 transition-colors">
-          <Share2 className="h-3.5 w-3.5" /> {t('quit.app.share', 'Share')}
-        </button>
-      </div>
+      <h2 className="mb-4 font-display text-xl text-foreground">{t('quit.app.achievements')}</h2>
     <div className="grid grid-cols-2 gap-3">
       {substance.achievements.map(ach => {
         const result = ach.condition({});
@@ -874,17 +793,7 @@ const AchievementsView = ({ substance, onShare }: { substance: SubstanceConfig; 
             </div>
             <p className="mt-2 text-xs font-semibold text-foreground">{ach.name}</p>
             <p className="text-[10px] text-muted-foreground">{ach.description}</p>
-            {result.unlocked && (
-              <button 
-                onClick={() => {
-                  const text = `I just unlocked the '${ach.name}' milestone in my ${t(`quit.substances.${substance.slug}.name`)} journey at QuitMantra! 🏆`;
-                  onShare(ach.name, 'achievement', ach.icon, text);
-                }}
-                className="mt-3 flex w-full items-center justify-center gap-1.5 rounded-lg bg-primary/10 py-1.5 text-[10px] font-bold text-primary hover:bg-primary/20 transition-colors"
-              >
-                <Share2 className="h-3 w-3" /> {t('quit.app.share')}
-              </button>
-            )}
+            {result.unlocked && <p className="mt-1 text-[10px] text-primary font-medium">✓ {t('quit.app.unlocked')}</p>}
             {!result.unlocked && result.progress && <p className="mt-1 text-[10px] text-muted-foreground">{result.progress}</p>}
           </div>
         );

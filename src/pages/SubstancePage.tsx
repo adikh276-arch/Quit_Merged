@@ -1,6 +1,6 @@
 import { useParams, useNavigate } from 'react-router-dom';
-import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowLeft, ClipboardList, Calculator, Dumbbell, BookOpen, TrendingUp, Calendar, Flame, ChevronRight, Zap, Lightbulb, RefreshCw, Trophy, Heart } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { ArrowLeft, ClipboardList, Calculator, Dumbbell, BookOpen, TrendingUp, Calendar, Flame, ChevronRight, Zap, Lightbulb, RefreshCw } from 'lucide-react';
 import { getSubstance } from '@/data/substances';
 import { getStreak, getEntries, getPrefix, fetchOnboarded, saveOnboarded, resetOnboarded, syncUserDataFromCloud } from '@/data/storage';
 import { useState, useEffect } from 'react';
@@ -11,7 +11,6 @@ import SubstanceIcon from '@/components/SubstanceIcon';
 import SubstanceOnboarding from '@/components/SubstanceOnboarding';
 import { LineChart, Line, ResponsiveContainer } from 'recharts';
 import { useToast } from '@/hooks/use-toast';
-import { ConfirmModal } from '@/components/ConfirmModal';
 
 const heroGradients: Record<string, string> = {
   alcohol: 'from-red-600 via-rose-500 to-red-700',
@@ -43,35 +42,41 @@ const sparkColors: Record<string, string> = {
 const SubstancePage = () => {
   const { slug } = useParams<{ slug: string }>();
   const { t } = useTranslation();
-  const { toast } = useToast();
   const navigate = useNavigate();
   const substance = getSubstance(slug || '');
   const [activeTracker, setActiveTracker] = useState<string | null>(null);
   const [activeTool, setActiveTool] = useState<string | null>(null);
   const [lastUpdate, setLastUpdate] = useState(Date.now());
-  const [showResetConfirm, setShowResetConfirm] = useState(false);
-
   // Start as null = loading. True/false = resolved
   const [onboarded, setOnboarded] = useState<boolean | null>(() => {
     if (!slug) return false;
+    // Quick local check to avoid flicker if already cached
     return localStorage.getItem(`${getPrefix()}_onboarded_${slug}`) === 'true' ? true : null;
   });
 
   const handleReset = async () => {
     if (!slug) return;
-    await resetOnboarded(slug);
-    window.location.reload();
+    if (confirm(t('quit.app.reset_confirm'))) {
+      await resetOnboarded(slug);
+      window.location.reload();
+    }
   };
 
+  // Cloud check: runs once on mount, resolves onboarding state across devices
   useEffect(() => {
     if (!slug) return;
+    
     const resolveCloudData = async () => {
       const isStillOnboarded = await fetchOnboarded(slug);
-      if (isStillOnboarded) {
-        await syncUserDataFromCloud(slug);
-      }
       setOnboarded(isStillOnboarded);
+      
+      if (isStillOnboarded) {
+        // If onboarded, immediately pull all other tracker/streak data
+        await syncUserDataFromCloud(slug);
+        setLastUpdate(Date.now()); // Force re-render with cloud data
+      }
     };
+
     resolveCloudData();
   }, [slug]);
 
@@ -80,6 +85,7 @@ const SubstancePage = () => {
     return null;
   }
 
+  // Still checking Neon DB — show spinner to prevent flash of onboarding
   if (onboarded === null) {
     return (
       <div className="flex h-screen w-full items-center justify-center bg-background">
@@ -113,61 +119,84 @@ const SubstancePage = () => {
     { id: 'calculator', name: t('quit.app.calculator'), icon: Calculator, desc: t('quit.app.calculator_desc') },
     { id: 'activities', name: t('quit.app.activities'), icon: Dumbbell, desc: t('quit.app.activities_desc') },
     { id: 'learn', name: t('quit.app.learn'), icon: BookOpen, desc: t('quit.app.learn_desc') },
-    { id: 'sync', name: t('quit.app.sync_data', 'Sync Data'), icon: RefreshCw, desc: t('quit.app.sync_desc', 'Force pull your latest progress from the cloud.') },
   ];
 
-  const handleToolClick = async (id: string) => {
-    if (id === 'sync') {
-      const toastId = toast({ title: t('quit.app.syncing', 'Syncing...'), description: t('quit.app.syncing_desc', 'Connecting to secure cloud...') });
-      try {
-        await syncUserDataFromCloud(slug!);
-        setLastUpdate(Date.now());
-        toast({ title: t('quit.app.sync_success', 'Success'), description: t('quit.app.sync_success_desc', 'Your data is now up to date.') });
-      } catch (e) {
-        toast({ variant: 'destructive', title: t('quit.app.sync_error', 'Sync Failed'), description: t('quit.app.sync_error_desc', 'Please check your connection.') });
-      }
-      return;
-    }
-    setActiveTool(id);
+  const severityScore = (val: unknown): number => {
+    if (typeof val === 'number') return val;
+    if (val === 'Severe') return 4;
+    if (val === 'Moderate') return 3;
+    if (val === 'Mild') return 2;
+    if (val === 'None') return 0;
+    if (val === 'Yes') return 1;
+    if (val === 'No') return 0;
+    if (val === 'Hard') return 3;
+    if (val === 'Easy') return 1;
+    if (val === 'Resisted all') return 0;
+    if (val === 'Partial') return 1;
+    if (val === 'Gave in') return 2;
+    if (val === 'Perfect') return 1;
+    if (val === 'Normal') return 3;
+    if (val === 'Difficult') return 2;
+    if (val === 'Minimal') return 1;
+    if (val === "Can't") return 0;
+    if (val === 'Isolated') return 0;
+    if (val === 'Brief') return 1;
+    if (Array.isArray(val)) return val.filter(v => v !== 'None').length;
+    if (typeof val === 'boolean') return val ? 1 : 0;
+    return 0;
   };
 
   const getSparkData = (trackerId: string) => {
     const entries = getEntries(substance.slug, trackerId, 21);
-    const data = entries.map(e => ({ value: e.value }));
-    if (data.length < 2) return [{ value: 0 }, { value: 0 }];
-    return data;
+    return entries.map(e => {
+      const keys = Object.keys(e.values).filter(k => k !== 'notes' && k !== 'date');
+      if (keys.length === 0) return { v: 0.5 }; // Slight lift for visual baseline
+      
+      // Calculate weighted impact score (0-10)
+      let totalImpact = 0;
+      let fieldCount = 0;
+      for (const k of keys) {
+        const val = e.values[k];
+        if (typeof val === 'number') {
+          totalImpact += val;
+        } else {
+          totalImpact += severityScore(val);
+        }
+        fieldCount++;
+      }
+      
+      // Convert to a 0-10 scale for the sparklines
+      const baseScore = fieldCount > 0 ? (totalImpact / (fieldCount * 4)) * 10 : 0;
+      // Add a tiny random jitter if it's too flat but data exists
+      return { v: Math.max(0.2, baseScore + (Math.random() * 0.1)) };
+    });
   };
 
   return (
-    <div className="min-h-screen bg-background pb-20">
-      <ConfirmModal 
-        isOpen={showResetConfirm}
-        onClose={() => setShowResetConfirm(false)}
-        onConfirm={handleReset}
-        title={t('quit.app.reset_progress')}
-        message={t('quit.app.reset_confirm')}
-      />
-      
-      {/* Hero section with glassmorphism */}
-      <div className={`relative h-[340px] w-full bg-gradient-to-br ${gradientClass} px-6 pt-8 overflow-hidden`}>
-        {/* Navigation row */}
-        <div className="relative z-20 flex items-center justify-between mb-8">
-          <button
-            onClick={() => navigate('/')}
-            className="flex h-10 w-10 items-center justify-center rounded-full bg-white/10 backdrop-blur-md text-white border border-white/20 transition-all hover:bg-white/20 active:scale-95 shadow-lg"
-          >
-            <ArrowLeft className="h-5 w-5" />
-          </button>
-          <div className="flex h-10 px-4 items-center justify-center rounded-full bg-white/10 backdrop-blur-md text-white border border-white/20 text-xs font-bold tracking-wide shadow-lg">
-            {t('quit.app.recovery_zone')}
-          </div>
+    <div className="min-h-screen bg-gradient-to-b from-background via-background to-muted/30">
+      {/* Banner */}
+      {substance.banner && (
+        <div className={`px-4 py-2.5 text-center text-xs font-semibold ${
+          substance.banner.type === 'warning' ? 'bg-accent/10 text-accent' :
+          substance.banner.type === 'danger' ? 'bg-destructive/10 text-destructive' :
+          'bg-primary/8 text-primary'
+        }`}>
+          {substance.banner.text}
         </div>
+      )}
+
+      <div className="mx-auto max-w-lg px-5 pb-12">
+        {/* Back button */}
+        <button onClick={() => navigate('/')} className="flex items-center gap-1.5 py-5 text-sm text-muted-foreground hover:text-foreground transition-colors font-medium">
+          <ArrowLeft className="h-4 w-4" /> {t('quit.app.back')}
+        </button>
 
         {/* Hero Card */}
         <motion.div
-          initial={{ y: 30, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
+          initial={{ opacity: 0, y: 24 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className={`relative overflow-hidden rounded-3xl bg-gradient-to-br ${gradientClass} p-[2px] shadow-2xl`}
         >
           {/* Outer glow border via gradient wrapper */}
           <div className="relative overflow-hidden rounded-[22px] bg-gradient-to-br from-white/[0.12] to-white/[0.04] backdrop-blur-xl p-6">
@@ -193,7 +222,7 @@ const SubstancePage = () => {
                     <h1 className="font-display text-2xl text-white drop-shadow-sm tracking-tight flex items-center gap-2">
                       {t(`quit.substances.${substance.slug}.name`)}
                       <button 
-                        onClick={() => setShowResetConfirm(true)}
+                        onClick={handleReset}
                         title={t('quit.app.reset_progress')}
                         className="p-1.5 rounded-full hover:bg-white/10 transition-colors"
                       >
@@ -256,142 +285,113 @@ const SubstancePage = () => {
             </div>
           </div>
         </motion.div>
-      </div>
 
-      <div className="mx-auto max-w-lg px-6 mt-[60px]">
-        {/* Tools Section */}
-        <div className="mb-10">
-          <div className="flex items-center gap-2 mb-5">
-            <Zap className="h-4 w-4 text-primary" />
-            <h2 className="font-display text-lg font-bold text-foreground">{t('quit.app.power_ups')}</h2>
+        {/* Tracker Section */}
+        <div className="mt-10">
+          <div className="flex items-center justify-between mb-5 px-1">
+            <div className="flex items-center gap-2">
+              <Zap className="h-4 w-4 text-primary" />
+              <h2 className="font-display text-xl text-foreground">{t('quit.app.daily_trackers')}</h2>
+            </div>
+            <span className="text-xs text-muted-foreground font-medium bg-muted rounded-full px-3 py-1">{substance.trackers.length} {t('quit.app.trackers')}</span>
           </div>
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-2 gap-3">
+            {substance.trackers.map((tracker, i) => {
+              const sparkData = getSparkData(tracker.id);
+              const todayEntry = getEntries(substance.slug, tracker.id, 1);
+              const hasToday = todayEntry.length > 0 && todayEntry[0].date === new Date().toISOString().split('T')[0];
+
+              return (
+                <motion.button
+                  key={tracker.id}
+                  initial={{ opacity: 0, y: 18 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.35 + i * 0.06 }}
+                  onClick={() => setActiveTracker(tracker.id)}
+                  className={`group relative flex flex-col rounded-2xl border-2 bg-card p-4 text-left transition-all duration-300 hover:shadow-lg hover:-translate-y-1 active:scale-[0.97] ${cardAccent}`}
+                >
+                  <div className="flex items-start justify-between w-full mb-3">
+                    <p className="text-sm font-bold text-foreground leading-tight pr-2">{t(`quit.substances.${substance.slug}.trackers.${tracker.id}.name`)}</p>
+                    {hasToday ? (
+                      <span className="shrink-0 flex items-center gap-1 rounded-lg bg-primary/10 px-2.5 py-1 text-[10px] font-bold text-primary">
+                        {t('quit.app.done')}
+                      </span>
+                    ) : (
+                      <span className="shrink-0 rounded-lg bg-accent/10 px-2.5 py-1 text-[10px] font-bold text-accent">
+                        {t('quit.app.log')}
+                      </span>
+                    )}
+                  </div>
+                  <div className="h-10 w-full mt-auto opacity-60 group-hover:opacity-100 transition-opacity">
+                    {sparkData.length > 0 ? (
+                      <ResponsiveContainer width="100%" height="100%">
+                        <LineChart data={sparkData}>
+                          <Line type="monotone" dataKey="v" stroke={sparkColor} strokeWidth={2} dot={false} />
+                        </LineChart>
+                      </ResponsiveContainer>
+                    ) : (
+                      <div className="h-full w-full flex items-center justify-center">
+                        <p className="text-[10px] text-muted-foreground">{t('quit.app.no_data')}</p>
+                      </div>
+                    )}
+                  </div>
+                  <ChevronRight className="absolute bottom-3 right-3 h-3.5 w-3.5 text-muted-foreground/30 group-hover:text-muted-foreground transition-colors" />
+                </motion.button>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* Tools Section */}
+        <div className="mt-10">
+          <div className="flex items-center gap-2 mb-5 px-1">
+            <Lightbulb className="h-4 w-4 text-primary" />
+            <h2 className="font-display text-xl text-foreground">{t('quit.app.tools_resources')}</h2>
+          </div>
+          <div className="grid grid-cols-2 gap-3">
             {tools.map((tool, i) => (
               <motion.button
                 key={tool.id}
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ delay: 0.4 + i * 0.05 }}
-                onClick={() => handleToolClick(tool.id)}
-                className="group relative flex flex-col items-center justify-center gap-3 rounded-[28px] bg-card p-6 text-center border border-border/50 hover:border-primary/40 hover:bg-primary/5 transition-all duration-300 shadow-sm active:scale-[0.98]"
+                initial={{ opacity: 0, y: 18 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.55 + i * 0.05 }}
+                onClick={() => setActiveTool(tool.id)}
+                className="group flex items-start gap-3 rounded-2xl border border-border/60 bg-card p-4 text-left transition-all duration-300 hover:shadow-lg hover:border-primary/30 hover:-translate-y-0.5 active:scale-[0.97]"
               >
-                <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-primary/10 text-primary group-hover:bg-primary transition-colors duration-300 group-hover:text-primary-foreground">
-                  <tool.icon className="h-6 w-6" />
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-primary/8 group-hover:bg-primary/15 transition-colors">
+                  <tool.icon className="h-5 w-5 text-primary/70 group-hover:text-primary transition-colors" />
                 </div>
-                <div>
-                  <h3 className="text-sm font-bold text-foreground leading-tight">{tool.name}</h3>
-                  <p className="mt-1 text-[10px] text-muted-foreground/80 leading-snug">{tool.desc}</p>
+                <div className="min-w-0">
+                  <span className="text-sm font-bold text-foreground block leading-tight">{tool.name}</span>
+                  <span className="text-[11px] text-muted-foreground leading-snug mt-0.5 block">{tool.desc}</span>
                 </div>
               </motion.button>
             ))}
           </div>
         </div>
-
-        {/* Community / Social Button */}
-        <motion.button
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.6 }}
-          onClick={() => setActiveTool('community')}
-          className="mb-10 w-full group relative overflow-hidden rounded-[28px] bg-accent p-6 text-left border border-white/20 shadow-md active:scale-[0.99] transition-transform"
-        >
-          <div className="relative z-10 flex items-center justify-between">
-            <div className="flex items-center gap-4">
-              <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-white/20 text-white backdrop-blur-md">
-                <Heart className="h-6 w-6" />
-              </div>
-              <div>
-                <h3 className="text-lg font-bold text-white font-display leading-tight">{t('quit.app.community_board')}</h3>
-                <p className="mt-0.5 text-xs text-white/70 font-medium">{t('quit.app.community_desc')}</p>
-              </div>
-            </div>
-            <div className="flex h-10 w-10 items-center justify-center rounded-full bg-white/20 text-white backdrop-blur-md">
-              <ChevronRight className="h-5 w-5" />
-            </div>
-          </div>
-          <div className="absolute right-0 top-0 h-full w-40 bg-gradient-to-l from-white/10 to-transparent pointer-events-none" />
-        </motion.button>
-
-        {/* Trackers Section */}
-        <div className="mb-8">
-          <div className="flex items-center gap-2 mb-5">
-            <Lightbulb className="h-4 w-4 text-primary" />
-            <h2 className="font-display text-lg font-bold text-foreground">{t('quit.app.daily_check_ins')}</h2>
-          </div>
-          <div className="space-y-3.5">
-            {substance.trackers.map((tracker, i) => (
-              <motion.button
-                key={tracker.id}
-                initial={{ opacity: 0, x: -10 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.6 + i * 0.08 }}
-                onClick={() => setActiveTracker(tracker.id)}
-                className={`group flex w-full items-center justify-between rounded-[24px] border border-border/60 bg-card p-4 transition-all duration-300 hover:border-primary/30 hover:shadow-md hover:-translate-y-0.5 active:scale-[0.99]`}
-              >
-                <div className="flex items-center gap-4 min-w-0">
-                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-muted group-hover:bg-primary/10 transition-colors">
-                    <SubstanceIcon slug={substance.slug} className="h-5 w-5 text-muted-foreground group-hover:text-primary transition-colors" />
-                  </div>
-                  <div className="text-left min-w-0">
-                    <h3 className="text-sm font-bold text-foreground group-hover:text-primary transition-colors truncate">{t(`quit.substances.${substance.slug}.trackers.${tracker.id}.name`)}</h3>
-                    <p className="text-[11px] text-muted-foreground mt-0.5 truncate">{t(`quit.substances.${substance.slug}.trackers.${tracker.id}.desc`)}</p>
-                  </div>
-                </div>
-                <div className="flex items-center gap-4 shrink-0">
-                  <div className="hidden h-8 w-24 sm:block">
-                    <ResponsiveContainer width="100%" height="100%">
-                      <LineChart data={getSparkData(tracker.id)}>
-                        <Line
-                          type="monotone"
-                          dataKey="value"
-                          stroke={sparkColor}
-                          strokeWidth={2.5}
-                          dot={false}
-                          animationDuration={1500}
-                        />
-                      </LineChart>
-                    </ResponsiveContainer>
-                  </div>
-                  <div className="flex h-9 w-9 items-center justify-center rounded-full bg-muted/60 text-muted-foreground group-hover:bg-primary group-hover:text-primary-foreground transition-all">
-                    <ChevronRight className="h-4 w-4" />
-                  </div>
-                </div>
-              </motion.button>
-            ))}
-          </div>
-        </div>
-
-        {/* View Milestones Link */}
-        <button 
-          onClick={() => setActiveTool('achievements')}
-          className="w-full flex items-center justify-center gap-2 py-6 text-sm font-bold text-primary/60 hover:text-primary transition-colors"
-        >
-          <Trophy className="h-4 w-4" /> {t('quit.app.view_all_milestones')}
-        </button>
       </div>
 
-      <AnimatePresence>
-        {activeTracker && activeTrackerConfig && (
-          <TrackerDetail
-            tracker={activeTrackerConfig}
-            substance={substance}
-            onClose={() => {
-              setActiveTracker(null);
-              setLastUpdate(Date.now());
-            }}
-          />
-        )}
-        {activeTool && (
-          <ToolModal
-            toolId={activeTool}
-            substance={substance}
-            onClose={() => {
-              setActiveTool(null);
-              setLastUpdate(Date.now());
-            }}
-          />
-        )}
-      </AnimatePresence>
+      {/* Modals */}
+      {activeTrackerConfig && (
+        <TrackerDetail
+          tracker={activeTrackerConfig}
+          substance={substance}
+          onClose={() => {
+            setActiveTracker(null);
+            setLastUpdate(Date.now());
+          }}
+        />
+      )}
+      {activeTool && (
+        <ToolModal
+          toolId={activeTool}
+          substance={substance}
+          onClose={() => {
+            setActiveTool(null);
+            setLastUpdate(Date.now());
+          }}
+        />
+      )}
     </div>
   );
 };
