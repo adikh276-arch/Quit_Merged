@@ -1654,5 +1654,21 @@
   "quit.app.copied": "Copied!",
   "quit.app.copy_link": "Copy Link",
   "quit.app.reset_confirm": "Are you sure you want to reset your progress? This will clear all data for this substance.",
-  "quit.app.reset_progress": "Reset Progress"
+  "quit.app.reset_progress": "Reset Progress",
+  "quit.app.recovery_zone": "Recovery Zone",
+  "quit.app.power_ups": "Power-Ups",
+  "quit.app.daily_check_ins": "Daily Check-Ins",
+  "quit.app.community_board": "Community Board",
+  "quit.app.community_desc": "Connect with others on the same journey",
+  "quit.app.view_all_milestones": "View All Milestones",
+  "quit.app.sync_data": "Sync Data",
+  "quit.app.sync_desc": "Force pull your latest progress from the cloud.",
+  "quit.app.syncing": "Syncing…",
+  "quit.app.syncing_desc": "Connecting to secure cloud…",
+  "quit.app.sync_success": "Synced!",
+  "quit.app.sync_success_desc": "Your data is now up to date.",
+  "quit.app.sync_error": "Sync Failed",
+  "quit.app.sync_error_desc": "Please check your connection.",
+  "quit.app.confirm": "Yes, Reset",
+  "quit.app.cancel": "Cancel"
 }

@@ -1654,5 +1654,21 @@
   "quit.app.copied": "คัดลอก!",
   "quit.app.copy_link": "คัดลอกลิงค์",
   "quit.app.reset_confirm": "คุณแน่ใจหรือไม่ว่าต้องการรีเซ็ตความคืบหน้าของคุณ? การดำเนินการนี้จะล้างข้อมูลทั้งหมดสำหรับสารนี้",
-  "quit.app.reset_progress": "รีเซ็ตความคืบหน้า"
+  "quit.app.reset_progress": "รีเซ็ตความคืบหน้า",
+  "quit.app.recovery_zone": "โซนการกู้คืน",
+  "quit.app.power_ups": "เพิ่มพลัง",
+  "quit.app.daily_check_ins": "เช็คอินรายวัน",
+  "quit.app.community_board": "คณะกรรมการชุมชน",
+  "quit.app.community_desc": "เชื่อมต่อกับผู้อื่นในการเดินทางเดียวกัน",
+  "quit.app.view_all_milestones": "ดูเหตุการณ์สำคัญทั้งหมด",
+  "quit.app.sync_data": "ซิงค์ข้อมูล",
+  "quit.app.sync_desc": "ดึงความคืบหน้าล่าสุดของคุณออกจากระบบคลาวด์",
+  "quit.app.syncing": "กำลังซิงค์...",
+  "quit.app.syncing_desc": "กำลังเชื่อมต่อกับระบบคลาวด์ที่ปลอดภัย...",
+  "quit.app.sync_success": "ซิงค์แล้ว!",
+  "quit.app.sync_success_desc": "ข้อมูลของคุณเป็นปัจจุบันแล้ว",
+  "quit.app.sync_error": "การซิงค์ล้มเหลว",
+  "quit.app.sync_error_desc": "กรุณาตรวจสอบการเชื่อมต่อของคุณ",
+  "quit.app.confirm": "ใช่ รีเซ็ต",
+  "quit.app.cancel": "ยกเลิก"
 }

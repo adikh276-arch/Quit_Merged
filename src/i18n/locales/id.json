@@ -1654,5 +1654,21 @@
   "quit.app.copied": "Disalin!",
   "quit.app.copy_link": "Salin Tautan",
   "quit.app.reset_confirm": "Apakah Anda yakin ingin mengatur ulang kemajuan Anda? Ini akan menghapus semua data untuk zat ini.",
-  "quit.app.reset_progress": "Atur Ulang Kemajuan"
+  "quit.app.reset_progress": "Atur Ulang Kemajuan",
+  "quit.app.recovery_zone": "Zona Pemulihan",
+  "quit.app.power_ups": "Peningkatan Kekuatan",
+  "quit.app.daily_check_ins": "Check-In Harian",
+  "quit.app.community_board": "Dewan Komunitas",
+  "quit.app.community_desc": "Terhubung dengan orang lain dalam perjalanan yang sama",
+  "quit.app.view_all_milestones": "Lihat Semua Pencapaian",
+  "quit.app.sync_data": "Sinkronkan Data",
+  "quit.app.sync_desc": "Tarik paksa kemajuan terbaru Anda dari cloud.",
+  "quit.app.syncing": "Menyinkronkan…",
+  "quit.app.syncing_desc": "Menghubungkan ke cloud yang aman…",
+  "quit.app.sync_success": "Disinkronkan!",
+  "quit.app.sync_success_desc": "Data Anda sekarang sudah diperbarui.",
+  "quit.app.sync_error": "Sinkronisasi Gagal",
+  "quit.app.sync_error_desc": "Silakan periksa koneksi Anda.",
+  "quit.app.confirm": "Ya, Atur Ulang",
+  "quit.app.cancel": "Membatalkan"
 }

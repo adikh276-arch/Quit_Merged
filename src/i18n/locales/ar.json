@@ -1654,5 +1654,21 @@
   "quit.app.copied": "منسوخ!",
   "quit.app.copy_link": "نسخ الوصلة",
   "quit.app.reset_confirm": "هل أنت متأكد أنك تريد إعادة ضبط تقدمك؟ سيؤدي هذا إلى مسح جميع البيانات الخاصة بهذه المادة.",
-  "quit.app.reset_progress": "إعادة تعيين التقدم"
+  "quit.app.reset_progress": "إعادة تعيين التقدم",
+  "quit.app.recovery_zone": "منطقة الإنعاش",
+  "quit.app.power_ups": "زادت الطاقة",
+  "quit.app.daily_check_ins": "تسجيلات الوصول اليومية",
+  "quit.app.community_board": "مجلس المجتمع",
+  "quit.app.community_desc": "تواصل مع الآخرين في نفس الرحلة",
+  "quit.app.view_all_milestones": "عرض جميع المعالم",
+  "quit.app.sync_data": "مزامنة البيانات",
+  "quit.app.sync_desc": "فرض سحب التقدم الأخير الخاص بك من السحابة.",
+  "quit.app.syncing": "جارٍ المزامنة…",
+  "quit.app.syncing_desc": "جارٍ الاتصال بالسحابة الآمنة…",
+  "quit.app.sync_success": "تمت المزامنة!",
+  "quit.app.sync_success_desc": "بياناتك الآن محدثة.",
+  "quit.app.sync_error": "فشلت المزامنة",
+  "quit.app.sync_error_desc": "يرجى التحقق من الاتصال الخاص بك.",
+  "quit.app.confirm": "نعم، إعادة تعيين",
+  "quit.app.cancel": "يلغي"
 }

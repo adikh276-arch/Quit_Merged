@@ -1654,5 +1654,21 @@
   "quit.app.copied": "복사되었습니다!",
   "quit.app.copy_link": "링크 복사",
   "quit.app.reset_confirm": "진행 상황을 재설정하시겠습니까? 이렇게 하면 이 물질에 대한 모든 데이터가 삭제됩니다.",
-  "quit.app.reset_progress": "진행 상황 재설정"
+  "quit.app.reset_progress": "진행 상황 재설정",
+  "quit.app.recovery_zone": "복구 구역",
+  "quit.app.power_ups": "파워업",
+  "quit.app.daily_check_ins": "일일 체크인",
+  "quit.app.community_board": "커뮤니티보드",
+  "quit.app.community_desc": "같은 여정에 있는 다른 사람들과 소통하세요",
+  "quit.app.view_all_milestones": "모든 마일스톤 보기",
+  "quit.app.sync_data": "데이터 동기화",
+  "quit.app.sync_desc": "클라우드에서 최신 진행 상황을 강제로 가져오세요.",
+  "quit.app.syncing": "동기화 중…",
+  "quit.app.syncing_desc": "보안 클라우드에 연결 중…",
+  "quit.app.sync_success": "동기화되었습니다!",
+  "quit.app.sync_success_desc": "귀하의 데이터는 이제 최신 상태입니다.",
+  "quit.app.sync_error": "동기화 실패",
+  "quit.app.sync_error_desc": "연결을 확인해주세요.",
+  "quit.app.confirm": "예, 재설정합니다.",
+  "quit.app.cancel": "취소"
 }

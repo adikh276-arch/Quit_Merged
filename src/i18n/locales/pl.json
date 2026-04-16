@@ -1654,5 +1654,21 @@
   "quit.app.copied": "Skopiowano!",
   "quit.app.copy_link": "Skopiuj link",
   "quit.app.reset_confirm": "Czy na pewno chcesz zresetować swoje postępy? Spowoduje to usunięcie wszystkich danych dotyczących tej substancji.",
-  "quit.app.reset_progress": "Zresetuj postęp"
+  "quit.app.reset_progress": "Zresetuj postęp",
+  "quit.app.recovery_zone": "Strefa regeneracji",
+  "quit.app.power_ups": "Dopalacze",
+  "quit.app.daily_check_ins": "Codzienne meldowanie",
+  "quit.app.community_board": "Zarząd Wspólnoty",
+  "quit.app.community_desc": "Połącz się z innymi w tej samej podróży",
+  "quit.app.view_all_milestones": "Zobacz wszystkie kamienie milowe",
+  "quit.app.sync_data": "Synchronizuj dane",
+  "quit.app.sync_desc": "Wymuś pobranie najnowszego postępu z chmury.",
+  "quit.app.syncing": "Synchronizowanie…",
+  "quit.app.syncing_desc": "Łączę się z bezpieczną chmurą…",
+  "quit.app.sync_success": "Zsynchronizowane!",
+  "quit.app.sync_success_desc": "Twoje dane są teraz aktualne.",
+  "quit.app.sync_error": "Synchronizacja nie powiodła się",
+  "quit.app.sync_error_desc": "Sprawdź swoje połączenie.",
+  "quit.app.confirm": "Tak, zresetuj",
+  "quit.app.cancel": "Anulować"
 }

@@ -1654,5 +1654,21 @@
   "quit.app.copied": "Copiado!",
   "quit.app.copy_link": "Copiar link",
   "quit.app.reset_confirm": "Tem certeza de que deseja redefinir seu progresso? Isso limpará todos os dados desta substância.",
-  "quit.app.reset_progress": "Redefinir progresso"
+  "quit.app.reset_progress": "Redefinir progresso",
+  "quit.app.recovery_zone": "Zona de recuperação",
+  "quit.app.power_ups": "Power-ups",
+  "quit.app.daily_check_ins": "Check-ins diários",
+  "quit.app.community_board": "Conselho Comunitário",
+  "quit.app.community_desc": "Conecte-se com outras pessoas na mesma jornada",
+  "quit.app.view_all_milestones": "Ver todos os marcos",
+  "quit.app.sync_data": "Sincronizar dados",
+  "quit.app.sync_desc": "Force a extração do seu progresso mais recente da nuvem.",
+  "quit.app.syncing": "Sincronizando…",
+  "quit.app.syncing_desc": "Conectando-se à nuvem segura…",
+  "quit.app.sync_success": "Sincronizado!",
+  "quit.app.sync_success_desc": "Seus dados agora estão atualizados.",
+  "quit.app.sync_error": "Falha na sincronização",
+  "quit.app.sync_error_desc": "Por favor, verifique sua conexão.",
+  "quit.app.confirm": "Sim, redefinir",
+  "quit.app.cancel": "Cancelar"
 }

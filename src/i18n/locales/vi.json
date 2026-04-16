@@ -1654,5 +1654,21 @@
   "quit.app.copied": "Đã sao chép!",
   "quit.app.copy_link": "Sao chép liên kết",
   "quit.app.reset_confirm": "Bạn có chắc chắn muốn đặt lại tiến trình của mình không? Điều này sẽ xóa tất cả dữ liệu cho chất này.",
-  "quit.app.reset_progress": "Đặt lại tiến độ"
+  "quit.app.reset_progress": "Đặt lại tiến độ",
+  "quit.app.recovery_zone": "Vùng phục hồi",
+  "quit.app.power_ups": "Tăng sức mạnh",
+  "quit.app.daily_check_ins": "Đăng ký hàng ngày",
+  "quit.app.community_board": "Ban cộng đồng",
+  "quit.app.community_desc": "Kết nối với những người khác trên cùng hành trình",
+  "quit.app.view_all_milestones": "Xem tất cả các cột mốc",
+  "quit.app.sync_data": "Đồng bộ hóa dữ liệu",
+  "quit.app.sync_desc": "Buộc lấy tiến trình mới nhất của bạn từ đám mây.",
+  "quit.app.syncing": "Đang đồng bộ hóa…",
+  "quit.app.syncing_desc": "Đang kết nối với đám mây bảo mật…",
+  "quit.app.sync_success": "Đã đồng bộ hóa!",
+  "quit.app.sync_success_desc": "Dữ liệu của bạn hiện đã được cập nhật.",
+  "quit.app.sync_error": "Đồng bộ hóa không thành công",
+  "quit.app.sync_error_desc": "Vui lòng kiểm tra kết nối của bạn.",
+  "quit.app.confirm": "Có, Đặt lại",
+  "quit.app.cancel": "Hủy bỏ"
 }

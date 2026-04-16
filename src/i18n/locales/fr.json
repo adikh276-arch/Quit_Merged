@@ -1654,5 +1654,21 @@
   "quit.app.copied": "Copié!",
   "quit.app.copy_link": "Copier le lien",
   "quit.app.reset_confirm": "Êtes-vous sûr de vouloir réinitialiser votre progression ? Cela effacera toutes les données de cette substance.",
-  "quit.app.reset_progress": "Réinitialiser la progression"
+  "quit.app.reset_progress": "Réinitialiser la progression",
+  "quit.app.recovery_zone": "Zone de récupération",
+  "quit.app.power_ups": "Mises sous tension",
+  "quit.app.daily_check_ins": "Enregistrements quotidiens",
+  "quit.app.community_board": "Conseil communautaire",
+  "quit.app.community_desc": "Connectez-vous avec les autres sur le même voyage",
+  "quit.app.view_all_milestones": "Afficher tous les jalons",
+  "quit.app.sync_data": "Synchroniser les données",
+  "quit.app.sync_desc": "Forcez à extraire vos dernières avancées du cloud.",
+  "quit.app.syncing": "Synchronisation…",
+  "quit.app.syncing_desc": "Connexion à un cloud sécurisé…",
+  "quit.app.sync_success": "Synchronisé !",
+  "quit.app.sync_success_desc": "Vos données sont désormais à jour.",
+  "quit.app.sync_error": "Échec de la synchronisation",
+  "quit.app.sync_error_desc": "Veuillez vérifier votre connexion.",
+  "quit.app.confirm": "Oui, réinitialiser",
+  "quit.app.cancel": "Annuler"
 }

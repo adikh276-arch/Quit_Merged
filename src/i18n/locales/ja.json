@@ -1654,5 +1654,21 @@
   "quit.app.copied": "コピーしました！",
   "quit.app.copy_link": "リンクをコピー",
   "quit.app.reset_confirm": "進行状況をリセットしてもよろしいですか?これにより、この物質のすべてのデータが消去されます。",
-  "quit.app.reset_progress": "進行状況をリセットする"
+  "quit.app.reset_progress": "進行状況をリセットする",
+  "quit.app.recovery_zone": "リカバリゾーン",
+  "quit.app.power_ups": "パワーアップ",
+  "quit.app.daily_check_ins": "毎日のチェックイン",
+  "quit.app.community_board": "コミュニティ委員会",
+  "quit.app.community_desc": "同じ旅をしている他の人とつながる",
+  "quit.app.view_all_milestones": "すべてのマイルストーンを表示",
+  "quit.app.sync_data": "データを同期する",
+  "quit.app.sync_desc": "最新の進捗状況をクラウドから強制的に取得します。",
+  "quit.app.syncing": "同期中…",
+  "quit.app.syncing_desc": "安全なクラウドに接続しています…",
+  "quit.app.sync_success": "同期されました！",
+  "quit.app.sync_success_desc": "データは最新の状態になりました。",
+  "quit.app.sync_error": "同期に失敗しました",
+  "quit.app.sync_error_desc": "接続を確認してください。",
+  "quit.app.confirm": "はい、リセットします",
+  "quit.app.cancel": "キャンセル"
 }

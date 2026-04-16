@@ -1654,5 +1654,21 @@
   "quit.app.copied": "Скопировано!",
   "quit.app.copy_link": "Копировать ссылку",
   "quit.app.reset_confirm": "Вы уверены, что хотите сбросить свой прогресс? Это приведет к удалению всех данных по этому веществу.",
-  "quit.app.reset_progress": "Сбросить прогресс"
+  "quit.app.reset_progress": "Сбросить прогресс",
+  "quit.app.recovery_zone": "Зона восстановления",
+  "quit.app.power_ups": "Бонусы",
+  "quit.app.daily_check_ins": "Ежедневные проверки",
+  "quit.app.community_board": "Общественный совет",
+  "quit.app.community_desc": "Общайтесь с другими в том же путешествии",
+  "quit.app.view_all_milestones": "Просмотреть все этапы",
+  "quit.app.sync_data": "Синхронизировать данные",
+  "quit.app.sync_desc": "Принудительно извлеките свой последний прогресс из облака.",
+  "quit.app.syncing": "Синхронизация…",
+  "quit.app.syncing_desc": "Подключение к безопасному облаку…",
+  "quit.app.sync_success": "Синхронизировано!",
+  "quit.app.sync_success_desc": "Ваши данные теперь актуальны.",
+  "quit.app.sync_error": "Синхронизация не удалась",
+  "quit.app.sync_error_desc": "Пожалуйста, проверьте ваше соединение.",
+  "quit.app.confirm": "Да, сброс",
+  "quit.app.cancel": "Отмена"
 }

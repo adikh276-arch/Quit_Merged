@@ -1654,5 +1654,21 @@
   "quit.app.copied": "অনুলিপি করা হয়েছে!",
   "quit.app.copy_link": "লিংক কপি করুন",
   "quit.app.reset_confirm": "আপনি কি আপনার অগ্রগতি পুনরায় সেট করতে চান? এটি এই পদার্থের জন্য সমস্ত ডেটা সাফ করবে।",
-  "quit.app.reset_progress": "অগ্রগতি রিসেট করুন"
+  "quit.app.reset_progress": "অগ্রগতি রিসেট করুন",
+  "quit.app.recovery_zone": "রিকভারি জোন",
+  "quit.app.power_ups": "পাওয়ার আপ",
+  "quit.app.daily_check_ins": "দৈনিক চেক-ইন",
+  "quit.app.community_board": "কমিউনিটি বোর্ড",
+  "quit.app.community_desc": "একই যাত্রায় অন্যদের সাথে সংযোগ করুন",
+  "quit.app.view_all_milestones": "সমস্ত মাইলস্টোন দেখুন",
+  "quit.app.sync_data": "ডেটা সিঙ্ক করুন",
+  "quit.app.sync_desc": "ক্লাউড থেকে আপনার সাম্প্রতিক অগ্রগতি জোর করে টেনে আনুন।",
+  "quit.app.syncing": "সিঙ্ক হচ্ছে...",
+  "quit.app.syncing_desc": "সুরক্ষিত ক্লাউডের সাথে সংযুক্ত হচ্ছে...",
+  "quit.app.sync_success": "সিঙ্ক করা হয়েছে!",
+  "quit.app.sync_success_desc": "আপনার ডেটা এখন আপ টু ডেট।",
+  "quit.app.sync_error": "সিঙ্ক ব্যর্থ হয়েছে৷",
+  "quit.app.sync_error_desc": "আপনার সংযোগ পরীক্ষা করুন.",
+  "quit.app.confirm": "হ্যাঁ, রিসেট করুন",
+  "quit.app.cancel": "বাতিল করুন"
 }

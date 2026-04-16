@@ -1654,5 +1654,21 @@
   "quit.app.copied": "Copiato!",
   "quit.app.copy_link": "Copia collegamento",
   "quit.app.reset_confirm": "Sei sicuro di voler ripristinare i tuoi progressi? Ciò cancellerà tutti i dati per questa sostanza.",
-  "quit.app.reset_progress": "Reimposta avanzamento"
+  "quit.app.reset_progress": "Reimposta avanzamento",
+  "quit.app.recovery_zone": "Zona di recupero",
+  "quit.app.power_ups": "Potenziamento",
+  "quit.app.daily_check_ins": "Check-in giornalieri",
+  "quit.app.community_board": "Consiglio Comunale",
+  "quit.app.community_desc": "Connettiti con gli altri nello stesso viaggio",
+  "quit.app.view_all_milestones": "Visualizza tutte le tappe fondamentali",
+  "quit.app.sync_data": "Sincronizza dati",
+  "quit.app.sync_desc": "Forza il pull dei tuoi ultimi progressi dal cloud.",
+  "quit.app.syncing": "Sincronizzazione…",
+  "quit.app.syncing_desc": "Connessione al cloud sicuro…",
+  "quit.app.sync_success": "Sincronizzato!",
+  "quit.app.sync_success_desc": "I tuoi dati sono ora aggiornati.",
+  "quit.app.sync_error": "Sincronizzazione non riuscita",
+  "quit.app.sync_error_desc": "Per favore controlla la tua connessione.",
+  "quit.app.confirm": "Sì, ripristina",
+  "quit.app.cancel": "Cancellare"
 }

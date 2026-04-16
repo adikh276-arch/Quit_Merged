@@ -1654,5 +1654,21 @@
   "quit.app.copied": "复制了！",
   "quit.app.copy_link": "复制链接",
   "quit.app.reset_confirm": "您确定要重置进度吗？这将清除该物质的所有数据。",
-  "quit.app.reset_progress": "重置进度"
+  "quit.app.reset_progress": "重置进度",
+  "quit.app.recovery_zone": "恢复区",
+  "quit.app.power_ups": "通电",
+  "quit.app.daily_check_ins": "每日签到",
+  "quit.app.community_board": "社区委员会",
+  "quit.app.community_desc": "与同一旅程中的其他人联系",
+  "quit.app.view_all_milestones": "查看所有里程碑",
+  "quit.app.sync_data": "同步数据",
+  "quit.app.sync_desc": "强制从云端拉取您的最新进展。",
+  "quit.app.syncing": "正在同步...",
+  "quit.app.syncing_desc": "正在连接到安全云...",
+  "quit.app.sync_success": "已同步！",
+  "quit.app.sync_success_desc": "您的数据现在是最新的。",
+  "quit.app.sync_error": "同步失败",
+  "quit.app.sync_error_desc": "请检查您的连接。",
+  "quit.app.confirm": "是的，重置",
+  "quit.app.cancel": "取消"
 }

@@ -1654,5 +1654,21 @@
   "quit.app.copied": "Kopyalandı!",
   "quit.app.copy_link": "Bağlantıyı Kopyala",
   "quit.app.reset_confirm": "İlerlemenizi sıfırlamak istediğinizden emin misiniz? Bu, bu maddeye ilişkin tüm verileri temizleyecektir.",
-  "quit.app.reset_progress": "İlerlemeyi Sıfırla"
+  "quit.app.reset_progress": "İlerlemeyi Sıfırla",
+  "quit.app.recovery_zone": "Kurtarma Bölgesi",
+  "quit.app.power_ups": "Güç kaynağını çalıştırın",
+  "quit.app.daily_check_ins": "Günlük Check-In'ler",
+  "quit.app.community_board": "Topluluk Kurulu",
+  "quit.app.community_desc": "Aynı yolculukta başkalarıyla bağlantı kurun",
+  "quit.app.view_all_milestones": "Tüm Aşama Noktalarını Görüntüle",
+  "quit.app.sync_data": "Verileri Senkronize Et",
+  "quit.app.sync_desc": "En son ilerlemenizi buluttan almaya zorlayın.",
+  "quit.app.syncing": "Senkronize ediliyor…",
+  "quit.app.syncing_desc": "Güvenli buluta bağlanılıyor…",
+  "quit.app.sync_success": "Senkronize edildi!",
+  "quit.app.sync_success_desc": "Verileriniz artık güncel.",
+  "quit.app.sync_error": "Senkronizasyon Başarısız",
+  "quit.app.sync_error_desc": "Lütfen bağlantınızı kontrol edin.",
+  "quit.app.confirm": "Evet, Sıfırla",
+  "quit.app.cancel": "İptal etmek"
 }

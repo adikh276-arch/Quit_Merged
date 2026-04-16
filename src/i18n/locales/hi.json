@@ -1654,5 +1654,21 @@
   "quit.app.copied": "नकल की गई!",
   "quit.app.copy_link": "लिंक की प्रतिलिपि करें",
   "quit.app.reset_confirm": "क्या आप वाकई अपनी प्रगति रीसेट करना चाहते हैं? इससे इस पदार्थ का सारा डेटा साफ़ हो जाएगा.",
-  "quit.app.reset_progress": "प्रगति रीसेट करें"
+  "quit.app.reset_progress": "प्रगति रीसेट करें",
+  "quit.app.recovery_zone": "पुनर्प्राप्ति क्षेत्र",
+  "quit.app.power_ups": "पावर अप",
+  "quit.app.daily_check_ins": "दैनिक चेक-इन",
+  "quit.app.community_board": "सामुदायिक बोर्ड",
+  "quit.app.community_desc": "उसी यात्रा पर दूसरों के साथ जुड़ें",
+  "quit.app.view_all_milestones": "सभी मील के पत्थर देखें",
+  "quit.app.sync_data": "डेटा सिंक करें",
+  "quit.app.sync_desc": "अपनी नवीनतम प्रगति को बलपूर्वक क्लाउड से खींचें।",
+  "quit.app.syncing": "सिंक हो रहा है...",
+  "quit.app.syncing_desc": "सुरक्षित क्लाउड से कनेक्ट हो रहा है…",
+  "quit.app.sync_success": "समन्वयित!",
+  "quit.app.sync_success_desc": "आपका डेटा अब अद्यतित है.",
+  "quit.app.sync_error": "समन्वयन विफल",
+  "quit.app.sync_error_desc": "कृपया अपना कनेक्शन जांचें.",
+  "quit.app.confirm": "हाँ, रीसेट करें",
+  "quit.app.cancel": "रद्द करना"
 }
