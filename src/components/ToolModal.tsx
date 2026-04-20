@@ -505,7 +505,7 @@ const ActivityRunner = ({ activity, substance, onBack }: { activity: any; substa
               </p>
               <div className="flex gap-2 flex-wrap">
                 {activity.sortCategories.map((cat: string) => (
-                    <button key={cat} disabled={revealed}
+                    <button key={cat} disabled={sortRevealed}
                       onClick={() => setSortAnswers(prev => ({ ...prev, [i]: cat }))}
                       className={`rounded-lg px-3 py-1.5 text-xs font-medium transition-all ${sortAnswers[i] === cat ? 'bg-primary text-primary-foreground' : 'bg-muted text-muted-foreground hover:bg-muted/80'}`}>
                       {t(`quit.substances.${substance.slug}.activities.${activity.id}.sortCategories.${activity.sortCategories.indexOf(cat)}`, cat)}
