@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, ChevronRight, ArrowUp, Lock, Check, Play, Pause, Trophy, Sparkles, Heart, BookmarkCheck, Bookmark, Target, Zap } from 'lucide-react';
+import { X, ChevronRight, ArrowUp, Lock, Check, Play, Pause, Trophy, Sparkles, Heart, BookmarkCheck, Bookmark, Target, Zap, ClipboardList } from 'lucide-react';
 import { DynamicIcon } from './DynamicIcon';
 import { SubstanceConfig } from '@/data/types';
 import { getAssessment, saveAssessment, toggleCommunityUpvote, getCommunityUpvotes, addUserPost, getUserPosts } from '@/data/storage';
