@@ -1,10 +1,11 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowRight, ArrowLeft, Calendar, Target, AlertTriangle, CheckCircle2 } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { SubstanceConfig } from '@/data/types';
 import { setStreak, getPrefix } from '@/data/storage';
 import SubstanceIcon from './SubstanceIcon';
+import { analytics } from '@/lib/analytics';
 
 const heroGradients: Record<string, string> = {
   alcohol: 'from-red-600 via-rose-500 to-red-700',
@@ -43,6 +44,12 @@ const SubstanceOnboarding = ({ substance, onComplete }: Props) => {
   const [motivation, setMotivation] = useState<string | null>(null);
   const [triggers, setTriggers] = useState<string[]>([]);
 
+  // Track onboarding started
+  useEffect(() => {
+    analytics.trackOnboardingStarted(substance.slug);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   const gradient = heroGradients[substance.slug] || 'from-primary to-primary/80';
   const substanceTriggers = triggersBySubstance[substance.slug] || triggersBySubstance.alcohol;
 
@@ -62,11 +69,16 @@ const SubstanceOnboarding = ({ substance, onComplete }: Props) => {
     const daysAgo = getQuitDaysAgo();
     const startDate = new Date();
     startDate.setDate(startDate.getDate() - daysAgo);
-    const startStr = startDate.toISOString().split('T')[0]; // fixed quit.T string split bug
+    const startStr = startDate.toISOString().split('T')[0];
     setStreak(substance.slug, daysAgo, startStr);
     localStorage.setItem(`${getPrefix()}_onboarded_${substance.slug}`, 'true');
     localStorage.setItem(`${getPrefix()}_motivation_${substance.slug}`, motivation || '');
     localStorage.setItem(`${getPrefix()}_triggers_${substance.slug}`, JSON.stringify(triggers));
+    analytics.trackOnboardingCompleted(substance.slug, {
+      quit_days_ago: daysAgo,
+      motivation: motivation || '',
+      triggers,
+    });
     onComplete(motivation || undefined, triggers);
   };
 

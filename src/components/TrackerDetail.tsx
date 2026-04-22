@@ -1,10 +1,11 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, ChevronDown, ChevronUp, History, Save, CheckCircle2, Lightbulb } from 'lucide-react';
 import { BarChart, Bar, LineChart, Line, AreaChart, Area, XAxis, YAxis, ResponsiveContainer, Tooltip } from 'recharts';
 import { TrackerConfig, SubstanceConfig } from '@/data/types';
 import { getEntries, saveEntry, todayStr, getEntry } from '@/data/storage';
 import { useTranslation } from 'react-i18next';
+import { analytics } from '@/lib/analytics';
 
 interface Props {
   tracker: TrackerConfig;
@@ -28,8 +29,26 @@ const TrackerDetail = ({ tracker, substance, onClose }: Props) => {
   const [values, setValues] = useState<Record<string, any>>(todayEntry?.values || {});
   const updateField = (key: string, val: any) => setValues(prev => ({ ...prev, [key]: val }));
 
+  // Track that the user opened this tracker
+  useEffect(() => {
+    analytics.trackTrackerOpened(substance.slug, tracker.id, tracker.name);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   const handleSave = () => {
+    const reportedUse =
+      values.drankToday === 'Yes' ||
+      values.smokedToday === 'Yes' ||
+      values.usedToday === 'Yes' ||
+      values.used_illicitly === 'Yes';
+
     saveEntry(substance.slug, tracker.id, todayStr(), { date: todayStr(), values, notes: values.notes || '' });
+    analytics.trackLogSaved(substance.slug, {
+      tracker_id: tracker.id,
+      tracker_name: tracker.name,
+      reported_use: reportedUse,
+      is_first_log_today: !todayEntry,
+    });
     setSaved(true);
     setTimeout(() => onClose(), 800);
   };

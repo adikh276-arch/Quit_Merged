@@ -1,8 +1,8 @@
 import { useParams, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { ArrowLeft, ClipboardList, Calculator, Dumbbell, BookOpen, TrendingUp, Calendar, Flame, ChevronRight, Zap, Lightbulb, RefreshCw } from 'lucide-react';
+import { ArrowLeft, ClipboardList, Calculator, Dumbbell, BookOpen, TrendingUp, Calendar, Flame, ChevronRight, Zap, Lightbulb, RefreshCw, DollarSign, ShieldCheck, CigaretteOff, Activity } from 'lucide-react';
 import { getSubstance } from '@/data/substances';
-import { getStreak, getEntries, getPrefix, fetchOnboarded, saveOnboarded, resetOnboarded, syncUserDataFromCloud } from '@/data/storage';
+import { getStreak, getEntries, getPrefix, fetchOnboarded, saveOnboarded, resetOnboarded, syncUserDataFromCloud, getDynamicStat } from '@/data/storage';
 import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import TrackerDetail from '@/components/TrackerDetail';
@@ -12,6 +12,7 @@ import SubstanceOnboarding from '@/components/SubstanceOnboarding';
 import { ConfirmModal } from '@/components/ConfirmModal';
 import { LineChart, Line, ResponsiveContainer } from 'recharts';
 import { useToast } from '@/hooks/use-toast';
+import { analytics } from '@/lib/analytics';
 
 const heroGradients: Record<string, string> = {
   alcohol: 'from-red-600 via-rose-500 to-red-700',
@@ -76,14 +77,24 @@ const SubstancePage = () => {
       setOnboarded(isStillOnboarded);
       
       if (isStillOnboarded) {
-        // If onboarded, immediately pull all other tracker/streak data
         await syncUserDataFromCloud(slug);
-        setLastUpdate(Date.now()); // Force re-render with cloud data
+        setLastUpdate(Date.now());
       }
     };
 
     resolveCloudData();
   }, [slug]);
+
+  // Track page view when fully loaded
+  useEffect(() => {
+    if (onboarded && slug) {
+      const s = getStreak(slug);
+      analytics.trackSubstancePageViewed(slug, {
+        streak_days: s.days,
+        recovery_pct: Math.min(100, Math.round((s.days / 90) * 100)),
+      });
+    }
+  }, [onboarded, slug]);
 
   if (!substance) {
     navigate('/');
@@ -116,6 +127,16 @@ const SubstancePage = () => {
   const gradientClass = heroGradients[substance.slug] || 'from-primary to-primary/80';
   const sparkColor = sparkColors[substance.slug] || '#10b981';
   const cardAccent = cardAccents[substance.slug] || 'border-border';
+  const dynamicStat = getDynamicStat(substance.slug, streak.startDate);
+
+  const dynamicStatIcon = {
+    money: DollarSign,
+    count: ShieldCheck,
+    cravings: ShieldCheck,
+    avoided: CigaretteOff,
+    mood: Activity,
+    date: Calendar,
+  }[dynamicStat.icon] || Calendar;
 
   const activeTrackerConfig = substance.trackers.find(t => t.id === activeTracker);
 
@@ -194,6 +215,7 @@ const SubstancePage = () => {
         {/* Back button */}
         <button 
           onClick={() => {
+            analytics.trackExitClicked('substance_page', slug || '');
             if (window.parent !== window) {
               window.parent.postMessage({ action: 'exit' }, 'https://web.mantracare.com');
             } else {
@@ -265,7 +287,7 @@ const SubstancePage = () => {
                 {[
                   { icon: Flame, value: `${streak.days}`, label: 'Streak', suffix: 'd' },
                   { icon: TrendingUp, value: `${recoveryScore}`, label: 'Recovery', suffix: '%' },
-                  { icon: Calendar, value: streak.startDate ? new Date(streak.startDate).toLocaleDateString(undefined, { day: 'numeric', month: 'short' }) : '—', label: 'Started', suffix: '' },
+                  { icon: dynamicStatIcon, value: dynamicStat.value, label: dynamicStat.label, suffix: '' },
                 ].map((stat, i) => (
                   <motion.div
                     key={stat.label}
@@ -369,7 +391,10 @@ const SubstancePage = () => {
                 initial={{ opacity: 0, y: 18 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.55 + i * 0.05 }}
-                onClick={() => setActiveTool(tool.id)}
+                onClick={() => {
+              analytics.trackToolOpened(substance.slug, tool.id);
+              setActiveTool(tool.id);
+            }}
                 className="group flex items-start gap-3 rounded-2xl border border-border/60 bg-card p-4 text-left transition-all duration-300 hover:shadow-lg hover:border-primary/30 hover:-translate-y-0.5 active:scale-[0.97]"
               >
                 <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-primary/8 group-hover:bg-primary/15 transition-colors">

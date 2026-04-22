@@ -2,6 +2,7 @@ import { useEffect, useState, useRef } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { initializeUser } from "@/lib/user";
 import { migrateAnonData } from "@/data/storage";
+import { analytics } from "@/lib/analytics";
 
 const STORAGE_KEY = "therapy_user_id";
 const REDIRECT_PATH_KEY = "quit_redirect_path"; // localStorage key — survives cross-domain redirects
@@ -62,6 +63,8 @@ export const AuthGuard = ({ children }: { children: React.ReactNode }) => {
       // 1. Already authenticated — just render
       const savedUserId = localStorage.getItem(STORAGE_KEY);
       if (isRealUserId(savedUserId)) {
+        analytics.identifyUser(savedUserId!);
+        analytics.trackSessionStart({ is_returning: true, language: navigator.language });
         setIsReady(true);
         return;
       }
@@ -78,6 +81,8 @@ export const AuthGuard = ({ children }: { children: React.ReactNode }) => {
           localStorage.setItem(STORAGE_KEY, urlUserId!);
           await migrateAnonData(urlUserId!);
           await initializeUser(urlUserId!);
+          analytics.identifyUser(urlUserId!);
+          analytics.trackSessionStart({ is_returning: false, language: navigator.language });
           setIsReady(true);
           restoreAndNavigate(navigate, location.pathname);
           return;
