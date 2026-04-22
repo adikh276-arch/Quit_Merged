@@ -64,7 +64,7 @@ export const AuthGuard = ({ children }: { children: React.ReactNode }) => {
       const savedUserId = localStorage.getItem(STORAGE_KEY);
       if (isRealUserId(savedUserId)) {
         analytics.identifyUser(savedUserId!);
-        analytics.trackSessionStart({ is_returning: true, language: navigator.language });
+        analytics.trackSessionStarted({ is_returning_user: true, language: navigator.language });
         setIsReady(true);
         return;
       }

@@ -74,9 +74,11 @@ const SubstanceOnboarding = ({ substance, onComplete }: Props) => {
     localStorage.setItem(`${getPrefix()}_onboarded_${substance.slug}`, 'true');
     localStorage.setItem(`${getPrefix()}_motivation_${substance.slug}`, motivation || '');
     localStorage.setItem(`${getPrefix()}_triggers_${substance.slug}`, JSON.stringify(triggers));
-    analytics.trackOnboardingCompleted(substance.slug, {
+    analytics.trackUserOnboarded(substance.slug, {
+      quit_date_option: quitOption || 'custom',
       quit_days_ago: daysAgo,
       motivation: motivation || '',
+      trigger_count: triggers.length,
       triggers,
     });
     onComplete(motivation || undefined, triggers);
@@ -232,6 +234,7 @@ const SubstanceOnboarding = ({ substance, onComplete }: Props) => {
               if (step > 0) {
                 setStep(s => s - 1);
               } else {
+                analytics.trackAppExited('Onboarding', substance.slug);
                 if (window.parent !== window) {
                   window.parent.postMessage({ action: 'exit' }, 'https://web.mantracare.com');
                 } else {

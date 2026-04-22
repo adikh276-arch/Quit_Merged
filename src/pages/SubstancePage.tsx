@@ -89,7 +89,7 @@ const SubstancePage = () => {
   useEffect(() => {
     if (onboarded && slug) {
       const s = getStreak(slug);
-      analytics.trackSubstancePageViewed(slug, {
+      analytics.trackSubstancePageOpened(slug, {
         streak_days: s.days,
         recovery_pct: Math.min(100, Math.round((s.days / 90) * 100)),
       });
@@ -215,7 +215,7 @@ const SubstancePage = () => {
         {/* Back button */}
         <button 
           onClick={() => {
-            analytics.trackExitClicked('substance_page', slug || '');
+            analytics.trackAppExited('Substance Page', slug || '');
             if (window.parent !== window) {
               window.parent.postMessage({ action: 'exit' }, 'https://web.mantracare.com');
             } else {
@@ -285,9 +285,9 @@ const SubstancePage = () => {
               {/* Stats row */}
               <div className="grid grid-cols-3 gap-2.5">
                 {[
-                  { icon: Flame, value: `${streak.days}`, label: 'Streak', suffix: 'd' },
-                  { icon: TrendingUp, value: `${recoveryScore}`, label: 'Recovery', suffix: '%' },
-                  { icon: dynamicStatIcon, value: dynamicStat.value, label: dynamicStat.label, suffix: '' },
+                  { icon: Flame, value: `${streak.days}`, label: 'Streak', suffix: 'd', useKey: true },
+                  { icon: TrendingUp, value: `${recoveryScore}`, label: 'Recovery', suffix: '%', useKey: true },
+                  { icon: dynamicStatIcon, value: dynamicStat.value, label: dynamicStat.label, suffix: '', useKey: false },
                 ].map((stat, i) => (
                   <motion.div
                     key={stat.label}
@@ -298,7 +298,9 @@ const SubstancePage = () => {
                   >
                     <stat.icon className="h-4 w-4 mx-auto mb-2 text-white/60 group-hover:text-white/80 transition-colors" />
                     <p className="text-[15px] font-bold text-white leading-none">{stat.value}{stat.suffix}</p>
-                    <p className="text-[9px] text-white/40 font-bold uppercase tracking-[0.12em] mt-1.5">{t(`quit.app.${stat.label.toLowerCase()}`)}</p>
+                    <p className="text-[9px] text-white/40 font-bold uppercase tracking-[0.12em] mt-1.5">
+                      {stat.useKey ? t(`quit.app.${stat.label.toLowerCase()}`) : stat.label}
+                    </p>
                   </motion.div>
                 ))}
               </div>
