@@ -212,7 +212,7 @@ const SubstancePage = () => {
         </div>
       )}
 
-      <div className="mx-auto max-w-lg px-5 pb-12">
+      <div className="mx-auto max-w-2xl px-5 pb-12">
         {/* Back button */}
         <button 
           onClick={() => {

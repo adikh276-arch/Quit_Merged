@@ -99,7 +99,7 @@ const SubstanceOnboarding = ({ substance, onComplete }: Props) => {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-background via-background to-muted/30 flex flex-col">
-      <div className="mx-auto max-w-lg w-full px-5 pb-16 pt-8 flex-1 flex flex-col">
+      <div className="mx-auto max-w-2xl w-full px-5 pb-16 pt-8 flex-1 flex flex-col">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: -16 }}

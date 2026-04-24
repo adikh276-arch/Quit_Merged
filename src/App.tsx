@@ -7,7 +7,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import Index from "./pages/Index.tsx";
 import SubstancePage from "./pages/SubstancePage.tsx";
 import NotFound from "./pages/NotFound.tsx";
-import LanguageSelector from "./components/LanguageSelector";
+
 
 import { AuthGuard } from "./components/AuthGuard";
 
@@ -26,7 +26,7 @@ const App = () => {
         <div className="theme-quit min-h-screen bg-background text-foreground">
           <BrowserRouter basename="/quit">
             <AuthGuard>
-              <LanguageSelector />
+
               <Routes>
                 <Route path="/" element={<Index />} />
                 <Route path="/:slug" element={<SubstancePage />} />

@@ -80,7 +80,7 @@ const TrackerDetail = ({ tracker, substance, onClose }: Props) => {
 
   return (
     <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="fixed inset-0 z-50 bg-background/95 backdrop-blur-sm overflow-y-auto">
-      <div className="mx-auto max-w-lg px-5 pb-10">
+      <div className="mx-auto max-w-2xl px-5 pb-10">
         {/* Header */}
         <div className="flex items-center justify-between py-5 sticky top-0 bg-background/90 backdrop-blur-md z-10 border-b border-border/40">
           <div>

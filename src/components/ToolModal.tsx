@@ -23,7 +23,7 @@ interface Props {
 const ToolModal = ({ toolId, substance, onClose }: Props) => {
   return (
     <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="fixed inset-0 z-50 bg-background overflow-y-auto">
-      <div className="mx-auto max-w-lg px-4 pb-8">
+      <div className="mx-auto max-w-2xl px-4 pb-8">
         <div className="flex items-center justify-between py-4">
           <button onClick={onClose} className="rounded-full p-2 hover:bg-muted"><X className="h-5 w-5" /></button>
         </div>
