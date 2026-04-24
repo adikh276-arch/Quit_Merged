@@ -88,6 +88,7 @@ const SubstancePage = () => {
   // Track page view when fully loaded
   useEffect(() => {
     if (onboarded && slug) {
+      console.log(`[SubstancePage] Fully loaded for ${slug}`);
       const s = getStreak(slug);
       analytics.trackSubstancePageOpened(slug, {
         streak_days: s.days,
@@ -215,9 +216,10 @@ const SubstancePage = () => {
         {/* Back button */}
         <button 
           onClick={() => {
-            analytics.trackAppExited('Substance Page', slug || '');
+            console.log(`[Back] Back button clicked for ${slug}`);
+            analytics.trackAppExited(slug || '', 'Substance Page');
             if (window.parent !== window) {
-              window.parent.postMessage({ action: 'exit' }, 'https://web.mantracare.com');
+              window.parent.postMessage({ action: 'quit', substance: slug }, 'https://web.mantracare.com');
             } else {
               window.location.href = 'https://web.mantracare.com';
             }

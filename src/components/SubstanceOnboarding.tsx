@@ -234,9 +234,9 @@ const SubstanceOnboarding = ({ substance, onComplete }: Props) => {
               if (step > 0) {
                 setStep(s => s - 1);
               } else {
-                analytics.trackAppExited('Onboarding', substance.slug);
+                analytics.trackAppExited(substance.slug, 'Onboarding');
                 if (window.parent !== window) {
-                  window.parent.postMessage({ action: 'exit' }, 'https://web.mantracare.com');
+                  window.parent.postMessage({ action: 'quit', substance: substance.slug }, 'https://web.mantracare.com');
                 } else {
                   window.location.href = 'https://web.mantracare.com';
                 }

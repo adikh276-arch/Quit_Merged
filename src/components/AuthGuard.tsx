@@ -19,6 +19,10 @@ export const AuthGuard = ({ children }: { children: React.ReactNode }) => {
   const location = useLocation();
   const navigate = useNavigate();
 
+  useEffect(() => {
+    console.log('[AuthGuard] Component mounted');
+  }, []);
+
   // -----------------------------------------------------------------------
   // Strip stale auth params from URL for ALREADY-AUTHENTICATED users.
   // e.g. user is logged in but visits a URL with ?token= still in it.
@@ -57,7 +61,11 @@ export const AuthGuard = ({ children }: { children: React.ReactNode }) => {
   // -----------------------------------------------------------------------
   useEffect(() => {
     const checkAuth = async () => {
-      if (isAuthenticating.current) return;
+      console.log('[AuthGuard] useEffect running');
+      if (isAuthenticating.current) {
+        console.log('[AuthGuard] Already authenticating, skipping...');
+        return;
+      }
       isAuthenticating.current = true;
 
       // 1. Already authenticated — just render
@@ -82,7 +90,7 @@ export const AuthGuard = ({ children }: { children: React.ReactNode }) => {
           await migrateAnonData(urlUserId!);
           await initializeUser(urlUserId!);
           analytics.identifyUser(urlUserId!);
-          analytics.trackSessionStart({ is_returning: false, language: navigator.language });
+          analytics.trackSessionStarted({ is_returning_user: false, language: navigator.language });
           setIsReady(true);
           restoreAndNavigate(navigate, location.pathname);
           return;
@@ -106,6 +114,8 @@ export const AuthGuard = ({ children }: { children: React.ReactNode }) => {
                 localStorage.setItem(STORAGE_KEY, userId);
                 await migrateAnonData(userId);
                 await initializeUser(userId);
+                analytics.identifyUser(userId);
+                analytics.trackSessionStarted({ is_returning_user: false, language: navigator.language });
                 setIsReady(true);
                 restoreAndNavigate(navigate, location.pathname);
                 return;
@@ -122,6 +132,8 @@ export const AuthGuard = ({ children }: { children: React.ReactNode }) => {
         localStorage.setItem(STORAGE_KEY, fallback);
         await migrateAnonData(fallback);
         await initializeUser(fallback);
+        analytics.identifyUser(fallback);
+        analytics.trackSessionStarted({ is_returning_user: false, language: navigator.language });
         setIsReady(true);
         restoreAndNavigate(navigate, location.pathname);
         return;
@@ -179,6 +191,15 @@ function restoreAndNavigate(navigate: ReturnType<typeof useNavigate>, currentPat
   }
 
   // navigate() replaces the current URL including query string, thereby stripping the tokens safely.
-  console.log(`[Auth] Restoring to target path: ${targetPath}`);
-  navigate(targetPath, { replace: true });
+  // Only navigate if the target is actually different to avoid double-mounts
+  const currentFull = window.location.pathname + window.location.search;
+  const basename = "/quit";
+  const absoluteTarget = basename + (targetPath.startsWith('/') ? targetPath : '/' + targetPath);
+  
+  if (currentFull !== absoluteTarget) {
+    console.log(`[Auth] Restoring to target path: ${targetPath}`);
+    navigate(targetPath, { replace: true });
+  } else {
+    console.log(`[Auth] Already at target path, skipping redundant navigation.`);
+  }
 }
