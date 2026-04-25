@@ -216,10 +216,8 @@ const SubstancePage = () => {
         {/* Back button */}
         <button 
           onClick={() => {
-            console.log(`[Back] Back button clicked for ${slug}`);
-            analytics.trackAppExited(slug || '', 'Substance Page');
             if (window.parent !== window) {
-              window.parent.postMessage({ action: 'quit', substance: slug }, 'https://web.mantracare.com');
+              window.parent.postMessage({ action: 'exit' }, 'https://web.mantracare.com');
             } else {
               window.location.href = 'https://web.mantracare.com';
             }
