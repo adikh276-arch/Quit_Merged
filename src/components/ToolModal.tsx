@@ -101,9 +101,20 @@ const Assessment = ({ substance }: { substance: SubstanceConfig }) => {
             }
           ])
         })
-          .then(res => res.json())
-          .then(data => console.log("Webhook Success:", data))
-          .catch(err => console.error("Webhook Error:", err));
+          .then(async (res) => {
+            const text = await res.text();
+            if (!res.ok) {
+              console.error("Webhook Server Error:", res.status, text);
+              return;
+            }
+            try {
+              const data = JSON.parse(text);
+              console.log("Webhook Success:", data);
+            } catch (e) {
+              console.log("Webhook Success (Non-JSON):", text);
+            }
+          })
+          .catch(err => console.error("Webhook Network Error:", err));
       }
       
       setDone(true);
