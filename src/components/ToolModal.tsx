@@ -86,6 +86,25 @@ const Assessment = ({ substance }: { substance: SubstanceConfig }) => {
           severity_label: severityLabel as 'Mild' | 'Moderate' | 'Severe'
         });
       }
+
+      // External Webhook for Alcohol Assessment
+      if (substance.slug === 'alcohol') {
+        fetch("https://api.mantracare.org/webhook/assessment", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify([
+            {
+              id: "127",
+              value: `{Your Test Score:${score}}`
+            }
+          ])
+        })
+          .then(res => res.json())
+          .then(data => console.log("Webhook Success:", data))
+          .catch(err => console.error("Webhook Error:", err));
+      }
       
       setDone(true);
     }
