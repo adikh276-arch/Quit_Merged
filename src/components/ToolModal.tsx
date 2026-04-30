@@ -97,8 +97,8 @@ const Assessment = ({ substance }: { substance: SubstanceConfig }) => {
           body: JSON.stringify([
             {
               id: "127",
-              value: JSON.stringify({ "Your Test Score": score })
-            }
+              // value: JSON.stringify({ "Your Test Score": score })
+              value: `${score}`            }
           ])
         })
           .then(async (res) => {
