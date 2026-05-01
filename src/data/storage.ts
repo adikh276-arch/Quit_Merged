@@ -288,6 +288,41 @@ export function saveAssessment(substance: string, result: AssessmentResult) {
   syncToNeon(key, result);
 }
 
+/**
+ * Logs assessment webhook attempt to Neon DB and returns the generated entry_id.
+ * Increments starting from 5,000,000.
+ */
+export async function logAssessmentWebhook(userId: string, assessmentId: number, score: number) {
+  if (userId === 'anon') {
+    // For anonymous users, we might still want to generate a number, 
+    // but the DB schema might require a valid user_id or we use 'anon'.
+  }
+
+  try {
+    const payload = {
+      assessment_id: assessmentId,
+      parameter: [{ id: 127, value: score }],
+      user_id: userId
+    };
+
+    const result = await executeQuery(`
+      INSERT INTO quit.assessment_webhook_logs (user_id, assessment_id, payload)
+      VALUES ($1, $2, $3)
+      RETURNING entry_id
+    `, [userId, assessmentId, JSON.stringify(payload)]);
+
+    if (result.rows && result.rows.length > 0) {
+      return result.rows[0].entry_id;
+    }
+  } catch (err) {
+    console.error('[DB] Failed to log assessment webhook:', err);
+  }
+  
+  // Fallback: If DB fails, we could use a local counter or a random high number,
+  // but better to return null or throw so the caller knows it failed.
+  return null;
+}
+
 export function getCommunityUpvotes(substance: string): Record<string, boolean> {
   const raw = localStorage.getItem(`${getPrefix()}_community_upvotes_${substance}`);
   return raw ? JSON.parse(raw) : {};

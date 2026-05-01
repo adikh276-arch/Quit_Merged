@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { X, ChevronRight, ArrowUp, Lock, Check, Play, Pause, Trophy, Sparkles, Heart, BookmarkCheck, Bookmark, Target, Zap, ClipboardList } from 'lucide-react';
 import { DynamicIcon } from './DynamicIcon';
 import { SubstanceConfig } from '@/data/types';
-import { getAssessment, saveAssessment, toggleCommunityUpvote, getCommunityUpvotes, addUserPost, getUserPosts } from '@/data/storage';
+import { getAssessment, saveAssessment, toggleCommunityUpvote, getCommunityUpvotes, addUserPost, getUserPosts, logAssessmentWebhook } from '@/data/storage';
 import { useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import { analytics } from '@/lib/analytics';
@@ -66,7 +66,7 @@ const Assessment = ({ substance }: { substance: SubstanceConfig }) => {
   const [done, setDone] = useState(false);
   const prev = getAssessment(substance.slug);
 
-  const confirmAnswer = () => {
+  const confirmAnswer = async () => {
     if (selected === null) return;
     const newAnswers = [...answers, selected];
     setAnswers(newAnswers);
@@ -76,11 +76,13 @@ const Assessment = ({ substance }: { substance: SubstanceConfig }) => {
       const score = newAnswers.reduce((a, b) => a + b, 0);
       saveAssessment(substance.slug, { score, date: new Date().toISOString(), answers: newAnswers });
       
+      const userId = getUserId();
+
       // Track completion
       const severityLabel = score <= 1 ? null : score <= 3 ? 'Mild' : score <= 5 ? 'Moderate' : 'Severe';
       if (severityLabel) {
         analytics.trackAssessmentCompleted(substance.slug, {
-          user_id: getUserId(),
+          user_id: userId,
           score,
           max_score: 11,
           severity_label: severityLabel as 'Mild' | 'Moderate' | 'Severe'
@@ -89,32 +91,52 @@ const Assessment = ({ substance }: { substance: SubstanceConfig }) => {
 
       // External Webhook for Alcohol Assessment
       if (substance.slug === 'alcohol') {
-        fetch("https://api.mantracare.org/webhook/assessment", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json"
-          },
-          body: JSON.stringify([
-            {
-              id: "127",
-              // value: JSON.stringify({ "Your Test Score": score })
-              value: `${score}`            }
-          ])
-        })
-          .then(async (res) => {
-            const text = await res.text();
-            if (!res.ok) {
-              console.error("Webhook Server Error:", res.status, text);
-              return;
-            }
-            try {
-              const data = JSON.parse(text);
-              console.log("Webhook Success:", data);
-            } catch (e) {
-              console.log("Webhook Success (Non-JSON):", text);
-            }
-          })
-          .catch(err => console.error("Webhook Network Error:", err));
+        try {
+          // 1. Log to DB and get incremented entry_id (starting from 5M)
+          const assessmentId = 139;
+          const entryId = await logAssessmentWebhook(userId, assessmentId, score);
+
+          if (entryId) {
+            // 2. Hit the external webhook with the required format
+            const payload = {
+              assessment_id: assessmentId,
+              entry_id: entryId,
+              parameter: [
+                {
+                  id: 127,
+                  value: score
+                }
+              ],
+              user_id: userId === 'anon' ? 0 : parseInt(userId) || 0
+            };
+
+            fetch("https://api.mantracare.com/webhook/assessment/v2", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json"
+              },
+              body: JSON.stringify(payload)
+            })
+              .then(async (res) => {
+                const text = await res.text();
+                if (!res.ok) {
+                  console.error("Webhook Server Error:", res.status, text);
+                  return;
+                }
+                try {
+                  const data = JSON.parse(text);
+                  console.log("Webhook Success:", data);
+                } catch (e) {
+                  console.log("Webhook Success (Non-JSON):", text);
+                }
+              })
+              .catch(err => console.error("Webhook Network Error:", err));
+          } else {
+            console.error("Failed to generate entryId for assessment webhook.");
+          }
+        } catch (error) {
+          console.error("Error in alcohol assessment webhook flow:", error);
+        }
       }
       
       setDone(true);
