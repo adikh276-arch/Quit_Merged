@@ -78,7 +78,9 @@ const SubstancePage = () => {
   const executeReset = async () => {
     if (!slug) return;
     await resetOnboarded(slug);
-    window.location.reload();
+    navigate(`/${slug}/onboarding/0`);
+    setOnboarded(false);
+    setShowResetConfirm(false);
   };
 
   // Cloud check: runs once on mount, resolves onboarding state across devices
@@ -107,8 +109,11 @@ const SubstancePage = () => {
         streak_days: s.days,
         recovery_pct: Math.min(100, Math.round((s.days / 90) * 100)),
       });
+    } else if (onboarded === false && slug && !step) {
+      // If we are in onboarding mode but URL doesn't have /onboarding/X, fix it
+      navigate(`/${slug}/onboarding/0`, { replace: true });
     }
-  }, [onboarded, slug]);
+  }, [onboarded, slug, step, navigate]);
 
   if (!substance) {
     navigate('/');
