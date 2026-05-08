@@ -1,4 +1,4 @@
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate, useSearchParams } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ArrowLeft, ClipboardList, Calculator, Dumbbell, BookOpen, TrendingUp, Calendar, Flame, ChevronRight, Zap, Lightbulb, RefreshCw, DollarSign, ShieldCheck, CigaretteOff, Activity } from 'lucide-react';
 import { getSubstance } from '@/data/substances';
@@ -45,9 +45,33 @@ const SubstancePage = () => {
   const { slug } = useParams<{ slug: string }>();
   const { t } = useTranslation();
   const navigate = useNavigate();
+  const [searchParams, setSearchParams] = useSearchParams();
   const substance = getSubstance(slug || '');
-  const [activeTracker, setActiveTracker] = useState<string | null>(null);
-  const [activeTool, setActiveTool] = useState<string | null>(null);
+  
+  const activeTracker = searchParams.get('tracker');
+  const activeTool = searchParams.get('tool');
+  const onboardingStep = searchParams.get('step');
+
+  const setActiveTracker = (id: string | null) => {
+    const newParams = new URLSearchParams(searchParams);
+    if (id) newParams.set('tracker', id);
+    else newParams.delete('tracker');
+    setSearchParams(newParams);
+  };
+
+  const setActiveTool = (id: string | null) => {
+    const newParams = new URLSearchParams(searchParams);
+    if (id) {
+      newParams.set('tool', id);
+    } else {
+      newParams.delete('tool');
+      newParams.delete('activity');
+      newParams.delete('article');
+      newParams.delete('substep');
+    }
+    setSearchParams(newParams);
+  };
+
   const [showResetConfirm, setShowResetConfirm] = useState(false);
   const [lastUpdate, setLastUpdate] = useState(Date.now());
   // Start as null = loading. True/false = resolved
@@ -115,8 +139,17 @@ const SubstancePage = () => {
     return (
       <SubstanceOnboarding
         substance={substance}
+        initialStep={onboardingStep ? parseInt(onboardingStep) : 0}
+        onStepChange={(step) => {
+          const newParams = new URLSearchParams(searchParams);
+          newParams.set('step', step.toString());
+          setSearchParams(newParams);
+        }}
         onComplete={async (motivation?: string, triggers?: string[]) => {
           await saveOnboarded(slug!, { motivation, triggers });
+          const newParams = new URLSearchParams(searchParams);
+          newParams.delete('step');
+          setSearchParams(newParams);
           setOnboarded(true);
         }}
       />

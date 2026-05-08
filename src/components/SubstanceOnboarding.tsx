@@ -33,16 +33,30 @@ const motivations = ['Better health', 'Family & relationships', 'Financial freed
 
 interface Props {
   substance: SubstanceConfig;
+  initialStep?: number;
+  onStepChange?: (step: number) => void;
   onComplete: (motivation?: string, triggers?: string[]) => void;
 }
 
-const SubstanceOnboarding = ({ substance, onComplete }: Props) => {
+const SubstanceOnboarding = ({ substance, initialStep = 0, onStepChange, onComplete }: Props) => {
   const { t } = useTranslation();
-  const [step, setStep] = useState(0);
+  const [step, setStep] = useState(initialStep);
   const [quitOption, setQuitOption] = useState<string | null>(null);
   const [customDate, setCustomDate] = useState('');
   const [motivation, setMotivation] = useState<string | null>(null);
   const [triggers, setTriggers] = useState<string[]>([]);
+
+  // Sync step with prop
+  useEffect(() => {
+    if (initialStep !== step) {
+      setStep(initialStep);
+    }
+  }, [initialStep]);
+
+  const handleStepChange = (newStep: number) => {
+    setStep(newStep);
+    onStepChange?.(newStep);
+  };
 
   // Track onboarding started
   useEffect(() => {
@@ -232,7 +246,7 @@ const SubstanceOnboarding = ({ substance, onComplete }: Props) => {
           <button
             onClick={() => {
               if (step > 0) {
-                setStep(s => s - 1);
+                handleStepChange(step - 1);
               } else {
                 if (window.parent !== window) {
                   window.parent.postMessage({ action: 'exit' }, 'https://web.mantracare.com');
@@ -246,7 +260,7 @@ const SubstanceOnboarding = ({ substance, onComplete }: Props) => {
             <ArrowLeft className="h-4 w-4" /> {t('quit.app.back')}
           </button>
           <button
-            onClick={() => step < 2 ? setStep(s => s + 1) : handleComplete()}
+            onClick={() => step < 2 ? handleStepChange(step + 1) : handleComplete()}
             disabled={!canNext()}
             className={`flex-1 flex items-center justify-center gap-2 rounded-2xl py-3.5 text-sm font-bold text-white transition-all shadow-lg ${
               canNext()

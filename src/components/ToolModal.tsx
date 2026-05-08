@@ -14,6 +14,8 @@ const sparkColors: Record<string, string> = {
   stimulants: '#eab308', benzodiazepines: '#3b82f6', kratom: '#14b8a6', mdma: '#ec4899',
 };
 
+import { useSearchParams } from 'react-router-dom';
+
 interface Props {
   toolId: string;
   substance: SubstanceConfig;
@@ -21,6 +23,36 @@ interface Props {
 }
 
 const ToolModal = ({ toolId, substance, onClose }: Props) => {
+  const [searchParams, setSearchParams] = useSearchParams();
+  const activeActivity = searchParams.get('activity');
+  const activeArticle = searchParams.get('article');
+
+  const activeSubstep = searchParams.get('substep');
+
+  const setActiveActivity = (id: string | null) => {
+    const newParams = new URLSearchParams(searchParams);
+    if (id) newParams.set('activity', id);
+    else {
+      newParams.delete('activity');
+      newParams.delete('substep');
+    }
+    setSearchParams(newParams);
+  };
+
+  const setActiveSubstep = (step: string | null) => {
+    const newParams = new URLSearchParams(searchParams);
+    if (step) newParams.set('substep', step);
+    else newParams.delete('substep');
+    setSearchParams(newParams);
+  };
+
+  const setActiveArticle = (id: string | null) => {
+    const newParams = new URLSearchParams(searchParams);
+    if (id) newParams.set('article', id);
+    else newParams.delete('article');
+    setSearchParams(newParams);
+  };
+
   return (
     <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="fixed inset-0 z-50 bg-background overflow-y-auto">
       <div className="mx-auto max-w-2xl px-4 pb-8">
@@ -29,8 +61,8 @@ const ToolModal = ({ toolId, substance, onClose }: Props) => {
         </div>
         {toolId === 'assessment' && <Assessment substance={substance} />}
         {toolId === 'calculator' && <CalculatorView substance={substance} />}
-        {toolId === 'activities' && <ActivitiesView substance={substance} />}
-        {toolId === 'learn' && <LearnView substance={substance} />}
+        {toolId === 'activities' && <ActivitiesView substance={substance} active={activeActivity} setActive={setActiveActivity} substep={activeSubstep} setSubstep={setActiveSubstep} />}
+        {toolId === 'learn' && <LearnView substance={substance} active={activeArticle} setActive={setActiveArticle} />}
         {toolId === 'community' && <CommunityView substance={substance} />}
         {toolId === 'achievements' && <AchievementsView substance={substance} />}
       </div>
@@ -293,60 +325,45 @@ const CalculatorView = ({ substance }: { substance: SubstanceConfig }) => {
   );
 };
 
-// ===== ACTIVITIES =====
-const ActivitiesView = ({ substance }: { substance: SubstanceConfig }) => {
-  const { t } = useTranslation();
-  const [active, setActive] = useState<string | null>(null);
-  const activeActivity = substance.activities.find(a => a.id === active);
 
-  if (activeActivity) {
-    return <ActivityRunner activity={activeActivity} substance={substance} onBack={() => setActive(null)} />;
-  }
-
-  return (
-    <div>
-      <h2 className="mb-4 font-display text-xl text-foreground">{t('quit.app.activities_title')}</h2>
-      <div className="space-y-3">
-        {substance.activities.map(act => (
-          <button key={act.id} onClick={() => setActive(act.id)} className="flex w-full items-center justify-between rounded-xl border border-border bg-card p-4 text-left hover:shadow-md transition-shadow">
-            <div>
-              <p className="text-sm font-semibold text-foreground">{t(`quit.substances.${substance.slug}.activities.${act.id}.name`)}</p>
-              <p className="text-xs text-muted-foreground">{act.duration} · {act.type}</p>
-            </div>
-            <ChevronRight className="h-4 w-4 text-muted-foreground" />
-          </button>
-        ))}
-      </div>
-    </div>
-  );
-};
-
-const ActivityRunner = ({ activity, substance, onBack }: { activity: any; substance: SubstanceConfig; onBack: () => void }) => {
+const ActivityRunner = ({ activity, substance, onBack, substep, setSubstep }: { activity: any; substance: SubstanceConfig; onBack: () => void; substep: string | null; setSubstep: (s: string | null) => void }) => {
   const { t } = useTranslation();
   const [checkedItems, setCheckedItems] = useState<Set<number>>(new Set());
   const [seconds, setSeconds] = useState(0);
   const [running, setRunning] = useState(false);
   const intervalRef = useRef<NodeJS.Timeout | null>(null);
+
+  // Parse initial index from substep
+  const initialIndex = substep ? parseInt(substep) : 0;
+
   // Quiz state
-  const [quizIndex, setQuizIndex] = useState(0);
+  const [quizIndex, setQuizIndex] = useState(initialIndex);
   const [quizAnswers, setQuizAnswers] = useState<(number | null)[]>([]);
   const [quizRevealed, setQuizRevealed] = useState(false);
   // Visualization state
-  const [vizIndex, setVizIndex] = useState(0);
+  const [vizIndex, setVizIndex] = useState(initialIndex);
   // Tap game state
   const [taps, setTaps] = useState(0);
   const [tapDone, setTapDone] = useState(false);
   // Affirmation state
-  const [affIndex, setAffIndex] = useState(0);
+  const [affIndex, setAffIndex] = useState(initialIndex);
   const [affSaved, setAffSaved] = useState<Set<number>>(new Set());
   // Body scan state
-  const [bodyIndex, setBodyIndex] = useState(-1);
+  const [bodyIndex, setBodyIndex] = useState(substep ? parseInt(substep) : -1);
   const [bodyDone, setBodyDone] = useState(false);
   // Sorting state
   const [sortAnswers, setSortAnswers] = useState<Record<number, string>>({});
   const [sortRevealed, setSortRevealed] = useState(false);
   // Journal state
   const [journalValues, setJournalValues] = useState<Record<string, any>>({});
+
+  // Sync internal indices to URL
+  useEffect(() => {
+    if (activity.type === 'quiz') setSubstep(quizIndex.toString());
+    if (activity.type === 'visualization') setSubstep(vizIndex.toString());
+    if (activity.type === 'affirmation') setSubstep(affIndex.toString());
+    if (activity.type === 'body-scan' && bodyIndex !== -1) setSubstep(bodyIndex.toString());
+  }, [quizIndex, vizIndex, affIndex, bodyIndex, activity.type, setSubstep]);
 
   useEffect(() => {
     if (running) {
@@ -749,10 +766,36 @@ const ActivityRunner = ({ activity, substance, onBack }: { activity: any; substa
   );
 };
 
-// ===== LEARN =====
-const LearnView = ({ substance }: { substance: SubstanceConfig }) => {
+// ===== ACTIVITIES =====
+const ActivitiesView = ({ substance, active, setActive, substep, setSubstep }: { substance: SubstanceConfig, active: string | null, setActive: (id: string | null) => void, substep: string | null, setSubstep: (s: string | null) => void }) => {
   const { t } = useTranslation();
-  const [active, setActive] = useState<string | null>(null);
+  const activeActivity = substance.activities.find(a => a.id === active);
+
+  if (activeActivity) {
+    return <ActivityRunner activity={activeActivity} substance={substance} onBack={() => setActive(null)} substep={substep} setSubstep={setSubstep} />;
+  }
+
+  return (
+    <div>
+      <h2 className="mb-4 font-display text-xl text-foreground">{t('quit.app.activities_title')}</h2>
+      <div className="space-y-3">
+        {substance.activities.map(act => (
+          <button key={act.id} onClick={() => setActive(act.id)} className="flex w-full items-center justify-between rounded-xl border border-border bg-card p-4 text-left hover:shadow-md transition-shadow">
+            <div>
+              <p className="text-sm font-semibold text-foreground">{t(`quit.substances.${substance.slug}.activities.${act.id}.name`)}</p>
+              <p className="text-xs text-muted-foreground">{act.duration} · {act.type}</p>
+            </div>
+            <ChevronRight className="h-4 w-4 text-muted-foreground" />
+          </button>
+        ))}
+      </div>
+    </div>
+  );
+};
+
+// ===== LEARN =====
+const LearnView = ({ substance, active, setActive }: { substance: SubstanceConfig, active: string | null, setActive: (id: string | null) => void }) => {
+  const { t } = useTranslation();
   const article = substance.articles.find(a => a.id === active);
 
   if (article) {
