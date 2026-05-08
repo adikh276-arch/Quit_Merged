@@ -27,11 +27,16 @@ const App = () => {
           <BrowserRouter basename="/quit">
             <AuthGuard>
 
-              <Routes>
-                <Route path="/" element={<Index />} />
-                <Route path="/:slug" element={<SubstancePage />} />
-                <Route path="*" element={<NotFound />} />
-              </Routes>
+                <Routes>
+                  <Route path="/" element={<Index />} />
+                  <Route path="/:slug" element={<SubstancePage />} />
+                  <Route path="/:slug/tracker/:trackerId" element={<SubstancePage />} />
+                  <Route path="/:slug/tool/:toolId" element={<SubstancePage />} />
+                  <Route path="/:slug/tool/:toolId/:contentId" element={<SubstancePage />} />
+                  <Route path="/:slug/tool/:toolId/:contentId/:substep" element={<SubstancePage />} />
+                  <Route path="/:slug/onboarding/:step" element={<SubstancePage />} />
+                  <Route path="*" element={<NotFound />} />
+                </Routes>
             </AuthGuard>
           </BrowserRouter>
         </div>

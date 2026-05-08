@@ -42,34 +42,23 @@ const sparkColors: Record<string, string> = {
 };
 
 const SubstancePage = () => {
-  const { slug } = useParams<{ slug: string }>();
+  const { slug, trackerId, toolId, contentId, substep, step } = useParams<any>();
   const { t } = useTranslation();
   const navigate = useNavigate();
-  const [searchParams, setSearchParams] = useSearchParams();
   const substance = getSubstance(slug || '');
   
-  const activeTracker = searchParams.get('tracker');
-  const activeTool = searchParams.get('tool');
-  const onboardingStep = searchParams.get('step');
+  const activeTracker = trackerId;
+  const activeTool = toolId;
+  const onboardingStep = step;
 
   const setActiveTracker = (id: string | null) => {
-    const newParams = new URLSearchParams(searchParams);
-    if (id) newParams.set('tracker', id);
-    else newParams.delete('tracker');
-    setSearchParams(newParams);
+    if (id) navigate(`/${slug}/tracker/${id}`);
+    else navigate(`/${slug}`);
   };
 
   const setActiveTool = (id: string | null) => {
-    const newParams = new URLSearchParams(searchParams);
-    if (id) {
-      newParams.set('tool', id);
-    } else {
-      newParams.delete('tool');
-      newParams.delete('activity');
-      newParams.delete('article');
-      newParams.delete('substep');
-    }
-    setSearchParams(newParams);
+    if (id) navigate(`/${slug}/tool/${id}`);
+    else navigate(`/${slug}`);
   };
 
   const [showResetConfirm, setShowResetConfirm] = useState(false);
@@ -141,15 +130,11 @@ const SubstancePage = () => {
         substance={substance}
         initialStep={onboardingStep ? parseInt(onboardingStep) : 0}
         onStepChange={(step) => {
-          const newParams = new URLSearchParams(searchParams);
-          newParams.set('step', step.toString());
-          setSearchParams(newParams);
+          navigate(`/${slug}/onboarding/${step}`, { replace: true });
         }}
         onComplete={async (motivation?: string, triggers?: string[]) => {
           await saveOnboarded(slug!, { motivation, triggers });
-          const newParams = new URLSearchParams(searchParams);
-          newParams.delete('step');
-          setSearchParams(newParams);
+          navigate(`/${slug}`);
           setOnboarded(true);
         }}
       />

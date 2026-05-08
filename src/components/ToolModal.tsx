@@ -14,7 +14,7 @@ const sparkColors: Record<string, string> = {
   stimulants: '#eab308', benzodiazepines: '#3b82f6', kratom: '#14b8a6', mdma: '#ec4899',
 };
 
-import { useSearchParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 
 interface Props {
   toolId: string;
@@ -23,34 +23,26 @@ interface Props {
 }
 
 const ToolModal = ({ toolId, substance, onClose }: Props) => {
-  const [searchParams, setSearchParams] = useSearchParams();
-  const activeActivity = searchParams.get('activity');
-  const activeArticle = searchParams.get('article');
+  const { slug, contentId, substep } = useParams<any>();
+  const navigate = useNavigate();
 
-  const activeSubstep = searchParams.get('substep');
+  const activeActivity = toolId === 'activities' ? contentId : null;
+  const activeArticle = toolId === 'learn' ? contentId : null;
+  const activeSubstep = substep;
 
   const setActiveActivity = (id: string | null) => {
-    const newParams = new URLSearchParams(searchParams);
-    if (id) newParams.set('activity', id);
-    else {
-      newParams.delete('activity');
-      newParams.delete('substep');
-    }
-    setSearchParams(newParams);
+    if (id) navigate(`/${slug}/tool/activities/${id}`);
+    else navigate(`/${slug}/tool/activities`);
   };
 
   const setActiveSubstep = (step: string | null) => {
-    const newParams = new URLSearchParams(searchParams);
-    if (step) newParams.set('substep', step);
-    else newParams.delete('substep');
-    setSearchParams(newParams);
+    if (step) navigate(`/${slug}/tool/${toolId}/${contentId}/${step}`, { replace: true });
+    else navigate(`/${slug}/tool/${toolId}/${contentId}`, { replace: true });
   };
 
   const setActiveArticle = (id: string | null) => {
-    const newParams = new URLSearchParams(searchParams);
-    if (id) newParams.set('article', id);
-    else newParams.delete('article');
-    setSearchParams(newParams);
+    if (id) navigate(`/${slug}/tool/learn/${id}`);
+    else navigate(`/${slug}/tool/learn`);
   };
 
   return (
