@@ -100,6 +100,16 @@ const SubstancePage = () => {
     resolveCloudData();
   }, [slug]);
 
+  // Force reset if visiting an onboarding path directly
+  useEffect(() => {
+    if (slug && step !== undefined && onboarded === true) {
+      console.log(`[SubstancePage] Onboarding path detected for ${slug}, forcing reset.`);
+      resetOnboarded(slug).then(() => {
+        setOnboarded(false);
+      });
+    }
+  }, [slug, step, onboarded]);
+
   // Track page view when fully loaded
   useEffect(() => {
     if (onboarded && slug) {
