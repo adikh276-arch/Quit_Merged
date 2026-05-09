@@ -96,6 +96,20 @@ const Landing = () => {
     <div className="min-h-screen bg-gradient-to-b from-background via-background to-muted/40">
       <div className="mx-auto max-w-2xl px-5 pb-16 pt-10">
 
+        {/* Back button */}
+        <button 
+          onClick={() => {
+            if (window.parent !== window) {
+              window.parent.postMessage({ action: 'exit' }, 'https://web.mantracare.com');
+            } else {
+              window.location.href = 'https://web.mantracare.com';
+            }
+          }} 
+          className="flex items-center gap-1.5 py-5 text-sm text-muted-foreground hover:text-foreground transition-colors font-medium"
+        >
+          <ArrowLeft className="h-4 w-4" /> {t('quit.app.back')}
+        </button>
+
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: -18 }}
