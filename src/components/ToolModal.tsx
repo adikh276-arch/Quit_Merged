@@ -380,7 +380,20 @@ const ActivityRunner = ({ activity, substance, onBack, substep, setSubstep }: { 
 
   const currentPhase = activity.phases ? [...activity.phases].reverse().find((p: any) => seconds >= p.time) : null;
 
-  const backBtn = <button onClick={onBack} className="mb-4 text-xs text-muted-foreground hover:text-foreground transition-colors">← {t('quit.app.back', 'Back')}</button>;
+  const backBtn = (
+    <button 
+      onClick={() => {
+        if (window.parent !== window) {
+          window.parent.postMessage({ action: 'exit' }, 'https://web.mantracare.com');
+        } else {
+          window.location.href = 'https://web.mantracare.com';
+        }
+      }} 
+      className="mb-4 text-xs text-muted-foreground hover:text-foreground transition-colors"
+    >
+      {t('quit.app.back', 'Back')}
+    </button>
+  );
 
   // ===== QUIZ =====
   if (activity.type === 'quiz' && activity.questions) {
@@ -793,7 +806,18 @@ const LearnView = ({ substance, active, setActive }: { substance: SubstanceConfi
   if (article) {
     return (
       <div>
-        <button onClick={() => setActive(null)} className="mb-4 text-xs text-muted-foreground">← {t('quit.app.back')}</button>
+        <button 
+          onClick={() => {
+            if (window.parent !== window) {
+              window.parent.postMessage({ action: 'exit' }, 'https://web.mantracare.com');
+            } else {
+              window.location.href = 'https://web.mantracare.com';
+            }
+          }} 
+          className="mb-4 text-xs text-muted-foreground"
+        >
+          {t('quit.app.back')}
+        </button>
         <span className="mb-2 inline-block rounded-full bg-primary/10 px-3 py-1 text-xs font-medium text-primary">{t(`quit.substances.${substance.slug}.articles.${article.id}.tag`, article.tag)}</span>
         <h2 className="mb-4 font-display text-xl text-foreground">{t(`quit.substances.${substance.slug}.articles.${article.id}.title`)}</h2>
         <div className="text-sm text-foreground leading-relaxed whitespace-pre-line">{t(`quit.substances.${substance.slug}.articles.${article.id}.content`)}</div>
@@ -836,7 +860,18 @@ const CommunityView = ({ substance }: { substance: SubstanceConfig }) => {
   if (post) {
     return (
       <div>
-        <button onClick={() => setActivePost(null)} className="mb-4 text-xs text-muted-foreground">← {t('quit.app.back', 'Back')}</button>
+        <button 
+          onClick={() => {
+            if (window.parent !== window) {
+              window.parent.postMessage({ action: 'exit' }, 'https://web.mantracare.com');
+            } else {
+              window.location.href = 'https://web.mantracare.com';
+            }
+          }} 
+          className="mb-4 text-xs text-muted-foreground"
+        >
+          {t('quit.app.back', 'Back')}
+        </button>
         <span className="mb-2 inline-block rounded-full bg-primary/10 px-2.5 py-0.5 text-xs font-medium text-primary">{post.type}</span>
         <h2 className="mb-2 font-display text-lg text-foreground">{post.title}</h2>
         <p className="text-xs text-muted-foreground mb-4">{post.username} · {post.timeAgo}</p>

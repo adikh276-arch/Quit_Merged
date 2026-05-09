@@ -2,7 +2,7 @@ import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { substances } from '@/data/substances';
 import { getStreak, syncGlobalDataFromCloud } from '@/data/storage';
-import { Shield, Sparkles, Flame, TrendingUp, ChevronRight } from 'lucide-react';
+import { Shield, Sparkles, Flame, TrendingUp, ChevronRight, ArrowLeft } from 'lucide-react';
 import SubstanceIcon from '@/components/SubstanceIcon';
 import { useTranslation } from 'react-i18next';
 import { useEffect, useState } from 'react';
