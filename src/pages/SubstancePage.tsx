@@ -52,13 +52,13 @@ const SubstancePage = () => {
   const onboardingStep = step;
 
   const setActiveTracker = (id: string | null) => {
-    if (id) navigate(`/${slug}/tracker/${id}`);
-    else navigate(`/${slug}`);
+    if (id) navigate(`/${slug}/tracker/${id}`, { replace: true });
+    else navigate(`/${slug}`, { replace: true });
   };
 
   const setActiveTool = (id: string | null) => {
-    if (id) navigate(`/${slug}/tool/${id}`);
-    else navigate(`/${slug}`);
+    if (id) navigate(`/${slug}/tool/${id}`, { replace: true });
+    else navigate(`/${slug}`, { replace: true });
   };
 
   const [showResetConfirm, setShowResetConfirm] = useState(false);
@@ -78,7 +78,7 @@ const SubstancePage = () => {
   const executeReset = async () => {
     if (!slug) return;
     await resetOnboarded(slug);
-    navigate(`/${slug}/onboarding/0`);
+    navigate(`/${slug}/onboarding/0`, { replace: true });
     setOnboarded(false);
     setShowResetConfirm(false);
   };
@@ -149,7 +149,7 @@ const SubstancePage = () => {
         }}
         onComplete={async (motivation?: string, triggers?: string[]) => {
           await saveOnboarded(slug!, { motivation, triggers });
-          navigate(`/${slug}`);
+          navigate(`/${slug}`, { replace: true });
           setOnboarded(true);
         }}
       />

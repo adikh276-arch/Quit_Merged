@@ -31,8 +31,8 @@ const ToolModal = ({ toolId, substance, onClose }: Props) => {
   const activeSubstep = substep;
 
   const setActiveActivity = (id: string | null) => {
-    if (id) navigate(`/${slug}/tool/activities/${id}`);
-    else navigate(`/${slug}/tool/activities`);
+    if (id) navigate(`/${slug}/tool/activities/${id}`, { replace: true });
+    else navigate(`/${slug}/tool/activities`, { replace: true });
   };
 
   const setActiveSubstep = (step: string | null) => {
@@ -41,8 +41,8 @@ const ToolModal = ({ toolId, substance, onClose }: Props) => {
   };
 
   const setActiveArticle = (id: string | null) => {
-    if (id) navigate(`/${slug}/tool/learn/${id}`);
-    else navigate(`/${slug}/tool/learn`);
+    if (id) navigate(`/${slug}/tool/learn/${id}`, { replace: true });
+    else navigate(`/${slug}/tool/learn`, { replace: true });
   };
 
   return (
