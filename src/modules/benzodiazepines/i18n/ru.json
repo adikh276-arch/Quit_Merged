@@ -129,7 +129,7 @@
   "quit.substances.benzodiazepines.trackers.taper.fields.asPerscribed.options.1": "Нет",
   "quit.substances.benzodiazepines.trackers.taper.fields.doseTaken.label": "Принятая доза (мг)",
   "quit.substances.benzodiazepines.trackers.taper.fields.notes.label": "Примечания",
-  "quit.substances.benzodiazepines.trackers.taper.fields.takenToday.label": "Did you take your dose today?",
+  "quit.substances.benzodiazepines.trackers.taper.fields.takenToday.label": "Ты принял свою дозу сегодня?",
   "quit.substances.benzodiazepines.trackers.taper.fields.takenToday.options.0": "Да",
   "quit.substances.benzodiazepines.trackers.taper.fields.takenToday.options.1": "Нет",
   "quit.substances.benzodiazepines.trackers.taper.insight": "Прекрасно отслеживаю заданный график.",

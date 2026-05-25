@@ -112,7 +112,7 @@
   "quit.substances.alcohol.calculator.title": "หน่วยและผลกระทบด้านสุขภาพ",
   "quit.substances.alcohol.descriptor": "เบียร์ ไวน์ และสุรา",
   "quit.substances.alcohol.name": "แอลกอฮอล์",
-  "quit.substances.alcohol.trackers.consumption.fields.drankToday.label": "Did you drink today?",
+  "quit.substances.alcohol.trackers.consumption.fields.drankToday.label": "วันนี้คุณดื่มหรือเปล่า?",
   "quit.substances.alcohol.trackers.consumption.fields.drankToday.options.0": "ใช่",
   "quit.substances.alcohol.trackers.consumption.fields.drankToday.options.1": "ไม่",
   "quit.substances.alcohol.trackers.consumption.fields.drinkType.label": "เบียร์",

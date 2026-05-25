@@ -112,7 +112,7 @@
   "quit.substances.alcohol.calculator.title": "단위 및 건강 영향",
   "quit.substances.alcohol.descriptor": "맥주, 와인 및 주류",
   "quit.substances.alcohol.name": "맥주, 와인 및 주류",
-  "quit.substances.alcohol.trackers.consumption.fields.drankToday.label": "Did you drink today?",
+  "quit.substances.alcohol.trackers.consumption.fields.drankToday.label": "오늘 술 마셨어요?",
   "quit.substances.alcohol.trackers.consumption.fields.drankToday.options.0": "네",
   "quit.substances.alcohol.trackers.consumption.fields.drankToday.options.1": "아니요",
   "quit.substances.alcohol.trackers.consumption.fields.drinkType.label": "음료 종류",

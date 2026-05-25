@@ -112,7 +112,7 @@
   "quit.substances.alcohol.calculator.title": "Eenheden en gezondheidsimpact",
   "quit.substances.alcohol.descriptor": "Bier, wijn en sterke drank",
   "quit.substances.alcohol.name": "Argument",
-  "quit.substances.alcohol.trackers.consumption.fields.drankToday.label": "Did you drink today?",
+  "quit.substances.alcohol.trackers.consumption.fields.drankToday.label": "Heb je vandaag gedronken?",
   "quit.substances.alcohol.trackers.consumption.fields.drankToday.options.0": "Ja",
   "quit.substances.alcohol.trackers.consumption.fields.drankToday.options.1": "Nee",
   "quit.substances.alcohol.trackers.consumption.fields.drinkType.label": "Soort drank",

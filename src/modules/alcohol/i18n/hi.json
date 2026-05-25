@@ -112,7 +112,7 @@
   "quit.substances.alcohol.calculator.title": "इकाइयाँ एवं स्वास्थ्य प्रभाव",
   "quit.substances.alcohol.descriptor": "बियर, वाइन और स्पिरिट",
   "quit.substances.alcohol.name": "शराब",
-  "quit.substances.alcohol.trackers.consumption.fields.drankToday.label": "Did you drink today?",
+  "quit.substances.alcohol.trackers.consumption.fields.drankToday.label": "क्या तुमने आज शराब पी?",
   "quit.substances.alcohol.trackers.consumption.fields.drankToday.options.0": "हाँ",
   "quit.substances.alcohol.trackers.consumption.fields.drankToday.options.1": "नहीं",
   "quit.substances.alcohol.trackers.consumption.fields.drinkType.label": "पेय प्रकार",

@@ -129,7 +129,7 @@
   "quit.substances.benzodiazepines.trackers.taper.fields.asPerscribed.options.1": "لا",
   "quit.substances.benzodiazepines.trackers.taper.fields.doseTaken.label": "الجرعة المتخذة (ملغ)",
   "quit.substances.benzodiazepines.trackers.taper.fields.notes.label": "ملحوظات",
-  "quit.substances.benzodiazepines.trackers.taper.fields.takenToday.label": "Did you take your dose today?",
+  "quit.substances.benzodiazepines.trackers.taper.fields.takenToday.label": "هل تناولت جرعتك اليوم؟",
   "quit.substances.benzodiazepines.trackers.taper.fields.takenToday.options.0": "نعم",
   "quit.substances.benzodiazepines.trackers.taper.fields.takenToday.options.1": "لا",
   "quit.substances.benzodiazepines.trackers.taper.insight": "تتبع الجدول الزمني المحدد بشكل مثالي.",

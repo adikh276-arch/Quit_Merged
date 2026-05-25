@@ -112,7 +112,7 @@
   "quit.substances.alcohol.calculator.title": "Jednostki i wpływ na zdrowie",
   "quit.substances.alcohol.descriptor": "Dziennik zużycia",
   "quit.substances.alcohol.name": "Piwo, wino i alkohole wysokoprocentowe",
-  "quit.substances.alcohol.trackers.consumption.fields.drankToday.label": "Did you drink today?",
+  "quit.substances.alcohol.trackers.consumption.fields.drankToday.label": "Piłaś dzisiaj?",
   "quit.substances.alcohol.trackers.consumption.fields.drankToday.options.0": "Tak",
   "quit.substances.alcohol.trackers.consumption.fields.drankToday.options.1": "Nie",
   "quit.substances.alcohol.trackers.consumption.fields.drinkType.label": "Piwo",

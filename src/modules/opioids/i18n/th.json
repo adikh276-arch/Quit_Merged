@@ -106,7 +106,7 @@
   "quit.substances.opioids.trackers.craving-pain.fields.coping.options.4": "สิ่งที่ทำให้ไขว้เขว",
   "quit.substances.opioids.trackers.craving-pain.fields.cravingIntensity.label": "ความรุนแรงของความอยาก",
   "quit.substances.opioids.trackers.craving-pain.fields.emotionalPain.label": "ความเจ็บปวดทางอารมณ์",
-  "quit.substances.opioids.trackers.craving-pain.fields.hadCraving.label": "Did you have cravings today?",
+  "quit.substances.opioids.trackers.craving-pain.fields.hadCraving.label": "วันนี้คุณมีความอยากหรือไม่?",
   "quit.substances.opioids.trackers.craving-pain.fields.hadCraving.options.0": "ใช่",
   "quit.substances.opioids.trackers.craving-pain.fields.hadCraving.options.1": "ไม่",
   "quit.substances.opioids.trackers.craving-pain.fields.notes.label": "หมายเหตุ",

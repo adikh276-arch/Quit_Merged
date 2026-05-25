@@ -112,7 +112,7 @@
   "quit.substances.alcohol.calculator.title": "单位和健康影响",
   "quit.substances.alcohol.descriptor": "啤酒、葡萄酒和烈酒",
   "quit.substances.alcohol.name": "酒精",
-  "quit.substances.alcohol.trackers.consumption.fields.drankToday.label": "Did you drink today?",
+  "quit.substances.alcohol.trackers.consumption.fields.drankToday.label": "你今天喝酒了吗？",
   "quit.substances.alcohol.trackers.consumption.fields.drankToday.options.0": "是",
   "quit.substances.alcohol.trackers.consumption.fields.drankToday.options.1": "否",
   "quit.substances.alcohol.trackers.consumption.fields.drinkType.label": "饮料类型",

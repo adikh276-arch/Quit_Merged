@@ -129,7 +129,7 @@
   "quit.substances.benzodiazepines.trackers.taper.fields.asPerscribed.options.1": "HAYIR",
   "quit.substances.benzodiazepines.trackers.taper.fields.doseTaken.label": "Alınan doz (mg)",
   "quit.substances.benzodiazepines.trackers.taper.fields.notes.label": "Notlar",
-  "quit.substances.benzodiazepines.trackers.taper.fields.takenToday.label": "Did you take your dose today?",
+  "quit.substances.benzodiazepines.trackers.taper.fields.takenToday.label": "Bugün dozunu aldın mı?",
   "quit.substances.benzodiazepines.trackers.taper.fields.takenToday.options.0": "Evet",
   "quit.substances.benzodiazepines.trackers.taper.fields.takenToday.options.1": "Hayır",
   "quit.substances.benzodiazepines.trackers.taper.insight": "Öngörülen programı mükemmel bir şekilde takip edin.",

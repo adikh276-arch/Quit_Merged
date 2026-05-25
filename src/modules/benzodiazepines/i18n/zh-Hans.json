@@ -129,7 +129,7 @@
   "quit.substances.benzodiazepines.trackers.taper.fields.asPerscribed.options.1": "不",
   "quit.substances.benzodiazepines.trackers.taper.fields.doseTaken.label": "服用剂量（毫克）",
   "quit.substances.benzodiazepines.trackers.taper.fields.notes.label": "笔记",
-  "quit.substances.benzodiazepines.trackers.taper.fields.takenToday.label": "Did you take your dose today?",
+  "quit.substances.benzodiazepines.trackers.taper.fields.takenToday.label": "你今天服药了吗？",
   "quit.substances.benzodiazepines.trackers.taper.fields.takenToday.options.0": "是",
   "quit.substances.benzodiazepines.trackers.taper.fields.takenToday.options.1": "否",
   "quit.substances.benzodiazepines.trackers.taper.insight": "完美地跟踪规定的时间表。",

@@ -129,7 +129,7 @@
   "quit.substances.benzodiazepines.trackers.taper.fields.asPerscribed.options.1": "아니요",
   "quit.substances.benzodiazepines.trackers.taper.fields.doseTaken.label": "복용 복용량 (mg)",
   "quit.substances.benzodiazepines.trackers.taper.fields.notes.label": "메모",
-  "quit.substances.benzodiazepines.trackers.taper.fields.takenToday.label": "Did you take your dose today?",
+  "quit.substances.benzodiazepines.trackers.taper.fields.takenToday.label": "오늘 약을 복용했나요?",
   "quit.substances.benzodiazepines.trackers.taper.fields.takenToday.options.0": "네",
   "quit.substances.benzodiazepines.trackers.taper.fields.takenToday.options.1": "아니요",
   "quit.substances.benzodiazepines.trackers.taper.insight": "정해진 일정을 완벽하게 추적합니다.",

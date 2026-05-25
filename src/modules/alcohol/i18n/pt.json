@@ -112,7 +112,7 @@
   "quit.substances.alcohol.calculator.title": "Unidades e impacto na saúde",
   "quit.substances.alcohol.descriptor": "Cerveja, vinho e destilados",
   "quit.substances.alcohol.name": "Álcool",
-  "quit.substances.alcohol.trackers.consumption.fields.drankToday.label": "Did you drink today?",
+  "quit.substances.alcohol.trackers.consumption.fields.drankToday.label": "Você bebeu hoje?",
   "quit.substances.alcohol.trackers.consumption.fields.drankToday.options.0": "Sim",
   "quit.substances.alcohol.trackers.consumption.fields.drankToday.options.1": "Não",
   "quit.substances.alcohol.trackers.consumption.fields.drinkType.label": "Tipo de bebida",

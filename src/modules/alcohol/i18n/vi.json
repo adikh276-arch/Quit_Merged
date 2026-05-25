@@ -112,7 +112,7 @@
   "quit.substances.alcohol.calculator.title": "Đơn vị & Tác động sức khỏe",
   "quit.substances.alcohol.descriptor": "Bia, rượu và rượu mạnh",
   "quit.substances.alcohol.name": "Rượu bia",
-  "quit.substances.alcohol.trackers.consumption.fields.drankToday.label": "Did you drink today?",
+  "quit.substances.alcohol.trackers.consumption.fields.drankToday.label": "Hôm nay bạn có uống rượu không?",
   "quit.substances.alcohol.trackers.consumption.fields.drankToday.options.0": "Có",
   "quit.substances.alcohol.trackers.consumption.fields.drankToday.options.1": "Không",
   "quit.substances.alcohol.trackers.consumption.fields.drinkType.label": "Loại đồ uống",

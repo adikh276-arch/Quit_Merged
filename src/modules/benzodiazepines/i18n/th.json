@@ -129,7 +129,7 @@
   "quit.substances.benzodiazepines.trackers.taper.fields.asPerscribed.options.1": "เลขที่",
   "quit.substances.benzodiazepines.trackers.taper.fields.doseTaken.label": "ปริมาณที่รับประทาน (มก.)",
   "quit.substances.benzodiazepines.trackers.taper.fields.notes.label": "หมายเหตุ",
-  "quit.substances.benzodiazepines.trackers.taper.fields.takenToday.label": "Did you take your dose today?",
+  "quit.substances.benzodiazepines.trackers.taper.fields.takenToday.label": "วันนี้คุณทานยาแล้วหรือยัง?",
   "quit.substances.benzodiazepines.trackers.taper.fields.takenToday.options.0": "ใช่",
   "quit.substances.benzodiazepines.trackers.taper.fields.takenToday.options.1": "ไม่",
   "quit.substances.benzodiazepines.trackers.taper.insight": "ติดตามกำหนดการที่กำหนดได้อย่างสมบูรณ์แบบ",

@@ -129,7 +129,7 @@
   "quit.substances.benzodiazepines.trackers.taper.fields.asPerscribed.options.1": "いいえ",
   "quit.substances.benzodiazepines.trackers.taper.fields.doseTaken.label": "摂取量(mg)",
   "quit.substances.benzodiazepines.trackers.taper.fields.notes.label": "注意事項",
-  "quit.substances.benzodiazepines.trackers.taper.fields.takenToday.label": "Did you take your dose today?",
+  "quit.substances.benzodiazepines.trackers.taper.fields.takenToday.label": "今日は服薬を飲んだ?",
   "quit.substances.benzodiazepines.trackers.taper.fields.takenToday.options.0": "はい",
   "quit.substances.benzodiazepines.trackers.taper.fields.takenToday.options.1": "いいえ",
   "quit.substances.benzodiazepines.trackers.taper.insight": "決められたスケジュールを完璧に守ります。",

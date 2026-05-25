@@ -112,7 +112,7 @@
   "quit.substances.alcohol.calculator.title": "Birimler ve Sağlık Etkisi",
   "quit.substances.alcohol.descriptor": "Bira, şarap ve sert içkiler",
   "quit.substances.alcohol.name": "Alkol",
-  "quit.substances.alcohol.trackers.consumption.fields.drankToday.label": "Did you drink today?",
+  "quit.substances.alcohol.trackers.consumption.fields.drankToday.label": "Bugün içtin mi?",
   "quit.substances.alcohol.trackers.consumption.fields.drankToday.options.0": "Evet",
   "quit.substances.alcohol.trackers.consumption.fields.drankToday.options.1": "Hayır",
   "quit.substances.alcohol.trackers.consumption.fields.drinkType.label": "İçecek türü",

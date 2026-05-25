@@ -69,6 +69,28 @@ function restoreVariables(text) {
   return text.replace(/<span class="notranslate">(.*?)<\/span>/g, '$1');
 }
 
+// Check if a translation value is missing or is an untranslated placeholder
+function isUntranslated(value, sourceValue) {
+  if (!value || value === "") return true;
+  if (value === sourceValue) {
+    // If it contains no English letters, it doesn't need translation (e.g. numbers, punctuation)
+    if (!/[a-zA-Z]/.test(sourceValue)) return false;
+    
+    // Check if it's a number, measurement unit, or special symbol
+    if (/^\d+(\.\d+)?\s*(mg|g|ml|oz|%|x)?$/i.test(sourceValue.trim())) return false;
+    
+    // Skip list for drug acronyms/abbreviations that are identical across languages
+    const skipList = new Set([
+      'mdma', 'kratom', 'cbd', 'thc', 'gaba', 'cbt', 'act', 'gp', 'halt', 'vape', 
+      'lsd', 'pcp', 'dmt', 'thcv', 'cbdv', 'cbg', 'cbn', 'cbc'
+    ]);
+    if (skipList.has(sourceValue.toLowerCase().trim())) return false;
+    
+    return true;
+  }
+  return false;
+}
+
 // Sleep helper
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
@@ -127,8 +149,8 @@ async function run() {
       }
     }
 
-    // Find missing keys (incremental mode)
-    const missingKeys = sourceKeys.filter(k => !existingData[k] || existingData[k] === "");
+    // Find missing or untranslated keys (placeholder detection mode)
+    const missingKeys = sourceKeys.filter(k => isUntranslated(existingData[k], sourceData[k]));
 
     if (missingKeys.length === 0) {
       console.log(`[${lang}] Already translated fully. Skipping.`);

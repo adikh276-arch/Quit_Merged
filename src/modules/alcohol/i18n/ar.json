@@ -112,7 +112,7 @@
   "quit.substances.alcohol.calculator.title": "الوحدات والتأثير الصحي",
   "quit.substances.alcohol.descriptor": "بيرة ونبيذ ومشروبات روحية",
   "quit.substances.alcohol.name": "كحول",
-  "quit.substances.alcohol.trackers.consumption.fields.drankToday.label": "Did you drink today?",
+  "quit.substances.alcohol.trackers.consumption.fields.drankToday.label": "هل شربت اليوم؟",
   "quit.substances.alcohol.trackers.consumption.fields.drankToday.options.0": "نعم",
   "quit.substances.alcohol.trackers.consumption.fields.drankToday.options.1": "لا",
   "quit.substances.alcohol.trackers.consumption.fields.drinkType.label": "نوع الشراب",

@@ -129,7 +129,7 @@
   "quit.substances.benzodiazepines.trackers.taper.fields.asPerscribed.options.1": "NIE",
   "quit.substances.benzodiazepines.trackers.taper.fields.doseTaken.label": "Przyjęta dawka (mg)",
   "quit.substances.benzodiazepines.trackers.taper.fields.notes.label": "Notatki",
-  "quit.substances.benzodiazepines.trackers.taper.fields.takenToday.label": "Did you take your dose today?",
+  "quit.substances.benzodiazepines.trackers.taper.fields.takenToday.label": "Wzięłaś dziś dawkę?",
   "quit.substances.benzodiazepines.trackers.taper.fields.takenToday.options.0": "Tak",
   "quit.substances.benzodiazepines.trackers.taper.fields.takenToday.options.1": "Nie",
   "quit.substances.benzodiazepines.trackers.taper.insight": "mg/dzień",

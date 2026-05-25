@@ -129,7 +129,7 @@
   "quit.substances.benzodiazepines.trackers.taper.fields.asPerscribed.options.1": "না",
   "quit.substances.benzodiazepines.trackers.taper.fields.doseTaken.label": "নেওয়া ডোজ (মিগ্রা)",
   "quit.substances.benzodiazepines.trackers.taper.fields.notes.label": "নোট",
-  "quit.substances.benzodiazepines.trackers.taper.fields.takenToday.label": "Did you take your dose today?",
+  "quit.substances.benzodiazepines.trackers.taper.fields.takenToday.label": "আপনি কি আজ আপনার ডোজ নিয়েছেন?",
   "quit.substances.benzodiazepines.trackers.taper.fields.takenToday.options.0": "হ্যাঁ",
   "quit.substances.benzodiazepines.trackers.taper.fields.takenToday.options.1": "না",
   "quit.substances.benzodiazepines.trackers.taper.insight": "নিখুঁতভাবে নির্ধারিত সময়সূচী ট্র্যাকিং.",

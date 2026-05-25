@@ -138,7 +138,7 @@
   "quit.substances.mdma.trackers.sleep.name": "Schlafqualität",
   "quit.substances.mdma.trackers.sleep.yAxisLabel": "Std",
   "quit.substances.mdma.trackers.social.fields.cravings.label": "Heißhunger",
-  "quit.substances.mdma.trackers.social.fields.facedRisk.label": "Were you in any high-risk situations today?",
+  "quit.substances.mdma.trackers.social.fields.facedRisk.label": "Warst du heute in riskanten?",
   "quit.substances.mdma.trackers.social.fields.facedRisk.options.0": "Ja",
   "quit.substances.mdma.trackers.social.fields.facedRisk.options.1": "Nein",
   "quit.substances.mdma.trackers.social.fields.notes.label": "Notizen",

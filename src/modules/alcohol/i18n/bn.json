@@ -112,7 +112,7 @@
   "quit.substances.alcohol.calculator.title": "ইউনিট এবং স্বাস্থ্যের প্রভাব",
   "quit.substances.alcohol.descriptor": "বিয়ার, ওয়াইন এবং স্পিরিট",
   "quit.substances.alcohol.name": "অ্যালকোহল",
-  "quit.substances.alcohol.trackers.consumption.fields.drankToday.label": "Did you drink today?",
+  "quit.substances.alcohol.trackers.consumption.fields.drankToday.label": "আপনি কি আজ পান করেছেন?",
   "quit.substances.alcohol.trackers.consumption.fields.drankToday.options.0": "হ্যাঁ",
   "quit.substances.alcohol.trackers.consumption.fields.drankToday.options.1": "না",
   "quit.substances.alcohol.trackers.consumption.fields.drinkType.label": "পানীয় প্রকার",

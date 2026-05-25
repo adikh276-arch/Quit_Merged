@@ -112,7 +112,7 @@
   "quit.substances.alcohol.calculator.title": "Einheiten und Auswirkungen auf die Gesundheit",
   "quit.substances.alcohol.descriptor": "Bier, Wein & Spirituosen",
   "quit.substances.alcohol.name": "Alkohol",
-  "quit.substances.alcohol.trackers.consumption.fields.drankToday.label": "Did you drink today?",
+  "quit.substances.alcohol.trackers.consumption.fields.drankToday.label": "Hast du heute getrunken?",
   "quit.substances.alcohol.trackers.consumption.fields.drankToday.options.0": "Ja",
   "quit.substances.alcohol.trackers.consumption.fields.drankToday.options.1": "Nein",
   "quit.substances.alcohol.trackers.consumption.fields.drinkType.label": "Getränketyp",

@@ -129,7 +129,7 @@
   "quit.substances.benzodiazepines.trackers.taper.fields.asPerscribed.options.1": "नहीं",
   "quit.substances.benzodiazepines.trackers.taper.fields.doseTaken.label": "ली गई खुराक (मिलीग्राम)",
   "quit.substances.benzodiazepines.trackers.taper.fields.notes.label": "टिप्पणियाँ",
-  "quit.substances.benzodiazepines.trackers.taper.fields.takenToday.label": "Did you take your dose today?",
+  "quit.substances.benzodiazepines.trackers.taper.fields.takenToday.label": "क्या आपने आज अपनी खुराक ली?",
   "quit.substances.benzodiazepines.trackers.taper.fields.takenToday.options.0": "हाँ",
   "quit.substances.benzodiazepines.trackers.taper.fields.takenToday.options.1": "नहीं",
   "quit.substances.benzodiazepines.trackers.taper.insight": "निर्धारित शेड्यूल पर पूरी तरह से नज़र रखना।",

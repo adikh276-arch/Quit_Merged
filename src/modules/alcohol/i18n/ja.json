@@ -112,7 +112,7 @@
   "quit.substances.alcohol.calculator.title": "ユニットと健康への影響",
   "quit.substances.alcohol.descriptor": "ビール、ワイン、蒸留酒",
   "quit.substances.alcohol.name": "アルコール",
-  "quit.substances.alcohol.trackers.consumption.fields.drankToday.label": "Did you drink today?",
+  "quit.substances.alcohol.trackers.consumption.fields.drankToday.label": "今日お酒飲んだ?",
   "quit.substances.alcohol.trackers.consumption.fields.drankToday.options.0": "はい",
   "quit.substances.alcohol.trackers.consumption.fields.drankToday.options.1": "いいえ",
   "quit.substances.alcohol.trackers.consumption.fields.drinkType.label": "ドリンクの種類",

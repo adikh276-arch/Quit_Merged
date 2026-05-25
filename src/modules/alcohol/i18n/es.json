@@ -112,7 +112,7 @@
   "quit.substances.alcohol.calculator.title": "Unidades e impacto en la salud",
   "quit.substances.alcohol.descriptor": "Cerveza, vino y licores",
   "quit.substances.alcohol.name": "Irritable",
-  "quit.substances.alcohol.trackers.consumption.fields.drankToday.label": "Did you drink today?",
+  "quit.substances.alcohol.trackers.consumption.fields.drankToday.label": "¿Has bebido hoy?",
   "quit.substances.alcohol.trackers.consumption.fields.drankToday.options.0": "Sí",
   "quit.substances.alcohol.trackers.consumption.fields.drankToday.options.1": "No",
   "quit.substances.alcohol.trackers.consumption.fields.drinkType.label": "tipo de bebida",

@@ -1,10 +1,10 @@
 const { execSync } = require('child_process');
 
 const substances = [
-  'alcohol', 'tobacco', 'opioids', 'cannabis', 'stimulants', 'benzodiazepines', 'kratom', 'mdma'
+  'dashboard', 'alcohol', 'tobacco', 'opioids', 'cannabis', 'stimulants', 'benzodiazepines', 'kratom', 'mdma'
 ];
 
-console.log('--- Starting Orchestrated Substances Translation ---');
+console.log('--- Starting Orchestrated Substances & Dashboard Translation ---');
 
 for (const sub of substances) {
   console.log(`\n==================================================`);
@@ -18,4 +18,4 @@ for (const sub of substances) {
   }
 }
 
-console.log('\n--- All Substances Translated Successfully ---');
+console.log('\n--- All Modules and Substances Translated Successfully ---');
