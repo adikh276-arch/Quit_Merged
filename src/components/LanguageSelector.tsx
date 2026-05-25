@@ -1,32 +1,10 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { Globe } from 'lucide-react';
+import { languages } from '@/i18n';
 
 const LanguageSelector = () => {
   const { i18n } = useTranslation();
-
-  const languages = [
-    { code: 'en', name: 'English' },
-    { code: 'es', name: 'Español' },
-    { code: 'fr', name: 'Français' },
-    { code: 'pt', name: 'Português' },
-    { code: 'de', name: 'Deutsch' },
-    { code: 'ar', name: 'العربية' },
-    { code: 'hi', name: 'हिन्दी' },
-    { code: 'bn', name: 'বাংলা' },
-    { code: 'zh', name: '中文' },
-    { code: 'ja', name: '日本語' },
-    { code: 'id', name: 'Bahasa Indonesia' },
-    { code: 'tr', name: 'Türkçe' },
-    { code: 'vi', name: 'Tiếng Việt' },
-    { code: 'ko', name: '한국어' },
-    { code: 'ru', name: 'Русский' },
-    { code: 'it', name: 'Italiano' },
-    { code: 'pl', name: 'Polski' },
-    { code: 'th', name: 'ไทย' },
-    { code: 'tl', name: 'Tagalog' },
-    { code: 'nl', name: 'Nederlands' }
-  ];
 
   const handleLanguageChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const lang = e.target.value;
@@ -42,7 +20,7 @@ const LanguageSelector = () => {
   };
 
   return (
-    <div className="absolute top-4 right-4 flex items-center gap-2">
+    <div className="absolute top-4 right-4 flex items-center gap-2 z-55">
       <Globe className="h-4 w-4 text-muted-foreground" />
       <select
         value={i18n.language || 'en'}

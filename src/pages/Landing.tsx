@@ -6,6 +6,7 @@ import { Shield, Sparkles, Flame, TrendingUp, ChevronRight, ArrowLeft } from 'lu
 import SubstanceIcon from '@/components/SubstanceIcon';
 import { useTranslation } from 'react-i18next';
 import { useEffect, useState } from 'react';
+import { loadModuleTranslations } from '@/i18n/dynamicLoader';
 
 const substanceColors: Record<string, { gradient: string; bg: string; ring: string; orb: string }> = {
   alcohol:         { gradient: 'from-red-500 to-rose-600',       bg: 'bg-red-50 dark:bg-red-950/40',    ring: 'ring-red-200 dark:ring-red-800/40',    orb: 'bg-red-300/20' },
@@ -78,16 +79,27 @@ const SubstanceCard = ({ substance, index }: { substance: typeof substances[0]; 
 };
 
 const Landing = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const [lastUpdate, setLastUpdate] = useState(Date.now());
+  const [translationsLoaded, setTranslationsLoaded] = useState(false);
 
   useEffect(() => {
     const bootstrap = async () => {
+      await loadModuleTranslations('dashboard', i18n.language);
+      setTranslationsLoaded(true);
       await syncGlobalDataFromCloud();
       setLastUpdate(Date.now());
     };
     bootstrap();
-  }, []);
+  }, [i18n.language]);
+
+  if (!translationsLoaded) {
+    return (
+      <div className="flex h-screen w-full items-center justify-center bg-background">
+        <div className="h-8 w-8 animate-spin rounded-full border-4 border-primary border-t-transparent"></div>
+      </div>
+    );
+  }
 
   const totalDays = substances.reduce((acc, s) => acc + getStreak(s.slug).days, 0);
   const activeCount = substances.filter(s => getStreak(s.slug).days > 0).length;

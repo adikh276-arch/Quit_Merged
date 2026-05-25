@@ -5,6 +5,7 @@ import { getSubstance } from '@/data/substances';
 import { getStreak, getEntries, getPrefix, fetchOnboarded, saveOnboarded, resetOnboarded, syncUserDataFromCloud, getDynamicStat } from '@/data/storage';
 import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
+import { loadModuleTranslations } from '@/i18n/dynamicLoader';
 import TrackerDetail from '@/components/TrackerDetail';
 import ToolModal from '@/components/ToolModal';
 import SubstanceIcon from '@/components/SubstanceIcon';
@@ -43,9 +44,23 @@ const sparkColors: Record<string, string> = {
 
 const SubstancePage = () => {
   const { slug, trackerId, toolId, contentId, substep, step } = useParams<any>();
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const navigate = useNavigate();
   const substance = getSubstance(slug || '');
+  const [translationsLoaded, setTranslationsLoaded] = useState(false);
+
+  useEffect(() => {
+    if (!slug) return;
+    const load = async () => {
+      setTranslationsLoaded(false);
+      await Promise.all([
+        loadModuleTranslations('dashboard', i18n.language),
+        loadModuleTranslations(slug, i18n.language)
+      ]);
+      setTranslationsLoaded(true);
+    };
+    load();
+  }, [slug, i18n.language]);
   
   const activeTracker = trackerId;
   const activeTool = toolId;
@@ -130,8 +145,8 @@ const SubstancePage = () => {
     return null;
   }
 
-  // Still checking Neon DB — show spinner to prevent flash of onboarding
-  if (onboarded === null) {
+  // Still checking Neon DB or loading translations — show spinner to prevent flash of onboarding
+  if (onboarded === null || !translationsLoaded) {
     return (
       <div className="flex h-screen w-full items-center justify-center bg-background">
         <div className="h-8 w-8 animate-spin rounded-full border-4 border-primary border-t-transparent"></div>

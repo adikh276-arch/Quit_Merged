@@ -1,72 +1,73 @@
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 
-import en from './locales/en.json';
-import es from './locales/es.json';
-import fr from './locales/fr.json';
-import pt from './locales/pt.json';
-import de from './locales/de.json';
-import ar from './locales/ar.json';
-import hi from './locales/hi.json';
-import bn from './locales/bn.json';
-import zh from './locales/zh.json';
-import ja from './locales/ja.json';
-import id from './locales/id.json';
-import tr from './locales/tr.json';
-import vi from './locales/vi.json';
-import ko from './locales/ko.json';
-import ru from './locales/ru.json';
-import it from './locales/it.json';
-import pl from './locales/pl.json';
-import th from './locales/th.json';
-import tl from './locales/tl.json';
-import nl from './locales/nl.json';
+// Comprehensive list of supported languages
+export const languages = [
+  { code: 'en', name: 'English' },
+  { code: 'es', name: 'Español' },
+  { code: 'fr', name: 'Français' },
+  { code: 'pt', name: 'Português' },
+  { code: 'de', name: 'Deutsch' },
+  { code: 'ar', name: 'العربية' },
+  { code: 'hi', name: 'हिन्दी' },
+  { code: 'bn', name: 'বাংলা' },
+  { code: 'zh', name: '中文 (简体)' },
+  { code: 'zh-Hans', name: '中文 (简体)' },
+  { code: 'zh-Hant', name: '中文 (繁體)' },
+  { code: 'ja', name: '日本語' },
+  { code: 'id', name: 'Bahasa Indonesia' },
+  { code: 'tr', name: 'Türkçe' },
+  { code: 'vi', name: 'Tiếng Việt' },
+  { code: 'ko', name: '한국어' },
+  { code: 'ru', name: 'Русский' },
+  { code: 'it', name: 'Italiano' },
+  { code: 'pl', name: 'Polski' },
+  { code: 'th', name: 'ไทย' },
+  { code: 'tl', name: 'Tagalog' },
+  { code: 'nl', name: 'Nederlands' },
+  { code: 'sv', name: 'Svenska' },
+  { code: 'no', name: 'Norsk' },
+  { code: 'da', name: 'Dansk' },
+  { code: 'fi', name: 'Suomi' },
+  { code: 'cs', name: 'Čeština' },
+  { code: 'el', name: 'Ελληνικά' },
+  { code: 'ro', name: 'Română' },
+  { code: 'hu', name: 'Magyar' },
+  { code: 'uk', name: 'Українська' },
+  { code: 'he', name: 'עברית' },
+  { code: 'ms', name: 'Bahasa Melayu' },
+  { code: 'ta', name: 'தமிழ்' },
+  { code: 'te', name: 'తెలుగు' },
+  { code: 'ur', name: 'اردو' }
+];
 
-const resources = {
-  en: { translation: en },
-  es: { translation: es },
-  fr: { translation: fr },
-  pt: { translation: pt },
-  de: { translation: de },
-  ar: { translation: ar },
-  hi: { translation: hi },
-  bn: { translation: bn },
-  zh: { translation: zh },
-  ja: { translation: ja },
-  id: { translation: id },
-  tr: { translation: tr },
-  vi: { translation: vi },
-  ko: { translation: ko },
-  ru: { translation: ru },
-  it: { translation: it },
-  pl: { translation: pl },
-  th: { translation: th },
-  tl: { translation: tl },
-  nl: { translation: nl }
-};
-
-const getInitialLanguage = () => {
+export const getInitialLanguage = () => {
   const urlParams = new URLSearchParams(window.location.search);
   const langQuery = urlParams.get('lang');
-  if (langQuery && resources[langQuery as keyof typeof resources]) {
+  
+  if (langQuery && languages.some(l => l.code === langQuery)) {
     localStorage.setItem('language', langQuery);
     return langQuery;
   }
+  
   const localLang = localStorage.getItem('language');
-  if (localLang && resources[localLang as keyof typeof resources]) {
+  if (localLang && languages.some(l => l.code === localLang)) {
     return localLang;
   }
+  
   return 'en';
 };
 
 i18n
   .use(initReactI18next)
   .init({
-    resources,
     lng: getInitialLanguage(),
     fallbackLng: 'en',
     interpolation: {
       escapeValue: false 
+    },
+    react: {
+      useSuspense: false // Ensure smooth rendering transitions without suspense flashing
     }
   });
 
