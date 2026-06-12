@@ -1,0 +1,12 @@
+calculator: {
+      title: 'MME & Overdose Risk',
+      inputs: [
+        { key: 'mgPerDay', label: 'mg per day', type: 'slider', min: 0, max: 500, step: 10, defaultValue: 60 },
+        { key: 'bupDose', label: 'Buprenorphine dose (mg/day)', type: 'slider', min: 0, max: 32, step: 2, defaultValue: 8 },
+      ],
+      compute: (inputs) => [
+        { label: 'Daily MME', value: `${inputs.mgPerDay} MME` },
+        { label: 'Overdose risk', value: inputs.mgPerDay > 90 ? 'High' : inputs.mgPerDay > 50 ? 'Elevated' : 'Moderate', color: inputs.mgPerDay > 90 ? 'destructive' : 'accent' },
+        { label: 'Naloxone note', value: 'Available free at government health centres' },
+      ],
+    },

@@ -1,0 +1,15 @@
+calculator: {
+      title: 'Neurotoxicity Risk & Recovery',
+      inputs: [
+        { key: 'dosePerSession', label: 'Average dose (mg)', type: 'slider', min: 50, max: 500, step: 25, defaultValue: 150 },
+        { key: 'sessionsPerMonth', label: 'Sessions per month', type: 'slider', min: 1, max: 8, step: 1, defaultValue: 2 },
+        { key: 'yearsOfUse', label: 'Years of use', type: 'slider', min: 1, max: 20, step: 1, defaultValue: 3 },
+      ],
+      compute: (inputs) => {
+        const risk = inputs.dosePerSession > 150 && inputs.sessionsPerMonth > 1 ? 'High' : inputs.sessionsPerMonth > 2 ? 'Moderate' : 'Low';
+        return [
+          { label: 'Neurotoxicity risk', value: risk, color: risk === 'High' ? 'destructive' : risk === 'Moderate' ? 'accent' : 'primary' },
+          { label: 'Recovery timeline', value: `${Math.round(inputs.yearsOfUse * 3)} months estimated` },
+          { label: 'Key note', value: 'Heavy use (>150mg, >monthly) causes lasting serotonin changes. Recovery is possible.' },
+        ];
+      },

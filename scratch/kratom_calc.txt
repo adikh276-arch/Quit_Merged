@@ -1,0 +1,15 @@
+calculator: {
+      title: 'Usage Cost & Dependence',
+      inputs: [
+        { key: 'gramsPerDay', label: 'Grams per day', type: 'slider', min: 1, max: 50, step: 1, defaultValue: 15 },
+        { key: 'costPerKg', label: 'Cost per kg ', type: 'slider', min: 1000, max: 10000, step: 500, defaultValue: 3000 },
+      ],
+      compute: (inputs) => {
+        const daily = (inputs.gramsPerDay / 1000) * inputs.costPerKg;
+        return [
+          { label: 'Daily cost', value: `${Math.round(daily)}` },
+          { label: 'Monthly cost', value: `${Math.round(daily * 30).toLocaleString()}` },
+          { label: 'Yearly cost', value: `${Math.round(daily * 365).toLocaleString()}` },
+          { label: 'Opioid receptor binding', value: 'Mitragynine binds mu-opioid receptors' },
+        ];
+      },

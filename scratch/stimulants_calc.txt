@@ -1,0 +1,16 @@
+calculator: {
+      title: 'Cardiovascular Risk & Cost',
+      inputs: [
+        { key: 'gramsPerUse', label: 'Grams per use', type: 'slider', min: 0.1, max: 5, step: 0.1, defaultValue: 0.5 },
+        { key: 'timesPerWeek', label: 'Times per week', type: 'slider', min: 1, max: 14, step: 1, defaultValue: 3 },
+        { key: 'costPerGram', label: 'Cost per gram ', type: 'slider', min: 1000, max: 20000, step: 500, defaultValue: 5000 },
+      ],
+      compute: (inputs) => {
+        const weekly = inputs.gramsPerUse * inputs.timesPerWeek * inputs.costPerGram;
+        return [
+          { label: 'Weekly spend', value: `${Math.round(weekly).toLocaleString()}` },
+          { label: 'Yearly spend', value: `${Math.round(weekly * 52).toLocaleString()}` },
+          { label: 'Cardiovascular risk', value: 'Cocaine triples heart attack risk for 60 min after each use', color: 'destructive' },
+          { label: 'Heart rate recovery', value: ' ~40 BPM within 21 days' },
+        ];
+      },

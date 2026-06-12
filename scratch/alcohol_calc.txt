@@ -1,0 +1,20 @@
+calculator: {
+      title: 'Units & Health Impact',
+      inputs: [
+        { key: 'drinksPerDay', label: 'Drinks per day', type: 'slider', min: 0, max: 20, step: 1, defaultValue: 4 },
+        { key: 'drinkingDays', label: 'Drinking days per week', type: 'slider', min: 0, max: 7, step: 1, defaultValue: 5 },
+        { key: 'costPerDrink', label: 'Cost per drink ', type: 'slider', min: 50, max: 1000, step: 50, defaultValue: 200 },
+      ],
+      compute: (inputs) => {
+        const weekly = inputs.drinksPerDay * inputs.drinkingDays;
+        const monthly = inputs.costPerDrink * inputs.drinksPerDay * inputs.drinkingDays * 4.3;
+        const yearly = monthly * 12;
+        return [
+          { label: 'Weekly units', value: `${weekly} units`, color: weekly > 14 ? 'destructive' : 'primary' },
+          { label: 'Safe limit', value: '14 units/week' },
+          { label: 'Monthly spend', value: `${Math.round(monthly).toLocaleString()}` },
+          { label: 'Yearly spend', value: `${Math.round(yearly).toLocaleString()}` },
+          { label: 'Liver risk', value: weekly > 35 ? 'High' : weekly > 14 ? 'Moderate' : 'Low', color: weekly > 35 ? 'destructive' : weekly > 14 ? 'accent' : 'primary' },
+          { label: '1-year savings if quit', value: `${Math.round(yearly).toLocaleString()}` },
+        ];
+      },

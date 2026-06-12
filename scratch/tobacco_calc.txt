@@ -1,0 +1,19 @@
+calculator: {
+      title: 'Cigarette Cost & Health Impact',
+      inputs: [
+        { key: 'cigarettesPerDay', label: 'Cigarettes per day', type: 'slider', min: 1, max: 60, step: 1, defaultValue: 15 },
+        { key: 'costPerPack', label: 'Cost per pack ', type: 'slider', min: 50, max: 1000, step: 10, defaultValue: 280 },
+        { key: 'yearsSmoked', label: 'Years smoked', type: 'slider', min: 1, max: 50, step: 1, defaultValue: 8 },
+      ],
+      compute: (inputs) => {
+        const daily = (inputs.cigarettesPerDay / 20) * inputs.costPerPack;
+        const yearly = daily * 365;
+        const total = yearly * inputs.yearsSmoked;
+        return [
+          { label: 'Daily spend', value: `${Math.round(daily)}` },
+          { label: 'Yearly spend', value: `${Math.round(yearly).toLocaleString()}` },
+          { label: 'Total spent', value: `${Math.round(total).toLocaleString()}` },
+          { label: 'Carcinogens per cigarette', value: '69 known' },
+          { label: '10-year benefit', value: '72% lower lung cancer risk' },
+        ];
+      },
