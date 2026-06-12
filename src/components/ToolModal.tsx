@@ -284,11 +284,11 @@ const CalculatorView = ({ substance }: { substance: SubstanceConfig }) => {
 
   return (
     <div>
-      <h2 className="mb-4 font-display text-xl text-foreground">{t(`quit.substances.${substance.slug}.calculator.title`)}</h2>
+      <h2 className="mb-4 font-display text-xl text-foreground">{t(`quit.substances.${substance.slug}.calculator.title`, calc.title)}</h2>
       <div className="space-y-4">
         {calc.inputs.map(input => (
           <div key={input.key}>
-            <div className="flex justify-between text-xs"><span className="text-foreground font-medium">{t(`quit.substances.${substance.slug}.calculator.inputs.${input.key}.label`)}</span><span className="text-primary font-bold">{inputs[input.key]}{input.unit || ''}</span></div>
+            <div className="flex justify-between text-xs"><span className="text-foreground font-medium">{t(`quit.substances.${substance.slug}.calculator.inputs.${input.key}.label`, input.label)}</span><span className="text-primary font-bold">{inputs[input.key]}{input.unit || ''}</span></div>
             <input type="range" min={input.min} max={input.max} step={input.step} value={inputs[input.key]} onChange={e => setInputs(prev => ({ ...prev, [input.key]: Number(e.target.value) }))} className="w-full h-6 bg-transparent" style={{ '--slider-accent': sparkColors[substance.slug] || '#10b981' } as any} />
           </div>
         ))}
@@ -787,7 +787,7 @@ const ActivitiesView = ({ substance, active, setActive, substep, setSubstep }: {
         {substance.activities.map(act => (
           <button key={act.id} onClick={() => setActive(act.id)} className="flex w-full items-center justify-between rounded-xl border border-border bg-card p-4 text-left hover:shadow-md transition-shadow">
             <div>
-              <p className="text-sm font-semibold text-foreground">{t(`quit.substances.${substance.slug}.activities.${act.id}.name`)}</p>
+              <p className="text-sm font-semibold text-foreground">{t(`quit.substances.${substance.slug}.activities.${act.id}.name`, act.name)}</p>
               <p className="text-xs text-muted-foreground">{act.duration} · {act.type}</p>
             </div>
             <ChevronRight className="h-4 w-4 text-muted-foreground" />
@@ -819,8 +819,8 @@ const LearnView = ({ substance, active, setActive }: { substance: SubstanceConfi
           {t('quit.app.back')}
         </button>
         <span className="mb-2 inline-block rounded-full bg-primary/10 px-3 py-1 text-xs font-medium text-primary">{t(`quit.substances.${substance.slug}.articles.${article.id}.tag`, article.tag)}</span>
-        <h2 className="mb-4 font-display text-xl text-foreground">{t(`quit.substances.${substance.slug}.articles.${article.id}.title`)}</h2>
-        <div className="text-sm text-foreground leading-relaxed whitespace-pre-line">{t(`quit.substances.${substance.slug}.articles.${article.id}.content`)}</div>
+        <h2 className="mb-4 font-display text-xl text-foreground">{t(`quit.substances.${substance.slug}.articles.${article.id}.title`, article.title)}</h2>
+        <div className="text-sm text-foreground leading-relaxed whitespace-pre-line">{t(`quit.substances.${substance.slug}.articles.${article.id}.content`, article.content)}</div>
       </div>
     );
   }
@@ -833,7 +833,7 @@ const LearnView = ({ substance, active, setActive }: { substance: SubstanceConfi
           <button key={art.id} onClick={() => setActive(art.id)} className="flex w-full items-center justify-between rounded-xl border border-border bg-card p-4 text-left hover:shadow-md">
             <div className="flex-1">
               <span className="mb-1 inline-block rounded-full bg-muted px-2 py-0.5 text-[10px] font-medium text-muted-foreground">{t(`quit.substances.${substance.slug}.articles.${art.id}.tag`, art.tag)}</span>
-              <p className="text-sm font-semibold text-foreground">{t(`quit.substances.${substance.slug}.articles.${art.id}.title`)}</p>
+              <p className="text-sm font-semibold text-foreground">{t(`quit.substances.${substance.slug}.articles.${art.id}.title`, art.title)}</p>
             </div>
             <ChevronRight className="h-4 w-4 text-muted-foreground flex-shrink-0" />
           </button>

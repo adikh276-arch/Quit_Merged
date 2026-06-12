@@ -58,7 +58,7 @@ const TrackerDetail = ({ tracker, substance, onClose }: Props) => {
 
       // Notes/Textareas should be optional, but other single-select/chips/etc should be required
       if (isMissing && field.type !== 'slider' && field.type !== 'textarea') {
-        const label = t(`quit.substances.${substance.slug}.trackers.${tracker.id}.fields.${field.key}.label`);
+        const label = t(`quit.substances.${substance.slug}.trackers.${tracker.id}.fields.${field.key}.label`, field.label);
         toast.error(`${label} is required.`);
         isValid = false;
         break;
@@ -67,7 +67,7 @@ const TrackerDetail = ({ tracker, substance, onClose }: Props) => {
       if (field.type === 'slider' && val === 0 && (field.key.toLowerCase().includes('units') || field.key.toLowerCase().includes('amount') || field.key.toLowerCase().includes('spent'))) {
          const drankKey = Object.keys(values).find(k => k.toLowerCase().includes('drank') || k.toLowerCase().includes('smoked') || k.toLowerCase().includes('used'));
          if (drankKey && values[drankKey] === 'Yes') {
-            toast.error(`${t(`quit.substances.${substance.slug}.trackers.${tracker.id}.fields.${field.key}.label`)} cannot be 0 if you used today.`);
+            toast.error(`${t(`quit.substances.${substance.slug}.trackers.${tracker.id}.fields.${field.key}.label`, field.label)} cannot be 0 if you used today.`);
             isValid = false;
             break;
          }
@@ -143,8 +143,8 @@ const TrackerDetail = ({ tracker, substance, onClose }: Props) => {
         {/* Header */}
         <div className="flex items-center justify-between py-5 sticky top-0 bg-background/90 backdrop-blur-md z-10 border-b border-border/40">
           <div>
-            <h2 className="font-display text-xl text-foreground">{t(`quit.substances.${substance.slug}.trackers.${tracker.id}.name`)}</h2>
-            <p className="text-xs text-muted-foreground mt-0.5">{t(`quit.substances.${substance.slug}.name`)}</p>
+            <h2 className="font-display text-xl text-foreground">{t(`quit.substances.${substance.slug}.trackers.${tracker.id}.name`, tracker.name)}</h2>
+            <p className="text-xs text-muted-foreground mt-0.5">{t(`quit.substances.${substance.slug}.name`, substance.name)}</p>
           </div>
           <div className="flex items-center gap-3">
             <button onClick={onClose} className="rounded-xl p-2 hover:bg-muted transition-colors">
@@ -189,7 +189,7 @@ const TrackerDetail = ({ tracker, substance, onClose }: Props) => {
               }
               return (
                 <div key={field.key}>
-                  <label className="mb-2.5 block text-xs font-bold text-foreground uppercase tracking-wider">{t(`quit.substances.${substance.slug}.trackers.${tracker.id}.fields.${field.key}.label`)}</label>
+                  <label className="mb-2.5 block text-xs font-bold text-foreground uppercase tracking-wider">{t(`quit.substances.${substance.slug}.trackers.${tracker.id}.fields.${field.key}.label`, field.label)}</label>
                   {field.type === 'slider' && (
                     <div className="space-y-2">
                       <input type="range" min={field.min || 0} max={field.max || 10} step={field.step || 1} value={values[field.key] ?? field.min ?? 0} onChange={e => updateField(field.key, Number(e.target.value))} className="w-full h-6 bg-transparent" style={{ '--slider-accent': accentColor } as any} />
@@ -223,7 +223,7 @@ const TrackerDetail = ({ tracker, substance, onClose }: Props) => {
                               ? 'border-primary bg-primary text-primary-foreground shadow-md shadow-primary/20'
                               : 'border-border/60 bg-card text-foreground hover:border-primary/30 hover:bg-primary/5'
                           }`}>
-                            {t(`quit.substances.${substance.slug}.trackers.${tracker.id}.fields.${field.key}.options.${field.options.indexOf(opt)}`)}
+                            {t(`quit.substances.${substance.slug}.trackers.${tracker.id}.fields.${field.key}.options.${field.options.indexOf(opt)}`, opt)}
                           </button>
                         );
                       })}
@@ -269,7 +269,7 @@ const TrackerDetail = ({ tracker, substance, onClose }: Props) => {
         >
           <div className="flex items-start gap-2.5">
             <Lightbulb className="h-4 w-4 text-primary mt-0.5 shrink-0" />
-            <p className="text-sm text-foreground leading-relaxed">{t(`quit.substances.${substance.slug}.trackers.${tracker.id}.insight`)}</p>
+            <p className="text-sm text-foreground leading-relaxed">{t(`quit.substances.${substance.slug}.trackers.${tracker.id}.insight`, tracker.insight)}</p>
           </div>
         </motion.div>
 
