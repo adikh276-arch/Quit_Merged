@@ -160,5 +160,8 @@
   "quit.substances.benzodiazepines.triggers.2": "Insomnie",
   "quit.substances.benzodiazepines.triggers.3": "Situații sociale",
   "quit.substances.benzodiazepines.triggers.4": "Stres",
-  "quit.substances.benzodiazepines.triggers.5": "Călătorii"
+  "quit.substances.benzodiazepines.triggers.5": "Călătorii",
+  "quit.substances.benzodiazepines.calculator.inputs.pillsPerDay.label": "Pills per day",
+  "quit.substances.benzodiazepines.calculator.inputs.costPerPill.label": "Cost per pill",
+  "quit.substances.benzodiazepines.calculator.inputs.daysQuit.label": "Days Quit"
 }

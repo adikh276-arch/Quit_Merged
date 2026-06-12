@@ -195,5 +195,6 @@
   "quit.substances.tobacco.triggers.2": "Stress",
   "quit.substances.tobacco.triggers.3": "Sosial røyking",
   "quit.substances.tobacco.triggers.4": "Kjøring",
-  "quit.substances.tobacco.triggers.5": "Kaffe"
+  "quit.substances.tobacco.triggers.5": "Kaffe",
+  "quit.substances.tobacco.calculator.inputs.daysQuit.label": "Days Quit"
 }

@@ -169,5 +169,7 @@
   "quit.substances.stimulants.triggers.2": "社交场合",
   "quit.substances.stimulants.triggers.3": "沮丧",
   "quit.substances.stimulants.triggers.4": "疲劳",
-  "quit.substances.stimulants.triggers.5": "截止日期"
+  "quit.substances.stimulants.triggers.5": "截止日期",
+  "quit.substances.stimulants.calculator.inputs.gramsPerWeek.label": "Grams per week",
+  "quit.substances.stimulants.calculator.inputs.daysQuit.label": "Days Quit"
 }

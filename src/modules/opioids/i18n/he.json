@@ -221,5 +221,8 @@
   "quit.substances.opioids.triggers.2": "לחץ",
   "quit.substances.opioids.triggers.3": "אנשים מסוימים",
   "quit.substances.opioids.triggers.4": "מיקומים",
-  "quit.substances.opioids.triggers.5": "שעמום"
+  "quit.substances.opioids.triggers.5": "שעמום",
+  "quit.substances.opioids.calculator.inputs.pillsPerDay.label": "Pills/uses per day",
+  "quit.substances.opioids.calculator.inputs.costPerPill.label": "Cost per pill/use",
+  "quit.substances.opioids.calculator.inputs.daysQuit.label": "Days Quit"
 }

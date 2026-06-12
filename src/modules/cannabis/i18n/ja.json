@@ -155,5 +155,6 @@
   "quit.substances.cannabis.triggers.2": "ストレス",
   "quit.substances.cannabis.triggers.3": "社会的圧力",
   "quit.substances.cannabis.triggers.4": "睡眠の問題",
-  "quit.substances.cannabis.triggers.5": "不安"
+  "quit.substances.cannabis.triggers.5": "不安",
+  "quit.substances.cannabis.calculator.inputs.daysQuit.label": "Days Quit"
 }

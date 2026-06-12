@@ -239,5 +239,6 @@
   "quit.substances.alcohol.triggers.2": "शामें",
   "quit.substances.alcohol.triggers.3": "ऊब",
   "quit.substances.alcohol.triggers.4": "अकेलापन",
-  "quit.substances.alcohol.triggers.5": "समारोह"
+  "quit.substances.alcohol.triggers.5": "समारोह",
+  "quit.substances.alcohol.calculator.inputs.daysQuit.label": "Days Quit"
 }

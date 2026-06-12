@@ -156,5 +156,7 @@
   "quit.substances.kratom.triggers.2": "குறைந்த ஆற்றல்",
   "quit.substances.kratom.triggers.3": "கவலை",
   "quit.substances.kratom.triggers.4": "ஆன்லைன் மன்றங்கள்",
-  "quit.substances.kratom.triggers.5": "சலிப்பு"
+  "quit.substances.kratom.triggers.5": "சலிப்பு",
+  "quit.substances.kratom.calculator.inputs.costPerGram.label": "Cost per 100g",
+  "quit.substances.kratom.calculator.inputs.daysQuit.label": "Days Quit"
 }

@@ -239,5 +239,6 @@
   "quit.substances.alcohol.triggers.2": "Verveling",
   "quit.substances.alcohol.triggers.3": "Verveling",
   "quit.substances.alcohol.triggers.4": "Eenzaamheid",
-  "quit.substances.alcohol.triggers.5": "Vieringen"
+  "quit.substances.alcohol.triggers.5": "Vieringen",
+  "quit.substances.alcohol.calculator.inputs.daysQuit.label": "Days Quit"
 }

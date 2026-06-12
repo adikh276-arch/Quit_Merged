@@ -156,5 +156,7 @@
   "quit.substances.kratom.triggers.2": "Baixa energia",
   "quit.substances.kratom.triggers.3": "Ansiedade",
   "quit.substances.kratom.triggers.4": "Fóruns on-line",
-  "quit.substances.kratom.triggers.5": "Tédio"
+  "quit.substances.kratom.triggers.5": "Tédio",
+  "quit.substances.kratom.calculator.inputs.costPerGram.label": "Cost per 100g",
+  "quit.substances.kratom.calculator.inputs.daysQuit.label": "Days Quit"
 }

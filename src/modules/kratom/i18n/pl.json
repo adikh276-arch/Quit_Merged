@@ -156,5 +156,7 @@
   "quit.substances.kratom.triggers.2": "Niska energia",
   "quit.substances.kratom.triggers.3": "Lęk",
   "quit.substances.kratom.triggers.4": "Fora internetowe",
-  "quit.substances.kratom.triggers.5": "Nuda"
+  "quit.substances.kratom.triggers.5": "Nuda",
+  "quit.substances.kratom.calculator.inputs.costPerGram.label": "Cost per 100g",
+  "quit.substances.kratom.calculator.inputs.daysQuit.label": "Days Quit"
 }

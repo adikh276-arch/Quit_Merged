@@ -155,5 +155,6 @@
   "quit.substances.cannabis.triggers.2": "Stressi",
   "quit.substances.cannabis.triggers.3": "Sosiaalinen paine",
   "quit.substances.cannabis.triggers.4": "Uniongelmat",
-  "quit.substances.cannabis.triggers.5": "Ahdistus"
+  "quit.substances.cannabis.triggers.5": "Ahdistus",
+  "quit.substances.cannabis.calculator.inputs.daysQuit.label": "Days Quit"
 }

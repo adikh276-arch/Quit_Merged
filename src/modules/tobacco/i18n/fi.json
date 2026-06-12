@@ -195,5 +195,6 @@
   "quit.substances.tobacco.triggers.2": "Stressi",
   "quit.substances.tobacco.triggers.3": "Sosiaalinen tupakointi",
   "quit.substances.tobacco.triggers.4": "Ajaminen",
-  "quit.substances.tobacco.triggers.5": "Kahvi"
+  "quit.substances.tobacco.triggers.5": "Kahvi",
+  "quit.substances.tobacco.calculator.inputs.daysQuit.label": "Days Quit"
 }

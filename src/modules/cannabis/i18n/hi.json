@@ -155,5 +155,6 @@
   "quit.substances.cannabis.triggers.2": "तनाव",
   "quit.substances.cannabis.triggers.3": "सामाजिक दबाव",
   "quit.substances.cannabis.triggers.4": "नींद की समस्या",
-  "quit.substances.cannabis.triggers.5": "चिंता"
+  "quit.substances.cannabis.triggers.5": "चिंता",
+  "quit.substances.cannabis.calculator.inputs.daysQuit.label": "Days Quit"
 }

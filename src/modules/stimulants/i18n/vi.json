@@ -169,5 +169,7 @@
   "quit.substances.stimulants.triggers.2": "Cài đặt xã hội",
   "quit.substances.stimulants.triggers.3": "Trầm cảm",
   "quit.substances.stimulants.triggers.4": "Mệt mỏi",
-  "quit.substances.stimulants.triggers.5": "thời hạn"
+  "quit.substances.stimulants.triggers.5": "thời hạn",
+  "quit.substances.stimulants.calculator.inputs.gramsPerWeek.label": "Grams per week",
+  "quit.substances.stimulants.calculator.inputs.daysQuit.label": "Days Quit"
 }

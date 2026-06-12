@@ -156,5 +156,7 @@
   "quit.substances.kratom.triggers.2": "Năng lượng thấp",
   "quit.substances.kratom.triggers.3": "Sự lo lắng",
   "quit.substances.kratom.triggers.4": "Diễn đàn trực tuyến",
-  "quit.substances.kratom.triggers.5": "Nhàm chán"
+  "quit.substances.kratom.triggers.5": "Nhàm chán",
+  "quit.substances.kratom.calculator.inputs.costPerGram.label": "Cost per 100g",
+  "quit.substances.kratom.calculator.inputs.daysQuit.label": "Days Quit"
 }

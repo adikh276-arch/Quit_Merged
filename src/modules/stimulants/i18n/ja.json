@@ -169,5 +169,7 @@
   "quit.substances.stimulants.triggers.2": "ソーシャル設定",
   "quit.substances.stimulants.triggers.3": "うつ",
   "quit.substances.stimulants.triggers.4": "倦怠感",
-  "quit.substances.stimulants.triggers.5": "締め切り"
+  "quit.substances.stimulants.triggers.5": "締め切り",
+  "quit.substances.stimulants.calculator.inputs.gramsPerWeek.label": "Grams per week",
+  "quit.substances.stimulants.calculator.inputs.daysQuit.label": "Days Quit"
 }

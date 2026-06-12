@@ -239,5 +239,6 @@
   "quit.substances.alcohol.triggers.2": "மாலை நேரங்கள்",
   "quit.substances.alcohol.triggers.3": "சலிப்பு",
   "quit.substances.alcohol.triggers.4": "தனிமை",
-  "quit.substances.alcohol.triggers.5": "கொண்டாட்டங்கள்"
+  "quit.substances.alcohol.triggers.5": "கொண்டாட்டங்கள்",
+  "quit.substances.alcohol.calculator.inputs.daysQuit.label": "Days Quit"
 }

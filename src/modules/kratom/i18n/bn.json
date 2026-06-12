@@ -156,5 +156,7 @@
   "quit.substances.kratom.triggers.2": "কম শক্তি",
   "quit.substances.kratom.triggers.3": "দুশ্চিন্তা",
   "quit.substances.kratom.triggers.4": "অনলাইন ফোরাম",
-  "quit.substances.kratom.triggers.5": "একঘেয়েমি"
+  "quit.substances.kratom.triggers.5": "একঘেয়েমি",
+  "quit.substances.kratom.calculator.inputs.costPerGram.label": "Cost per 100g",
+  "quit.substances.kratom.calculator.inputs.daysQuit.label": "Days Quit"
 }

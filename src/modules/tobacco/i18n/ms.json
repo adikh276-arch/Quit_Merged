@@ -195,5 +195,6 @@
   "quit.substances.tobacco.triggers.2": "Tekanan",
   "quit.substances.tobacco.triggers.3": "Merokok sosial",
   "quit.substances.tobacco.triggers.4": "Memandu",
-  "quit.substances.tobacco.triggers.5": "Kopi"
+  "quit.substances.tobacco.triggers.5": "Kopi",
+  "quit.substances.tobacco.calculator.inputs.daysQuit.label": "Days Quit"
 }

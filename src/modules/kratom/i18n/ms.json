@@ -156,5 +156,7 @@
   "quit.substances.kratom.triggers.2": "Tenaga rendah",
   "quit.substances.kratom.triggers.3": "Kebimbangan",
   "quit.substances.kratom.triggers.4": "Forum dalam talian",
-  "quit.substances.kratom.triggers.5": "Kebosanan"
+  "quit.substances.kratom.triggers.5": "Kebosanan",
+  "quit.substances.kratom.calculator.inputs.costPerGram.label": "Cost per 100g",
+  "quit.substances.kratom.calculator.inputs.daysQuit.label": "Days Quit"
 }

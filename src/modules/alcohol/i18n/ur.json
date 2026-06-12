@@ -239,5 +239,6 @@
   "quit.substances.alcohol.triggers.2": "شامیں",
   "quit.substances.alcohol.triggers.3": "بوریت",
   "quit.substances.alcohol.triggers.4": "تنہائی",
-  "quit.substances.alcohol.triggers.5": "تقریبات"
+  "quit.substances.alcohol.triggers.5": "تقریبات",
+  "quit.substances.alcohol.calculator.inputs.daysQuit.label": "Days Quit"
 }

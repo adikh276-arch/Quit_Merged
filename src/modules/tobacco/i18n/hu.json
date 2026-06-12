@@ -195,5 +195,6 @@
   "quit.substances.tobacco.triggers.2": "Stressz",
   "quit.substances.tobacco.triggers.3": "Társas dohányzás",
   "quit.substances.tobacco.triggers.4": "Vezetés",
-  "quit.substances.tobacco.triggers.5": "Kávé"
+  "quit.substances.tobacco.triggers.5": "Kávé",
+  "quit.substances.tobacco.calculator.inputs.daysQuit.label": "Days Quit"
 }

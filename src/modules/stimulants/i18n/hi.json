@@ -169,5 +169,7 @@
   "quit.substances.stimulants.triggers.2": "सामाजिक सेटिंग",
   "quit.substances.stimulants.triggers.3": "अवसाद",
   "quit.substances.stimulants.triggers.4": "थकान",
-  "quit.substances.stimulants.triggers.5": "समय सीमा"
+  "quit.substances.stimulants.triggers.5": "समय सीमा",
+  "quit.substances.stimulants.calculator.inputs.gramsPerWeek.label": "Grams per week",
+  "quit.substances.stimulants.calculator.inputs.daysQuit.label": "Days Quit"
 }

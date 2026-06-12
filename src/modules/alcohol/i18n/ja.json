@@ -239,5 +239,6 @@
   "quit.substances.alcohol.triggers.2": "退屈",
   "quit.substances.alcohol.triggers.3": "退屈",
   "quit.substances.alcohol.triggers.4": "孤独",
-  "quit.substances.alcohol.triggers.5": "お祝い"
+  "quit.substances.alcohol.triggers.5": "お祝い",
+  "quit.substances.alcohol.calculator.inputs.daysQuit.label": "Days Quit"
 }

@@ -155,5 +155,6 @@
   "quit.substances.cannabis.triggers.2": "دباؤ",
   "quit.substances.cannabis.triggers.3": "سماجی دباؤ",
   "quit.substances.cannabis.triggers.4": "نیند کے مسائل",
-  "quit.substances.cannabis.triggers.5": "پریشانی"
+  "quit.substances.cannabis.triggers.5": "پریشانی",
+  "quit.substances.cannabis.calculator.inputs.daysQuit.label": "Days Quit"
 }

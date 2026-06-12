@@ -156,5 +156,7 @@
   "quit.substances.kratom.triggers.2": "कम ऊर्जा",
   "quit.substances.kratom.triggers.3": "चिंता",
   "quit.substances.kratom.triggers.4": "ऑनलाइन मंच",
-  "quit.substances.kratom.triggers.5": "ऊब"
+  "quit.substances.kratom.triggers.5": "ऊब",
+  "quit.substances.kratom.calculator.inputs.costPerGram.label": "Cost per 100g",
+  "quit.substances.kratom.calculator.inputs.daysQuit.label": "Days Quit"
 }

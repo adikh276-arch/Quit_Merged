@@ -160,5 +160,8 @@
   "quit.substances.benzodiazepines.triggers.2": "Hindi pagkakatulog",
   "quit.substances.benzodiazepines.triggers.3": "Mga sitwasyong panlipunan",
   "quit.substances.benzodiazepines.triggers.4": "Stress",
-  "quit.substances.benzodiazepines.triggers.5": "Paglalakbay"
+  "quit.substances.benzodiazepines.triggers.5": "Paglalakbay",
+  "quit.substances.benzodiazepines.calculator.inputs.pillsPerDay.label": "Pills per day",
+  "quit.substances.benzodiazepines.calculator.inputs.costPerPill.label": "Cost per pill",
+  "quit.substances.benzodiazepines.calculator.inputs.daysQuit.label": "Days Quit"
 }

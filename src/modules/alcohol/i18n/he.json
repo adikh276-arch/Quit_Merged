@@ -239,5 +239,6 @@
   "quit.substances.alcohol.triggers.2": "ערבים",
   "quit.substances.alcohol.triggers.3": "שעמום",
   "quit.substances.alcohol.triggers.4": "בדידות",
-  "quit.substances.alcohol.triggers.5": "חגיגות"
+  "quit.substances.alcohol.triggers.5": "חגיגות",
+  "quit.substances.alcohol.calculator.inputs.daysQuit.label": "Days Quit"
 }

@@ -195,5 +195,6 @@
   "quit.substances.tobacco.triggers.2": "Στρες",
   "quit.substances.tobacco.triggers.3": "Κοινωνικό κάπνισμα",
   "quit.substances.tobacco.triggers.4": "Οδήγηση",
-  "quit.substances.tobacco.triggers.5": "Καφές"
+  "quit.substances.tobacco.triggers.5": "Καφές",
+  "quit.substances.tobacco.calculator.inputs.daysQuit.label": "Days Quit"
 }

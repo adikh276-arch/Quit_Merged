@@ -160,5 +160,8 @@
   "quit.substances.benzodiazepines.triggers.2": "अनिद्रा",
   "quit.substances.benzodiazepines.triggers.3": "सामाजिक स्थितियाँ",
   "quit.substances.benzodiazepines.triggers.4": "तनाव",
-  "quit.substances.benzodiazepines.triggers.5": "यात्रा"
+  "quit.substances.benzodiazepines.triggers.5": "यात्रा",
+  "quit.substances.benzodiazepines.calculator.inputs.pillsPerDay.label": "Pills per day",
+  "quit.substances.benzodiazepines.calculator.inputs.costPerPill.label": "Cost per pill",
+  "quit.substances.benzodiazepines.calculator.inputs.daysQuit.label": "Days Quit"
 }

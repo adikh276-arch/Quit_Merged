@@ -239,5 +239,6 @@
   "quit.substances.alcohol.triggers.2": "Seara",
   "quit.substances.alcohol.triggers.3": "Plictiseală",
   "quit.substances.alcohol.triggers.4": "Singurătate",
-  "quit.substances.alcohol.triggers.5": "Sărbători"
+  "quit.substances.alcohol.triggers.5": "Sărbători",
+  "quit.substances.alcohol.calculator.inputs.daysQuit.label": "Days Quit"
 }

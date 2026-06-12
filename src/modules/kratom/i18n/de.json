@@ -156,5 +156,7 @@
   "quit.substances.kratom.triggers.2": "Niedrige Energie",
   "quit.substances.kratom.triggers.3": "Angst",
   "quit.substances.kratom.triggers.4": "Online-Foren",
-  "quit.substances.kratom.triggers.5": "Langeweile"
+  "quit.substances.kratom.triggers.5": "Langeweile",
+  "quit.substances.kratom.calculator.inputs.costPerGram.label": "Cost per 100g",
+  "quit.substances.kratom.calculator.inputs.daysQuit.label": "Days Quit"
 }

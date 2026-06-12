@@ -156,5 +156,7 @@
   "quit.substances.kratom.triggers.2": "Низька енергія",
   "quit.substances.kratom.triggers.3": "Тривога",
   "quit.substances.kratom.triggers.4": "Онлайн-форуми",
-  "quit.substances.kratom.triggers.5": "Нудьга"
+  "quit.substances.kratom.triggers.5": "Нудьга",
+  "quit.substances.kratom.calculator.inputs.costPerGram.label": "Cost per 100g",
+  "quit.substances.kratom.calculator.inputs.daysQuit.label": "Days Quit"
 }

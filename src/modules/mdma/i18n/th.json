@@ -175,5 +175,8 @@
   "quit.substances.mdma.triggers.2": "ความกดดันทางสังคม",
   "quit.substances.mdma.triggers.3": "ภาวะซึมเศร้า",
   "quit.substances.mdma.triggers.4": "โฟโม่",
-  "quit.substances.mdma.triggers.5": "สุขภาพดีขึ้น"
+  "quit.substances.mdma.triggers.5": "สุขภาพดีขึ้น",
+  "quit.substances.mdma.calculator.inputs.pillsPerMonth.label": "Pills/uses per month",
+  "quit.substances.mdma.calculator.inputs.costPerPill.label": "Cost per pill/use",
+  "quit.substances.mdma.calculator.inputs.daysQuit.label": "Days Quit"
 }

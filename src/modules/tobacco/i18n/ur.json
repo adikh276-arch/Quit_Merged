@@ -195,5 +195,6 @@
   "quit.substances.tobacco.triggers.2": "دباؤ",
   "quit.substances.tobacco.triggers.3": "سماجی سگریٹ نوشی",
   "quit.substances.tobacco.triggers.4": "ڈرائیونگ",
-  "quit.substances.tobacco.triggers.5": "کافی"
+  "quit.substances.tobacco.triggers.5": "کافی",
+  "quit.substances.tobacco.calculator.inputs.daysQuit.label": "Days Quit"
 }

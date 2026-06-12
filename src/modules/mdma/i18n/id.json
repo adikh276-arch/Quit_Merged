@@ -175,5 +175,8 @@
   "quit.substances.mdma.triggers.2": "Tekanan sosial",
   "quit.substances.mdma.triggers.3": "Depresi",
   "quit.substances.mdma.triggers.4": "Minimal",
-  "quit.substances.mdma.triggers.5": "Acara musik"
+  "quit.substances.mdma.triggers.5": "Acara musik",
+  "quit.substances.mdma.calculator.inputs.pillsPerMonth.label": "Pills/uses per month",
+  "quit.substances.mdma.calculator.inputs.costPerPill.label": "Cost per pill/use",
+  "quit.substances.mdma.calculator.inputs.daysQuit.label": "Days Quit"
 }

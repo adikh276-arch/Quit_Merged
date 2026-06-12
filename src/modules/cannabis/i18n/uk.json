@@ -155,5 +155,6 @@
   "quit.substances.cannabis.triggers.2": "Стрес",
   "quit.substances.cannabis.triggers.3": "Соціальний тиск",
   "quit.substances.cannabis.triggers.4": "Проблеми зі сном",
-  "quit.substances.cannabis.triggers.5": "Тривога"
+  "quit.substances.cannabis.triggers.5": "Тривога",
+  "quit.substances.cannabis.calculator.inputs.daysQuit.label": "Days Quit"
 }

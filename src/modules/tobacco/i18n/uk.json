@@ -195,5 +195,6 @@
   "quit.substances.tobacco.triggers.2": "Стрес",
   "quit.substances.tobacco.triggers.3": "Соціальне куріння",
   "quit.substances.tobacco.triggers.4": "Водіння",
-  "quit.substances.tobacco.triggers.5": "Кава"
+  "quit.substances.tobacco.triggers.5": "Кава",
+  "quit.substances.tobacco.calculator.inputs.daysQuit.label": "Days Quit"
 }

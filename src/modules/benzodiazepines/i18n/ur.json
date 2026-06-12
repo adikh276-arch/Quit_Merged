@@ -160,5 +160,8 @@
   "quit.substances.benzodiazepines.triggers.2": "بے خوابی",
   "quit.substances.benzodiazepines.triggers.3": "سماجی حالات",
   "quit.substances.benzodiazepines.triggers.4": "دباؤ",
-  "quit.substances.benzodiazepines.triggers.5": "سفر"
+  "quit.substances.benzodiazepines.triggers.5": "سفر",
+  "quit.substances.benzodiazepines.calculator.inputs.pillsPerDay.label": "Pills per day",
+  "quit.substances.benzodiazepines.calculator.inputs.costPerPill.label": "Cost per pill",
+  "quit.substances.benzodiazepines.calculator.inputs.daysQuit.label": "Days Quit"
 }

@@ -239,5 +239,6 @@
   "quit.substances.alcohol.triggers.2": "malam hari",
   "quit.substances.alcohol.triggers.3": "Kebosanan",
   "quit.substances.alcohol.triggers.4": "Kesendirian",
-  "quit.substances.alcohol.triggers.5": "Perayaan"
+  "quit.substances.alcohol.triggers.5": "Perayaan",
+  "quit.substances.alcohol.calculator.inputs.daysQuit.label": "Days Quit"
 }

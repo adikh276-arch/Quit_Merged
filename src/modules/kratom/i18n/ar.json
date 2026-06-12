@@ -156,5 +156,7 @@
   "quit.substances.kratom.triggers.2": "طاقة منخفضة",
   "quit.substances.kratom.triggers.3": "قلق",
   "quit.substances.kratom.triggers.4": "المنتديات على الانترنت",
-  "quit.substances.kratom.triggers.5": "ملل"
+  "quit.substances.kratom.triggers.5": "ملل",
+  "quit.substances.kratom.calculator.inputs.costPerGram.label": "Cost per 100g",
+  "quit.substances.kratom.calculator.inputs.daysQuit.label": "Days Quit"
 }

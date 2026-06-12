@@ -156,5 +156,7 @@
   "quit.substances.kratom.triggers.2": "Matala energia",
   "quit.substances.kratom.triggers.3": "Ahdistus",
   "quit.substances.kratom.triggers.4": "Verkkofoorumit",
-  "quit.substances.kratom.triggers.5": "Tylsyys"
+  "quit.substances.kratom.triggers.5": "Tylsyys",
+  "quit.substances.kratom.calculator.inputs.costPerGram.label": "Cost per 100g",
+  "quit.substances.kratom.calculator.inputs.daysQuit.label": "Days Quit"
 }

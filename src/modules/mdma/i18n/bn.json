@@ -175,5 +175,8 @@
   "quit.substances.mdma.triggers.2": "সামাজিক চাপ",
   "quit.substances.mdma.triggers.3": "বিষণ্নতা",
   "quit.substances.mdma.triggers.4": "FOMO",
-  "quit.substances.mdma.triggers.5": "ভালো স্বাস্থ্য"
+  "quit.substances.mdma.triggers.5": "ভালো স্বাস্থ্য",
+  "quit.substances.mdma.calculator.inputs.pillsPerMonth.label": "Pills/uses per month",
+  "quit.substances.mdma.calculator.inputs.costPerPill.label": "Cost per pill/use",
+  "quit.substances.mdma.calculator.inputs.daysQuit.label": "Days Quit"
 }

@@ -239,5 +239,6 @@
   "quit.substances.alcohol.triggers.2": "Βράδια",
   "quit.substances.alcohol.triggers.3": "Ανία",
   "quit.substances.alcohol.triggers.4": "Μοναξιά",
-  "quit.substances.alcohol.triggers.5": "Εορτασμοί"
+  "quit.substances.alcohol.triggers.5": "Εορτασμοί",
+  "quit.substances.alcohol.calculator.inputs.daysQuit.label": "Days Quit"
 }

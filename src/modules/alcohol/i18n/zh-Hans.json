@@ -239,5 +239,6 @@
   "quit.substances.alcohol.triggers.2": "晚上",
   "quit.substances.alcohol.triggers.3": "无聊",
   "quit.substances.alcohol.triggers.4": "孤独",
-  "quit.substances.alcohol.triggers.5": "庆祝活动"
+  "quit.substances.alcohol.triggers.5": "庆祝活动",
+  "quit.substances.alcohol.calculator.inputs.daysQuit.label": "Days Quit"
 }

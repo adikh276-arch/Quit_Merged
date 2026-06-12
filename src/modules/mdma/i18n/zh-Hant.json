@@ -175,5 +175,8 @@
   "quit.substances.mdma.triggers.2": "社會壓力",
   "quit.substances.mdma.triggers.3": "憂鬱症",
   "quit.substances.mdma.triggers.4": "害怕錯過（FOMO）",
-  "quit.substances.mdma.triggers.5": "音樂活動"
+  "quit.substances.mdma.triggers.5": "音樂活動",
+  "quit.substances.mdma.calculator.inputs.pillsPerMonth.label": "Pills/uses per month",
+  "quit.substances.mdma.calculator.inputs.costPerPill.label": "Cost per pill/use",
+  "quit.substances.mdma.calculator.inputs.daysQuit.label": "Days Quit"
 }

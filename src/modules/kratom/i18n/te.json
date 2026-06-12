@@ -156,5 +156,7 @@
   "quit.substances.kratom.triggers.2": "తక్కువ శక్తి",
   "quit.substances.kratom.triggers.3": "ఆందోళన",
   "quit.substances.kratom.triggers.4": "ఆన్ లైన్ ఫోరమ్ లు",
-  "quit.substances.kratom.triggers.5": "విసుగు"
+  "quit.substances.kratom.triggers.5": "విసుగు",
+  "quit.substances.kratom.calculator.inputs.costPerGram.label": "Cost per 100g",
+  "quit.substances.kratom.calculator.inputs.daysQuit.label": "Days Quit"
 }

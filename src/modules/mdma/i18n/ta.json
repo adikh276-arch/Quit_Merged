@@ -175,5 +175,8 @@
   "quit.substances.mdma.triggers.2": "சமூக அழுத்தம்",
   "quit.substances.mdma.triggers.3": "மனச்சோர்வு",
   "quit.substances.mdma.triggers.4": "ஃபோமோ",
-  "quit.substances.mdma.triggers.5": "இசை நிகழ்வுகள்"
+  "quit.substances.mdma.triggers.5": "இசை நிகழ்வுகள்",
+  "quit.substances.mdma.calculator.inputs.pillsPerMonth.label": "Pills/uses per month",
+  "quit.substances.mdma.calculator.inputs.costPerPill.label": "Cost per pill/use",
+  "quit.substances.mdma.calculator.inputs.daysQuit.label": "Days Quit"
 }

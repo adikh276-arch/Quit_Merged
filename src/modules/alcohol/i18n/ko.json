@@ -239,5 +239,6 @@
   "quit.substances.alcohol.triggers.2": "저녁",
   "quit.substances.alcohol.triggers.3": "지루함",
   "quit.substances.alcohol.triggers.4": "외로움",
-  "quit.substances.alcohol.triggers.5": "축하"
+  "quit.substances.alcohol.triggers.5": "축하",
+  "quit.substances.alcohol.calculator.inputs.daysQuit.label": "Days Quit"
 }

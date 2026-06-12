@@ -169,5 +169,7 @@
   "quit.substances.stimulants.triggers.2": "Contexte sociale",
   "quit.substances.stimulants.triggers.3": "Depresie",
   "quit.substances.stimulants.triggers.4": "Oboseala",
-  "quit.substances.stimulants.triggers.5": "Termene limită"
+  "quit.substances.stimulants.triggers.5": "Termene limită",
+  "quit.substances.stimulants.calculator.inputs.gramsPerWeek.label": "Grams per week",
+  "quit.substances.stimulants.calculator.inputs.daysQuit.label": "Days Quit"
 }

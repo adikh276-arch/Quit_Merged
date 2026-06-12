@@ -239,5 +239,6 @@
   "quit.substances.alcohol.triggers.2": "Serate",
   "quit.substances.alcohol.triggers.3": "Noia",
   "quit.substances.alcohol.triggers.4": "Solitudine",
-  "quit.substances.alcohol.triggers.5": "Routine mattutina"
+  "quit.substances.alcohol.triggers.5": "Routine mattutina",
+  "quit.substances.alcohol.calculator.inputs.daysQuit.label": "Days Quit"
 }

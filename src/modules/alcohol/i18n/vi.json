@@ -239,5 +239,6 @@
   "quit.substances.alcohol.triggers.2": "Buổi tối",
   "quit.substances.alcohol.triggers.3": "Nhàm chán",
   "quit.substances.alcohol.triggers.4": "cô đơn",
-  "quit.substances.alcohol.triggers.5": "Lễ kỷ niệm"
+  "quit.substances.alcohol.triggers.5": "Lễ kỷ niệm",
+  "quit.substances.alcohol.calculator.inputs.daysQuit.label": "Days Quit"
 }

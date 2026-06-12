@@ -239,5 +239,6 @@
   "quit.substances.alcohol.triggers.2": "Illat",
   "quit.substances.alcohol.triggers.3": "Tylsyys",
   "quit.substances.alcohol.triggers.4": "Yksinäisyys",
-  "quit.substances.alcohol.triggers.5": "Juhlat"
+  "quit.substances.alcohol.triggers.5": "Juhlat",
+  "quit.substances.alcohol.calculator.inputs.daysQuit.label": "Days Quit"
 }

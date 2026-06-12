@@ -239,5 +239,6 @@
   "quit.substances.alcohol.triggers.2": "Gabi",
   "quit.substances.alcohol.triggers.3": "Pagkabagot",
   "quit.substances.alcohol.triggers.4": "Kalungkutan",
-  "quit.substances.alcohol.triggers.5": "Mga pagdiriwang"
+  "quit.substances.alcohol.triggers.5": "Mga pagdiriwang",
+  "quit.substances.alcohol.calculator.inputs.daysQuit.label": "Days Quit"
 }

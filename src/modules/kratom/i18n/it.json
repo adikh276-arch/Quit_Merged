@@ -156,5 +156,7 @@
   "quit.substances.kratom.triggers.2": "Bassa energia",
   "quit.substances.kratom.triggers.3": "Ansia",
   "quit.substances.kratom.triggers.4": "Depressione",
-  "quit.substances.kratom.triggers.5": "FOMO"
+  "quit.substances.kratom.triggers.5": "FOMO",
+  "quit.substances.kratom.calculator.inputs.costPerGram.label": "Cost per 100g",
+  "quit.substances.kratom.calculator.inputs.daysQuit.label": "Days Quit"
 }

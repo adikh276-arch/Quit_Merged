@@ -156,5 +156,7 @@
   "quit.substances.kratom.triggers.2": "Låg energi",
   "quit.substances.kratom.triggers.3": "Ångest",
   "quit.substances.kratom.triggers.4": "Onlineforum",
-  "quit.substances.kratom.triggers.5": "Tristess"
+  "quit.substances.kratom.triggers.5": "Tristess",
+  "quit.substances.kratom.calculator.inputs.costPerGram.label": "Cost per 100g",
+  "quit.substances.kratom.calculator.inputs.daysQuit.label": "Days Quit"
 }

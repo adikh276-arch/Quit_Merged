@@ -155,5 +155,6 @@
   "quit.substances.cannabis.triggers.2": "스트레스",
   "quit.substances.cannabis.triggers.3": "사회적 압력",
   "quit.substances.cannabis.triggers.4": "수면 문제",
-  "quit.substances.cannabis.triggers.5": "불안"
+  "quit.substances.cannabis.triggers.5": "불안",
+  "quit.substances.cannabis.calculator.inputs.daysQuit.label": "Days Quit"
 }

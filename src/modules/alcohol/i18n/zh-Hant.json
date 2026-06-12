@@ -239,5 +239,6 @@
   "quit.substances.alcohol.triggers.2": "晚間節目",
   "quit.substances.alcohol.triggers.3": "無聊",
   "quit.substances.alcohol.triggers.4": "孤獨",
-  "quit.substances.alcohol.triggers.5": "慶典"
+  "quit.substances.alcohol.triggers.5": "慶典",
+  "quit.substances.alcohol.calculator.inputs.daysQuit.label": "Days Quit"
 }

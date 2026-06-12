@@ -239,5 +239,6 @@
   "quit.substances.alcohol.triggers.2": "Večery",
   "quit.substances.alcohol.triggers.3": "Nuda",
   "quit.substances.alcohol.triggers.4": "Samota",
-  "quit.substances.alcohol.triggers.5": "Oslavy"
+  "quit.substances.alcohol.triggers.5": "Oslavy",
+  "quit.substances.alcohol.calculator.inputs.daysQuit.label": "Days Quit"
 }

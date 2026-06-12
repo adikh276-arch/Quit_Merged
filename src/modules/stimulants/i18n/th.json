@@ -169,5 +169,7 @@
   "quit.substances.stimulants.triggers.2": "การตั้งค่าทางสังคม",
   "quit.substances.stimulants.triggers.3": "ภาวะซึมเศร้า",
   "quit.substances.stimulants.triggers.4": "ความเหนื่อยล้า",
-  "quit.substances.stimulants.triggers.5": "กำหนดเวลา"
+  "quit.substances.stimulants.triggers.5": "กำหนดเวลา",
+  "quit.substances.stimulants.calculator.inputs.gramsPerWeek.label": "Grams per week",
+  "quit.substances.stimulants.calculator.inputs.daysQuit.label": "Days Quit"
 }

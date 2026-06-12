@@ -169,5 +169,7 @@
   "quit.substances.stimulants.triggers.2": "הקשרים חברתיים",
   "quit.substances.stimulants.triggers.3": "דיכאון כלכלי",
   "quit.substances.stimulants.triggers.4": "עייפות",
-  "quit.substances.stimulants.triggers.5": "מועדים סופיים"
+  "quit.substances.stimulants.triggers.5": "מועדים סופיים",
+  "quit.substances.stimulants.calculator.inputs.gramsPerWeek.label": "Grams per week",
+  "quit.substances.stimulants.calculator.inputs.daysQuit.label": "Days Quit"
 }

@@ -195,5 +195,6 @@
   "quit.substances.tobacco.triggers.2": "ఒత్తిడి",
   "quit.substances.tobacco.triggers.3": "సామాజిక ధూమపానం",
   "quit.substances.tobacco.triggers.4": "డ్రైవింగ్",
-  "quit.substances.tobacco.triggers.5": "కాఫీ"
+  "quit.substances.tobacco.triggers.5": "కాఫీ",
+  "quit.substances.tobacco.calculator.inputs.daysQuit.label": "Days Quit"
 }

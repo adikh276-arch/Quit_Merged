@@ -156,5 +156,7 @@
   "quit.substances.kratom.triggers.2": "낮은 에너지",
   "quit.substances.kratom.triggers.3": "불안",
   "quit.substances.kratom.triggers.4": "온라인 포럼",
-  "quit.substances.kratom.triggers.5": "지루함"
+  "quit.substances.kratom.triggers.5": "지루함",
+  "quit.substances.kratom.calculator.inputs.costPerGram.label": "Cost per 100g",
+  "quit.substances.kratom.calculator.inputs.daysQuit.label": "Days Quit"
 }

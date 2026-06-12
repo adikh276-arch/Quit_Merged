@@ -221,5 +221,8 @@
   "quit.substances.opioids.triggers.2": "ストレス",
   "quit.substances.opioids.triggers.3": "特定の人々",
   "quit.substances.opioids.triggers.4": "所在地",
-  "quit.substances.opioids.triggers.5": "退屈"
+  "quit.substances.opioids.triggers.5": "退屈",
+  "quit.substances.opioids.calculator.inputs.pillsPerDay.label": "Pills/uses per day",
+  "quit.substances.opioids.calculator.inputs.costPerPill.label": "Cost per pill/use",
+  "quit.substances.opioids.calculator.inputs.daysQuit.label": "Days Quit"
 }

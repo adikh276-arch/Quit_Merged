@@ -155,5 +155,6 @@
   "quit.substances.cannabis.triggers.2": "ความเครียด",
   "quit.substances.cannabis.triggers.3": "ความกดดันทางสังคม",
   "quit.substances.cannabis.triggers.4": "ปัญหาการนอนหลับ",
-  "quit.substances.cannabis.triggers.5": "ความวิตกกังวล"
+  "quit.substances.cannabis.triggers.5": "ความวิตกกังวล",
+  "quit.substances.cannabis.calculator.inputs.daysQuit.label": "Days Quit"
 }

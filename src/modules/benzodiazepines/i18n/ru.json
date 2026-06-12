@@ -160,5 +160,8 @@
   "quit.substances.benzodiazepines.triggers.2": "Бессонница",
   "quit.substances.benzodiazepines.triggers.3": "Стресс",
   "quit.substances.benzodiazepines.triggers.4": "Стресс",
-  "quit.substances.benzodiazepines.triggers.5": "Путешествовать"
+  "quit.substances.benzodiazepines.triggers.5": "Путешествовать",
+  "quit.substances.benzodiazepines.calculator.inputs.pillsPerDay.label": "Pills per day",
+  "quit.substances.benzodiazepines.calculator.inputs.costPerPill.label": "Cost per pill",
+  "quit.substances.benzodiazepines.calculator.inputs.daysQuit.label": "Days Quit"
 }

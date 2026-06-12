@@ -195,5 +195,6 @@
   "quit.substances.tobacco.triggers.2": "Stres",
   "quit.substances.tobacco.triggers.3": "Fumatul social",
   "quit.substances.tobacco.triggers.4": "Conducere",
-  "quit.substances.tobacco.triggers.5": "Cafea"
+  "quit.substances.tobacco.triggers.5": "Cafea",
+  "quit.substances.tobacco.calculator.inputs.daysQuit.label": "Days Quit"
 }

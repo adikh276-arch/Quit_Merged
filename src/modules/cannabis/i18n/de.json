@@ -155,5 +155,6 @@
   "quit.substances.cannabis.triggers.2": "Sozialer Druck",
   "quit.substances.cannabis.triggers.3": "Angst",
   "quit.substances.cannabis.triggers.4": "Schlafprobleme",
-  "quit.substances.cannabis.triggers.5": "Angst"
+  "quit.substances.cannabis.triggers.5": "Angst",
+  "quit.substances.cannabis.calculator.inputs.daysQuit.label": "Days Quit"
 }

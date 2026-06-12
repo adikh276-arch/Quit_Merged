@@ -221,5 +221,8 @@
   "quit.substances.opioids.triggers.2": "Nhấn mạnh",
   "quit.substances.opioids.triggers.3": "Một số người",
   "quit.substances.opioids.triggers.4": "Địa điểm",
-  "quit.substances.opioids.triggers.5": "Thói quen buổi tối"
+  "quit.substances.opioids.triggers.5": "Thói quen buổi tối",
+  "quit.substances.opioids.calculator.inputs.pillsPerDay.label": "Pills/uses per day",
+  "quit.substances.opioids.calculator.inputs.costPerPill.label": "Cost per pill/use",
+  "quit.substances.opioids.calculator.inputs.daysQuit.label": "Days Quit"
 }

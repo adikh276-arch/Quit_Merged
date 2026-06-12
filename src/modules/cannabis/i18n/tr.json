@@ -155,5 +155,6 @@
   "quit.substances.cannabis.triggers.2": "Stres",
   "quit.substances.cannabis.triggers.3": "Sosyal baskı",
   "quit.substances.cannabis.triggers.4": "Uyku sorunları",
-  "quit.substances.cannabis.triggers.5": "Endişe"
+  "quit.substances.cannabis.triggers.5": "Endişe",
+  "quit.substances.cannabis.calculator.inputs.daysQuit.label": "Days Quit"
 }

@@ -169,5 +169,7 @@
   "quit.substances.stimulants.triggers.2": "Sosiaaliset ympäristöt",
   "quit.substances.stimulants.triggers.3": "Lama",
   "quit.substances.stimulants.triggers.4": "Väsymys",
-  "quit.substances.stimulants.triggers.5": "Määräajat"
+  "quit.substances.stimulants.triggers.5": "Määräajat",
+  "quit.substances.stimulants.calculator.inputs.gramsPerWeek.label": "Grams per week",
+  "quit.substances.stimulants.calculator.inputs.daysQuit.label": "Days Quit"
 }

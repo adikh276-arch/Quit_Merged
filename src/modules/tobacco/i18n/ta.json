@@ -195,5 +195,6 @@
   "quit.substances.tobacco.triggers.2": "மன அழுத்தம்",
   "quit.substances.tobacco.triggers.3": "சமூக புகைபிடித்தல்",
   "quit.substances.tobacco.triggers.4": "வாகனம் ஓட்டுதல்",
-  "quit.substances.tobacco.triggers.5": "காபி"
+  "quit.substances.tobacco.triggers.5": "காபி",
+  "quit.substances.tobacco.calculator.inputs.daysQuit.label": "Days Quit"
 }

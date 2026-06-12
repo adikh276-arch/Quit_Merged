@@ -169,5 +169,7 @@
   "quit.substances.stimulants.triggers.2": "Sociale instellingen",
   "quit.substances.stimulants.triggers.3": "Depressie",
   "quit.substances.stimulants.triggers.4": "Vermoeidheid",
-  "quit.substances.stimulants.triggers.5": "Deadlines"
+  "quit.substances.stimulants.triggers.5": "Deadlines",
+  "quit.substances.stimulants.calculator.inputs.gramsPerWeek.label": "Grams per week",
+  "quit.substances.stimulants.calculator.inputs.daysQuit.label": "Days Quit"
 }

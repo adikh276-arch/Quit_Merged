@@ -221,5 +221,8 @@
   "quit.substances.opioids.triggers.2": "ఒత్తిడి",
   "quit.substances.opioids.triggers.3": "కొంతమంది వ్యక్తులు",
   "quit.substances.opioids.triggers.4": "స్థానాలు[మార్చు]",
-  "quit.substances.opioids.triggers.5": "విసుగు"
+  "quit.substances.opioids.triggers.5": "విసుగు",
+  "quit.substances.opioids.calculator.inputs.pillsPerDay.label": "Pills/uses per day",
+  "quit.substances.opioids.calculator.inputs.costPerPill.label": "Cost per pill/use",
+  "quit.substances.opioids.calculator.inputs.daysQuit.label": "Days Quit"
 }

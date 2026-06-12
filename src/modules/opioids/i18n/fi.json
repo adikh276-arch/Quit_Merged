@@ -221,5 +221,8 @@
   "quit.substances.opioids.triggers.2": "Stressi",
   "quit.substances.opioids.triggers.3": "Tietyt ihmiset",
   "quit.substances.opioids.triggers.4": "Sijainnit",
-  "quit.substances.opioids.triggers.5": "Tylsyys"
+  "quit.substances.opioids.triggers.5": "Tylsyys",
+  "quit.substances.opioids.calculator.inputs.pillsPerDay.label": "Pills/uses per day",
+  "quit.substances.opioids.calculator.inputs.costPerPill.label": "Cost per pill/use",
+  "quit.substances.opioids.calculator.inputs.daysQuit.label": "Days Quit"
 }

@@ -239,5 +239,6 @@
   "quit.substances.alcohol.triggers.2": "Вечори",
   "quit.substances.alcohol.triggers.3": "Нудьга",
   "quit.substances.alcohol.triggers.4": "Самотність",
-  "quit.substances.alcohol.triggers.5": "Святкування"
+  "quit.substances.alcohol.triggers.5": "Святкування",
+  "quit.substances.alcohol.calculator.inputs.daysQuit.label": "Days Quit"
 }

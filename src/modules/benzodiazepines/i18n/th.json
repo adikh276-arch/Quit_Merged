@@ -160,5 +160,8 @@
   "quit.substances.benzodiazepines.triggers.2": "นอนไม่หลับ",
   "quit.substances.benzodiazepines.triggers.3": "สถานการณ์ทางสังคม",
   "quit.substances.benzodiazepines.triggers.4": "ความเครียด",
-  "quit.substances.benzodiazepines.triggers.5": "การท่องเที่ยว"
+  "quit.substances.benzodiazepines.triggers.5": "การท่องเที่ยว",
+  "quit.substances.benzodiazepines.calculator.inputs.pillsPerDay.label": "Pills per day",
+  "quit.substances.benzodiazepines.calculator.inputs.costPerPill.label": "Cost per pill",
+  "quit.substances.benzodiazepines.calculator.inputs.daysQuit.label": "Days Quit"
 }

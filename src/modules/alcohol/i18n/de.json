@@ -239,5 +239,6 @@
   "quit.substances.alcohol.triggers.2": "Abends",
   "quit.substances.alcohol.triggers.3": "Langeweile",
   "quit.substances.alcohol.triggers.4": "Einsamkeit",
-  "quit.substances.alcohol.triggers.5": "Feierlichkeiten"
+  "quit.substances.alcohol.triggers.5": "Feierlichkeiten",
+  "quit.substances.alcohol.calculator.inputs.daysQuit.label": "Days Quit"
 }

@@ -221,5 +221,8 @@
   "quit.substances.opioids.triggers.2": "ความเครียด",
   "quit.substances.opioids.triggers.3": "คนบางคน",
   "quit.substances.opioids.triggers.4": "สถานที่",
-  "quit.substances.opioids.triggers.5": "ความเบื่อหน่าย"
+  "quit.substances.opioids.triggers.5": "ความเบื่อหน่าย",
+  "quit.substances.opioids.calculator.inputs.pillsPerDay.label": "Pills/uses per day",
+  "quit.substances.opioids.calculator.inputs.costPerPill.label": "Cost per pill/use",
+  "quit.substances.opioids.calculator.inputs.daysQuit.label": "Days Quit"
 }

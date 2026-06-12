@@ -169,5 +169,7 @@
   "quit.substances.stimulants.triggers.2": "Společenské prostředí",
   "quit.substances.stimulants.triggers.3": "Deprese",
   "quit.substances.stimulants.triggers.4": "Únava",
-  "quit.substances.stimulants.triggers.5": "Termíny"
+  "quit.substances.stimulants.triggers.5": "Termíny",
+  "quit.substances.stimulants.calculator.inputs.gramsPerWeek.label": "Grams per week",
+  "quit.substances.stimulants.calculator.inputs.daysQuit.label": "Days Quit"
 }

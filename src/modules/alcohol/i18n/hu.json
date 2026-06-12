@@ -239,5 +239,6 @@
   "quit.substances.alcohol.triggers.2": "Esték",
   "quit.substances.alcohol.triggers.3": "Unalom",
   "quit.substances.alcohol.triggers.4": "Magány",
-  "quit.substances.alcohol.triggers.5": "Ünnepségek"
+  "quit.substances.alcohol.triggers.5": "Ünnepségek",
+  "quit.substances.alcohol.calculator.inputs.daysQuit.label": "Days Quit"
 }

@@ -175,5 +175,8 @@
   "quit.substances.mdma.triggers.2": "Κοινωνική πίεση",
   "quit.substances.mdma.triggers.3": "Κατάθλιψη",
   "quit.substances.mdma.triggers.4": "ΦΟΜΟ",
-  "quit.substances.mdma.triggers.5": "Μουσικές εκδηλώσεις"
+  "quit.substances.mdma.triggers.5": "Μουσικές εκδηλώσεις",
+  "quit.substances.mdma.calculator.inputs.pillsPerMonth.label": "Pills/uses per month",
+  "quit.substances.mdma.calculator.inputs.costPerPill.label": "Cost per pill/use",
+  "quit.substances.mdma.calculator.inputs.daysQuit.label": "Days Quit"
 }

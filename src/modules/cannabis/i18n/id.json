@@ -155,5 +155,6 @@
   "quit.substances.cannabis.triggers.2": "Menekankan",
   "quit.substances.cannabis.triggers.3": "Tekanan sosial",
   "quit.substances.cannabis.triggers.4": "Masalah tidur",
-  "quit.substances.cannabis.triggers.5": "Kecemasan"
+  "quit.substances.cannabis.triggers.5": "Kecemasan",
+  "quit.substances.cannabis.calculator.inputs.daysQuit.label": "Days Quit"
 }

@@ -155,5 +155,6 @@
   "quit.substances.cannabis.triggers.2": "Στρες",
   "quit.substances.cannabis.triggers.3": "Κοινωνική πίεση",
   "quit.substances.cannabis.triggers.4": "Προβλήματα ύπνου",
-  "quit.substances.cannabis.triggers.5": "Ανησυχία"
+  "quit.substances.cannabis.triggers.5": "Ανησυχία",
+  "quit.substances.cannabis.calculator.inputs.daysQuit.label": "Days Quit"
 }

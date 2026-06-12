@@ -221,5 +221,8 @@
   "quit.substances.opioids.triggers.2": "Menekankan",
   "quit.substances.opioids.triggers.3": "Orang-orang tertentu",
   "quit.substances.opioids.triggers.4": "Lokasi",
-  "quit.substances.opioids.triggers.5": "Kebosanan"
+  "quit.substances.opioids.triggers.5": "Kebosanan",
+  "quit.substances.opioids.calculator.inputs.pillsPerDay.label": "Pills/uses per day",
+  "quit.substances.opioids.calculator.inputs.costPerPill.label": "Cost per pill/use",
+  "quit.substances.opioids.calculator.inputs.daysQuit.label": "Days Quit"
 }

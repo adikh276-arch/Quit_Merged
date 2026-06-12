@@ -160,5 +160,8 @@
   "quit.substances.benzodiazepines.triggers.2": "Saya tidak bisa tidur tanpanya",
   "quit.substances.benzodiazepines.triggers.3": "Situasi sosial",
   "quit.substances.benzodiazepines.triggers.4": "Menekankan",
-  "quit.substances.benzodiazepines.triggers.5": "Bepergian"
+  "quit.substances.benzodiazepines.triggers.5": "Bepergian",
+  "quit.substances.benzodiazepines.calculator.inputs.pillsPerDay.label": "Pills per day",
+  "quit.substances.benzodiazepines.calculator.inputs.costPerPill.label": "Cost per pill",
+  "quit.substances.benzodiazepines.calculator.inputs.daysQuit.label": "Days Quit"
 }

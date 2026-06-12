@@ -160,5 +160,8 @@
   "quit.substances.benzodiazepines.triggers.2": "Álmatlanság",
   "quit.substances.benzodiazepines.triggers.3": "Társadalmi helyzetek",
   "quit.substances.benzodiazepines.triggers.4": "Stressz",
-  "quit.substances.benzodiazepines.triggers.5": "Utazás"
+  "quit.substances.benzodiazepines.triggers.5": "Utazás",
+  "quit.substances.benzodiazepines.calculator.inputs.pillsPerDay.label": "Pills per day",
+  "quit.substances.benzodiazepines.calculator.inputs.costPerPill.label": "Cost per pill",
+  "quit.substances.benzodiazepines.calculator.inputs.daysQuit.label": "Days Quit"
 }

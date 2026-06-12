@@ -169,5 +169,7 @@
   "quit.substances.stimulants.triggers.2": "소셜 설정",
   "quit.substances.stimulants.triggers.3": "우울증",
   "quit.substances.stimulants.triggers.4": "피로",
-  "quit.substances.stimulants.triggers.5": "마감일"
+  "quit.substances.stimulants.triggers.5": "마감일",
+  "quit.substances.stimulants.calculator.inputs.gramsPerWeek.label": "Grams per week",
+  "quit.substances.stimulants.calculator.inputs.daysQuit.label": "Days Quit"
 }

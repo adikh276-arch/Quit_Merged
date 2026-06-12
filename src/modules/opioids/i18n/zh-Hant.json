@@ -221,5 +221,8 @@
   "quit.substances.opioids.triggers.2": "壓力",
   "quit.substances.opioids.triggers.3": "某些人",
   "quit.substances.opioids.triggers.4": "地點",
-  "quit.substances.opioids.triggers.5": "無聊"
+  "quit.substances.opioids.triggers.5": "無聊",
+  "quit.substances.opioids.calculator.inputs.pillsPerDay.label": "Pills/uses per day",
+  "quit.substances.opioids.calculator.inputs.costPerPill.label": "Cost per pill/use",
+  "quit.substances.opioids.calculator.inputs.daysQuit.label": "Days Quit"
 }

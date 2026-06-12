@@ -155,5 +155,6 @@
   "quit.substances.cannabis.triggers.2": "Una cosa che puoi fare OGGI per affrontare quella causa principale",
   "quit.substances.cannabis.triggers.3": "Pressione sociale",
   "quit.substances.cannabis.triggers.4": "Problemi di sonno",
-  "quit.substances.cannabis.triggers.5": "Ansia"
+  "quit.substances.cannabis.triggers.5": "Ansia",
+  "quit.substances.cannabis.calculator.inputs.daysQuit.label": "Days Quit"
 }

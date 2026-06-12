@@ -155,5 +155,6 @@
   "quit.substances.cannabis.triggers.2": "ضغط",
   "quit.substances.cannabis.triggers.3": "الضغط الاجتماعي",
   "quit.substances.cannabis.triggers.4": "مشاكل النوم",
-  "quit.substances.cannabis.triggers.5": "قلق"
+  "quit.substances.cannabis.triggers.5": "قلق",
+  "quit.substances.cannabis.calculator.inputs.daysQuit.label": "Days Quit"
 }

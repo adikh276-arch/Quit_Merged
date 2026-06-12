@@ -239,5 +239,6 @@
   "quit.substances.alcohol.triggers.2": "Kvelder",
   "quit.substances.alcohol.triggers.3": "Kjedsomhet",
   "quit.substances.alcohol.triggers.4": "Ensomhet",
-  "quit.substances.alcohol.triggers.5": "Feiringer"
+  "quit.substances.alcohol.triggers.5": "Feiringer",
+  "quit.substances.alcohol.calculator.inputs.daysQuit.label": "Days Quit"
 }

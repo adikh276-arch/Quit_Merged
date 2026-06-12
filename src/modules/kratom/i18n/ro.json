@@ -156,5 +156,7 @@
   "quit.substances.kratom.triggers.2": "Energie scăzută",
   "quit.substances.kratom.triggers.3": "Anxietate",
   "quit.substances.kratom.triggers.4": "Forumuri online",
-  "quit.substances.kratom.triggers.5": "Plictiseală"
+  "quit.substances.kratom.triggers.5": "Plictiseală",
+  "quit.substances.kratom.calculator.inputs.costPerGram.label": "Cost per 100g",
+  "quit.substances.kratom.calculator.inputs.daysQuit.label": "Days Quit"
 }

@@ -175,5 +175,8 @@
   "quit.substances.mdma.triggers.2": "社会压力",
   "quit.substances.mdma.triggers.3": "沮丧",
   "quit.substances.mdma.triggers.4": "错失恐惧症",
-  "quit.substances.mdma.triggers.5": "音乐活动"
+  "quit.substances.mdma.triggers.5": "音乐活动",
+  "quit.substances.mdma.calculator.inputs.pillsPerMonth.label": "Pills/uses per month",
+  "quit.substances.mdma.calculator.inputs.costPerPill.label": "Cost per pill/use",
+  "quit.substances.mdma.calculator.inputs.daysQuit.label": "Days Quit"
 }

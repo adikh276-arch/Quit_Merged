@@ -155,5 +155,6 @@
   "quit.substances.cannabis.triggers.2": "Stres",
   "quit.substances.cannabis.triggers.3": "Presja społeczna",
   "quit.substances.cannabis.triggers.4": "Problemy ze snem",
-  "quit.substances.cannabis.triggers.5": "Lęk"
+  "quit.substances.cannabis.triggers.5": "Lęk",
+  "quit.substances.cannabis.calculator.inputs.daysQuit.label": "Days Quit"
 }

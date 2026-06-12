@@ -239,5 +239,6 @@
   "quit.substances.alcohol.triggers.2": "Akşamlar",
   "quit.substances.alcohol.triggers.3": "Can sıkıntısı",
   "quit.substances.alcohol.triggers.4": "Yalnızlık",
-  "quit.substances.alcohol.triggers.5": "Kutlamalar"
+  "quit.substances.alcohol.triggers.5": "Kutlamalar",
+  "quit.substances.alcohol.calculator.inputs.daysQuit.label": "Days Quit"
 }

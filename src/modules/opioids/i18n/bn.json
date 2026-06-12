@@ -221,5 +221,8 @@
   "quit.substances.opioids.triggers.2": "মানসিক চাপ",
   "quit.substances.opioids.triggers.3": "নির্দিষ্ট কিছু মানুষ",
   "quit.substances.opioids.triggers.4": "অবস্থানসমূহ",
-  "quit.substances.opioids.triggers.5": "একঘেয়েমি"
+  "quit.substances.opioids.triggers.5": "একঘেয়েমি",
+  "quit.substances.opioids.calculator.inputs.pillsPerDay.label": "Pills/uses per day",
+  "quit.substances.opioids.calculator.inputs.costPerPill.label": "Cost per pill/use",
+  "quit.substances.opioids.calculator.inputs.daysQuit.label": "Days Quit"
 }

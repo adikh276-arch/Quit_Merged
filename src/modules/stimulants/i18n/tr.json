@@ -169,5 +169,7 @@
   "quit.substances.stimulants.triggers.2": "Sosyal ayarlar",
   "quit.substances.stimulants.triggers.3": "Depresyon",
   "quit.substances.stimulants.triggers.4": "Tükenmişlik",
-  "quit.substances.stimulants.triggers.5": "Son teslim tarihleri"
+  "quit.substances.stimulants.triggers.5": "Son teslim tarihleri",
+  "quit.substances.stimulants.calculator.inputs.gramsPerWeek.label": "Grams per week",
+  "quit.substances.stimulants.calculator.inputs.daysQuit.label": "Days Quit"
 }

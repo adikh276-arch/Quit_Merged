@@ -175,5 +175,8 @@
   "quit.substances.mdma.triggers.2": "사회적 압력",
   "quit.substances.mdma.triggers.3": "우울증",
   "quit.substances.mdma.triggers.4": "포모",
-  "quit.substances.mdma.triggers.5": "음악 이벤트"
+  "quit.substances.mdma.triggers.5": "음악 이벤트",
+  "quit.substances.mdma.calculator.inputs.pillsPerMonth.label": "Pills/uses per month",
+  "quit.substances.mdma.calculator.inputs.costPerPill.label": "Cost per pill/use",
+  "quit.substances.mdma.calculator.inputs.daysQuit.label": "Days Quit"
 }

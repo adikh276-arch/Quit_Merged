@@ -239,5 +239,6 @@
   "quit.substances.alcohol.triggers.2": "Kvällar",
   "quit.substances.alcohol.triggers.3": "Tristess",
   "quit.substances.alcohol.triggers.4": "Ensamhet",
-  "quit.substances.alcohol.triggers.5": "Firanden"
+  "quit.substances.alcohol.triggers.5": "Firanden",
+  "quit.substances.alcohol.calculator.inputs.daysQuit.label": "Days Quit"
 }

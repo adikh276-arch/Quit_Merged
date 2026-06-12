@@ -156,5 +156,7 @@
   "quit.substances.kratom.triggers.2": "Energía baja",
   "quit.substances.kratom.triggers.3": "Ansiedad",
   "quit.substances.kratom.triggers.4": "Foros en línea",
-  "quit.substances.kratom.triggers.5": "Aburrimiento"
+  "quit.substances.kratom.triggers.5": "Aburrimiento",
+  "quit.substances.kratom.calculator.inputs.costPerGram.label": "Cost per 100g",
+  "quit.substances.kratom.calculator.inputs.daysQuit.label": "Days Quit"
 }

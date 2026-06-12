@@ -155,5 +155,6 @@
   "quit.substances.cannabis.triggers.2": "Stressz",
   "quit.substances.cannabis.triggers.3": "Társadalmi nyomás",
   "quit.substances.cannabis.triggers.4": "Alvási problémák",
-  "quit.substances.cannabis.triggers.5": "Szorongás"
+  "quit.substances.cannabis.triggers.5": "Szorongás",
+  "quit.substances.cannabis.calculator.inputs.daysQuit.label": "Days Quit"
 }

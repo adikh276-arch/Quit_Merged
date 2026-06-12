@@ -239,5 +239,6 @@
   "quit.substances.alcohol.triggers.2": "ตอนเย็น",
   "quit.substances.alcohol.triggers.3": "ความเบื่อหน่าย",
   "quit.substances.alcohol.triggers.4": "ความเหงา",
-  "quit.substances.alcohol.triggers.5": "การเฉลิมฉลอง"
+  "quit.substances.alcohol.triggers.5": "การเฉลิมฉลอง",
+  "quit.substances.alcohol.calculator.inputs.daysQuit.label": "Days Quit"
 }

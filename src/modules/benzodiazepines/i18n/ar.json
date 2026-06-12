@@ -160,5 +160,8 @@
   "quit.substances.benzodiazepines.triggers.2": "أرق",
   "quit.substances.benzodiazepines.triggers.3": "المواقف الاجتماعية",
   "quit.substances.benzodiazepines.triggers.4": "ضغط",
-  "quit.substances.benzodiazepines.triggers.5": "يسافر"
+  "quit.substances.benzodiazepines.triggers.5": "يسافر",
+  "quit.substances.benzodiazepines.calculator.inputs.pillsPerDay.label": "Pills per day",
+  "quit.substances.benzodiazepines.calculator.inputs.costPerPill.label": "Cost per pill",
+  "quit.substances.benzodiazepines.calculator.inputs.daysQuit.label": "Days Quit"
 }

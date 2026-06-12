@@ -155,5 +155,6 @@
   "quit.substances.cannabis.triggers.2": "மன அழுத்தம்",
   "quit.substances.cannabis.triggers.3": "சமூக அழுத்தம்",
   "quit.substances.cannabis.triggers.4": "தூக்க பிரச்சினைகள்",
-  "quit.substances.cannabis.triggers.5": "கவலை"
+  "quit.substances.cannabis.triggers.5": "கவலை",
+  "quit.substances.cannabis.calculator.inputs.daysQuit.label": "Days Quit"
 }

@@ -156,5 +156,7 @@
   "quit.substances.kratom.triggers.2": "کم توانائی",
   "quit.substances.kratom.triggers.3": "پریشانی",
   "quit.substances.kratom.triggers.4": "آن لائن فورمز",
-  "quit.substances.kratom.triggers.5": "بوریت"
+  "quit.substances.kratom.triggers.5": "بوریت",
+  "quit.substances.kratom.calculator.inputs.costPerGram.label": "Cost per 100g",
+  "quit.substances.kratom.calculator.inputs.daysQuit.label": "Days Quit"
 }

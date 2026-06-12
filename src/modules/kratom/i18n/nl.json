@@ -156,5 +156,7 @@
   "quit.substances.kratom.triggers.2": "Lage energie",
   "quit.substances.kratom.triggers.3": "Spanning",
   "quit.substances.kratom.triggers.4": "Onlineforums",
-  "quit.substances.kratom.triggers.5": "Verveling"
+  "quit.substances.kratom.triggers.5": "Verveling",
+  "quit.substances.kratom.calculator.inputs.costPerGram.label": "Cost per 100g",
+  "quit.substances.kratom.calculator.inputs.daysQuit.label": "Days Quit"
 }

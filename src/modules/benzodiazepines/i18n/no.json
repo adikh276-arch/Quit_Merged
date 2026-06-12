@@ -160,5 +160,8 @@
   "quit.substances.benzodiazepines.triggers.2": "Søvnløshet",
   "quit.substances.benzodiazepines.triggers.3": "Sosiale situasjoner",
   "quit.substances.benzodiazepines.triggers.4": "Stress",
-  "quit.substances.benzodiazepines.triggers.5": "Reise"
+  "quit.substances.benzodiazepines.triggers.5": "Reise",
+  "quit.substances.benzodiazepines.calculator.inputs.pillsPerDay.label": "Pills per day",
+  "quit.substances.benzodiazepines.calculator.inputs.costPerPill.label": "Cost per pill",
+  "quit.substances.benzodiazepines.calculator.inputs.daysQuit.label": "Days Quit"
 }

@@ -195,5 +195,6 @@
   "quit.substances.tobacco.triggers.2": "Stres",
   "quit.substances.tobacco.triggers.3": "Sociální kouření",
   "quit.substances.tobacco.triggers.4": "Řízení",
-  "quit.substances.tobacco.triggers.5": "Káva"
+  "quit.substances.tobacco.triggers.5": "Káva",
+  "quit.substances.tobacco.calculator.inputs.daysQuit.label": "Days Quit"
 }

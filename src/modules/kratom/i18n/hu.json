@@ -156,5 +156,7 @@
   "quit.substances.kratom.triggers.2": "Alacsony energia",
   "quit.substances.kratom.triggers.3": "Szorongás",
   "quit.substances.kratom.triggers.4": "Online fórumok",
-  "quit.substances.kratom.triggers.5": "Unalom"
+  "quit.substances.kratom.triggers.5": "Unalom",
+  "quit.substances.kratom.calculator.inputs.costPerGram.label": "Cost per 100g",
+  "quit.substances.kratom.calculator.inputs.daysQuit.label": "Days Quit"
 }

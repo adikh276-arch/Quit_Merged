@@ -160,5 +160,8 @@
   "quit.substances.benzodiazepines.triggers.2": "Insomnia",
   "quit.substances.benzodiazepines.triggers.3": "Situasi sosial",
   "quit.substances.benzodiazepines.triggers.4": "Tekanan",
-  "quit.substances.benzodiazepines.triggers.5": "Perjalanan"
+  "quit.substances.benzodiazepines.triggers.5": "Perjalanan",
+  "quit.substances.benzodiazepines.calculator.inputs.pillsPerDay.label": "Pills per day",
+  "quit.substances.benzodiazepines.calculator.inputs.costPerPill.label": "Cost per pill",
+  "quit.substances.benzodiazepines.calculator.inputs.daysQuit.label": "Days Quit"
 }

@@ -156,5 +156,7 @@
   "quit.substances.kratom.triggers.2": "低能量",
   "quit.substances.kratom.triggers.3": "焦慮",
   "quit.substances.kratom.triggers.4": "線上論壇",
-  "quit.substances.kratom.triggers.5": "無聊"
+  "quit.substances.kratom.triggers.5": "無聊",
+  "quit.substances.kratom.calculator.inputs.costPerGram.label": "Cost per 100g",
+  "quit.substances.kratom.calculator.inputs.daysQuit.label": "Days Quit"
 }

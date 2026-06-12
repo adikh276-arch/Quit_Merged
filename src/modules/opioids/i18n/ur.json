@@ -221,5 +221,8 @@
   "quit.substances.opioids.triggers.2": "دباؤ",
   "quit.substances.opioids.triggers.3": "کچھ لوگ",
   "quit.substances.opioids.triggers.4": "مقامات",
-  "quit.substances.opioids.triggers.5": "بوریت"
+  "quit.substances.opioids.triggers.5": "بوریت",
+  "quit.substances.opioids.calculator.inputs.pillsPerDay.label": "Pills/uses per day",
+  "quit.substances.opioids.calculator.inputs.costPerPill.label": "Cost per pill/use",
+  "quit.substances.opioids.calculator.inputs.daysQuit.label": "Days Quit"
 }

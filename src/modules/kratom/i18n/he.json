@@ -156,5 +156,7 @@
   "quit.substances.kratom.triggers.2": "אנרגיה נמוכה",
   "quit.substances.kratom.triggers.3": "חרדה",
   "quit.substances.kratom.triggers.4": "פורומים מקוונים",
-  "quit.substances.kratom.triggers.5": "שעמום"
+  "quit.substances.kratom.triggers.5": "שעמום",
+  "quit.substances.kratom.calculator.inputs.costPerGram.label": "Cost per 100g",
+  "quit.substances.kratom.calculator.inputs.daysQuit.label": "Days Quit"
 }

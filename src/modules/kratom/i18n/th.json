@@ -156,5 +156,7 @@
   "quit.substances.kratom.triggers.2": "พลังงานต่ำ",
   "quit.substances.kratom.triggers.3": "ความวิตกกังวล",
   "quit.substances.kratom.triggers.4": "ฟอรั่มออนไลน์",
-  "quit.substances.kratom.triggers.5": "ความเบื่อหน่าย"
+  "quit.substances.kratom.triggers.5": "ความเบื่อหน่าย",
+  "quit.substances.kratom.calculator.inputs.costPerGram.label": "Cost per 100g",
+  "quit.substances.kratom.calculator.inputs.daysQuit.label": "Days Quit"
 }

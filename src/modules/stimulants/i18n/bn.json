@@ -169,5 +169,7 @@
   "quit.substances.stimulants.triggers.2": "সামাজিক সেটিংস",
   "quit.substances.stimulants.triggers.3": "বিষণ্নতা",
   "quit.substances.stimulants.triggers.4": "ক্লান্তি",
-  "quit.substances.stimulants.triggers.5": "সময়সীমা"
+  "quit.substances.stimulants.triggers.5": "সময়সীমা",
+  "quit.substances.stimulants.calculator.inputs.gramsPerWeek.label": "Grams per week",
+  "quit.substances.stimulants.calculator.inputs.daysQuit.label": "Days Quit"
 }

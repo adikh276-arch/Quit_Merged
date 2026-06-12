@@ -239,5 +239,6 @@
   "quit.substances.alcohol.triggers.2": "الأمسيات",
   "quit.substances.alcohol.triggers.3": "ملل",
   "quit.substances.alcohol.triggers.4": "الشعور بالوحدة",
-  "quit.substances.alcohol.triggers.5": "احتفالات"
+  "quit.substances.alcohol.triggers.5": "احتفالات",
+  "quit.substances.alcohol.calculator.inputs.daysQuit.label": "Days Quit"
 }

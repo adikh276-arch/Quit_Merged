@@ -160,5 +160,8 @@
   "quit.substances.benzodiazepines.triggers.2": "失眠",
   "quit.substances.benzodiazepines.triggers.3": "社交场合",
   "quit.substances.benzodiazepines.triggers.4": "压力",
-  "quit.substances.benzodiazepines.triggers.5": "旅行"
+  "quit.substances.benzodiazepines.triggers.5": "旅行",
+  "quit.substances.benzodiazepines.calculator.inputs.pillsPerDay.label": "Pills per day",
+  "quit.substances.benzodiazepines.calculator.inputs.costPerPill.label": "Cost per pill",
+  "quit.substances.benzodiazepines.calculator.inputs.daysQuit.label": "Days Quit"
 }

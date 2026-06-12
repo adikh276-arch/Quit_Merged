@@ -155,5 +155,6 @@
   "quit.substances.cannabis.triggers.2": "Stres",
   "quit.substances.cannabis.triggers.3": "Společenský tlak",
   "quit.substances.cannabis.triggers.4": "Problémy se spánkem",
-  "quit.substances.cannabis.triggers.5": "Úzkost"
+  "quit.substances.cannabis.triggers.5": "Úzkost",
+  "quit.substances.cannabis.calculator.inputs.daysQuit.label": "Days Quit"
 }

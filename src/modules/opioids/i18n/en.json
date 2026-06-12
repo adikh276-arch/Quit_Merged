@@ -221,5 +221,8 @@
   "quit.substances.opioids.triggers.2": "Stress",
   "quit.substances.opioids.triggers.3": "Certain people",
   "quit.substances.opioids.triggers.4": "Locations",
-  "quit.substances.opioids.triggers.5": "Boredom"
+  "quit.substances.opioids.triggers.5": "Boredom",
+  "quit.substances.opioids.calculator.inputs.pillsPerDay.label": "Pills/uses per day",
+  "quit.substances.opioids.calculator.inputs.costPerPill.label": "Cost per pill/use",
+  "quit.substances.opioids.calculator.inputs.daysQuit.label": "Days Quit"
 }
