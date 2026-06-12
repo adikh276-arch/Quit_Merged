@@ -6,6 +6,7 @@ import { TrackerConfig, SubstanceConfig } from '@/data/types';
 import { getEntries, saveEntry, todayStr, getEntry } from '@/data/storage';
 import { useTranslation } from 'react-i18next';
 import { analytics } from '@/lib/analytics';
+import { toast } from 'sonner';
 
 interface Props {
   tracker: TrackerConfig;
@@ -36,13 +37,58 @@ const TrackerDetail = ({ tracker, substance, onClose }: Props) => {
   }, []);
 
   const handleSave = () => {
-    const reportedUse =
-      values.drankToday === 'Yes' ||
-      values.smokedToday === 'Yes' ||
-      values.usedToday === 'Yes' ||
-      values.used_illicitly === 'Yes';
+    let isValid = true;
+    for (const field of tracker.fields) {
+      if (field.key === 'notes') continue;
 
-    saveEntry(substance.slug, tracker.id, todayStr(), { date: todayStr(), values, notes: values.notes || '' });
+      let isVisible = true;
+      if (field.showIf) {
+        const depValue = values[field.showIf.field];
+        const targetValue = field.showIf.value;
+        const op = field.showIf.op || '===';
+        if (op === '===') isVisible = depValue === targetValue;
+        else if (op === '!==') isVisible = depValue !== targetValue;
+        else if (op === '>') isVisible = depValue > targetValue;
+        else if (op === '<') isVisible = depValue < targetValue;
+      }
+      if (!isVisible) continue;
+
+      const val = values[field.key];
+      const isMissing = val === undefined || val === null || val === '' || (Array.isArray(val) && val.length === 0);
+
+      if (isMissing && field.type !== 'slider') {
+        const label = t(`quit.substances.${substance.slug}.trackers.${tracker.id}.fields.${field.key}.label`);
+        toast.error(`${label} is required.`);
+        isValid = false;
+        break;
+      }
+
+      if (field.type === 'slider' && val === 0 && (field.key.toLowerCase().includes('units') || field.key.toLowerCase().includes('amount') || field.key.toLowerCase().includes('spent'))) {
+         const drankKey = Object.keys(values).find(k => k.toLowerCase().includes('drank') || k.toLowerCase().includes('smoked') || k.toLowerCase().includes('used'));
+         if (drankKey && values[drankKey] === 'Yes') {
+            toast.error(`${t(`quit.substances.${substance.slug}.trackers.${tracker.id}.fields.${field.key}.label`)} cannot be 0 if you used today.`);
+            isValid = false;
+            break;
+         }
+      }
+    }
+
+    if (!isValid) return;
+
+    const finalValues = { ...values };
+    for (const field of tracker.fields) {
+      if (field.type === 'slider' && finalValues[field.key] === undefined) {
+         finalValues[field.key] = field.min ?? 0;
+      }
+    }
+
+    const reportedUse =
+      finalValues.drankToday === 'Yes' ||
+      finalValues.smokedToday === 'Yes' ||
+      finalValues.usedToday === 'Yes' ||
+      finalValues.used_illicitly === 'Yes';
+
+    saveEntry(substance.slug, tracker.id, todayStr(), { date: todayStr(), values: finalValues, notes: finalValues.notes || '' });
     analytics.trackLogSaved(substance.slug, {
       tracker_id: tracker.id,
       tracker_name: tracker.name,
@@ -50,6 +96,7 @@ const TrackerDetail = ({ tracker, substance, onClose }: Props) => {
       is_first_log_today: !todayEntry,
     });
     setSaved(true);
+    toast.success(t('quit.app.saved') || 'Entry saved successfully');
     setTimeout(() => onClose(), 800);
   };
 

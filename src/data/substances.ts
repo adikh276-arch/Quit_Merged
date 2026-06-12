@@ -144,19 +144,20 @@ export const substances: SubstanceConfig[] = [
         { key: 'costPerDrink', label: 'Cost per drink ', type: 'slider', min: 50, max: 1000, step: 50, defaultValue: 200 },
       ],
       compute: (inputs) => {
-        const weekly = inputs.drinksPerDay * inputs.drinkingDays;
-        const monthly = inputs.costPerDrink * inputs.drinksPerDay * inputs.drinkingDays * 4.3;
-        const yearly = monthly * 12;
+        const weeklyUnits = inputs.drinksPerDay * inputs.drinkingDays;
+        const weeklySpend = inputs.costPerDrink * inputs.drinksPerDay * inputs.drinkingDays;
+        const monthlySpend = weeklySpend * 4.345;
+        const yearlySpend = monthlySpend * 12;
         return [
-          { label: 'Weekly units', value: `${weekly} units`, color: weekly > 14 ? 'destructive' : 'primary' },
+          { label: 'Weekly units', value: weeklyUnits + ' units', color: weeklyUnits > 14 ? 'destructive' : 'primary' },
           { label: 'Safe limit', value: '14 units/week' },
-          { label: 'Monthly spend', value: `${Math.round(monthly).toLocaleString()}` },
-          { label: 'Yearly spend', value: `${Math.round(yearly).toLocaleString()}` },
-          { label: 'Liver risk', value: weekly > 35 ? 'High' : weekly > 14 ? 'Moderate' : 'Low', color: weekly > 35 ? 'destructive' : weekly > 14 ? 'accent' : 'primary' },
-          { label: '1-year savings if quit', value: `${Math.round(yearly).toLocaleString()}` },
+          { label: 'Weekly spend', value: Math.round(weeklySpend).toLocaleString() },
+          { label: 'Monthly spend', value: Math.round(monthlySpend).toLocaleString() },
+          { label: 'Yearly spend', value: Math.round(yearlySpend).toLocaleString() },
+          { label: 'Liver risk', value: weeklyUnits > 35 ? 'High' : weeklyUnits > 14 ? 'Moderate' : 'Low', color: weeklyUnits > 35 ? 'destructive' : weeklyUnits > 14 ? 'accent' : 'primary' },
         ];
       },
-      note: "Your liver begins regenerating within 72 hours of stopping.",
+      note: 'Your liver begins regenerating within 72 hours of stopping.',
     },
     activities: [
       {
@@ -304,16 +305,19 @@ export const substances: SubstanceConfig[] = [
       ],
       compute: (inputs) => {
         const daily = (inputs.cigarettesPerDay / 20) * inputs.costPerPack;
+        const monthly = daily * 30.416;
         const yearly = daily * 365;
         const total = yearly * inputs.yearsSmoked;
         return [
-          { label: 'Daily spend', value: `${Math.round(daily)}` },
-          { label: 'Yearly spend', value: `${Math.round(yearly).toLocaleString()}` },
-          { label: 'Total spent', value: `${Math.round(total).toLocaleString()}` },
+          { label: 'Daily spend', value: Math.round(daily).toLocaleString() },
+          { label: 'Monthly spend', value: Math.round(monthly).toLocaleString() },
+          { label: 'Yearly spend', value: Math.round(yearly).toLocaleString() },
+          { label: 'Total spent', value: Math.round(total).toLocaleString() },
           { label: 'Carcinogens per cigarette', value: '69 known' },
           { label: '10-year benefit', value: '72% lower lung cancer risk' },
         ];
       },
+      note: 'Heart rate drops to normal 20 minutes after your last cigarette.',
     },
     activities: [
       {
@@ -450,14 +454,26 @@ export const substances: SubstanceConfig[] = [
     calculator: {
       title: 'MME & Overdose Risk',
       inputs: [
-        { key: 'mgPerDay', label: 'mg per day', type: 'slider', min: 0, max: 500, step: 10, defaultValue: 60 },
+        { key: 'opioidType', label: 'Primary opioid', type: 'dropdown', options: [
+          { label: 'Morphine', value: 1 },
+          { label: 'Hydrocodone', value: 1 },
+          { label: 'Oxycodone', value: 1.5 },
+          { label: 'Codeine', value: 0.15 },
+          { label: 'Tramadol', value: 0.1 },
+          { label: 'Fentanyl (mcg/hr)', value: 2.4 }
+        ], defaultValue: 1 },
+        { key: 'dailyDose', label: 'Daily dose (mg or mcg/hr)', type: 'slider', min: 0, max: 500, step: 5, defaultValue: 40 },
         { key: 'bupDose', label: 'Buprenorphine dose (mg/day)', type: 'slider', min: 0, max: 32, step: 2, defaultValue: 8 },
       ],
-      compute: (inputs) => [
-        { label: 'Daily MME', value: `${inputs.mgPerDay} MME` },
-        { label: 'Overdose risk', value: inputs.mgPerDay > 90 ? 'High' : inputs.mgPerDay > 50 ? 'Elevated' : 'Moderate', color: inputs.mgPerDay > 90 ? 'destructive' : 'accent' },
-        { label: 'Naloxone note', value: 'Available free at government health centres' },
-      ],
+      compute: (inputs) => {
+        const mme = inputs.dailyDose * inputs.opioidType;
+        return [
+          { label: 'Daily MME', value: Math.round(mme) + ' MME' },
+          { label: 'Overdose risk', value: mme > 90 ? 'High' : mme > 50 ? 'Elevated' : 'Moderate', color: mme > 90 ? 'destructive' : mme > 50 ? 'accent' : 'primary' },
+          { label: 'Buprenorphine equivalent', value: 'Buprenorphine blocks other opioids' },
+          { label: 'Naloxone note', value: 'Available free at government health centres' },
+        ];
+      }
     },
     activities: [
       {
@@ -568,14 +584,17 @@ export const substances: SubstanceConfig[] = [
       ],
       compute: (inputs) => {
         const weekly = inputs.gramsPerWeek * inputs.costPerGram;
+        const monthly = weekly * 4.345;
+        const yearly = monthly * 12;
         return [
-          { label: 'Weekly spend', value: `${weekly.toLocaleString()}` },
-          { label: 'Monthly spend', value: `${Math.round(weekly * 4.3).toLocaleString()}` },
-          { label: 'Yearly spend', value: `${Math.round(weekly * 52).toLocaleString()}` },
+          { label: 'Weekly spend', value: Math.round(weekly).toLocaleString() },
+          { label: 'Monthly spend', value: Math.round(monthly).toLocaleString() },
+          { label: 'Yearly spend', value: Math.round(yearly).toLocaleString() },
           { label: 'THC clearance', value: 'Heavy users: 30-90 days' },
           { label: 'Cognitive recovery', value: '2-4 weeks for most functions' },
         ];
       },
+      note: 'Cannabis hyperemesis stops within days of complete cessation.',
     },
     activities: [
       {
@@ -677,13 +696,17 @@ export const substances: SubstanceConfig[] = [
       ],
       compute: (inputs) => {
         const weekly = inputs.gramsPerUse * inputs.timesPerWeek * inputs.costPerGram;
+        const monthly = weekly * 4.345;
+        const yearly = monthly * 12;
         return [
-          { label: 'Weekly spend', value: `${Math.round(weekly).toLocaleString()}` },
-          { label: 'Yearly spend', value: `${Math.round(weekly * 52).toLocaleString()}` },
+          { label: 'Weekly spend', value: Math.round(weekly).toLocaleString() },
+          { label: 'Monthly spend', value: Math.round(monthly).toLocaleString() },
+          { label: 'Yearly spend', value: Math.round(yearly).toLocaleString() },
           { label: 'Cardiovascular risk', value: 'Cocaine triples heart attack risk for 60 min after each use', color: 'destructive' },
           { label: 'Heart rate recovery', value: ' ~40 BPM within 21 days' },
         ];
       },
+      note: 'Dopamine receptors begin to upregulate after 14 days of abstinence.',
     },
     activities: [
       {
@@ -781,12 +804,13 @@ export const substances: SubstanceConfig[] = [
         const weeklyReduction = inputs.currentDose / inputs.taperWeeks;
         const rate = (weeklyReduction / inputs.currentDose) * 100;
         return [
-          { label: 'Weekly reduction', value: `${weeklyReduction.toFixed(2)} mg` },
-          { label: 'Taper rate', value: `${rate.toFixed(1)}%/week`, color: rate > 15 ? 'destructive' : rate > 10 ? 'accent' : 'primary' },
+          { label: 'Weekly reduction', value: weeklyReduction.toFixed(2) + ' mg' },
+          { label: 'Taper rate', value: rate.toFixed(1) + '%/week', color: rate > 15 ? 'destructive' : rate > 10 ? 'accent' : 'primary' },
           { label: 'Safety', value: rate > 15 ? 'Medical review needed' : rate > 10 ? 'Slightly fast' : 'Safe range' },
           { label: 'Disclaimer', value: 'Your doctor must approve all taper changes' },
         ];
       },
+      note: 'Never stop benzodiazepines abruptly due to seizure risk.',
     },
     activities: [
       {
@@ -896,13 +920,16 @@ export const substances: SubstanceConfig[] = [
       ],
       compute: (inputs) => {
         const daily = (inputs.gramsPerDay / 1000) * inputs.costPerKg;
+        const monthly = daily * 30.416;
+        const yearly = daily * 365;
         return [
-          { label: 'Daily cost', value: `${Math.round(daily)}` },
-          { label: 'Monthly cost', value: `${Math.round(daily * 30).toLocaleString()}` },
-          { label: 'Yearly cost', value: `${Math.round(daily * 365).toLocaleString()}` },
+          { label: 'Daily cost', value: Math.round(daily).toLocaleString() },
+          { label: 'Monthly cost', value: Math.round(monthly).toLocaleString() },
+          { label: 'Yearly cost', value: Math.round(yearly).toLocaleString() },
           { label: 'Opioid receptor binding', value: 'Mitragynine binds mu-opioid receptors' },
         ];
       },
+      note: 'Withdrawal mimics mild opioid withdrawal and lasts 3-7 days.',
     },
     activities: [
       {
@@ -1010,10 +1037,11 @@ export const substances: SubstanceConfig[] = [
         const risk = inputs.dosePerSession > 150 && inputs.sessionsPerMonth > 1 ? 'High' : inputs.sessionsPerMonth > 2 ? 'Moderate' : 'Low';
         return [
           { label: 'Neurotoxicity risk', value: risk, color: risk === 'High' ? 'destructive' : risk === 'Moderate' ? 'accent' : 'primary' },
-          { label: 'Recovery timeline', value: `${Math.round(inputs.yearsOfUse * 3)} months estimated` },
+          { label: 'Recovery timeline', value: Math.round(inputs.yearsOfUse * 3) + ' months estimated' },
           { label: 'Key note', value: 'Heavy use (>150mg, >monthly) causes lasting serotonin changes. Recovery is possible.' },
         ];
       },
+      note: 'The 3-month rule is recommended to prevent serotonin depletion.',
     },
     activities: [
       {
