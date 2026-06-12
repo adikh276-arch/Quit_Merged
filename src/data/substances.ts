@@ -139,21 +139,23 @@ export const substances: SubstanceConfig[] = [
     calculator: {
       title: 'Savings & Impact to Date',
       inputs: [
-        { key: 'drinksPerDay', label: 'Drinks per day', type: 'slider', min: 0, max: 20, step: 1, defaultValue: 4 },
-        { key: 'drinkingDays', label: 'Drinking days per week', type: 'slider', min: 0, max: 7, step: 1, defaultValue: 5 },
-        { key: 'costPerDrink', label: 'Cost per drink ', type: 'slider', min: 50, max: 1000, step: 50, defaultValue: 200 },
+        { key: 'drinksPerDay', label: 'Drinks per day', type: 'slider', min: 1, max: 20, step: 1, defaultValue: 4 },
+        { key: 'drinkingDays', label: 'Drinking days per week', type: 'slider', min: 1, max: 7, step: 1, defaultValue: 5 },
+        { key: 'costPerDrink', label: 'Cost per drink', type: 'slider', min: 50, max: 1000, step: 50, defaultValue: 200 },
         { key: 'daysQuit', label: 'Days Quit', type: 'slider', min: 1, max: 365, step: 1, defaultValue: 30 }
       ],
       compute: (inputs) => {
-        // UI-Consistent Math: Base everything off the EXACT rounded number shown on screen.
-        const rawDrinksAvoided = (inputs.drinksPerDay * inputs.drinkingDays / 7) * inputs.daysQuit;
-        const uiDrinksAvoided = Math.round(rawDrinksAvoided);
-        const moneySaved = uiDrinksAvoided * inputs.costPerDrink;
-        const caloriesAvoided = uiDrinksAvoided * 150;
-        
+        // Whole weeks + exact remainder days — no fractional daily averages
+        const fullWeeks = Math.floor(inputs.daysQuit / 7);
+        const remainderDays = inputs.daysQuit % 7;
+        const drinkingDaysInRemainder = Math.min(remainderDays, inputs.drinkingDays);
+        const totalDrinkingDays = (fullWeeks * inputs.drinkingDays) + drinkingDaysInRemainder;
+        const drinksAvoided = totalDrinkingDays * inputs.drinksPerDay;
+        const moneySaved = drinksAvoided * inputs.costPerDrink;
+        const caloriesAvoided = drinksAvoided * 150;
         return [
           { label: `Money saved (${inputs.daysQuit} days)`, value: '₹' + moneySaved.toLocaleString(), color: 'primary' },
-          { label: 'Drinks avoided', value: uiDrinksAvoided.toLocaleString() },
+          { label: 'Drinks avoided', value: drinksAvoided.toLocaleString() },
           { label: 'Empty calories avoided', value: caloriesAvoided.toLocaleString() + ' kcal' }
         ];
       },
@@ -299,21 +301,26 @@ export const substances: SubstanceConfig[] = [
     calculator: {
       title: 'Savings & Impact to Date',
       inputs: [
-        { key: 'cigarettesPerDay', label: 'Cigarettes per day', type: 'slider', min: 0, max: 60, step: 1, defaultValue: 15 },
-        { key: 'costPerPack', label: 'Cost per pack ', type: 'slider', min: 50, max: 500, step: 10, defaultValue: 250 },
+        { key: 'cigarettesPerDay', label: 'Cigarettes per day', type: 'slider', min: 1, max: 60, step: 1, defaultValue: 15 },
+        { key: 'costPerPack', label: 'Cost per pack (20 cigs)', type: 'slider', min: 50, max: 1000, step: 10, defaultValue: 250 },
         { key: 'daysQuit', label: 'Days Quit', type: 'slider', min: 1, max: 365, step: 1, defaultValue: 30 }
       ],
       compute: (inputs) => {
+        // Simplest clean math: cigs/day × days
+        const cigsAvoided = inputs.cigarettesPerDay * inputs.daysQuit;
         const costPerCig = inputs.costPerPack / 20;
-        const uiCigsAvoided = Math.round(inputs.cigarettesPerDay * inputs.daysQuit);
-        const moneySaved = uiCigsAvoided * costPerCig;
-        const hoursSaved = Math.round((uiCigsAvoided * 11) / 60); 
-        const tarAvoided = ((uiCigsAvoided * 15) / 1000).toFixed(1); 
+        const moneySaved = Math.round(cigsAvoided * costPerCig);
+        // 1 cigarette takes ~11 mins off lifespan (NHS/WHO estimate)
+        const minutesSaved = cigsAvoided * 11;
+        const hoursSaved = Math.floor(minutesSaved / 60);
+        // Average cigarette deposits ~15mg tar
+        const tarMg = cigsAvoided * 15;
+        const tarDisplay = tarMg >= 1000 ? (tarMg / 1000).toFixed(1) + 'g' : tarMg + 'mg';
         return [
-          { label: `Money saved (${inputs.daysQuit} days)`, value: '₹' + Math.round(moneySaved).toLocaleString(), color: 'primary' },
-          { label: 'Cigarettes avoided', value: uiCigsAvoided.toLocaleString() },
-          { label: 'Time saved', value: hoursSaved + ' hours', color: 'primary' },
-          { label: 'Tar avoided', value: tarAvoided + 'g' }
+          { label: `Money saved (${inputs.daysQuit} days)`, value: '₹' + moneySaved.toLocaleString(), color: 'primary' },
+          { label: 'Cigarettes avoided', value: cigsAvoided.toLocaleString() },
+          { label: 'Smoking time avoided', value: hoursSaved + ' hrs' },
+          { label: 'Tar not inhaled', value: tarDisplay }
         ];
       },
       note: 'Heart rate drops to normal 20 minutes after your last cigarette.'
@@ -453,17 +460,17 @@ export const substances: SubstanceConfig[] = [
     calculator: {
       title: 'Savings & Impact to Date',
       inputs: [
-        { key: 'pillsPerDay', label: 'Pills/uses per day', type: 'slider', min: 0, max: 20, step: 1, defaultValue: 4 },
+        { key: 'pillsPerDay', label: 'Pills/uses per day', type: 'slider', min: 1, max: 20, step: 1, defaultValue: 4 },
         { key: 'costPerPill', label: 'Cost per pill/use', type: 'slider', min: 50, max: 2000, step: 50, defaultValue: 500 },
         { key: 'daysQuit', label: 'Days Quit', type: 'slider', min: 1, max: 365, step: 1, defaultValue: 30 }
       ],
       compute: (inputs) => {
-        const uiPillsAvoided = Math.round(inputs.pillsPerDay * inputs.daysQuit);
-        const moneySaved = uiPillsAvoided * inputs.costPerPill;
-        const stage = inputs.daysQuit > 14 ? 'Passed acute withdrawal' : (inputs.daysQuit > 5 ? 'Overcoming physical peak' : 'Initial acute phase');
+        const pillsAvoided = inputs.pillsPerDay * inputs.daysQuit;
+        const moneySaved = pillsAvoided * inputs.costPerPill;
+        const stage = inputs.daysQuit > 14 ? 'Past acute withdrawal' : inputs.daysQuit > 5 ? 'Overcoming physical peak' : 'Initial acute phase';
         return [
-          { label: `Money saved (${inputs.daysQuit} days)`, value: '₹' + Math.round(moneySaved).toLocaleString(), color: 'primary' },
-          { label: 'Pills avoided', value: uiPillsAvoided.toLocaleString() },
+          { label: `Money saved (${inputs.daysQuit} days)`, value: '₹' + moneySaved.toLocaleString(), color: 'primary' },
+          { label: 'Pills avoided', value: pillsAvoided.toLocaleString() },
           { label: 'Recovery stage', value: stage, color: 'accent' }
         ];
       },
@@ -573,18 +580,20 @@ export const substances: SubstanceConfig[] = [
     calculator: {
       title: 'Savings & Impact to Date',
       inputs: [
-        { key: 'gramsPerWeek', label: 'Grams per week', type: 'slider', min: 0, max: 28, step: 1, defaultValue: 7 },
+        { key: 'gramsPerWeek', label: 'Grams per week', type: 'slider', min: 1, max: 28, step: 1, defaultValue: 7 },
         { key: 'costPerGram', label: 'Cost per gram', type: 'slider', min: 100, max: 5000, step: 100, defaultValue: 1000 },
         { key: 'daysQuit', label: 'Days Quit', type: 'slider', min: 1, max: 365, step: 1, defaultValue: 30 }
       ],
       compute: (inputs) => {
-        const rawGramsAvoided = (inputs.gramsPerWeek / 7) * inputs.daysQuit;
-        const uiGramsAvoided = parseFloat(rawGramsAvoided.toFixed(1));
-        const moneySaved = uiGramsAvoided * inputs.costPerGram;
+        // Full weeks of consumption + proportional remainder
+        const fullWeeks = Math.floor(inputs.daysQuit / 7);
+        const remainderDays = inputs.daysQuit % 7;
+        const gramsAvoided = parseFloat(((fullWeeks * inputs.gramsPerWeek) + (remainderDays * inputs.gramsPerWeek / 7)).toFixed(1));
+        const moneySaved = Math.round(gramsAvoided * inputs.costPerGram);
         const stage = inputs.daysQuit > 30 ? 'Receptors stabilized' : 'Receptors resetting';
         return [
-          { label: `Money saved (${inputs.daysQuit} days)`, value: '₹' + Math.round(moneySaved).toLocaleString(), color: 'primary' },
-          { label: 'Grams avoided', value: uiGramsAvoided.toFixed(1) + 'g' },
+          { label: `Money saved (${inputs.daysQuit} days)`, value: '₹' + moneySaved.toLocaleString(), color: 'primary' },
+          { label: 'Grams avoided', value: gramsAvoided.toFixed(1) + 'g' },
           { label: 'Dopamine baseline', value: stage, color: 'accent' }
         ];
       },
@@ -684,19 +693,20 @@ export const substances: SubstanceConfig[] = [
     calculator: {
       title: 'Savings & Impact to Date',
       inputs: [
-        { key: 'gramsPerWeek', label: 'Grams per week', type: 'slider', min: 0, max: 14, step: 0.5, defaultValue: 2 },
+        { key: 'gramsPerWeek', label: 'Grams per week', type: 'slider', min: 0.5, max: 14, step: 0.5, defaultValue: 2 },
         { key: 'costPerGram', label: 'Cost per gram', type: 'slider', min: 500, max: 10000, step: 500, defaultValue: 3000 },
         { key: 'daysQuit', label: 'Days Quit', type: 'slider', min: 1, max: 365, step: 1, defaultValue: 30 }
       ],
       compute: (inputs) => {
-        const rawGramsAvoided = (inputs.gramsPerWeek / 7) * inputs.daysQuit;
-        const uiGramsAvoided = parseFloat(rawGramsAvoided.toFixed(1));
-        const moneySaved = uiGramsAvoided * inputs.costPerGram;
-        const sleepHours = inputs.daysQuit * 2;
+        const fullWeeks = Math.floor(inputs.daysQuit / 7);
+        const remainderDays = inputs.daysQuit % 7;
+        const gramsAvoided = parseFloat(((fullWeeks * inputs.gramsPerWeek) + (remainderDays * inputs.gramsPerWeek / 7)).toFixed(1));
+        const moneySaved = Math.round(gramsAvoided * inputs.costPerGram);
+        const stage = inputs.daysQuit > 30 ? 'Dopamine stabilizing' : inputs.daysQuit > 14 ? 'Cravings reducing' : 'Crash phase clearing';
         return [
-          { label: `Money saved (${inputs.daysQuit} days)`, value: '₹' + Math.round(moneySaved).toLocaleString(), color: 'primary' },
-          { label: 'Grams avoided', value: uiGramsAvoided.toFixed(1) + 'g' },
-          { label: 'Sleep debt recovered', value: Math.round(sleepHours) + ' hours', color: 'accent' }
+          { label: `Money saved (${inputs.daysQuit} days)`, value: '₹' + moneySaved.toLocaleString(), color: 'primary' },
+          { label: 'Grams avoided', value: gramsAvoided.toFixed(1) + 'g' },
+          { label: 'Dopamine recovery', value: stage, color: 'accent' }
         ];
       },
       note: 'Dopamine pathways need extended time to heal; intense cravings decrease after weeks.'
@@ -790,17 +800,17 @@ export const substances: SubstanceConfig[] = [
     calculator: {
       title: 'Savings & Impact to Date',
       inputs: [
-        { key: 'pillsPerDay', label: 'Pills per day', type: 'slider', min: 0, max: 10, step: 1, defaultValue: 2 },
+        { key: 'pillsPerDay', label: 'Pills per day', type: 'slider', min: 1, max: 10, step: 1, defaultValue: 2 },
         { key: 'costPerPill', label: 'Cost per pill', type: 'slider', min: 50, max: 1000, step: 50, defaultValue: 100 },
         { key: 'daysQuit', label: 'Days Quit', type: 'slider', min: 1, max: 365, step: 1, defaultValue: 30 }
       ],
       compute: (inputs) => {
-        const uiPillsAvoided = Math.round(inputs.pillsPerDay * inputs.daysQuit);
-        const moneySaved = uiPillsAvoided * inputs.costPerPill;
-        const stage = inputs.daysQuit > 90 ? 'High clarity' : (inputs.daysQuit > 30 ? 'Improving clarity' : 'Fog lifting');
+        const pillsAvoided = inputs.pillsPerDay * inputs.daysQuit;
+        const moneySaved = pillsAvoided * inputs.costPerPill;
+        const stage = inputs.daysQuit > 90 ? 'High clarity' : inputs.daysQuit > 30 ? 'Improving clarity' : 'Fog lifting';
         return [
-          { label: `Money saved (${inputs.daysQuit} days)`, value: '₹' + Math.round(moneySaved).toLocaleString(), color: 'primary' },
-          { label: 'Pills avoided', value: uiPillsAvoided.toLocaleString() },
+          { label: `Money saved (${inputs.daysQuit} days)`, value: '₹' + moneySaved.toLocaleString(), color: 'primary' },
+          { label: 'Pills avoided', value: pillsAvoided.toLocaleString() },
           { label: 'Cognitive clarity', value: stage, color: 'accent' }
         ];
       },
@@ -909,18 +919,18 @@ export const substances: SubstanceConfig[] = [
     calculator: {
       title: 'Savings & Impact to Date',
       inputs: [
-        { key: 'gramsPerDay', label: 'Grams per day', type: 'slider', min: 0, max: 50, step: 1, defaultValue: 15 },
-        { key: 'costPerGram', label: 'Cost per 100g', type: 'slider', min: 500, max: 5000, step: 100, defaultValue: 1000 },
+        { key: 'gramsPerDay', label: 'Grams per day', type: 'slider', min: 1, max: 50, step: 1, defaultValue: 15 },
+        { key: 'costPer100g', label: 'Cost per 100g', type: 'slider', min: 500, max: 5000, step: 100, defaultValue: 1000 },
         { key: 'daysQuit', label: 'Days Quit', type: 'slider', min: 1, max: 365, step: 1, defaultValue: 30 }
       ],
       compute: (inputs) => {
-        const uiGramsAvoided = Math.round(inputs.gramsPerDay * inputs.daysQuit);
-        const costPerGram = inputs.costPerGram / 100;
-        const moneySaved = uiGramsAvoided * costPerGram;
-        const stage = inputs.daysQuit > 14 ? 'Passed acute withdrawal' : 'Initial withdrawal phase';
+        const gramsAvoided = inputs.gramsPerDay * inputs.daysQuit;
+        const costPerGram = inputs.costPer100g / 100;
+        const moneySaved = Math.round(gramsAvoided * costPerGram);
+        const stage = inputs.daysQuit > 14 ? 'Past acute withdrawal' : 'Initial withdrawal phase';
         return [
-          { label: `Money saved (${inputs.daysQuit} days)`, value: '₹' + Math.round(moneySaved).toLocaleString(), color: 'primary' },
-          { label: 'Grams avoided', value: uiGramsAvoided.toLocaleString() + 'g' },
+          { label: `Money saved (${inputs.daysQuit} days)`, value: '₹' + moneySaved.toLocaleString(), color: 'primary' },
+          { label: 'Grams avoided', value: gramsAvoided.toLocaleString() + 'g' },
           { label: 'Physical state', value: stage, color: 'accent' }
         ];
       },
@@ -1024,18 +1034,20 @@ export const substances: SubstanceConfig[] = [
     calculator: {
       title: 'Savings & Impact to Date',
       inputs: [
-        { key: 'pillsPerMonth', label: 'Pills/uses per month', type: 'slider', min: 0, max: 20, step: 1, defaultValue: 2 },
-        { key: 'costPerPill', label: 'Cost per pill/use', type: 'slider', min: 500, max: 5000, step: 100, defaultValue: 1500 },
+        { key: 'usesPerMonth', label: 'Uses per month', type: 'slider', min: 1, max: 20, step: 1, defaultValue: 2 },
+        { key: 'costPerUse', label: 'Cost per use', type: 'slider', min: 500, max: 5000, step: 100, defaultValue: 1500 },
         { key: 'daysQuit', label: 'Days Quit', type: 'slider', min: 1, max: 365, step: 1, defaultValue: 30 }
       ],
       compute: (inputs) => {
-        const rawUsesAvoided = (inputs.pillsPerMonth / 30) * inputs.daysQuit;
-        const uiUsesAvoided = parseFloat(rawUsesAvoided.toFixed(1));
-        const moneySaved = uiUsesAvoided * inputs.costPerPill;
-        const stage = inputs.daysQuit > 90 ? 'Fully replenished' : (inputs.daysQuit > 30 ? 'Actively recovering' : 'Depleted state');
+        // Full months + proportional remainder
+        const fullMonths = Math.floor(inputs.daysQuit / 30);
+        const remainderDays = inputs.daysQuit % 30;
+        const usesAvoided = parseFloat(((fullMonths * inputs.usesPerMonth) + (remainderDays * inputs.usesPerMonth / 30)).toFixed(1));
+        const moneySaved = Math.round(usesAvoided * inputs.costPerUse);
+        const stage = inputs.daysQuit > 90 ? 'Serotonin fully replenished' : inputs.daysQuit > 30 ? 'Actively recovering' : 'Depleted state';
         return [
-          { label: `Money saved (${inputs.daysQuit} days)`, value: '₹' + Math.round(moneySaved).toLocaleString(), color: 'primary' },
-          { label: 'Uses avoided', value: uiUsesAvoided.toFixed(1) },
+          { label: `Money saved (${inputs.daysQuit} days)`, value: '₹' + moneySaved.toLocaleString(), color: 'primary' },
+          { label: 'Uses avoided', value: usesAvoided.toFixed(1) },
           { label: 'Serotonin recovery', value: stage, color: 'accent' }
         ];
       },
