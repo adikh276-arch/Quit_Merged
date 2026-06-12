@@ -56,7 +56,8 @@ const TrackerDetail = ({ tracker, substance, onClose }: Props) => {
       const val = values[field.key];
       const isMissing = val === undefined || val === null || val === '' || (Array.isArray(val) && val.length === 0);
 
-      if (isMissing && field.type !== 'slider') {
+      // Notes/Textareas should be optional, but other single-select/chips/etc should be required
+      if (isMissing && field.type !== 'slider' && field.type !== 'textarea') {
         const label = t(`quit.substances.${substance.slug}.trackers.${tracker.id}.fields.${field.key}.label`);
         toast.error(`${label} is required.`);
         isValid = false;
@@ -74,6 +75,17 @@ const TrackerDetail = ({ tracker, substance, onClose }: Props) => {
     }
 
     if (!isValid) return;
+
+    // Prevent 100% null/empty entries
+    const hasMeaningfulData = Object.keys(values).some(key => {
+      const v = values[key];
+      return v !== undefined && v !== null && v !== '' && (!Array.isArray(v) || v.length > 0);
+    });
+
+    if (!hasMeaningfulData && !todayEntry) {
+      toast.error(t('quit.app.fill_at_least_one', 'Please add some data before saving.'));
+      return;
+    }
 
     const finalValues = { ...values };
     for (const field of tracker.fields) {

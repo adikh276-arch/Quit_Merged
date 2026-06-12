@@ -700,7 +700,7 @@ const ActivityRunner = ({ activity, substance, onBack, substep, setSubstep }: { 
             </div>
           ))}
         </div>
-        {Object.keys(journalValues).length > 0 && (
+        {Object.keys(journalValues).some(k => journalValues[k] && String(journalValues[k]).trim() !== '') && (
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="mt-6 rounded-xl bg-primary/10 p-4 text-center">
             <p className="text-sm font-semibold text-primary">{t('quit.app.activities.journal.captured', 'Reflection captured. Awareness is progress.')}</p>
           </motion.div>
