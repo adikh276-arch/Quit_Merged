@@ -321,13 +321,16 @@ export const substances: SubstanceConfig[] = [
         // Monthly = weekly × 52 / 12 (exact calendar average)
         const monthlyCost = weeklyCost * (52 / 12);
         const yearlyCost = dailyCost * 365;
-        // Life regained: based on well-known stat — quitting at age 30-35 restores ~10 years;
-        // a simple proxy: each pack-year smoked costs ~5 days of life; we show days regained if quit now
-        // More grounded: 11 min per cigarette (BMJ reference), so:
-        const minutesRegained = inputs.cigarettesPerDay * 11 * inputs.yearsSmoked * 365;
-        const daysRegained = Math.round(minutesRegained / (60 * 24));
-        // Clean air: cigarettes avoided = cigs/day × years (past) + project future 1 year
+        // Concrete, grounded metrics instead of assumptive "life regained"
+        // Time saved: an average cigarette takes 5 minutes to smoke
+        const minutesSavedYearly = inputs.cigarettesPerDay * 5 * 365;
+        const hoursSavedYearly = Math.round(minutesSavedYearly / 60);
+        // Tar avoided: average cigarette has ~12mg of tar
+        const tarMgYearly = inputs.cigarettesPerDay * 12 * 365;
+        const tarGramsYearly = Math.round(tarMgYearly / 1000);
+        // Cigarettes avoided: project future 1 year
         const cigarettesAvoided = Math.round(inputs.cigarettesPerDay * 365);
+        
         return [
           // index 0 → quit.substances.tobacco.calculator.results.0.label = "Weekly cost"
           { label: 'Weekly cost', value: '₹' + Math.round(weeklyCost).toLocaleString() },
@@ -335,13 +338,12 @@ export const substances: SubstanceConfig[] = [
           { label: 'Monthly cost', value: '₹' + Math.round(monthlyCost).toLocaleString() },
           // index 2 → "Yearly cost"
           { label: 'Yearly cost', value: '₹' + Math.round(yearlyCost).toLocaleString() },
-          // index 3 → "Life regained" — days of life potentially gained by quitting now
-          { label: 'Life regained', value: daysRegained + ' days (est.)', color: 'primary' },
-          // index 4 → "Clean air breathed" — litres of smoke avoided per year if quit
-          // ~200 ml toxic smoke per puff × 10 puffs per cig = 2 L/cig
-          { label: 'Clean air breathed', value: Math.round(cigarettesAvoided * 2) + ' L smoke avoided/yr' },
-          // index 5 → "Cigarettes avoided" — in next 1 year if quit today
-          { label: 'Cigarettes avoided', value: cigarettesAvoided.toLocaleString() + ' cigs/year' },
+          // index 3 → "Time saved (yearly)" 
+          { label: 'Time saved (yearly)', value: hoursSavedYearly + ' hours/year', color: 'primary' },
+          // index 4 → "Tar avoided (yearly)"
+          { label: 'Tar avoided (yearly)', value: tarGramsYearly + 'g of tar' },
+          // index 5 → "Cigarettes avoided (yearly)" 
+          { label: 'Cigarettes avoided (yearly)', value: cigarettesAvoided.toLocaleString() + ' cigs/year' },
         ];
       },
       note: 'Heart rate drops to normal 20 minutes after your last cigarette.',
