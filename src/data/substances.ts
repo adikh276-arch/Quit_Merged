@@ -145,18 +145,16 @@ export const substances: SubstanceConfig[] = [
         { key: 'daysQuit', label: 'Days Quit', type: 'slider', min: 1, max: 365, step: 1, defaultValue: 30 }
       ],
       compute: (inputs) => {
-        const weeklySpend = inputs.costPerDrink * inputs.drinksPerDay * inputs.drinkingDays;
-        const dailySpend = weeklySpend / 7;
-        const drinksPerWeek = inputs.drinksPerDay * inputs.drinkingDays;
-        const drinksPerDay = drinksPerWeek / 7;
+        // UI-Consistent Math: Base everything off the EXACT rounded number shown on screen.
+        const rawDrinksAvoided = (inputs.drinksPerDay * inputs.drinkingDays / 7) * inputs.daysQuit;
+        const uiDrinksAvoided = Math.round(rawDrinksAvoided);
+        const moneySaved = uiDrinksAvoided * inputs.costPerDrink;
+        const caloriesAvoided = uiDrinksAvoided * 150;
         
-        const moneySaved = dailySpend * inputs.daysQuit;
-        const drinksAvoided = drinksPerDay * inputs.daysQuit;
-        const caloriesAvoided = drinksAvoided * 150;
         return [
-          { label: `Money saved (${inputs.daysQuit} days)`, value: '₹' + Math.round(moneySaved).toLocaleString(), color: 'primary' },
-          { label: 'Drinks avoided', value: Math.round(drinksAvoided).toLocaleString() },
-          { label: 'Empty calories avoided', value: Math.round(caloriesAvoided).toLocaleString() + ' kcal' }
+          { label: `Money saved (${inputs.daysQuit} days)`, value: '₹' + moneySaved.toLocaleString(), color: 'primary' },
+          { label: 'Drinks avoided', value: uiDrinksAvoided.toLocaleString() },
+          { label: 'Empty calories avoided', value: caloriesAvoided.toLocaleString() + ' kcal' }
         ];
       },
       note: 'Your liver begins regenerating within 72 hours of stopping.'
@@ -302,18 +300,18 @@ export const substances: SubstanceConfig[] = [
       title: 'Savings & Impact to Date',
       inputs: [
         { key: 'cigarettesPerDay', label: 'Cigarettes per day', type: 'slider', min: 0, max: 60, step: 1, defaultValue: 15 },
-        { key: 'costPerPack', label: 'Cost per pack', type: 'slider', min: 50, max: 500, step: 10, defaultValue: 300 },
+        { key: 'costPerPack', label: 'Cost per pack ', type: 'slider', min: 50, max: 500, step: 10, defaultValue: 250 },
         { key: 'daysQuit', label: 'Days Quit', type: 'slider', min: 1, max: 365, step: 1, defaultValue: 30 }
       ],
       compute: (inputs) => {
-        const dailyCost = (inputs.cigarettesPerDay / 20) * inputs.costPerPack;
-        const moneySaved = dailyCost * inputs.daysQuit;
-        const cigsAvoided = inputs.cigarettesPerDay * inputs.daysQuit;
-        const hoursSaved = Math.round((cigsAvoided * 5) / 60);
-        const tarAvoided = Math.round((cigsAvoided * 12) / 1000);
+        const costPerCig = inputs.costPerPack / 20;
+        const uiCigsAvoided = Math.round(inputs.cigarettesPerDay * inputs.daysQuit);
+        const moneySaved = uiCigsAvoided * costPerCig;
+        const hoursSaved = Math.round((uiCigsAvoided * 11) / 60); 
+        const tarAvoided = ((uiCigsAvoided * 15) / 1000).toFixed(1); 
         return [
           { label: `Money saved (${inputs.daysQuit} days)`, value: '₹' + Math.round(moneySaved).toLocaleString(), color: 'primary' },
-          { label: 'Cigarettes avoided', value: Math.round(cigsAvoided).toLocaleString() },
+          { label: 'Cigarettes avoided', value: uiCigsAvoided.toLocaleString() },
           { label: 'Time saved', value: hoursSaved + ' hours', color: 'primary' },
           { label: 'Tar avoided', value: tarAvoided + 'g' }
         ];
@@ -460,12 +458,12 @@ export const substances: SubstanceConfig[] = [
         { key: 'daysQuit', label: 'Days Quit', type: 'slider', min: 1, max: 365, step: 1, defaultValue: 30 }
       ],
       compute: (inputs) => {
-        const moneySaved = inputs.pillsPerDay * inputs.costPerPill * inputs.daysQuit;
-        const pillsAvoided = inputs.pillsPerDay * inputs.daysQuit;
+        const uiPillsAvoided = Math.round(inputs.pillsPerDay * inputs.daysQuit);
+        const moneySaved = uiPillsAvoided * inputs.costPerPill;
         const stage = inputs.daysQuit > 14 ? 'Passed acute withdrawal' : (inputs.daysQuit > 5 ? 'Overcoming physical peak' : 'Initial acute phase');
         return [
           { label: `Money saved (${inputs.daysQuit} days)`, value: '₹' + Math.round(moneySaved).toLocaleString(), color: 'primary' },
-          { label: 'Pills avoided', value: Math.round(pillsAvoided).toLocaleString() },
+          { label: 'Pills avoided', value: uiPillsAvoided.toLocaleString() },
           { label: 'Recovery stage', value: stage, color: 'accent' }
         ];
       },
@@ -580,14 +578,13 @@ export const substances: SubstanceConfig[] = [
         { key: 'daysQuit', label: 'Days Quit', type: 'slider', min: 1, max: 365, step: 1, defaultValue: 30 }
       ],
       compute: (inputs) => {
-        const dailySpend = (inputs.gramsPerWeek * inputs.costPerGram) / 7;
-        const gramsPerDay = inputs.gramsPerWeek / 7;
-        const moneySaved = dailySpend * inputs.daysQuit;
-        const gramsAvoided = gramsPerDay * inputs.daysQuit;
+        const rawGramsAvoided = (inputs.gramsPerWeek / 7) * inputs.daysQuit;
+        const uiGramsAvoided = parseFloat(rawGramsAvoided.toFixed(1));
+        const moneySaved = uiGramsAvoided * inputs.costPerGram;
         const stage = inputs.daysQuit > 30 ? 'Receptors stabilized' : 'Receptors resetting';
         return [
           { label: `Money saved (${inputs.daysQuit} days)`, value: '₹' + Math.round(moneySaved).toLocaleString(), color: 'primary' },
-          { label: 'Grams avoided', value: gramsAvoided.toFixed(1) + 'g' },
+          { label: 'Grams avoided', value: uiGramsAvoided.toFixed(1) + 'g' },
           { label: 'Dopamine baseline', value: stage, color: 'accent' }
         ];
       },
@@ -692,14 +689,13 @@ export const substances: SubstanceConfig[] = [
         { key: 'daysQuit', label: 'Days Quit', type: 'slider', min: 1, max: 365, step: 1, defaultValue: 30 }
       ],
       compute: (inputs) => {
-        const dailySpend = (inputs.gramsPerWeek * inputs.costPerGram) / 7;
-        const gramsPerDay = inputs.gramsPerWeek / 7;
-        const moneySaved = dailySpend * inputs.daysQuit;
-        const gramsAvoided = gramsPerDay * inputs.daysQuit;
-        const sleepHours = inputs.daysQuit * 2; // Roughly 2 hours of normal sleep recovered per day
+        const rawGramsAvoided = (inputs.gramsPerWeek / 7) * inputs.daysQuit;
+        const uiGramsAvoided = parseFloat(rawGramsAvoided.toFixed(1));
+        const moneySaved = uiGramsAvoided * inputs.costPerGram;
+        const sleepHours = inputs.daysQuit * 2;
         return [
           { label: `Money saved (${inputs.daysQuit} days)`, value: '₹' + Math.round(moneySaved).toLocaleString(), color: 'primary' },
-          { label: 'Grams avoided', value: gramsAvoided.toFixed(1) + 'g' },
+          { label: 'Grams avoided', value: uiGramsAvoided.toFixed(1) + 'g' },
           { label: 'Sleep debt recovered', value: Math.round(sleepHours) + ' hours', color: 'accent' }
         ];
       },
@@ -799,12 +795,12 @@ export const substances: SubstanceConfig[] = [
         { key: 'daysQuit', label: 'Days Quit', type: 'slider', min: 1, max: 365, step: 1, defaultValue: 30 }
       ],
       compute: (inputs) => {
-        const moneySaved = inputs.pillsPerDay * inputs.costPerPill * inputs.daysQuit;
-        const pillsAvoided = inputs.pillsPerDay * inputs.daysQuit;
+        const uiPillsAvoided = Math.round(inputs.pillsPerDay * inputs.daysQuit);
+        const moneySaved = uiPillsAvoided * inputs.costPerPill;
         const stage = inputs.daysQuit > 90 ? 'High clarity' : (inputs.daysQuit > 30 ? 'Improving clarity' : 'Fog lifting');
         return [
           { label: `Money saved (${inputs.daysQuit} days)`, value: '₹' + Math.round(moneySaved).toLocaleString(), color: 'primary' },
-          { label: 'Pills avoided', value: Math.round(pillsAvoided).toLocaleString() },
+          { label: 'Pills avoided', value: uiPillsAvoided.toLocaleString() },
           { label: 'Cognitive clarity', value: stage, color: 'accent' }
         ];
       },
@@ -918,13 +914,13 @@ export const substances: SubstanceConfig[] = [
         { key: 'daysQuit', label: 'Days Quit', type: 'slider', min: 1, max: 365, step: 1, defaultValue: 30 }
       ],
       compute: (inputs) => {
+        const uiGramsAvoided = Math.round(inputs.gramsPerDay * inputs.daysQuit);
         const costPerGram = inputs.costPerGram / 100;
-        const moneySaved = inputs.gramsPerDay * costPerGram * inputs.daysQuit;
-        const gramsAvoided = inputs.gramsPerDay * inputs.daysQuit;
+        const moneySaved = uiGramsAvoided * costPerGram;
         const stage = inputs.daysQuit > 14 ? 'Passed acute withdrawal' : 'Initial withdrawal phase';
         return [
           { label: `Money saved (${inputs.daysQuit} days)`, value: '₹' + Math.round(moneySaved).toLocaleString(), color: 'primary' },
-          { label: 'Grams avoided', value: Math.round(gramsAvoided).toLocaleString() + 'g' },
+          { label: 'Grams avoided', value: uiGramsAvoided.toLocaleString() + 'g' },
           { label: 'Physical state', value: stage, color: 'accent' }
         ];
       },
@@ -1033,14 +1029,13 @@ export const substances: SubstanceConfig[] = [
         { key: 'daysQuit', label: 'Days Quit', type: 'slider', min: 1, max: 365, step: 1, defaultValue: 30 }
       ],
       compute: (inputs) => {
-        const dailySpend = (inputs.pillsPerMonth * inputs.costPerPill) / 30;
-        const pillsPerDay = inputs.pillsPerMonth / 30;
-        const moneySaved = dailySpend * inputs.daysQuit;
-        const pillsAvoided = pillsPerDay * inputs.daysQuit;
+        const rawUsesAvoided = (inputs.pillsPerMonth / 30) * inputs.daysQuit;
+        const uiUsesAvoided = parseFloat(rawUsesAvoided.toFixed(1));
+        const moneySaved = uiUsesAvoided * inputs.costPerPill;
         const stage = inputs.daysQuit > 90 ? 'Fully replenished' : (inputs.daysQuit > 30 ? 'Actively recovering' : 'Depleted state');
         return [
           { label: `Money saved (${inputs.daysQuit} days)`, value: '₹' + Math.round(moneySaved).toLocaleString(), color: 'primary' },
-          { label: 'Uses avoided', value: pillsAvoided.toFixed(1) },
+          { label: 'Uses avoided', value: uiUsesAvoided.toFixed(1) },
           { label: 'Serotonin recovery', value: stage, color: 'accent' }
         ];
       },
