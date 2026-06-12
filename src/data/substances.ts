@@ -137,37 +137,29 @@ export const substances: SubstanceConfig[] = [
       },
     ],
     calculator: {
-      title: 'Units & Health Impact',
+      title: 'Savings & Impact to Date',
       inputs: [
         { key: 'drinksPerDay', label: 'Drinks per day', type: 'slider', min: 0, max: 20, step: 1, defaultValue: 4 },
         { key: 'drinkingDays', label: 'Drinking days per week', type: 'slider', min: 0, max: 7, step: 1, defaultValue: 5 },
         { key: 'costPerDrink', label: 'Cost per drink ', type: 'slider', min: 50, max: 1000, step: 50, defaultValue: 200 },
+        { key: 'daysQuit', label: 'Days Quit', type: 'slider', min: 1, max: 365, step: 1, defaultValue: 30 }
       ],
       compute: (inputs) => {
-        // inputs: drinksPerDay, drinkingDays (per week), costPerDrink
-        // One standard drink ≈ 1 alcohol unit in this context
-        const weeklyUnits = inputs.drinksPerDay * inputs.drinkingDays;
         const weeklySpend = inputs.costPerDrink * inputs.drinksPerDay * inputs.drinkingDays;
-        // Monthly = weekly × 52 / 12 (exact calendar average)
-        const monthlySpend = weeklySpend * (52 / 12);
-        const yearlySpend = weeklySpend * 52;
-        const yearSavings = yearlySpend; // savings if quit entirely
+        const dailySpend = weeklySpend / 7;
+        const drinksPerWeek = inputs.drinksPerDay * inputs.drinkingDays;
+        const drinksPerDay = drinksPerWeek / 7;
+        
+        const moneySaved = dailySpend * inputs.daysQuit;
+        const drinksAvoided = drinksPerDay * inputs.daysQuit;
+        const caloriesAvoided = drinksAvoided * 150;
         return [
-          // index 0 → quit.substances.alcohol.calculator.results.0.label = "Weekly units"
-          { label: 'Weekly units', value: weeklyUnits + ' units', color: weeklyUnits > 14 ? 'destructive' : 'primary' },
-          // index 1 → "Safe limit"
-          { label: 'Safe limit', value: '14 units/week (NHS guideline)' },
-          // index 2 → "Monthly spend"
-          { label: 'Monthly spend', value: '₹' + Math.round(monthlySpend).toLocaleString() },
-          // index 3 → "Yearly spend"
-          { label: 'Yearly spend', value: '₹' + Math.round(yearlySpend).toLocaleString() },
-          // index 4 → "Liver risk"
-          { label: 'Liver risk', value: weeklyUnits > 35 ? 'High' : weeklyUnits > 14 ? 'Moderate' : 'Low', color: weeklyUnits > 35 ? 'destructive' : weeklyUnits > 14 ? 'accent' : 'primary' },
-          // index 5 → "1-year savings if quit"
-          { label: '1-year savings if quit', value: '₹' + Math.round(yearSavings).toLocaleString(), color: 'primary' },
+          { label: `Money saved (${inputs.daysQuit} days)`, value: '₹' + Math.round(moneySaved).toLocaleString(), color: 'primary' },
+          { label: 'Drinks avoided', value: Math.round(drinksAvoided).toLocaleString() },
+          { label: 'Empty calories avoided', value: Math.round(caloriesAvoided).toLocaleString() + ' kcal' }
         ];
       },
-      note: 'Your liver begins regenerating within 72 hours of stopping.',
+      note: 'Your liver begins regenerating within 72 hours of stopping.'
     },
     activities: [
       {
@@ -307,46 +299,26 @@ export const substances: SubstanceConfig[] = [
       },
     ],
     calculator: {
-      title: 'Cigarette Cost & Health Impact',
+      title: 'Savings & Impact to Date',
       inputs: [
-        { key: 'cigarettesPerDay', label: 'Cigarettes per day', type: 'slider', min: 1, max: 60, step: 1, defaultValue: 15 },
-        { key: 'costPerPack', label: 'Cost per pack ', type: 'slider', min: 50, max: 1000, step: 10, defaultValue: 280 },
-        { key: 'yearsSmoked', label: 'Years smoked', type: 'slider', min: 1, max: 50, step: 1, defaultValue: 8 },
+        { key: 'cigarettesPerDay', label: 'Cigarettes per day', type: 'slider', min: 0, max: 60, step: 1, defaultValue: 15 },
+        { key: 'costPerPack', label: 'Cost per pack', type: 'slider', min: 50, max: 500, step: 10, defaultValue: 300 },
+        { key: 'daysQuit', label: 'Days Quit', type: 'slider', min: 1, max: 365, step: 1, defaultValue: 30 }
       ],
       compute: (inputs) => {
-        // inputs: cigarettesPerDay, costPerPack (20 cigs per pack), yearsSmoked
-        const packsPerDay = inputs.cigarettesPerDay / 20;
-        const dailyCost = packsPerDay * inputs.costPerPack;
-        const weeklyCost = dailyCost * 7;
-        // Monthly = weekly × 52 / 12 (exact calendar average)
-        const monthlyCost = weeklyCost * (52 / 12);
-        const yearlyCost = dailyCost * 365;
-        // Concrete, grounded metrics instead of assumptive "life regained"
-        // Time saved: an average cigarette takes 5 minutes to smoke
-        const minutesSavedYearly = inputs.cigarettesPerDay * 5 * 365;
-        const hoursSavedYearly = Math.round(minutesSavedYearly / 60);
-        // Tar avoided: average cigarette has ~12mg of tar
-        const tarMgYearly = inputs.cigarettesPerDay * 12 * 365;
-        const tarGramsYearly = Math.round(tarMgYearly / 1000);
-        // Cigarettes avoided: project future 1 year
-        const cigarettesAvoided = Math.round(inputs.cigarettesPerDay * 365);
-        
+        const dailyCost = (inputs.cigarettesPerDay / 20) * inputs.costPerPack;
+        const moneySaved = dailyCost * inputs.daysQuit;
+        const cigsAvoided = inputs.cigarettesPerDay * inputs.daysQuit;
+        const hoursSaved = Math.round((cigsAvoided * 5) / 60);
+        const tarAvoided = Math.round((cigsAvoided * 12) / 1000);
         return [
-          // index 0 → quit.substances.tobacco.calculator.results.0.label = "Weekly cost"
-          { label: 'Weekly cost', value: '₹' + Math.round(weeklyCost).toLocaleString() },
-          // index 1 → "Monthly cost"
-          { label: 'Monthly cost', value: '₹' + Math.round(monthlyCost).toLocaleString() },
-          // index 2 → "Yearly cost"
-          { label: 'Yearly cost', value: '₹' + Math.round(yearlyCost).toLocaleString() },
-          // index 3 → "Time saved (yearly)" 
-          { label: 'Time saved (yearly)', value: hoursSavedYearly + ' hours/year', color: 'primary' },
-          // index 4 → "Tar avoided (yearly)"
-          { label: 'Tar avoided (yearly)', value: tarGramsYearly + 'g of tar' },
-          // index 5 → "Cigarettes avoided (yearly)" 
-          { label: 'Cigarettes avoided (yearly)', value: cigarettesAvoided.toLocaleString() + ' cigs/year' },
+          { label: `Money saved (${inputs.daysQuit} days)`, value: '₹' + Math.round(moneySaved).toLocaleString(), color: 'primary' },
+          { label: 'Cigarettes avoided', value: Math.round(cigsAvoided).toLocaleString() },
+          { label: 'Time saved', value: hoursSaved + ' hours', color: 'primary' },
+          { label: 'Tar avoided', value: tarAvoided + 'g' }
         ];
       },
-      note: 'Heart rate drops to normal 20 minutes after your last cigarette.',
+      note: 'Heart rate drops to normal 20 minutes after your last cigarette.'
     },
     activities: [
       {
@@ -481,39 +453,23 @@ export const substances: SubstanceConfig[] = [
       },
     ],
     calculator: {
-      title: 'Cost & Dependency Risk',
+      title: 'Savings & Impact to Date',
       inputs: [
-        { key: 'mgPerDay', label: 'mg per day', type: 'slider', min: 10, max: 500, step: 5, defaultValue: 60 },
-        { key: 'bupDose', label: 'Buprenorphine dose (mg/day)', type: 'slider', min: 0, max: 32, step: 2, defaultValue: 8 },
+        { key: 'pillsPerDay', label: 'Pills/uses per day', type: 'slider', min: 0, max: 20, step: 1, defaultValue: 4 },
+        { key: 'costPerPill', label: 'Cost per pill/use', type: 'slider', min: 50, max: 2000, step: 50, defaultValue: 500 },
+        { key: 'daysQuit', label: 'Days Quit', type: 'slider', min: 1, max: 365, step: 1, defaultValue: 30 }
       ],
       compute: (inputs) => {
-        // Street price for opioids (India context): ~₹100-500/tablet; assume ₹200 avg per 30mg dose
-        // Rough cost estimate: (mg/day ÷ 30) × ₹200 per dose × doses
-        // More defensible: ₹8/mg street estimate for common opioids like tramadol/codeine
-        const costPerMg = 8; // ₹ per mg (tramadol/codeine street average)
-        const dailyCost = inputs.mgPerDay * costPerMg;
-        const weeklyCost = dailyCost * 7;
-        // Monthly = weekly × 52/12
-        const monthlyCost = weeklyCost * (52 / 12);
-        const yearlyCost = dailyCost * 365;
-        // Dependence context: >90 MME/day is high-risk threshold (CDC guideline)
-        // Morphine equivalent = mg × 1 for morphine/codeine (simplified for display)
-        const bindingNote = inputs.mgPerDay > 90
-          ? 'High physical dependence likely — medical taper strongly recommended'
-          : inputs.mgPerDay > 40
-          ? 'Moderate dependence — consult your doctor before stopping'
-          : 'Mild dependence possible — seek medical guidance';
+        const moneySaved = inputs.pillsPerDay * inputs.costPerPill * inputs.daysQuit;
+        const pillsAvoided = inputs.pillsPerDay * inputs.daysQuit;
+        const stage = inputs.daysQuit > 14 ? 'Passed acute withdrawal' : (inputs.daysQuit > 5 ? 'Overcoming physical peak' : 'Initial acute phase');
         return [
-          // index 0 → quit.substances.opioids.calculator.results.0.label = "Weekly cost"
-          { label: 'Weekly cost', value: '₹' + Math.round(weeklyCost).toLocaleString() },
-          // index 1 → "Monthly cost"
-          { label: 'Monthly cost', value: '₹' + Math.round(monthlyCost).toLocaleString() },
-          // index 2 → "Yearly cost"
-          { label: 'Yearly cost', value: '₹' + Math.round(yearlyCost).toLocaleString() },
-          // index 3 → "Opioid receptor binding"
-          { label: 'Opioid receptor binding', value: bindingNote, color: inputs.mgPerDay > 90 ? 'destructive' : inputs.mgPerDay > 40 ? 'accent' : 'primary' },
+          { label: `Money saved (${inputs.daysQuit} days)`, value: '₹' + Math.round(moneySaved).toLocaleString(), color: 'primary' },
+          { label: 'Pills avoided', value: Math.round(pillsAvoided).toLocaleString() },
+          { label: 'Recovery stage', value: stage, color: 'accent' }
         ];
-      }
+      },
+      note: 'Physical withdrawal typically peaks within 72 hours.'
     },
     activities: [
       {
@@ -617,25 +573,25 @@ export const substances: SubstanceConfig[] = [
       },
     ],
     calculator: {
-      title: 'Usage Cost & Recovery',
+      title: 'Savings & Impact to Date',
       inputs: [
-        { key: 'gramsPerWeek', label: 'Grams per week', type: 'slider', min: 1, max: 30, step: 1, defaultValue: 7 },
-        { key: 'costPerGram', label: 'Cost per gram ', type: 'slider', min: 100, max: 2000, step: 50, defaultValue: 500 },
+        { key: 'gramsPerWeek', label: 'Grams per week', type: 'slider', min: 0, max: 28, step: 1, defaultValue: 7 },
+        { key: 'costPerGram', label: 'Cost per gram', type: 'slider', min: 100, max: 5000, step: 100, defaultValue: 1000 },
+        { key: 'daysQuit', label: 'Days Quit', type: 'slider', min: 1, max: 365, step: 1, defaultValue: 30 }
       ],
       compute: (inputs) => {
-        const weekly = inputs.gramsPerWeek * inputs.costPerGram;
-        // Monthly = weekly × 52/12 (exact calendar average)
-        const monthly = weekly * (52 / 12);
-        const yearly = weekly * 52;
+        const dailySpend = (inputs.gramsPerWeek * inputs.costPerGram) / 7;
+        const gramsPerDay = inputs.gramsPerWeek / 7;
+        const moneySaved = dailySpend * inputs.daysQuit;
+        const gramsAvoided = gramsPerDay * inputs.daysQuit;
+        const stage = inputs.daysQuit > 30 ? 'Receptors stabilized' : 'Receptors resetting';
         return [
-          { label: 'Weekly spend', value: '₹' + Math.round(weekly).toLocaleString() },
-          { label: 'Monthly spend', value: '₹' + Math.round(monthly).toLocaleString() },
-          { label: 'Yearly spend', value: '₹' + Math.round(yearly).toLocaleString() },
-          { label: 'THC clearance', value: 'Heavy users: 30-90 days (urine test)' },
-          { label: 'Cognitive recovery', value: '2-4 weeks for most functions' },
+          { label: `Money saved (${inputs.daysQuit} days)`, value: '₹' + Math.round(moneySaved).toLocaleString(), color: 'primary' },
+          { label: 'Grams avoided', value: gramsAvoided.toFixed(1) + 'g' },
+          { label: 'Dopamine baseline', value: stage, color: 'accent' }
         ];
       },
-      note: 'Cannabis hyperemesis stops within days of complete cessation.',
+      note: 'Cannabinoid receptors begin returning to normal within 2-4 weeks.'
     },
     activities: [
       {
@@ -729,29 +685,25 @@ export const substances: SubstanceConfig[] = [
       },
     ],
     calculator: {
-      title: 'Cardiovascular Risk & Cost',
+      title: 'Savings & Impact to Date',
       inputs: [
-        { key: 'gramsPerUse', label: 'Grams per use', type: 'slider', min: 0.1, max: 5, step: 0.1, defaultValue: 0.5 },
-        { key: 'timesPerWeek', label: 'Times per week', type: 'slider', min: 1, max: 14, step: 1, defaultValue: 3 },
-        { key: 'costPerGram', label: 'Cost per gram ', type: 'slider', min: 1000, max: 20000, step: 500, defaultValue: 5000 },
+        { key: 'gramsPerWeek', label: 'Grams per week', type: 'slider', min: 0, max: 14, step: 0.5, defaultValue: 2 },
+        { key: 'costPerGram', label: 'Cost per gram', type: 'slider', min: 500, max: 10000, step: 500, defaultValue: 3000 },
+        { key: 'daysQuit', label: 'Days Quit', type: 'slider', min: 1, max: 365, step: 1, defaultValue: 30 }
       ],
       compute: (inputs) => {
-        // inputs: gramsPerUse, timesPerWeek, costPerGram
-        const weekly = inputs.gramsPerUse * inputs.timesPerWeek * inputs.costPerGram;
-        // Yearly = weekly × 52 (exact)
-        const yearly = weekly * 52;
+        const dailySpend = (inputs.gramsPerWeek * inputs.costPerGram) / 7;
+        const gramsPerDay = inputs.gramsPerWeek / 7;
+        const moneySaved = dailySpend * inputs.daysQuit;
+        const gramsAvoided = gramsPerDay * inputs.daysQuit;
+        const sleepHours = inputs.daysQuit * 2; // Roughly 2 hours of normal sleep recovered per day
         return [
-          // index 0 → quit.substances.stimulants.calculator.results.0.label = "Weekly spend"
-          { label: 'Weekly spend', value: '₹' + Math.round(weekly).toLocaleString() },
-          // index 1 → "Yearly spend" (no monthly row — matches i18n exactly)
-          { label: 'Yearly spend', value: '₹' + Math.round(yearly).toLocaleString() },
-          // index 2 → "Cardiovascular risk"
-          { label: 'Cardiovascular risk', value: 'Cocaine triples heart attack risk for 60 min after each use', color: 'destructive' },
-          // index 3 → "Heart rate recovery"
-          { label: 'Heart rate recovery', value: 'Resting HR drops ~40 BPM within 21 days of abstinence' },
+          { label: `Money saved (${inputs.daysQuit} days)`, value: '₹' + Math.round(moneySaved).toLocaleString(), color: 'primary' },
+          { label: 'Grams avoided', value: gramsAvoided.toFixed(1) + 'g' },
+          { label: 'Sleep debt recovered', value: Math.round(sleepHours) + ' hours', color: 'accent' }
         ];
       },
-      note: 'Dopamine receptors begin to upregulate after 14 days of abstinence.',
+      note: 'Dopamine pathways need extended time to heal; intense cravings decrease after weeks.'
     },
     activities: [
       {
@@ -840,22 +792,23 @@ export const substances: SubstanceConfig[] = [
       },
     ],
     calculator: {
-      title: 'Taper Schedule & Equivalents',
+      title: 'Savings & Impact to Date',
       inputs: [
-        { key: 'currentDose', label: 'Current daily dose (mg)', type: 'slider', min: 0.5, max: 20, step: 0.5, defaultValue: 4 },
-        { key: 'taperWeeks', label: 'Target weeks to complete', type: 'slider', min: 4, max: 26, step: 1, defaultValue: 12 },
+        { key: 'pillsPerDay', label: 'Pills per day', type: 'slider', min: 0, max: 10, step: 1, defaultValue: 2 },
+        { key: 'costPerPill', label: 'Cost per pill', type: 'slider', min: 50, max: 1000, step: 50, defaultValue: 100 },
+        { key: 'daysQuit', label: 'Days Quit', type: 'slider', min: 1, max: 365, step: 1, defaultValue: 30 }
       ],
       compute: (inputs) => {
-        const weeklyReduction = inputs.currentDose / inputs.taperWeeks;
-        const rate = (weeklyReduction / inputs.currentDose) * 100;
+        const moneySaved = inputs.pillsPerDay * inputs.costPerPill * inputs.daysQuit;
+        const pillsAvoided = inputs.pillsPerDay * inputs.daysQuit;
+        const stage = inputs.daysQuit > 90 ? 'High clarity' : (inputs.daysQuit > 30 ? 'Improving clarity' : 'Fog lifting');
         return [
-          { label: 'Weekly reduction', value: weeklyReduction.toFixed(2) + ' mg' },
-          { label: 'Taper rate', value: rate.toFixed(1) + '%/week', color: rate > 15 ? 'destructive' : rate > 10 ? 'accent' : 'primary' },
-          { label: 'Safety', value: rate > 15 ? 'Medical review needed' : rate > 10 ? 'Slightly fast' : 'Safe range' },
-          { label: 'Disclaimer', value: 'Your doctor must approve all taper changes' },
+          { label: `Money saved (${inputs.daysQuit} days)`, value: '₹' + Math.round(moneySaved).toLocaleString(), color: 'primary' },
+          { label: 'Pills avoided', value: Math.round(pillsAvoided).toLocaleString() },
+          { label: 'Cognitive clarity', value: stage, color: 'accent' }
         ];
       },
-      note: 'Never stop benzodiazepines abruptly due to seizure risk.',
+      note: 'Tapering is often required; consult a doctor before stopping abruptly.'
     },
     activities: [
       {
@@ -958,24 +911,24 @@ export const substances: SubstanceConfig[] = [
       },
     ],
     calculator: {
-      title: 'Usage Cost & Dependence',
+      title: 'Savings & Impact to Date',
       inputs: [
-        { key: 'gramsPerDay', label: 'Grams per day', type: 'slider', min: 1, max: 50, step: 1, defaultValue: 15 },
-        { key: 'costPerKg', label: 'Cost per kg ', type: 'slider', min: 1000, max: 10000, step: 500, defaultValue: 3000 },
+        { key: 'gramsPerDay', label: 'Grams per day', type: 'slider', min: 0, max: 50, step: 1, defaultValue: 15 },
+        { key: 'costPerGram', label: 'Cost per 100g', type: 'slider', min: 500, max: 5000, step: 100, defaultValue: 1000 },
+        { key: 'daysQuit', label: 'Days Quit', type: 'slider', min: 1, max: 365, step: 1, defaultValue: 30 }
       ],
       compute: (inputs) => {
-        const daily = (inputs.gramsPerDay / 1000) * inputs.costPerKg;
-        // Monthly = daily × 365/12 (exact calendar average)
-        const monthly = daily * (365 / 12);
-        const yearly = daily * 365;
+        const costPerGram = inputs.costPerGram / 100;
+        const moneySaved = inputs.gramsPerDay * costPerGram * inputs.daysQuit;
+        const gramsAvoided = inputs.gramsPerDay * inputs.daysQuit;
+        const stage = inputs.daysQuit > 14 ? 'Passed acute withdrawal' : 'Initial withdrawal phase';
         return [
-          { label: 'Daily cost', value: '₹' + Math.round(daily).toLocaleString() },
-          { label: 'Monthly cost', value: '₹' + Math.round(monthly).toLocaleString() },
-          { label: 'Yearly cost', value: '₹' + Math.round(yearly).toLocaleString() },
-          { label: 'Opioid receptor binding', value: 'Mitragynine binds mu-opioid receptors (same as morphine)' },
+          { label: `Money saved (${inputs.daysQuit} days)`, value: '₹' + Math.round(moneySaved).toLocaleString(), color: 'primary' },
+          { label: 'Grams avoided', value: Math.round(gramsAvoided).toLocaleString() + 'g' },
+          { label: 'Physical state', value: stage, color: 'accent' }
         ];
       },
-      note: 'Withdrawal mimics mild opioid withdrawal and lasts 3-7 days.',
+      note: 'Physical withdrawal mimics mild opioids; taper if using high doses.'
     },
     activities: [
       {
@@ -1073,32 +1026,25 @@ export const substances: SubstanceConfig[] = [
       },
     ],
     calculator: {
-      title: 'Neurotoxicity Risk & Recovery',
+      title: 'Savings & Impact to Date',
       inputs: [
-        { key: 'dosePerSession', label: 'Average dose (mg)', type: 'slider', min: 50, max: 500, step: 25, defaultValue: 150 },
-        { key: 'sessionsPerMonth', label: 'Sessions per month', type: 'slider', min: 1, max: 8, step: 1, defaultValue: 2 },
-        { key: 'yearsOfUse', label: 'Years of use', type: 'slider', min: 1, max: 20, step: 1, defaultValue: 3 },
+        { key: 'pillsPerMonth', label: 'Pills/uses per month', type: 'slider', min: 0, max: 20, step: 1, defaultValue: 2 },
+        { key: 'costPerPill', label: 'Cost per pill/use', type: 'slider', min: 500, max: 5000, step: 100, defaultValue: 1500 },
+        { key: 'daysQuit', label: 'Days Quit', type: 'slider', min: 1, max: 365, step: 1, defaultValue: 30 }
       ],
       compute: (inputs) => {
-        const risk = inputs.dosePerSession > 150 && inputs.sessionsPerMonth > 1 ? 'High' : inputs.sessionsPerMonth > 2 ? 'Moderate' : 'Low';
-        // Grounded recovery estimate: serotonin normalises in 3-6 months for casual users;
-        // heavy use (>150mg, multiple times/month) may take 12-18 months (Ricaurte et al.)
-        // Capped at 18 months — not proportional to years of use.
-        let recoveryMonths: number;
-        if (risk === 'High') {
-          recoveryMonths = Math.min(18, 12 + Math.round(inputs.yearsOfUse * 0.5));
-        } else if (risk === 'Moderate') {
-          recoveryMonths = 6;
-        } else {
-          recoveryMonths = 3;
-        }
+        const dailySpend = (inputs.pillsPerMonth * inputs.costPerPill) / 30;
+        const pillsPerDay = inputs.pillsPerMonth / 30;
+        const moneySaved = dailySpend * inputs.daysQuit;
+        const pillsAvoided = pillsPerDay * inputs.daysQuit;
+        const stage = inputs.daysQuit > 90 ? 'Fully replenished' : (inputs.daysQuit > 30 ? 'Actively recovering' : 'Depleted state');
         return [
-          { label: 'Neurotoxicity risk', value: risk, color: risk === 'High' ? 'destructive' : risk === 'Moderate' ? 'accent' : 'primary' },
-          { label: 'Recovery timeline', value: recoveryMonths + ' months (estimated)' },
-          { label: 'Key note', value: 'Heavy use (>150mg, >1×/month) causes lasting serotonin changes. Recovery is possible.' },
+          { label: `Money saved (${inputs.daysQuit} days)`, value: '₹' + Math.round(moneySaved).toLocaleString(), color: 'primary' },
+          { label: 'Uses avoided', value: pillsAvoided.toFixed(1) },
+          { label: 'Serotonin recovery', value: stage, color: 'accent' }
         ];
       },
-      note: 'The 3-month rule is recommended to prevent serotonin depletion.',
+      note: 'Serotonin receptors take weeks to months to fully replenish.'
     },
     activities: [
       {
