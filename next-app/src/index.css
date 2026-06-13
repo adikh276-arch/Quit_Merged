@@ -1,0 +1,175 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=DM+Serif+Display&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  .theme-quit {
+    --background: 216 33% 97%;
+    --foreground: 220 20% 14%;
+
+    --card: 40 30% 99%;
+    --card-foreground: 220 20% 14%;
+
+    --popover: 40 30% 99%;
+    --popover-foreground: 220 20% 14%;
+
+    --primary: 202 71% 52%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 40 25% 93%;
+    --secondary-foreground: 220 20% 14%;
+
+    --muted: 40 18% 92%;
+    --muted-foreground: 220 10% 46%;
+
+    --accent: 25 80% 55%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 40 20% 88%;
+    --input: 40 20% 88%;
+    --ring: 202 71% 52%;
+
+    --radius: 0.75rem;
+
+    --sidebar-background: 216 30% 96%;
+    --sidebar-foreground: 220 10% 30%;
+    --sidebar-primary: 202 71% 52%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 40 25% 93%;
+    --sidebar-accent-foreground: 220 20% 14%;
+    --sidebar-border: 40 20% 88%;
+    --sidebar-ring: 202 71% 52%;
+
+    /* Substance accent colors */
+    --substance-alcohol: 0 65% 50%;
+    --substance-tobacco: 25 70% 48%;
+    --substance-opioids: 270 45% 50%;
+    --substance-cannabis: 145 50% 38%;
+    --substance-stimulants: 45 85% 50%;
+    --substance-benzodiazepines: 210 55% 48%;
+    --substance-kratom: 160 45% 42%;
+    --substance-mdma: 320 55% 50%;
+
+    /* Custom shadows */
+    --shadow-card: 0 1px 3px 0 hsl(220 20% 14% / 0.04), 0 4px 12px 0 hsl(220 20% 14% / 0.03);
+    --shadow-elevated: 0 4px 16px 0 hsl(220 20% 14% / 0.06), 0 8px 32px 0 hsl(220 20% 14% / 0.04);
+
+    --font-display: 'DM Serif Display', serif;
+    --font-body: 'DM Sans', sans-serif;
+  }
+
+  .dark .theme-quit {
+    --background: 220 18% 8%;
+    --foreground: 40 20% 94%;
+    --card: 220 16% 11%;
+    --card-foreground: 40 20% 94%;
+    --popover: 220 16% 11%;
+    --popover-foreground: 40 20% 94%;
+    --primary: 162 40% 45%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 220 14% 16%;
+    --secondary-foreground: 40 20% 94%;
+    --muted: 220 14% 16%;
+    --muted-foreground: 220 10% 60%;
+    --accent: 25 75% 55%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 62% 30%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 220 14% 18%;
+    --input: 220 14% 18%;
+    --ring: 162 40% 45%;
+    --sidebar-background: 220 18% 10%;
+    --sidebar-foreground: 40 20% 90%;
+    --sidebar-primary: 162 40% 45%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 220 14% 16%;
+    --sidebar-accent-foreground: 40 20% 90%;
+    --sidebar-border: 220 14% 18%;
+    --sidebar-ring: 162 40% 45%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-body);
+  }
+
+  h1, h2, h3 {
+    font-family: var(--font-display);
+  }
+}
+
+@layer utilities {
+  .font-display {
+    font-family: var(--font-display);
+  }
+
+  .font-body {
+    font-family: var(--font-body);
+  }
+
+  .substance-gradient {
+    background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--primary) / 0.8) 100%);
+  }
+
+  .card-shadow {
+    box-shadow: var(--shadow-card);
+  }
+
+  .elevated-shadow {
+    box-shadow: var(--shadow-elevated);
+  }
+
+  .animate-count {
+    animation: countUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  @keyframes countUp {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .sparkline-enter {
+    animation: sparklineIn 0.6s ease-out forwards;
+  }
+
+  @keyframes sparklineIn {
+    from { opacity: 0; transform: scaleY(0); }
+    to { opacity: 1; transform: scaleY(1); }
+  }
+
+  /* Custom Slider Styles */
+  input[type=range] {
+    @apply appearance-none bg-transparent;
+  }
+  
+  input[type=range]::-webkit-slider-runnable-track {
+    @apply h-1.5 w-full rounded-full bg-muted transition-colors cursor-pointer;
+  }
+  
+  input[type=range]::-moz-range-track {
+    @apply h-1.5 w-full rounded-full bg-muted transition-colors cursor-pointer;
+  }
+
+  input[type=range]::-webkit-slider-thumb {
+    @apply appearance-none h-5 w-5 rounded-full bg-white border-[3px] shadow-sm -mt-[7px] transition-all active:scale-110 cursor-grab active:cursor-grabbing;
+    border-color: var(--slider-accent, hsl(var(--primary)));
+    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+  }
+
+  input[type=range]::-moz-range-thumb {
+    @apply h-5 w-5 rounded-full bg-white border-[3px] shadow-sm transition-all active:scale-110 cursor-grab active:cursor-grabbing;
+    border-color: var(--slider-accent, hsl(var(--primary)));
+    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+  }
+}
