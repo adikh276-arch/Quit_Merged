@@ -430,11 +430,11 @@ const ActivityRunner = ({ activity, substance, onBack, substep, setSubstep }: { 
       {valError && <p className="mb-3 text-sm font-semibold text-destructive">{valError}</p>}
       {isSaved ? (
         <div className="rounded-xl bg-primary/10 p-4 text-center">
-          <p className="text-sm font-bold text-primary">{t('quit.app.val.saved', 'Activity Log Saved!')}</p>
+          <p className="text-sm font-bold text-primary">{t('quit.app.val.saved', 'Marked as Complete!')}</p>
         </div>
       ) : (
         <button onClick={handleSaveActivity} className="w-full rounded-xl bg-primary py-3 text-sm font-bold text-primary-foreground shadow-lg shadow-primary/20">
-          {t('quit.app.val.save_btn', 'Save Activity Log')}
+          {t('quit.app.val.save_btn', 'Mark as Complete')}
         </button>
       )}
     </div>
