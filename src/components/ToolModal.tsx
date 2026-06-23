@@ -473,13 +473,7 @@ const ActivityRunner = ({ activity, substance, onBack, substep, setSubstep }: { 
 
   const backBtn = (
     <button 
-      onClick={() => {
-        if (window.parent !== window) {
-          window.parent.postMessage({ action: 'exit' }, 'https://web.mantracare.com');
-        } else {
-          window.location.href = 'https://web.mantracare.com';
-        }
-      }} 
+      onClick={onBack}
       className="mb-4 text-xs text-muted-foreground hover:text-foreground transition-colors"
     >
       {t('quit.app.back', 'Back')}
@@ -911,13 +905,7 @@ const LearnView = ({ substance, active, setActive }: { substance: SubstanceConfi
     return (
       <div>
         <button 
-          onClick={() => {
-            if (window.parent !== window) {
-              window.parent.postMessage({ action: 'exit' }, 'https://web.mantracare.com');
-            } else {
-              window.location.href = 'https://web.mantracare.com';
-            }
-          }} 
+          onClick={() => setActive(null)}
           className="mb-4 text-xs text-muted-foreground"
         >
           {t('quit.app.back')}
@@ -965,13 +953,7 @@ const CommunityView = ({ substance }: { substance: SubstanceConfig }) => {
     return (
       <div>
         <button 
-          onClick={() => {
-            if (window.parent !== window) {
-              window.parent.postMessage({ action: 'exit' }, 'https://web.mantracare.com');
-            } else {
-              window.location.href = 'https://web.mantracare.com';
-            }
-          }} 
+          onClick={() => setActivePost(null)}
           className="mb-4 text-xs text-muted-foreground"
         >
           {t('quit.app.back', 'Back')}
