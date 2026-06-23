@@ -14,7 +14,7 @@ const sparkColors: Record<string, string> = {
   stimulants: '#eab308', benzodiazepines: '#3b82f6', kratom: '#14b8a6', mdma: '#ec4899',
 };
 
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate, useLocation } from 'react-router-dom';
 
 interface Props {
   toolId: string;
@@ -25,6 +25,15 @@ interface Props {
 const ToolModal = ({ toolId, substance, onClose }: Props) => {
   const { slug, contentId, substep } = useParams<any>();
   const navigate = useNavigate();
+  const location = useLocation();
+
+  useEffect(() => {
+    const params = new URLSearchParams(location.search);
+    const upa_id = params.get('upa_id');
+    const uid = params.get('uid');
+    if (upa_id) sessionStorage.setItem('upa_id', upa_id);
+    if (uid) sessionStorage.setItem('uid', uid);
+  }, [location.search]);
 
   const activeActivity = toolId === 'activities' ? contentId : null;
   const activeArticle = toolId === 'learn' ? contentId : null;
@@ -349,6 +358,88 @@ const ActivityRunner = ({ activity, substance, onBack, substep, setSubstep }: { 
   // Journal state
   const [journalValues, setJournalValues] = useState<Record<string, any>>({});
 
+  // Webhook validation states
+  const [valError, setValError] = useState('');
+  const [isSaved, setIsSaved] = useState(false);
+
+  const triggerActivityWebhook = () => {
+    const upa_id = sessionStorage.getItem('upa_id');
+    const uid = sessionStorage.getItem('uid');
+    if (!upa_id || !uid) {
+      console.log('Missing upa_id or uid, webhook not triggered.');
+      return;
+    }
+    fetch('https://api.mantracare.com', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        intent: 'complete_activity',
+        upa_id: parseInt(upa_id, 10),
+        uid: uid
+      })
+    }).then(res => {
+      console.log('Webhook triggered successfully', res.status);
+    }).catch(err => {
+      console.error('Webhook failed', err);
+    });
+  };
+
+  const handleSaveActivity = () => {
+    setValError('');
+    let valid = false;
+    if (activity.type === 'quiz') {
+      if (quizIndex >= activity.questions?.length) valid = true;
+      else setValError(t('quit.app.val.quiz', 'Please finish the quiz first.'));
+    } else if (activity.type === 'visualization') {
+      if (vizIndex >= activity.scenes?.length - 1 && !running) valid = true;
+      else setValError(t('quit.app.val.viz', 'Please complete the full duration.'));
+    } else if (activity.type === 'tap-game') {
+      if (tapDone) valid = true;
+      else setValError(t('quit.app.val.tap', 'Please reach the tap goal first.'));
+    } else if (activity.type === 'affirmation') {
+      if (affSaved.size > 0 || affIndex === activity.affirmations?.length - 1) valid = true;
+      else setValError(t('quit.app.val.aff', 'Please view all affirmations or save at least one.'));
+    } else if (activity.type === 'body-scan') {
+      if (bodyDone) valid = true;
+      else setValError(t('quit.app.val.body', 'Please complete the full scan.'));
+    } else if (activity.type === 'sorting') {
+      if (sortRevealed) valid = true;
+      else setValError(t('quit.app.val.sort', 'Please match all items correctly first.'));
+    } else if (activity.type === 'journal') {
+      if (Object.keys(journalValues).some(k => journalValues[k] && String(journalValues[k]).trim() !== '')) valid = true;
+      else setValError(t('quit.app.val.journal', 'Please write an entry before saving.'));
+    } else if (activity.type === 'checklist') {
+      if (activity.items && checkedItems.size === activity.items.length) valid = true;
+      else setValError(t('quit.app.val.check', 'Please complete all items before saving.'));
+    } else if (activity.type === 'breathing') {
+      const maxSeconds = activity.phases ? Math.max(...activity.phases.map((p: any) => p.time)) + 60 : 300;
+      if (seconds >= maxSeconds || (seconds > 60 && !running)) valid = true;
+      else setValError(t('quit.app.val.breathe', 'Please complete the breathing exercise.'));
+    } else {
+      valid = true;
+    }
+
+    if (valid) {
+      triggerActivityWebhook();
+      setIsSaved(true);
+    }
+  };
+
+  const saveSection = (
+    <div className="mt-8 border-t border-border pt-6">
+      {valError && <p className="mb-3 text-sm font-semibold text-destructive">{valError}</p>}
+      {isSaved ? (
+        <div className="rounded-xl bg-primary/10 p-4 text-center">
+          <p className="text-sm font-bold text-primary">{t('quit.app.val.saved', 'Activity Log Saved!')}</p>
+        </div>
+      ) : (
+        <button onClick={handleSaveActivity} className="w-full rounded-xl bg-primary py-3 text-sm font-bold text-primary-foreground shadow-lg shadow-primary/20">
+          {t('quit.app.val.save_btn', 'Save Activity Log')}
+        </button>
+      )}
+    </div>
+  );
+
   // Sync internal indices to URL
   useEffect(() => {
     if (activity.type === 'quiz') setSubstep(quizIndex.toString());
@@ -413,6 +504,7 @@ const ActivityRunner = ({ activity, substance, onBack, substep, setSubstep }: { 
             </p>
           </motion.div>
           <button onClick={() => { setQuizIndex(0); setQuizAnswers([]); setQuizRevealed(false); }} className="rounded-xl bg-muted px-6 py-2 text-sm font-medium">{t('quit.app.retake', 'Retake')}</button>
+          {saveSection}
         </div>
       );
     }
@@ -447,6 +539,7 @@ const ActivityRunner = ({ activity, substance, onBack, substep, setSubstep }: { 
             </button>
           </motion.div>
         )}
+        {saveSection}
       </div>
     );
   }
@@ -478,6 +571,7 @@ const ActivityRunner = ({ activity, substance, onBack, substep, setSubstep }: { 
           className="inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground">
           {running ? <><Pause className="h-4 w-4" /> {t('quit.app.pause', 'Pause')}</> : <><Play className="h-4 w-4" /> {vizIndex > 0 ? t('quit.app.continue', 'Continue') : t('quit.app.begin_journey', 'Begin Journey')}</>}
         </button>
+        {saveSection}
       </div>
     );
   }
@@ -496,6 +590,7 @@ const ActivityRunner = ({ activity, substance, onBack, substep, setSubstep }: { 
             <p className="text-sm text-muted-foreground">{t('quit.app.activities.tap.success_desc', { count: taps })}</p>
             <button onClick={() => { setTaps(0); setTapDone(false); }} className="mt-6 rounded-xl bg-muted px-6 py-2 text-sm font-medium">{t('quit.app.activities.tap.again', 'Go Again')}</button>
           </motion.div>
+          {saveSection}
         </div>
       );
     }
@@ -520,6 +615,7 @@ const ActivityRunner = ({ activity, substance, onBack, substep, setSubstep }: { 
           <Zap className="h-10 w-10 text-primary-foreground fill-primary-foreground" />
         </motion.button>
         <p className="mt-3 text-xs text-muted-foreground">{t('quit.app.activities.tap.remaining', { count: goal - taps })}</p>
+        {saveSection}
       </div>
     );
   }
@@ -553,6 +649,7 @@ const ActivityRunner = ({ activity, substance, onBack, substep, setSubstep }: { 
             className="rounded-full bg-muted px-4 py-2 text-sm font-medium disabled:opacity-30">{t('quit.app.next', 'Next')} →</button>
         </div>
         <p className="mt-4 text-[10px] text-muted-foreground">{t('quit.app.affirmation_x_of_y', { current: affIndex + 1, total: activity.affirmations.length })} · {affSaved.size} {t('quit.app.saved', 'saved')}</p>
+        {saveSection}
       </div>
     );
   }
@@ -569,6 +666,7 @@ const ActivityRunner = ({ activity, substance, onBack, substep, setSubstep }: { 
             <p className="text-sm text-muted-foreground mb-6">{t('quit.app.activities.bodyscan.complete_desc', { count: activity.bodyZones.length })}</p>
             <button onClick={() => { setBodyIndex(-1); setBodyDone(false); }} className="rounded-xl bg-muted px-6 py-2 text-sm font-medium">{t('quit.app.activities.repeat', 'Repeat')}</button>
           </motion.div>
+          {saveSection}
         </div>
       );
     }
@@ -591,6 +689,7 @@ const ActivityRunner = ({ activity, substance, onBack, substep, setSubstep }: { 
           <button onClick={() => setBodyIndex(0)} className="rounded-full bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground">
             {t('quit.app.activities.bodyscan.begin', 'Begin Body Scan')}
           </button>
+          {saveSection}
         </div>
       );
     }
@@ -616,6 +715,7 @@ const ActivityRunner = ({ activity, substance, onBack, substep, setSubstep }: { 
           className="rounded-full bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground">
           {bodyIndex < activity.bodyZones.length - 1 ? `${t('quit.app.activities.bodyscan.next_zone', 'Next Zone')} →` : `${t('quit.app.activities.complete', 'Complete')} ✓`}
         </button>
+        {saveSection}
       </div>
     );
   }
@@ -662,6 +762,7 @@ const ActivityRunner = ({ activity, substance, onBack, substep, setSubstep }: { 
             </p>
           </motion.div>
         )}
+        {saveSection}
       </div>
     );
   }
@@ -705,6 +806,7 @@ const ActivityRunner = ({ activity, substance, onBack, substep, setSubstep }: { 
             <p className="text-sm font-semibold text-primary">{t('quit.app.activities.journal.captured', 'Reflection captured. Awareness is progress.')}</p>
           </motion.div>
         )}
+        {saveSection}
       </div>
     );
   }
@@ -743,6 +845,7 @@ const ActivityRunner = ({ activity, substance, onBack, substep, setSubstep }: { 
             </p>
           </motion.div>
         )}
+        {saveSection}
       </div>
     );
   }
@@ -767,6 +870,7 @@ const ActivityRunner = ({ activity, substance, onBack, substep, setSubstep }: { 
       <button onClick={() => setRunning(!running)} className="inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground">
         {running ? <><Pause className="h-4 w-4" /> {t('quit.app.pause', 'Pause')}</> : <><Play className="h-4 w-4" /> {seconds > 0 ? t('quit.app.resume', 'Resume') : t('quit.app.start', 'Start')}</>}
       </button>
+      {saveSection}
     </div>
   );
 };
