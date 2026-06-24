@@ -68,14 +68,6 @@ const ToolModal = ({ toolId, substance, onClose }: Props) => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  useEffect(() => {
-    const params = new URLSearchParams(location.search);
-    const upa_id = params.get('upa_id');
-    const uid = params.get('uid');
-    if (upa_id) sessionStorage.setItem('upa_id', upa_id);
-    if (uid) sessionStorage.setItem('uid', uid);
-  }, [location.search]);
-
   const activeActivity = toolId === 'activities' ? contentId : null;
   const activeArticle = toolId === 'learn' ? contentId : null;
   const activeSubstep = substep;

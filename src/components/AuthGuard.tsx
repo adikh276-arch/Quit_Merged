@@ -23,6 +23,14 @@ export const AuthGuard = ({ children }: { children: React.ReactNode }) => {
     console.log('[AuthGuard] Component mounted');
   }, []);
 
+  useEffect(() => {
+    const urlParams = new URLSearchParams(location.search);
+    const upa = urlParams.get('upa_id');
+    const u = urlParams.get('uid');
+    if (upa) sessionStorage.setItem('upa_id', upa);
+    if (u) sessionStorage.setItem('uid', u);
+  }, [location.search]);
+
   // -----------------------------------------------------------------------
   // Strip stale auth params from URL for ALREADY-AUTHENTICATED users.
   // e.g. user is logged in but visits a URL with ?token= still in it.
