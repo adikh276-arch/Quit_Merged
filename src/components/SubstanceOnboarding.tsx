@@ -95,6 +95,41 @@ const SubstanceOnboarding = ({ substance, initialStep = 0, onStepChange, onCompl
       trigger_count: triggers.length,
       triggers,
     });
+
+    // Assign Pathway Webhook
+    const pathwayMapping: Record<string, number> = {
+      alcohol: 90,
+      tobacco: 93,
+      opioids: 101,
+      cannabis: 102,
+      stimulants: 103,
+      benzodiazepines: 106,
+      kratom: 107,
+      mdma: 108
+    };
+    
+    const uid = sessionStorage.getItem('uid') || new URLSearchParams(window.location.search).get('uid');
+    const pathway_id = pathwayMapping[substance.slug];
+    
+    if (!uid) {
+      console.log('Missing uid, assign pathway webhook not triggered.');
+    } else if (pathway_id) {
+      fetch('https://api.mantracare.com/webhook/pathway', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          intent: 'assign_pathway',
+          pathway_id,
+          uid,
+          service_id: 15
+        })
+      }).then(res => {
+        console.log('Assign pathway webhook triggered successfully', res.status);
+      }).catch(err => {
+        console.error('Assign pathway webhook failed', err);
+      });
+    }
+
     onComplete(motivation || undefined, triggers);
   };
 
