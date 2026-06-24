@@ -21,7 +21,7 @@ export const triggerActivityWebhook = () => {
     console.log('Missing upa_id or uid, webhook not triggered.');
     return;
   }
-  fetch('https://api.mantracare.com', {
+  fetch('https://api.mantracare.com/webhook/pathway', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
