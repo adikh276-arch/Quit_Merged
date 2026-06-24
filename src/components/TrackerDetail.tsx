@@ -7,6 +7,7 @@ import { getEntries, saveEntry, todayStr, getEntry } from '@/data/storage';
 import { useTranslation } from 'react-i18next';
 import { analytics } from '@/lib/analytics';
 import { toast } from 'sonner';
+import { triggerActivityWebhook } from './ToolModal';
 
 interface Props {
   tracker: TrackerConfig;
@@ -107,6 +108,7 @@ const TrackerDetail = ({ tracker, substance, onClose }: Props) => {
       reported_use: reportedUse,
       is_first_log_today: !todayEntry,
     });
+    triggerActivityWebhook();
     setSaved(true);
     toast.success(t('quit.app.saved') || 'Entry saved successfully');
     setTimeout(() => onClose(), 800);
