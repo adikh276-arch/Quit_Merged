@@ -990,6 +990,7 @@ const CommunityView = ({ substance }: { substance: SubstanceConfig }) => {
             <p className="mt-1 text-xs text-muted-foreground">{r.text}</p>
           </div>
         ))}
+        <SaveActivityButton />
       </div>
     );
   }
@@ -1045,6 +1046,7 @@ const PostComposer = ({ substance, onClose }: { substance: SubstanceConfig; onCl
       id: `user-${Date.now()}`, type, title, body, upvotes: 0, comments: 0,
       timeAgo: 'Just now', username: 'anonymous_user',
     });
+    triggerActivityWebhook();
     onClose();
   };
 
