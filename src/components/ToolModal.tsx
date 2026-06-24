@@ -14,6 +14,47 @@ const sparkColors: Record<string, string> = {
   stimulants: '#eab308', benzodiazepines: '#3b82f6', kratom: '#14b8a6', mdma: '#ec4899',
 };
 
+export const triggerActivityWebhook = () => {
+  const upa_id = sessionStorage.getItem('upa_id');
+  const uid = sessionStorage.getItem('uid');
+  if (!upa_id || !uid) {
+    console.log('Missing upa_id or uid, webhook not triggered.');
+    return;
+  }
+  fetch('https://api.mantracare.com', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      intent: 'complete_activity',
+      upa_id: parseInt(upa_id, 10),
+      uid: uid
+    })
+  }).then(res => {
+    console.log('Webhook triggered successfully', res.status);
+  }).catch(err => {
+    console.error('Webhook failed', err);
+  });
+};
+
+const SaveActivityButton = () => {
+  const { t } = useTranslation();
+  const [isSaved, setIsSaved] = useState(false);
+
+  return (
+    <div className="mt-8 border-t border-border pt-6">
+      {isSaved ? (
+        <div className="rounded-xl bg-primary/10 p-4 text-center">
+          <p className="text-sm font-bold text-primary">{t('quit.app.val.saved', 'Marked as Complete!')}</p>
+        </div>
+      ) : (
+        <button onClick={() => { triggerActivityWebhook(); setIsSaved(true); }} className="w-full rounded-xl bg-primary py-3 text-sm font-bold text-primary-foreground shadow-lg shadow-primary/20">
+          {t('quit.app.val.save_btn', 'Mark as Complete')}
+        </button>
+      )}
+    </div>
+  );
+};
+
 import { useParams, useNavigate, useLocation } from 'react-router-dom';
 
 interface Props {
@@ -211,6 +252,7 @@ const Assessment = ({ substance }: { substance: SubstanceConfig }) => {
         )}
 
         <div className="mt-8 flex flex-col gap-3">
+          <SaveActivityButton />
           <button onClick={() => { setStep(0); setAnswers([]); setSelected(null); setDone(false); }} className="w-full rounded-xl bg-primary py-3 text-sm font-semibold text-primary-foreground shadow-lg shadow-primary/20">
             {t('quit.app.retake')}
           </button>
@@ -322,6 +364,7 @@ const CalculatorView = ({ substance }: { substance: SubstanceConfig }) => {
           {t(`quit.substances.${substance.slug}.calculator.note`, calc.note)}
         </p>
       )}
+      <SaveActivityButton />
     </div>
   );
 };
@@ -361,28 +404,6 @@ const ActivityRunner = ({ activity, substance, onBack, substep, setSubstep }: { 
   // Webhook validation states
   const [valError, setValError] = useState('');
   const [isSaved, setIsSaved] = useState(false);
-
-  const triggerActivityWebhook = () => {
-    const upa_id = sessionStorage.getItem('upa_id');
-    const uid = sessionStorage.getItem('uid');
-    if (!upa_id || !uid) {
-      console.log('Missing upa_id or uid, webhook not triggered.');
-      return;
-    }
-    fetch('https://api.mantracare.com', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        intent: 'complete_activity',
-        upa_id: parseInt(upa_id, 10),
-        uid: uid
-      })
-    }).then(res => {
-      console.log('Webhook triggered successfully', res.status);
-    }).catch(err => {
-      console.error('Webhook failed', err);
-    });
-  };
 
   const handleSaveActivity = () => {
     setValError('');
@@ -913,6 +934,7 @@ const LearnView = ({ substance, active, setActive }: { substance: SubstanceConfi
         <span className="mb-2 inline-block rounded-full bg-primary/10 px-3 py-1 text-xs font-medium text-primary">{t(`quit.substances.${substance.slug}.articles.${article.id}.tag`, article.tag)}</span>
         <h2 className="mb-4 font-display text-xl text-foreground">{t(`quit.substances.${substance.slug}.articles.${article.id}.title`, article.title)}</h2>
         <div className="text-sm text-foreground leading-relaxed whitespace-pre-line">{t(`quit.substances.${substance.slug}.articles.${article.id}.content`, article.content)}</div>
+        <SaveActivityButton />
       </div>
     );
   }
